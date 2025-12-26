@@ -1,0 +1,8 @@
+recipes:
+  - name: Gizmo
+    expression: 'HAS("Keycard") && HAS("Missing Part")'
+    consume: ["Missing Part"]
+    requirements: ["Keycard", "Missing Part"]
+    skill: Hacking
+    emitLabel: Gizmo
+    emitDescription: A test gizmo.

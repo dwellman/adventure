@@ -1,0 +1,414 @@
+seed: 404
+startPlotKey: dungeon-4-1
+preamble: "Dungeon Adventure: cross the grid and defeat the warden."
+plots:
+  - plotKey: dungeon-1-1
+    name: Chill Vault
+    region: MINI
+    description: A cold vault with stone tiles slick from the damp.
+    gates:
+      - direction: S
+        toPlot: dungeon-2-1
+        visible: true
+        keyString: "true"
+        label: Chill Vault -> Bone Alcove
+        description: A narrow stair descends into the alcove.
+      - direction: E
+        toPlot: dungeon-1-2
+        visible: true
+        keyString: "true"
+        label: Chill Vault -> Ossuary Nook
+        description: A low arch opens toward stacked bones.
+  - plotKey: dungeon-1-2
+    name: Ossuary Nook
+    region: MINI
+    description: Shelves of bones line the walls in silent rows.
+    gates:
+      - direction: S
+        toPlot: dungeon-2-2
+        visible: true
+        keyString: "true"
+        label: Ossuary Nook -> Cinder Shrine
+        description: A soot-dark corridor drops south.
+      - direction: E
+        toPlot: dungeon-1-3
+        visible: true
+        keyString: "true"
+        label: Ossuary Nook -> Sundered Chapel
+        description: A cracked nave lies to the east.
+      - direction: W
+        toPlot: dungeon-1-1
+        visible: true
+        keyString: "true"
+        label: Ossuary Nook -> Chill Vault
+        description: The cold vault waits to the west.
+  - plotKey: dungeon-1-3
+    name: Sundered Chapel
+    region: MINI
+    description: Broken pews and a shattered altar mark this chapel.
+    gates:
+      - direction: S
+        toPlot: dungeon-2-3
+        visible: true
+        keyString: "true"
+        label: Sundered Chapel -> Old Reliquary
+        description: The reliquary lies below.
+      - direction: E
+        toPlot: dungeon-1-4
+        visible: true
+        keyString: "true"
+        label: Sundered Chapel -> Warden Lair
+        description: A heavy door stands open to the east.
+      - direction: W
+        toPlot: dungeon-1-2
+        visible: true
+        keyString: "true"
+        label: Sundered Chapel -> Ossuary Nook
+        description: Bone shelves glimmer to the west.
+  - plotKey: dungeon-1-4
+    name: Warden Lair
+    region: MINI
+    description: An iron ring carved into the floor marks the lair.
+    gates:
+      - direction: S
+        toPlot: dungeon-2-4
+        visible: true
+        keyString: "true"
+        label: Warden Lair -> Shadow Turn
+        description: Shadows shift along the southern wall.
+      - direction: W
+        toPlot: dungeon-1-3
+        visible: true
+        keyString: "true"
+        label: Warden Lair -> Sundered Chapel
+        description: The broken chapel lies to the west.
+    actors:
+      - key: warden
+        name: Crypt Warden
+        description: A hulking jailer bound to the vault.
+        visible: true
+        equippedMainHandItemId: warden-maul
+        cells:
+          health:
+            capacity: 15
+            amount: 15
+    items:
+      - key: warden-maul
+        name: Warden Maul
+        description: A heavy iron maul chained to a gauntlet.
+        ownerKey: warden
+        visible: true
+        weaponDamage: 3
+  - plotKey: dungeon-2-1
+    name: Bone Alcove
+    region: MINI
+    description: Small niches hold offerings turned to dust.
+    gates:
+      - direction: N
+        toPlot: dungeon-1-1
+        visible: true
+        keyString: "true"
+        label: Bone Alcove -> Chill Vault
+        description: Cold air seeps from the vault above.
+      - direction: S
+        toPlot: dungeon-3-1
+        visible: true
+        keyString: "true"
+        label: Bone Alcove -> Mossy Corridor
+        description: Green moss marks the way south.
+      - direction: E
+        toPlot: dungeon-2-2
+        visible: true
+        keyString: "true"
+        label: Bone Alcove -> Cinder Shrine
+        description: Ash drifts from the shrine to the east.
+  - plotKey: dungeon-2-2
+    name: Cinder Shrine
+    region: MINI
+    description: Burned braziers stain the shrine with soot.
+    gates:
+      - direction: N
+        toPlot: dungeon-1-2
+        visible: true
+        keyString: "true"
+        label: Cinder Shrine -> Ossuary Nook
+        description: Bone shelves crowd the passage north.
+      - direction: S
+        toPlot: dungeon-3-2
+        visible: true
+        keyString: "true"
+        label: Cinder Shrine -> Echo Hall
+        description: Footsteps echo to the south.
+      - direction: E
+        toPlot: dungeon-2-3
+        visible: true
+        keyString: "true"
+        label: Cinder Shrine -> Old Reliquary
+        description: A reliquary room glows to the east.
+      - direction: W
+        toPlot: dungeon-2-1
+        visible: true
+        keyString: "true"
+        label: Cinder Shrine -> Bone Alcove
+        description: The alcove rests to the west.
+  - plotKey: dungeon-2-3
+    name: Old Reliquary
+    region: MINI
+    description: Dusty plinths sit where relics once stood.
+    gates:
+      - direction: N
+        toPlot: dungeon-1-3
+        visible: true
+        keyString: "true"
+        label: Old Reliquary -> Sundered Chapel
+        description: Broken pews lie to the north.
+      - direction: S
+        toPlot: dungeon-3-3
+        visible: true
+        keyString: "true"
+        label: Old Reliquary -> Rune Crossing
+        description: Carved runes lead south.
+      - direction: E
+        toPlot: dungeon-2-4
+        visible: true
+        keyString: "true"
+        label: Old Reliquary -> Shadow Turn
+        description: A dark turn opens to the east.
+      - direction: W
+        toPlot: dungeon-2-2
+        visible: true
+        keyString: "true"
+        label: Old Reliquary -> Cinder Shrine
+        description: Smoke stains the stones to the west.
+  - plotKey: dungeon-2-4
+    name: Shadow Turn
+    region: MINI
+    description: The corridor turns sharply, swallowing the light.
+    gates:
+      - direction: N
+        toPlot: dungeon-1-4
+        visible: true
+        keyString: "true"
+        label: Shadow Turn -> Warden Lair
+        description: The lair's iron ring hums to the north.
+      - direction: S
+        toPlot: dungeon-3-4
+        visible: true
+        keyString: "true"
+        label: Shadow Turn -> Iron Lattice
+        description: Iron bars line the south passage.
+      - direction: W
+        toPlot: dungeon-2-3
+        visible: true
+        keyString: "true"
+        label: Shadow Turn -> Old Reliquary
+        description: Dusty plinths sit to the west.
+  - plotKey: dungeon-3-1
+    name: Mossy Corridor
+    region: MINI
+    description: Moist stone walls are slick with moss.
+    gates:
+      - direction: N
+        toPlot: dungeon-2-1
+        visible: true
+        keyString: "true"
+        label: Mossy Corridor -> Bone Alcove
+        description: Niche lights glow to the north.
+      - direction: S
+        toPlot: dungeon-4-1
+        visible: true
+        keyString: "true"
+        label: Mossy Corridor -> Dungeon Entrance
+        description: The entrance lies to the south.
+      - direction: E
+        toPlot: dungeon-3-2
+        visible: true
+        keyString: "true"
+        label: Mossy Corridor -> Echo Hall
+        description: Echoes gather to the east.
+  - plotKey: dungeon-3-2
+    name: Echo Hall
+    region: MINI
+    description: Every step rings off the vaulted ceiling.
+    gates:
+      - direction: N
+        toPlot: dungeon-2-2
+        visible: true
+        keyString: "true"
+        label: Echo Hall -> Cinder Shrine
+        description: Soot-dark stones rise to the north.
+      - direction: S
+        toPlot: dungeon-4-2
+        visible: true
+        keyString: "true"
+        label: Echo Hall -> Torch Gallery
+        description: Torchlight flickers to the south.
+      - direction: E
+        toPlot: dungeon-3-3
+        visible: true
+        keyString: "true"
+        label: Echo Hall -> Rune Crossing
+        description: Carved runes glow to the east.
+      - direction: W
+        toPlot: dungeon-3-1
+        visible: true
+        keyString: "true"
+        label: Echo Hall -> Mossy Corridor
+        description: The mossy corridor lies to the west.
+  - plotKey: dungeon-3-3
+    name: Rune Crossing
+    region: MINI
+    description: Inset runes form a crossroads in the stone.
+    gates:
+      - direction: N
+        toPlot: dungeon-2-3
+        visible: true
+        keyString: "true"
+        label: Rune Crossing -> Old Reliquary
+        description: Dusty reliquary steps lie to the north.
+      - direction: S
+        toPlot: dungeon-4-3
+        visible: true
+        keyString: "true"
+        label: Rune Crossing -> Cracked Armory
+        description: Broken racks stand to the south.
+      - direction: E
+        toPlot: dungeon-3-4
+        visible: true
+        keyString: "true"
+        label: Rune Crossing -> Iron Lattice
+        description: An iron lattice rattles to the east.
+      - direction: W
+        toPlot: dungeon-3-2
+        visible: true
+        keyString: "true"
+        label: Rune Crossing -> Echo Hall
+        description: Echoes return to the west.
+  - plotKey: dungeon-3-4
+    name: Iron Lattice
+    region: MINI
+    description: Rusted bars form a lattice along the wall.
+    gates:
+      - direction: N
+        toPlot: dungeon-2-4
+        visible: true
+        keyString: "true"
+        label: Iron Lattice -> Shadow Turn
+        description: Shadows gather to the north.
+      - direction: S
+        toPlot: dungeon-4-4
+        visible: true
+        keyString: "true"
+        label: Iron Lattice -> Flooded Steps
+        description: Water laps down the steps to the south.
+      - direction: W
+        toPlot: dungeon-3-3
+        visible: true
+        keyString: "true"
+        label: Iron Lattice -> Rune Crossing
+        description: Runes burn to the west.
+  - plotKey: dungeon-4-1
+    name: Dungeon Entrance
+    region: MINI
+    description: The dungeon gate yawns behind you, shut tight.
+    gates:
+      - direction: N
+        toPlot: dungeon-3-1
+        visible: true
+        keyString: "true"
+        label: Dungeon Entrance -> Mossy Corridor
+        description: A damp corridor leads north.
+      - direction: E
+        toPlot: dungeon-4-2
+        visible: true
+        keyString: "true"
+        label: Dungeon Entrance -> Torch Gallery
+        description: A torchlit gallery stretches east.
+    actors:
+      - key: player
+        name: Delver
+        description: A wary delver with a blade and a torch.
+        visible: true
+        skills: [Brawl]
+        equippedMainHandItemId: steel-sword
+        equippedBodyItemId: leather-jerkin
+        cells:
+          health:
+            capacity: 12
+            amount: 12
+    items:
+      - key: steel-sword
+        name: Steel Sword
+        description: A straight steel sword balanced for quick cuts.
+        ownerKey: player
+        visible: true
+        weaponDamage: 5
+      - key: leather-jerkin
+        name: Leather Jerkin
+        description: Hardened leather that turns a glancing blow.
+        ownerKey: player
+        visible: true
+        armorMitigation: 1
+  - plotKey: dungeon-4-2
+    name: Torch Gallery
+    region: MINI
+    description: Wall torches gutter in a long gallery.
+    gates:
+      - direction: N
+        toPlot: dungeon-3-2
+        visible: true
+        keyString: "true"
+        label: Torch Gallery -> Echo Hall
+        description: Echoes gather to the north.
+      - direction: E
+        toPlot: dungeon-4-3
+        visible: true
+        keyString: "true"
+        label: Torch Gallery -> Cracked Armory
+        description: Broken racks stand to the east.
+      - direction: W
+        toPlot: dungeon-4-1
+        visible: true
+        keyString: "true"
+        label: Torch Gallery -> Dungeon Entrance
+        description: The sealed gate is to the west.
+  - plotKey: dungeon-4-3
+    name: Cracked Armory
+    region: MINI
+    description: Empty weapon racks line cracked stone walls.
+    gates:
+      - direction: N
+        toPlot: dungeon-3-3
+        visible: true
+        keyString: "true"
+        label: Cracked Armory -> Rune Crossing
+        description: Runes glimmer to the north.
+      - direction: E
+        toPlot: dungeon-4-4
+        visible: true
+        keyString: "true"
+        label: Cracked Armory -> Flooded Steps
+        description: Water reflects to the east.
+      - direction: W
+        toPlot: dungeon-4-2
+        visible: true
+        keyString: "true"
+        label: Cracked Armory -> Torch Gallery
+        description: Torchlight flickers to the west.
+  - plotKey: dungeon-4-4
+    name: Flooded Steps
+    region: MINI
+    description: Shallow water pools along cracked steps.
+    gates:
+      - direction: N
+        toPlot: dungeon-3-4
+        visible: true
+        keyString: "true"
+        label: Flooded Steps -> Iron Lattice
+        description: Iron bars line the way north.
+      - direction: W
+        toPlot: dungeon-4-3
+        visible: true
+        keyString: "true"
+        label: Flooded Steps -> Cracked Armory
+        description: The armory lies to the west.

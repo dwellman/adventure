@@ -1,0 +1,2192 @@
+plots:
+- key: alley-mirror-board
+  name: Alley Mirror Board
+  region: CITY
+  locationX: 0
+  locationY: 0
+  description: Small mirrors hang on a board to “see behind you.” One mirror is angled to reflect a specific sign far away.
+- key: backlane-clothesline-gap
+  name: Backlane Clothesline Gap
+  region: CITY
+  locationX: 1
+  locationY: 0
+  description: Wet shirts and towels make a low roof. Clothespins form a simple pattern if you walk slowly.
+- key: base-stair-gate
+  name: Base Stair Gate
+  region: CITY
+  locationX: 2
+  locationY: 0
+  description: The first steps rise under golden figures. A small sign warns visitors, but the real warning is the silence
+    ahead.
+- key: battery-lantern-swap
+  name: Battery Lantern Swap
+  region: CITY
+  locationX: 3
+  locationY: 0
+  description: Lanterns glow warm and weak. A vendor offers a better battery if you show him the right mark.
+- key: bell-frame-assembly-point
+  name: Bell Frame Assembly Point
+  region: CITY
+  locationX: 4
+  locationY: 0
+  description: A bell frame stands outdoors. Slots and grooves suggest something is meant to be assembled here.
+- key: boarding-bell-line
+  name: Boarding Bell Line
+  region: CITY
+  locationX: 5
+  locationY: 0
+  description: A bell rings sharp and clean. The crowd surges forward, and a handoff could happen without anyone noticing.
+- key: bottle-glass-wall-bend
+  name: Bottle-Glass Wall Bend
+  region: CITY
+  locationX: 0
+  locationY: 1
+  description: Glass shards set in mortar glitter along a bend. The shards form a line that points like an arrow.
+- key: buoy-blink-line
+  name: Buoy Blink Line
+  region: CITY
+  locationX: 1
+  locationY: 1
+  description: Buoys blink in a repeating cadence. The sequence feels like numbers pretending to be lights.
+- key: cable-canopy-crawlway
+  name: Cable Canopy Crawlway
+  region: CITY
+  locationX: 2
+  locationY: 1
+  description: Cables web overhead, dense enough to feel like a ceiling. One cable is tagged with a colored thread.
+- key: calligraphy-card-table
+  name: Calligraphy Card Table
+  region: CITY
+  locationX: 3
+  locationY: 1
+  description: Brush strokes dry on red paper squares. The seller smiles like he already knows what you will ask for.
+- key: calligraphy-table
+  name: Calligraphy Table
+  region: CITY
+  locationX: 4
+  locationY: 1
+  description: Red slips hang like flags. One slip includes an unusual character choice that looks like a deliberate hint.
+- key: cargo-fence-markers
+  name: Cargo Fence Markers
+  region: CITY
+  locationX: 5
+  locationY: 1
+  description: Fence posts carry painted marks and small cuts. Only one sequence matches the pattern you are meant to follow.
+- key: carved-drain-channel
+  name: Carved Drain Channel
+  region: CITY
+  locationX: 0
+  locationY: 2
+  description: A narrow channel runs beside the path. Rubbing its carvings reveals two digits and a direction arrow.
+- key: chalkboard-price-grid-wall
+  name: Chalkboard Price Grid Wall
+  region: CITY
+  locationX: 1
+  locationY: 2
+  description: Prices are written in a tidy grid. If you overlay a punched receipt, only a few cells “light up.”
+- key: checkerboard-hill-glimpse
+  name: Checkerboard Hill Glimpse
+  region: CITY
+  locationX: 2
+  locationY: 2
+  description: A checkerboard marker sits above the city like a warning. The air trembles with distant engines.
+- key: chestnut-drum
+  name: Chestnut Drum
+  region: CITY
+  locationX: 3
+  locationY: 2
+  description: The drum rhythm is slower here, steadier. The beat count feels like an ordering rule for later.
+- key: chestnut-drum-rhythm-vendor
+  name: Chestnut Drum Rhythm Vendor
+  region: CITY
+  locationX: 4
+  locationY: 2
+  description: A metal drum lid keeps time under a vendor’s palms. The beat repeats, then repeats again, exactly.
+- key: cinema-marquee-corner
+  name: Cinema Marquee Corner
+  region: CITY
+  locationX: 5
+  locationY: 2
+  description: Paper posters peel in layers. The marquee bulbs blink in patterns that do not match the movie times.
+- key: container-row-a
+  name: Container Row A
+  region: CITY
+  locationX: 0
+  locationY: 3
+  description: Containers form corridors that look identical. Stenciled letters are scraped in places, revealing hidden characters.
+- key: container-row-b
+  name: Container Row B
+  region: CITY
+  locationX: 1
+  locationY: 3
+  description: A wider lane with more foot traffic. Boot prints cross and re-cross in a route that suggests a meeting point.
+- key: container-row-c
+  name: Container Row C
+  region: CITY
+  locationX: 2
+  locationY: 3
+  description: The deepest row is quieter and colder. Three crates share the same label, but only one has fresh tape.
+- key: corridor-maze-segment-a
+  name: Corridor Maze Segment A
+  region: CITY
+  locationX: 3
+  locationY: 3
+  description: Walls sweat with condensation. Pipes overhead form a repeating layout like a map.
+- key: corridor-maze-segment-b
+  name: Corridor Maze Segment B
+  region: CITY
+  locationX: 4
+  locationY: 3
+  description: The air is warmer here. A hanging cord brush touches your shoulder at fixed intervals.
+- key: corridor-maze-segment-c
+  name: Corridor Maze Segment C
+  region: CITY
+  locationX: 5
+  locationY: 3
+  description: A turn that always feels wrong. Scratched symbols on the wall appear in pairs, like a matching puzzle.
+- key: courtyard-corner-shrine
+  name: Courtyard Corner Shrine
+  region: CITY
+  locationX: 0
+  locationY: 4
+  description: A small corner shrine holds the final shard. It is hidden where respectful hands naturally avoid touching.
+- key: courtyard-exit-rail
+  name: Courtyard Exit Rail
+  region: CITY
+  locationX: 1
+  locationY: 4
+  description: A rail guides visitors forward. A latch here accepts the assembled phrase and clicks when correct.
+- key: courtyard-threshold
+  name: Courtyard Threshold
+  region: CITY
+  locationX: 2
+  locationY: 4
+  description: The climb releases into a wider space. Wind carries incense, and the puzzle feels closer to completion.
+- key: crane-shadow-sweep
+  name: Crane Shadow Sweep
+  region: CITY
+  locationX: 3
+  locationY: 4
+  description: A crane swings slow overhead. Its shadow acts like a clock hand across stacked containers.
+- key: dai-pai-dong-steam-line
+  name: Dai Pai Dong Steam Line
+  region: CITY
+  locationX: 4
+  locationY: 4
+  description: Steam fogs the air and turns neon into halos. Bowls clink, stools scrape, and nobody looks up twice.
+- key: des-voeux-road-rush
+  name: Des Voeux Road Rush
+  region: CITY
+  locationX: 5
+  locationY: 4
+  description: Suits and porters move with purpose. Delivery tags flutter like flags, each stamped with a tiny icon.
+- key: dockside-scale-stencil-plate
+  name: Dockside Scale Stencil Plate
+  region: CITY
+  locationX: 0
+  locationY: 5
+  description: A weighing plate sits flush with the ground. Its stamped serial is partially obscured by chalk.
+- key: dried-goods-sacks-lane
+  name: Dried Goods Sacks Lane
+  region: CITY
+  locationX: 1
+  locationY: 5
+  description: Burlap sacks stack high, smelling of sea and spice. Chalk marks on the sacks form a repeating code.
+- key: electronics-salvage-blanket
+  name: Electronics Salvage Blanket
+  region: CITY
+  locationX: 2
+  locationY: 5
+  description: Wires, boards, and knobs spill across a blanket. A specific connector type stands out as “useful.”
+- key: fabric-bolt-row
+  name: Fabric Bolt Row
+  region: CITY
+  locationX: 3
+  locationY: 5
+  description: Tall fabric rolls make a soft canyon. Certain patterns repeat with small differences, like a set of clues.
+- key: ferry-ticket-token-window
+  name: Ferry Ticket Token Window
+  region: CITY
+  locationX: 4
+  locationY: 5
+  description: Tickets slide out with a soft slap. The clerk taps the counter twice for some customers and once for others.
+- key: first-arhat-pair
+  name: First Arhat Pair
+  region: CITY
+  locationX: 5
+  locationY: 5
+  description: Two statues face each other with different hand poses. Choosing the correct side feels like passing a test.
+- key: flicker-sign-stack
+  name: Flicker Sign Stack
+  region: CITY
+  locationX: 0
+  locationY: 6
+  description: One vertical sign sputters in a steady rhythm. The “wrong” strokes look intentional, like a code.
+- key: footbridge-sightline
+  name: Footbridge Sightline
+  region: CITY
+  locationX: 1
+  locationY: 6
+  description: From the bridge you can read multiple signs at once. Wind carries diesel and sweet roasted sugar.
+- key: four-pose-row
+  name: Four-Pose Row
+  region: CITY
+  locationX: 2
+  locationY: 6
+  description: Four statues in a row show four distinct mudras. One is the “odd” pose, and the odd pose gives the number.
+- key: fruit-crate-steps
+  name: Fruit Crate Steps
+  region: CITY
+  locationX: 3
+  locationY: 6
+  description: Crates stacked into steps create a shortcut. The labels on the crates spell something if you read only the
+    torn ones.
+- key: gate-mouth-phrase-check
+  name: Gate Mouth Phrase Check
+  region: CITY
+  locationX: 4
+  locationY: 6
+  description: The entry is narrow and watched. People pass only after a short exchange that sounds like nonsense.
+- key: goldfish-bag-lane
+  name: Goldfish Bag Lane
+  region: CITY
+  locationX: 5
+  locationY: 6
+  description: Clear plastic bags swing like little lanterns. Water glints, and the crowd parts and seals behind you.
+- key: harbor-promenade-rail-walk
+  name: Harbor Promenade Rail Walk
+  region: CITY
+  locationX: 0
+  locationY: 7
+  description: The harbor opens wide and loud. Ferries cut wakes like drawn lines across a dark board.
+- key: herbal-tea-stall
+  name: Herbal Tea Stall
+  region: CITY
+  locationX: 1
+  locationY: 7
+  description: Bitter and sweet jars sit side by side. The vendor taps one jar for “flip” and the other for “keep.”
+- key: hill-steps-landing
+  name: Hill Steps Landing
+  region: CITY
+  locationX: 2
+  locationY: 7
+  description: Stone steps climb between buildings. A handrail has notches worn into it at regular intervals.
+- key: junk-boat-mooring-east
+  name: Junk Boat Mooring East
+  region: CITY
+  locationX: 3
+  locationY: 7
+  description: Wooden hulls creak against rubber bumpers. A lantern hangs from a mast with a colored bead charm.
+- key: junk-boat-mooring-west
+  name: Junk Boat Mooring West
+  region: CITY
+  locationX: 4
+  locationY: 7
+  description: The water smells sharper here. A loose plank reveals a hidden cavity large enough for a small case.
+- key: ladder-rung-gap
+  name: Ladder Rung Gap
+  region: CITY
+  locationX: 5
+  locationY: 7
+  description: A ladder climbs to a higher lip. One rung is missing, forcing a careful move and a deliberate choice.
+- key: laughing-bend
+  name: Laughing Bend
+  region: CITY
+  locationX: 0
+  locationY: 8
+  description: A laughing figure seems to grin at you from the turn. Counting the laughs carved nearby yields a digit.
+- key: lightwell-courtyard-ring
+  name: Lightwell Courtyard Ring
+  region: CITY
+  locationX: 1
+  locationY: 8
+  description: A small open square climbs straight upward. Laundry lines cross it like a grid.
+- key: loudspeaker-pole-corner
+  name: Loudspeaker Pole Corner
+  region: CITY
+  locationX: 2
+  locationY: 8
+  description: A speaker crackles with announcements. Between messages, two quick beeps and one long chime repeat.
+- key: low-plane-roar-marker
+  name: Low Plane Roar Marker
+  region: CITY
+  locationX: 3
+  locationY: 8
+  description: A plane passes so low the sound arrives in layers. Counting the roar-beats gives a reliable timing cue.
+- key: lower-gate-lintel
+  name: Lower Gate Lintel
+  region: CITY
+  locationX: 4
+  locationY: 8
+  description: A lintel frames the next ascent. Scratches on the stone show where others solved, failed, and tried again.
+- key: mooring-rope-coil-pile
+  name: Mooring Rope Coil Pile
+  region: CITY
+  locationX: 5
+  locationY: 8
+  description: Thick ropes coil like sleeping snakes. One coil is tied in a distinctive knot, like a signature.
+- key: narrow-alley-mouth-split
+  name: Narrow Alley Mouth Split
+  region: CITY
+  locationX: 0
+  locationY: 9
+  description: The alley forks into two equally dark paths. Drips hit the ground in a rhythm you can follow.
+- key: narrow-pass
+  name: Narrow Pass
+  region: CITY
+  locationX: 1
+  locationY: 9
+  description: The path pinches between stone and railing. A choice here commits you to one short loop before you can return.
+- key: nathan-road-neon-canyon
+  name: Nathan Road Neon Canyon
+  region: CITY
+  locationX: 2
+  locationY: 9
+  description: Neon stacks climb like cliffs. The sidewalk is a moving river of shoulders, reflections, and flickering characters. Listening, you catch tram bells and a low-high-low taxi horn motif repeating in the hum.
+- key: neon-countdown-junction
+  name: Neon Countdown Junction
+  region: CITY
+  locationX: 3
+  locationY: 9
+  description: A street corner where traffic and people conflict like tides. A public clock ticks loud enough to feel.
+- key: net-drying-racks
+  name: Net Drying Racks
+  region: CITY
+  locationX: 4
+  locationY: 9
+  description: Nets hang like dark lace. A tag line threads through them with knots that encode a count.
+- key: noodle-steam-cart
+  name: Noodle Steam Cart
+  region: CITY
+  locationX: 5
+  locationY: 9
+  description: A vendor serves bowls without looking up. He slides you thin paper that happens to be perfect for rubbings.
+- key: offering-rail
+  name: Offering Rail
+  region: CITY
+  locationX: 0
+  locationY: 10
+  description: Coins and incense rest along a rail. A tile shard is tucked beneath the wood where a hand naturally falls.
+- key: outer-wall-market-rim
+  name: Outer Wall Market Rim
+  region: CITY
+  locationX: 1
+  locationY: 10
+  description: Stalls cling to the outer edge like barnacles. The wall itself is patched with mismatched brick and signs.
+- key: overpass-shadow-stripe
+  name: Overpass Shadow Stripe
+  region: CITY
+  locationX: 2
+  locationY: 10
+  description: Under the overpass, shadows form bars across the ground. One bar is broken, like a missing digit.
+- key: pai-tau-lane-threshold
+  name: Pai Tau Lane Threshold
+  region: CITY
+  locationX: 3
+  locationY: 10
+  description: The city noise thins and the hill begins. A narrow lane points upward like a promise.
+- key: pawn-window-numbers
+  name: Pawn Window Numbers
+  region: CITY
+  locationX: 4
+  locationY: 10
+  description: Gold watches and jade bangles sit behind dusty glass. Small price tags form a neat number column.
+- key: pedestal-face-locks
+  name: Pedestal Face Locks
+  region: CITY
+  locationX: 5
+  locationY: 10
+  description: Three lock faces are built into the pedestal base. Each accepts a digit pair, and each gives immediate feedback.
+- key: pedestal-release-niche
+  name: Pedestal Release Niche
+  region: CITY
+  locationX: 0
+  locationY: 11
+  description: The final latch releases with a soft mechanical sigh. A hidden niche reveals the Jade Capsule, cold in your
+    hand.
+- key: pier-shadow-timing-line
+  name: Pier Shadow Timing Line
+  region: CITY
+  locationX: 1
+  locationY: 11
+  description: Piers cast long shadows over painted stripes. The shadow tip lands on a different stripe each minute.
+- key: postbox-dead-drop-slot
+  name: Postbox Dead Drop Slot
+  region: CITY
+  locationX: 2
+  locationY: 11
+  description: A red postbox sits where it should not. The mail slot has a second, hidden seam along the edge.
+- key: queue-position-posts
+  name: Queue Position Posts
+  region: CITY
+  locationX: 3
+  locationY: 11
+  description: Posts divide the line into lanes. Small placards show numbers that skip in a pattern.
+- key: rain-slick-signal-corner
+  name: Rain-Slick Signal Corner
+  region: CITY
+  locationX: 4
+  locationY: 11
+  description: Everything shines here after a short rain. A reflection in a puddle shows a symbol you cannot see directly.
+- key: receipt-punch-stall
+  name: Receipt Punch Stall
+  region: CITY
+  locationX: 5
+  locationY: 11
+  description: A punch tool snaps holes into thin paper strips. The hole pattern is too consistent to be random.
+- key: reflection-pool-edge
+  name: Reflection Pool Edge
+  region: CITY
+  locationX: 0
+  locationY: 12
+  description: Water reflects the statues upside down. The correct tile orientation is shown only in the reflection.
+- key: rest-landing
+  name: Rest Landing
+  region: CITY
+  locationX: 1
+  locationY: 12
+  description: A flat landing invites you to breathe. A carved checksum confirms whether your digits are aligned so far.
+- key: rooftop-bridge-plank
+  name: Rooftop Bridge Plank
+  region: CITY
+  locationX: 2
+  locationY: 12
+  description: A plank spans to the next roof. Wind whips laundry so it flashes like signal flags.
+- key: rooftop-clothesline-span
+  name: Rooftop Clothesline Span
+  region: CITY
+  locationX: 3
+  locationY: 12
+  description: Clothespins are arranged in a color order. The order maps cleanly to digits if you know the key.
+- key: rooftop-exit-drop
+  name: Rooftop Exit Drop
+  region: CITY
+  locationX: 4
+  locationY: 12
+  description: A sloped roof leads to a drop point. From here you can see Kai Tak markers in the distance.
+- key: rooftop-garden-patch
+  name: Rooftop Garden Patch
+  region: CITY
+  locationX: 5
+  locationY: 12
+  description: A small garden fights for life in shallow soil. Stones are placed in a deliberate grid, not random.
+- key: rooftop-hatch-ledge
+  name: Rooftop Hatch Ledge
+  region: CITY
+  locationX: 0
+  locationY: 13
+  description: A hatch sits half-open, chained. The chain links are stamped with tiny numbers.
+- key: rooftop-water-tank-line
+  name: Rooftop Water Tank Line
+  region: CITY
+  locationX: 1
+  locationY: 13
+  description: Water tanks are stenciled with capacity numbers. Three tanks match the pattern you’ve been building.
+- key: runway-fence-line
+  name: Runway Fence Line
+  region: CITY
+  locationX: 2
+  locationY: 13
+  description: A chain-link fence rattles in the wind. Painted numbers on posts jump in a pattern, not a sequence.
+- key: sampan-drift-lane
+  name: Sampan Drift Lane
+  region: CITY
+  locationX: 3
+  locationY: 13
+  description: A sampan glides near the edge, quiet as a thought. The boatman nods at specific gestures only.
+- key: seawall-drain-mark
+  name: Seawall Drain Mark
+  region: CITY
+  locationX: 4
+  locationY: 13
+  description: A seawall drain is stamped with a maintenance code. The metal is newer than the surrounding stone.
+- key: side-alley-rendezvous
+  name: Side Alley Rendezvous
+  region: CITY
+  locationX: 5
+  locationY: 13
+  description: The noise drops fast here. A chalk mark sits at knee height, half-smeared as if someone tried to hide it.
+- key: side-path-mini-buddhas
+  name: Side Path Mini Buddhas
+  region: CITY
+  locationX: 0
+  locationY: 14
+  description: Smaller figures line a short path. Counting only the “different” ones yields a checksum, not a digit.
+- key: silent-corner
+  name: Silent Corner
+  region: CITY
+  locationX: 1
+  locationY: 14
+  description: Sound drops as if absorbed. The clue here is the absence, and absence equals zero in this puzzle language.
+- key: stair-cage-exterior
+  name: Stair Cage Exterior
+  region: CITY
+  locationX: 2
+  locationY: 14
+  description: A metal stair cage rattles with each step. The landing labels are mismatched, suggesting a trick.
+- key: steam-vent-corner
+  name: Steam Vent Corner
+  region: CITY
+  locationX: 3
+  locationY: 14
+  description: Steam vents in short bursts. The burst count repeats, giving you a dependable number.
+- key: stencil-wall-relief
+  name: Stencil Wall Relief
+  region: CITY
+  locationX: 4
+  locationY: 14
+  description: A raised relief begs to be rubbed with paper. The pattern that appears is clean, like a stamp.
+- key: street-game-table
+  name: Street Game Table
+  region: CITY
+  locationX: 5
+  locationY: 14
+  description: Coins flick and cups slide. The operator’s hands tell the truth, even when his mouth lies.
+- key: street-map-kiosk
+  name: Street Map Kiosk
+  region: CITY
+  locationX: 0
+  locationY: 15
+  description: A laminated map is creased from use. Someone has circled an area with a blunt pencil and then scratched it
+    out.
+- key: streetlight-dead-zone
+  name: Streetlight Dead Zone
+  region: CITY
+  locationX: 1
+  locationY: 15
+  description: Light dies here as if swallowed. A single white paint mark on the ground indicates a safe step.
+- key: switchback-marker-stone
+  name: Switchback Marker Stone
+  region: CITY
+  locationX: 2
+  locationY: 15
+  description: A marker stone is worn smooth by feet. Its carved lines tell you which counts to skip.
+- key: taxi-rank-pivot
+  name: Taxi Rank Pivot
+  region: CITY
+  locationX: 3
+  locationY: 15
+  description: Taxis idle with engines rumbling. A driver watches you through the mirror like he is waiting for a signal.
+- key: temple-street-lantern-row
+  name: Temple Street Lantern Row
+  region: CITY
+  locationX: 4
+  locationY: 15
+  description: Lanterns sway over stalls packed tight. Vendors bark prices in fast Cantonese and faster hand signals.
+- key: three-statue-niche
+  name: Three-Statue Niche
+  region: CITY
+  locationX: 5
+  locationY: 15
+  description: Three small statues sit in a pocket wall. Only one has a base mark that matches your vendor symbol.
+- key: toy-spinner-vendor
+  name: Toy Spinner Vendor
+  region: CITY
+  locationX: 0
+  locationY: 16
+  description: Bright spinners blur into circles. The colors settle into a repeating order if you stop staring and start counting.
+- key: tram-stop-eastbound
+  name: Tram Stop Eastbound
+  region: CITY
+  locationX: 1
+  locationY: 16
+  description: The ding-ding bell arrives before the tram does. Route boards list stops like a coded poem.
+- key: tram-track-crossing
+  name: Tram-Track Crossing
+  region: CITY
+  locationX: 2
+  locationY: 16
+  description: Tracks cut the street like rails in a puzzle box. A painted arrow on the curb points the “wrong” way.
+- key: turnstile-sightline-posters
+  name: Turnstile Sightline Posters
+  region: CITY
+  locationX: 3
+  locationY: 16
+  description: Posters face the queue at precise angles. From one spot, their corner marks align into a symbol.
+- key: twin-staff-pair
+  name: Twin Staff Pair
+  region: CITY
+  locationX: 4
+  locationY: 16
+  description: Two figures hold staffs at different angles. One angle matches the city pattern you already learned.
+- key: typhoon-shelter-lookout
+  name: Typhoon Shelter Lookout
+  region: CITY
+  locationX: 5
+  locationY: 16
+  description: Boats bob in tight rows. From here you can watch buoy lights and count their timing.
+- key: upper-cluster-start
+  name: Upper Cluster Start
+  region: CITY
+  locationX: 0
+  locationY: 17
+  description: Statues gather more densely. Small differences (missing bead, chipped toe) become meaningful markers.
+- key: upper-gate-lintel
+  name: Upper Gate Lintel
+  region: CITY
+  locationX: 1
+  locationY: 17
+  description: Another threshold, another test. The lintel bears an inscription that reads like “myriad means many,” not literal.
+- key: veranda-threshold-sightline
+  name: Veranda Threshold Sightline
+  region: CITY
+  locationX: 2
+  locationY: 17
+  description: You stand at the threshold and can see inside without entering. A glass shrine sits ahead, still and bright.
+- key: viewpoint-bench
+  name: Viewpoint Bench
+  region: CITY
+  locationX: 3
+  locationY: 17
+  description: The city opens behind you like a painted set. From this angle, several statue bases align into an order.
+- key: watch-repair-cart
+  name: Watch Repair Cart
+  region: CITY
+  locationX: 4
+  locationY: 17
+  description: A man works under a single lamp. Tiny gears and a green-glint lens make everything look sharper than it should.
+- key: well-rim-marker-plate
+  name: Well Rim Marker Plate
+  region: CITY
+  locationX: 5
+  locationY: 17
+  description: A metal plate rings the well edge. Rubbing it with paper reveals raised text and a partial symbol.
+- key: wind-chime-post
+  name: Wind Chime Post
+  region: CITY
+  locationX: 0
+  locationY: 18
+  description: Chimes sing when the wind hits just right. Their tones form a simple high-low pattern like binary.
+- key: wire-spool-cart
+  name: Wire Spool Cart
+  region: CITY
+  locationX: 1
+  locationY: 18
+  description: Spools roll and clack as the cart bumps forward. The spool labels form a clean progression.
+gates:
+- from: alley-mirror-board
+  direction: EAST
+  to: backlane-clothesline-gap
+  visible: true
+  keyString: 'true'
+  label: Alley Mirror Board -> Backlane Clothesline Gap
+  description: Path between Alley Mirror Board and Backlane Clothesline Gap
+- from: alley-mirror-board
+  direction: WEST
+  to: toy-spinner-vendor
+  visible: true
+  keyString: 'true'
+  label: Alley Mirror Board -> Toy Spinner Vendor
+  description: Path between Alley Mirror Board and Toy Spinner Vendor
+- from: backlane-clothesline-gap
+  direction: WEST
+  to: alley-mirror-board
+  visible: true
+  keyString: 'true'
+  label: Backlane Clothesline Gap -> Alley Mirror Board
+  description: Path between Backlane Clothesline Gap and Alley Mirror Board
+- from: backlane-clothesline-gap
+  direction: EAST
+  to: goldfish-bag-lane
+  visible: true
+  keyString: 'true'
+  label: Backlane Clothesline Gap -> Goldfish Bag Lane
+  description: Path between Backlane Clothesline Gap and Goldfish Bag Lane
+- from: base-stair-gate
+  direction: WEST
+  to: calligraphy-table
+  visible: true
+  keyString: 'true'
+  label: Base Stair Gate -> Calligraphy Table
+  description: Path between Base Stair Gate and Calligraphy Table
+- from: base-stair-gate
+  direction: EAST
+  to: first-arhat-pair
+  visible: true
+  keyString: 'true'
+  label: Base Stair Gate -> First Arhat Pair
+  description: Path between Base Stair Gate and First Arhat Pair
+- from: battery-lantern-swap
+  direction: EAST
+  to: chalkboard-price-grid-wall
+  visible: true
+  keyString: 'true'
+  label: Battery Lantern Swap -> Chalkboard Price Grid Wall
+  description: Path between Battery Lantern Swap and Chalkboard Price Grid Wall
+- from: battery-lantern-swap
+  direction: WEST
+  to: wire-spool-cart
+  visible: true
+  keyString: 'true'
+  label: Battery Lantern Swap -> Wire Spool Cart
+  description: Path between Battery Lantern Swap and Wire Spool Cart
+- from: bell-frame-assembly-point
+  direction: WEST
+  to: courtyard-threshold
+  visible: true
+  keyString: 'true'
+  label: Bell Frame Assembly Point -> Courtyard Threshold
+  description: Path between Bell Frame Assembly Point and Courtyard Threshold
+- from: bell-frame-assembly-point
+  direction: EAST
+  to: reflection-pool-edge
+  visible: true
+  keyString: 'true'
+  label: Bell Frame Assembly Point -> Reflection Pool Edge
+  description: Path between Bell Frame Assembly Point and Reflection Pool Edge
+- from: boarding-bell-line
+  direction: EAST
+  to: harbor-promenade-rail-walk
+  visible: true
+  keyString: 'true'
+  label: Boarding Bell Line -> Harbor Promenade Rail Walk
+  description: Path between Boarding Bell Line and Harbor Promenade Rail Walk
+- from: boarding-bell-line
+  direction: WEST
+  to: turnstile-sightline-posters
+  visible: true
+  keyString: 'true'
+  label: Boarding Bell Line -> Turnstile Sightline Posters
+  description: Path between Boarding Bell Line and Turnstile Sightline Posters
+- from: bottle-glass-wall-bend
+  direction: WEST
+  to: gate-mouth-phrase-check
+  visible: true
+  keyString: 'true'
+  label: Bottle-Glass Wall Bend -> Gate Mouth Phrase Check
+  description: Path between Bottle-Glass Wall Bend and Gate Mouth Phrase Check
+- from: bottle-glass-wall-bend
+  direction: EAST
+  to: narrow-alley-mouth-split
+  visible: true
+  keyString: 'true'
+  label: Bottle-Glass Wall Bend -> Narrow Alley Mouth Split
+  description: Path between Bottle-Glass Wall Bend and Narrow Alley Mouth Split
+- from: buoy-blink-line
+  direction: WEST
+  to: sampan-drift-lane
+  visible: true
+  keyString: 'true'
+  label: Buoy Blink Line -> Sampan Drift Lane
+  description: Path between Buoy Blink Line and Sampan Drift Lane
+- from: buoy-blink-line
+  direction: EAST
+  to: seawall-drain-mark
+  visible: true
+  keyString: 'true'
+  label: Buoy Blink Line -> Seawall Drain Mark
+  description: Path between Buoy Blink Line and Seawall Drain Mark
+- from: cable-canopy-crawlway
+  direction: WEST
+  to: corridor-maze-segment-c
+  visible: true
+  keyString: 'true'
+  label: Cable Canopy Crawlway -> Corridor Maze Segment C
+  description: Path between Cable Canopy Crawlway and Corridor Maze Segment C
+- from: cable-canopy-crawlway
+  direction: EAST
+  to: steam-vent-corner
+  visible: true
+  keyString: 'true'
+  label: Cable Canopy Crawlway -> Steam Vent Corner
+  description: Path between Cable Canopy Crawlway and Steam Vent Corner
+- from: calligraphy-card-table
+  direction: WEST
+  to: chestnut-drum-rhythm-vendor
+  visible: true
+  keyString: 'true'
+  label: Calligraphy Card Table -> Chestnut Drum Rhythm Vendor
+  description: Path between Calligraphy Card Table and Chestnut Drum Rhythm Vendor
+- from: calligraphy-card-table
+  direction: EAST
+  to: receipt-punch-stall
+  visible: true
+  keyString: 'true'
+  label: Calligraphy Card Table -> Receipt Punch Stall
+  description: Path between Calligraphy Card Table and Receipt Punch Stall
+- from: calligraphy-table
+  direction: EAST
+  to: base-stair-gate
+  visible: true
+  keyString: 'true'
+  label: Calligraphy Table -> Base Stair Gate
+  description: Path between Calligraphy Table and Base Stair Gate
+- from: calligraphy-table
+  direction: WEST
+  to: chestnut-drum
+  visible: true
+  keyString: 'true'
+  label: Calligraphy Table -> Chestnut Drum
+  description: Path between Calligraphy Table and Chestnut Drum
+- from: cargo-fence-markers
+  direction: EAST
+  to: crane-shadow-sweep
+  visible: true
+  keyString: 'true'
+  label: Cargo Fence Markers -> Crane Shadow Sweep
+  description: Path between Cargo Fence Markers and Crane Shadow Sweep
+- from: cargo-fence-markers
+  direction: WEST
+  to: pier-shadow-timing-line
+  visible: true
+  keyString: 'true'
+  label: Cargo Fence Markers -> Pier Shadow Timing Line
+  description: Path between Cargo Fence Markers and Pier Shadow Timing Line
+- from: carved-drain-channel
+  direction: EAST
+  to: narrow-pass
+  visible: true
+  keyString: 'true'
+  label: Carved Drain Channel -> Narrow Pass
+  description: Path between Carved Drain Channel and Narrow Pass
+- from: carved-drain-channel
+  direction: WEST
+  to: viewpoint-bench
+  visible: true
+  keyString: 'true'
+  label: Carved Drain Channel -> Viewpoint Bench
+  description: Path between Carved Drain Channel and Viewpoint Bench
+- from: chalkboard-price-grid-wall
+  direction: WEST
+  to: battery-lantern-swap
+  visible: true
+  keyString: 'true'
+  label: Chalkboard Price Grid Wall -> Battery Lantern Swap
+  description: Path between Chalkboard Price Grid Wall and Battery Lantern Swap
+- from: chalkboard-price-grid-wall
+  direction: EAST
+  to: tram-stop-eastbound
+  visible: true
+  keyString: 'true'
+  label: Chalkboard Price Grid Wall -> Tram Stop Eastbound
+  description: Path between Chalkboard Price Grid Wall and Tram Stop Eastbound
+- from: checkerboard-hill-glimpse
+  direction: WEST
+  to: junk-boat-mooring-west
+  visible: true
+  keyString: 'true'
+  label: Checkerboard Hill Glimpse -> Junk Boat Mooring West
+  description: Path between Checkerboard Hill Glimpse and Junk Boat Mooring West
+- from: checkerboard-hill-glimpse
+  direction: EAST
+  to: low-plane-roar-marker
+  visible: true
+  keyString: 'true'
+  label: Checkerboard Hill Glimpse -> Low Plane Roar Marker
+  description: Path between Checkerboard Hill Glimpse and Low Plane Roar Marker
+- from: chestnut-drum
+  direction: EAST
+  to: calligraphy-table
+  visible: true
+  keyString: 'true'
+  label: Chestnut Drum -> Calligraphy Table
+  description: Path between Chestnut Drum and Calligraphy Table
+- from: chestnut-drum
+  direction: WEST
+  to: herbal-tea-stall
+  visible: true
+  keyString: 'true'
+  label: Chestnut Drum -> Herbal Tea Stall
+  description: Path between Chestnut Drum and Herbal Tea Stall
+- from: chestnut-drum-rhythm-vendor
+  direction: EAST
+  to: calligraphy-card-table
+  visible: true
+  keyString: 'true'
+  label: Chestnut Drum Rhythm Vendor -> Calligraphy Card Table
+  description: Path between Chestnut Drum Rhythm Vendor and Calligraphy Card Table
+- from: chestnut-drum-rhythm-vendor
+  direction: WEST
+  to: dai-pai-dong-steam-line
+  visible: true
+  keyString: 'true'
+  label: Chestnut Drum Rhythm Vendor -> Dai Pai Dong Steam Line
+  description: Path between Chestnut Drum Rhythm Vendor and Dai Pai Dong Steam Line
+- from: cinema-marquee-corner
+  direction: WEST
+  to: footbridge-sightline
+  visible: true
+  keyString: 'true'
+  label: Cinema Marquee Corner -> Footbridge Sightline
+  description: Path between Cinema Marquee Corner and Footbridge Sightline
+- from: cinema-marquee-corner
+  direction: EAST
+  to: pawn-window-numbers
+  visible: true
+  keyString: 'true'
+  label: Cinema Marquee Corner -> Pawn Window Numbers
+  description: Path between Cinema Marquee Corner and Pawn Window Numbers
+- from: container-row-a
+  direction: EAST
+  to: container-row-b
+  visible: true
+  keyString: 'true'
+  label: Container Row A -> Container Row B
+  description: Path between Container Row A and Container Row B
+- from: container-row-a
+  direction: WEST
+  to: net-drying-racks
+  visible: true
+  keyString: 'true'
+  label: Container Row A -> Net Drying Racks
+  description: Path between Container Row A and Net Drying Racks
+- from: container-row-b
+  direction: WEST
+  to: container-row-a
+  visible: true
+  keyString: 'true'
+  label: Container Row B -> Container Row A
+  description: Path between Container Row B and Container Row A
+- from: container-row-b
+  direction: EAST
+  to: container-row-c
+  visible: true
+  keyString: 'true'
+  label: Container Row B -> Container Row C
+  description: Path between Container Row B and Container Row C
+- from: container-row-c
+  direction: WEST
+  to: container-row-b
+  visible: true
+  keyString: 'true'
+  label: Container Row C -> Container Row B
+  description: Path between Container Row C and Container Row B
+- from: container-row-c
+  direction: EAST
+  to: dockside-scale-stencil-plate
+  visible: true
+  keyString: 'true'
+  label: Container Row C -> Dockside Scale Stencil Plate
+  description: Path between Container Row C and Dockside Scale Stencil Plate
+- from: corridor-maze-segment-a
+  direction: EAST
+  to: corridor-maze-segment-b
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment A -> Corridor Maze Segment B
+  description: Path between Corridor Maze Segment A and Corridor Maze Segment B
+- from: corridor-maze-segment-a
+  direction: WEST
+  to: streetlight-dead-zone
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment A -> Streetlight Dead Zone
+  description: Path between Corridor Maze Segment A and Streetlight Dead Zone
+- from: corridor-maze-segment-b
+  direction: WEST
+  to: corridor-maze-segment-a
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment B -> Corridor Maze Segment A
+  description: Path between Corridor Maze Segment B and Corridor Maze Segment A
+- from: corridor-maze-segment-b
+  direction: EAST
+  to: corridor-maze-segment-c
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment B -> Corridor Maze Segment C
+  description: Path between Corridor Maze Segment B and Corridor Maze Segment C
+- from: corridor-maze-segment-c
+  direction: EAST
+  to: cable-canopy-crawlway
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment C -> Cable Canopy Crawlway
+  description: Path between Corridor Maze Segment C and Cable Canopy Crawlway
+- from: corridor-maze-segment-c
+  direction: WEST
+  to: corridor-maze-segment-b
+  visible: true
+  keyString: 'true'
+  label: Corridor Maze Segment C -> Corridor Maze Segment B
+  description: Path between Corridor Maze Segment C and Corridor Maze Segment B
+- from: courtyard-corner-shrine
+  direction: EAST
+  to: courtyard-exit-rail
+  visible: true
+  keyString: 'true'
+  label: Courtyard Corner Shrine -> Courtyard Exit Rail
+  description: Path between Courtyard Corner Shrine and Courtyard Exit Rail
+- from: courtyard-corner-shrine
+  direction: WEST
+  to: side-path-mini-buddhas
+  visible: true
+  keyString: 'true'
+  label: Courtyard Corner Shrine -> Side Path Mini Buddhas
+  description: Path between Courtyard Corner Shrine and Side Path Mini Buddhas
+- from: courtyard-exit-rail
+  direction: WEST
+  to: courtyard-corner-shrine
+  visible: true
+  keyString: 'true'
+  label: Courtyard Exit Rail -> Courtyard Corner Shrine
+  description: Path between Courtyard Exit Rail and Courtyard Corner Shrine
+- from: courtyard-exit-rail
+  direction: EAST
+  to: veranda-threshold-sightline
+  visible: true
+  keyString: 'true'
+  label: Courtyard Exit Rail -> Veranda Threshold Sightline
+  description: Path between Courtyard Exit Rail and Veranda Threshold Sightline
+- from: courtyard-threshold
+  direction: EAST
+  to: bell-frame-assembly-point
+  visible: true
+  keyString: 'true'
+  label: Courtyard Threshold -> Bell Frame Assembly Point
+  description: Path between Courtyard Threshold and Bell Frame Assembly Point
+- from: courtyard-threshold
+  direction: WEST
+  to: upper-gate-lintel
+  visible: true
+  keyString: 'true'
+  label: Courtyard Threshold -> Upper Gate Lintel
+  description: Path between Courtyard Threshold and Upper Gate Lintel
+- from: crane-shadow-sweep
+  direction: WEST
+  to: cargo-fence-markers
+  visible: true
+  keyString: 'true'
+  label: Crane Shadow Sweep -> Cargo Fence Markers
+  description: Path between Crane Shadow Sweep and Cargo Fence Markers
+- from: crane-shadow-sweep
+  direction: EAST
+  to: net-drying-racks
+  visible: true
+  keyString: 'true'
+  label: Crane Shadow Sweep -> Net Drying Racks
+  description: Path between Crane Shadow Sweep and Net Drying Racks
+- from: dai-pai-dong-steam-line
+  direction: EAST
+  to: chestnut-drum-rhythm-vendor
+  visible: true
+  keyString: 'true'
+  label: Dai Pai Dong Steam Line -> Chestnut Drum Rhythm Vendor
+  description: Path between Dai Pai Dong Steam Line and Chestnut Drum Rhythm Vendor
+- from: dai-pai-dong-steam-line
+  direction: WEST
+  to: temple-street-lantern-row
+  visible: true
+  keyString: 'true'
+  label: Dai Pai Dong Steam Line -> Temple Street Lantern Row
+  description: Path between Dai Pai Dong Steam Line and Temple Street Lantern Row
+- from: des-voeux-road-rush
+  direction: EAST
+  to: dried-goods-sacks-lane
+  visible: true
+  keyString: 'true'
+  label: Des Voeux Road Rush -> Dried Goods Sacks Lane
+  description: Path between Des Voeux Road Rush and Dried Goods Sacks Lane
+- from: des-voeux-road-rush
+  direction: WEST
+  to: rain-slick-signal-corner
+  visible: true
+  keyString: 'true'
+  label: Des Voeux Road Rush -> Rain-Slick Signal Corner
+  description: Path between Des Voeux Road Rush and Rain-Slick Signal Corner
+- from: dockside-scale-stencil-plate
+  direction: WEST
+  to: container-row-c
+  visible: true
+  keyString: 'true'
+  label: Dockside Scale Stencil Plate -> Container Row C
+  description: Path between Dockside Scale Stencil Plate and Container Row C
+- from: dockside-scale-stencil-plate
+  direction: EAST
+  to: mooring-rope-coil-pile
+  visible: true
+  keyString: 'true'
+  label: Dockside Scale Stencil Plate -> Mooring Rope Coil Pile
+  description: Path between Dockside Scale Stencil Plate and Mooring Rope Coil Pile
+- from: dried-goods-sacks-lane
+  direction: WEST
+  to: des-voeux-road-rush
+  visible: true
+  keyString: 'true'
+  label: Dried Goods Sacks Lane -> Des Voeux Road Rush
+  description: Path between Dried Goods Sacks Lane and Des Voeux Road Rush
+- from: dried-goods-sacks-lane
+  direction: EAST
+  to: hill-steps-landing
+  visible: true
+  keyString: 'true'
+  label: Dried Goods Sacks Lane -> Hill Steps Landing
+  description: Path between Dried Goods Sacks Lane and Hill Steps Landing
+- from: electronics-salvage-blanket
+  direction: WEST
+  to: overpass-shadow-stripe
+  visible: true
+  keyString: 'true'
+  label: Electronics Salvage Blanket -> Overpass Shadow Stripe
+  description: Path between Electronics Salvage Blanket and Overpass Shadow Stripe
+- from: electronics-salvage-blanket
+  direction: EAST
+  to: wire-spool-cart
+  visible: true
+  keyString: 'true'
+  label: Electronics Salvage Blanket -> Wire Spool Cart
+  description: Path between Electronics Salvage Blanket and Wire Spool Cart
+- from: fabric-bolt-row
+  direction: EAST
+  to: fruit-crate-steps
+  visible: true
+  keyString: 'true'
+  label: Fabric Bolt Row -> Fruit Crate Steps
+  description: Path between Fabric Bolt Row and Fruit Crate Steps
+- from: fabric-bolt-row
+  direction: WEST
+  to: goldfish-bag-lane
+  visible: true
+  keyString: 'true'
+  label: Fabric Bolt Row -> Goldfish Bag Lane
+  description: Path between Fabric Bolt Row and Goldfish Bag Lane
+- from: ferry-ticket-token-window
+  direction: WEST
+  to: postbox-dead-drop-slot
+  visible: true
+  keyString: 'true'
+  label: Ferry Ticket Token Window -> Postbox Dead Drop Slot
+  description: Path between Ferry Ticket Token Window and Postbox Dead Drop Slot
+- from: ferry-ticket-token-window
+  direction: EAST
+  to: queue-position-posts
+  visible: true
+  keyString: 'true'
+  label: Ferry Ticket Token Window -> Queue Position Posts
+  description: Path between Ferry Ticket Token Window and Queue Position Posts
+- from: first-arhat-pair
+  direction: WEST
+  to: base-stair-gate
+  visible: true
+  keyString: 'true'
+  label: First Arhat Pair -> Base Stair Gate
+  description: Path between First Arhat Pair and Base Stair Gate
+- from: first-arhat-pair
+  direction: EAST
+  to: laughing-bend
+  visible: true
+  keyString: 'true'
+  label: First Arhat Pair -> Laughing Bend
+  description: Path between First Arhat Pair and Laughing Bend
+- from: flicker-sign-stack
+  direction: EAST
+  to: footbridge-sightline
+  visible: true
+  keyString: 'true'
+  label: Flicker Sign Stack -> Footbridge Sightline
+  description: Path between Flicker Sign Stack and Footbridge Sightline
+- from: flicker-sign-stack
+  direction: WEST
+  to: nathan-road-neon-canyon
+  visible: true
+  keyString: 'true'
+  label: Flicker Sign Stack -> Nathan Road Neon Canyon
+  description: Path between Flicker Sign Stack and Nathan Road Neon Canyon
+- from: footbridge-sightline
+  direction: EAST
+  to: cinema-marquee-corner
+  visible: true
+  keyString: 'true'
+  label: Footbridge Sightline -> Cinema Marquee Corner
+  description: Path between Footbridge Sightline and Cinema Marquee Corner
+- from: footbridge-sightline
+  direction: WEST
+  to: flicker-sign-stack
+  visible: true
+  keyString: 'true'
+  label: Footbridge Sightline -> Flicker Sign Stack
+  description: Path between Footbridge Sightline and Flicker Sign Stack
+- from: four-pose-row
+  direction: EAST
+  to: silent-corner
+  visible: true
+  keyString: 'true'
+  label: Four-Pose Row -> Silent Corner
+  description: Path between Four-Pose Row and Silent Corner
+- from: four-pose-row
+  direction: WEST
+  to: stencil-wall-relief
+  visible: true
+  keyString: 'true'
+  label: Four-Pose Row -> Stencil Wall Relief
+  description: Path between Four-Pose Row and Stencil Wall Relief
+- from: fruit-crate-steps
+  direction: WEST
+  to: fabric-bolt-row
+  visible: true
+  keyString: 'true'
+  label: Fruit Crate Steps -> Fabric Bolt Row
+  description: Path between Fruit Crate Steps and Fabric Bolt Row
+- from: fruit-crate-steps
+  direction: EAST
+  to: street-game-table
+  visible: true
+  keyString: 'true'
+  label: Fruit Crate Steps -> Street Game Table
+  description: Path between Fruit Crate Steps and Street Game Table
+- from: gate-mouth-phrase-check
+  direction: EAST
+  to: bottle-glass-wall-bend
+  visible: true
+  keyString: 'true'
+  label: Gate Mouth Phrase Check -> Bottle-Glass Wall Bend
+  description: Path between Gate Mouth Phrase Check and Bottle-Glass Wall Bend
+- from: gate-mouth-phrase-check
+  direction: WEST
+  to: outer-wall-market-rim
+  visible: true
+  keyString: 'true'
+  label: Gate Mouth Phrase Check -> Outer Wall Market Rim
+  description: Path between Gate Mouth Phrase Check and Outer Wall Market Rim
+- from: goldfish-bag-lane
+  direction: WEST
+  to: backlane-clothesline-gap
+  visible: true
+  keyString: 'true'
+  label: Goldfish Bag Lane -> Backlane Clothesline Gap
+  description: Path between Goldfish Bag Lane and Backlane Clothesline Gap
+- from: goldfish-bag-lane
+  direction: EAST
+  to: fabric-bolt-row
+  visible: true
+  keyString: 'true'
+  label: Goldfish Bag Lane -> Fabric Bolt Row
+  description: Path between Goldfish Bag Lane and Fabric Bolt Row
+- from: harbor-promenade-rail-walk
+  direction: WEST
+  to: boarding-bell-line
+  visible: true
+  keyString: 'true'
+  label: Harbor Promenade Rail Walk -> Boarding Bell Line
+  description: Path between Harbor Promenade Rail Walk and Boarding Bell Line
+- from: harbor-promenade-rail-walk
+  direction: EAST
+  to: typhoon-shelter-lookout
+  visible: true
+  keyString: 'true'
+  label: Harbor Promenade Rail Walk -> Typhoon Shelter Lookout
+  description: Path between Harbor Promenade Rail Walk and Typhoon Shelter Lookout
+- from: herbal-tea-stall
+  direction: EAST
+  to: chestnut-drum
+  visible: true
+  keyString: 'true'
+  label: Herbal Tea Stall -> Chestnut Drum
+  description: Path between Herbal Tea Stall and Chestnut Drum
+- from: herbal-tea-stall
+  direction: WEST
+  to: noodle-steam-cart
+  visible: true
+  keyString: 'true'
+  label: Herbal Tea Stall -> Noodle Steam Cart
+  description: Path between Herbal Tea Stall and Noodle Steam Cart
+- from: hill-steps-landing
+  direction: WEST
+  to: dried-goods-sacks-lane
+  visible: true
+  keyString: 'true'
+  label: Hill Steps Landing -> Dried Goods Sacks Lane
+  description: Path between Hill Steps Landing and Dried Goods Sacks Lane
+- from: hill-steps-landing
+  direction: EAST
+  to: postbox-dead-drop-slot
+  visible: true
+  keyString: 'true'
+  label: Hill Steps Landing -> Postbox Dead Drop Slot
+  description: Path between Hill Steps Landing and Postbox Dead Drop Slot
+- from: junk-boat-mooring-east
+  direction: EAST
+  to: junk-boat-mooring-west
+  visible: true
+  keyString: 'true'
+  label: Junk Boat Mooring East -> Junk Boat Mooring West
+  description: Path between Junk Boat Mooring East and Junk Boat Mooring West
+- from: junk-boat-mooring-east
+  direction: WEST
+  to: mooring-rope-coil-pile
+  visible: true
+  keyString: 'true'
+  label: Junk Boat Mooring East -> Mooring Rope Coil Pile
+  description: Path between Junk Boat Mooring East and Mooring Rope Coil Pile
+- from: junk-boat-mooring-west
+  direction: EAST
+  to: checkerboard-hill-glimpse
+  visible: true
+  keyString: 'true'
+  label: Junk Boat Mooring West -> Checkerboard Hill Glimpse
+  description: Path between Junk Boat Mooring West and Checkerboard Hill Glimpse
+- from: junk-boat-mooring-west
+  direction: WEST
+  to: junk-boat-mooring-east
+  visible: true
+  keyString: 'true'
+  label: Junk Boat Mooring West -> Junk Boat Mooring East
+  description: Path between Junk Boat Mooring West and Junk Boat Mooring East
+- from: ladder-rung-gap
+  direction: EAST
+  to: rooftop-hatch-ledge
+  visible: true
+  keyString: 'true'
+  label: Ladder Rung Gap -> Rooftop Hatch Ledge
+  description: Path between Ladder Rung Gap and Rooftop Hatch Ledge
+- from: ladder-rung-gap
+  direction: WEST
+  to: stair-cage-exterior
+  visible: true
+  keyString: 'true'
+  label: Ladder Rung Gap -> Stair Cage Exterior
+  description: Path between Ladder Rung Gap and Stair Cage Exterior
+- from: laughing-bend
+  direction: WEST
+  to: first-arhat-pair
+  visible: true
+  keyString: 'true'
+  label: Laughing Bend -> First Arhat Pair
+  description: Path between Laughing Bend and First Arhat Pair
+- from: laughing-bend
+  direction: EAST
+  to: switchback-marker-stone
+  visible: true
+  keyString: 'true'
+  label: Laughing Bend -> Switchback Marker Stone
+  description: Path between Laughing Bend and Switchback Marker Stone
+- from: lightwell-courtyard-ring
+  direction: WEST
+  to: steam-vent-corner
+  visible: true
+  keyString: 'true'
+  label: Lightwell Courtyard Ring -> Steam Vent Corner
+  description: Path between Lightwell Courtyard Ring and Steam Vent Corner
+- from: lightwell-courtyard-ring
+  direction: EAST
+  to: well-rim-marker-plate
+  visible: true
+  keyString: 'true'
+  label: Lightwell Courtyard Ring -> Well Rim Marker Plate
+  description: Path between Lightwell Courtyard Ring and Well Rim Marker Plate
+- from: loudspeaker-pole-corner
+  direction: EAST
+  to: overpass-shadow-stripe
+  visible: true
+  keyString: 'true'
+  label: Loudspeaker Pole Corner -> Overpass Shadow Stripe
+  description: Path between Loudspeaker Pole Corner and Overpass Shadow Stripe
+- from: loudspeaker-pole-corner
+  direction: WEST
+  to: street-game-table
+  visible: true
+  keyString: 'true'
+  label: Loudspeaker Pole Corner -> Street Game Table
+  description: Path between Loudspeaker Pole Corner and Street Game Table
+- from: low-plane-roar-marker
+  direction: WEST
+  to: checkerboard-hill-glimpse
+  visible: true
+  keyString: 'true'
+  label: Low Plane Roar Marker -> Checkerboard Hill Glimpse
+  description: Path between Low Plane Roar Marker and Checkerboard Hill Glimpse
+- from: low-plane-roar-marker
+  direction: EAST
+  to: runway-fence-line
+  visible: true
+  keyString: 'true'
+  label: Low Plane Roar Marker -> Runway Fence Line
+  description: Path between Low Plane Roar Marker and Runway Fence Line
+- from: lower-gate-lintel
+  direction: WEST
+  to: rest-landing
+  visible: true
+  keyString: 'true'
+  label: Lower Gate Lintel -> Rest Landing
+  description: Path between Lower Gate Lintel and Rest Landing
+- from: lower-gate-lintel
+  direction: EAST
+  to: stencil-wall-relief
+  visible: true
+  keyString: 'true'
+  label: Lower Gate Lintel -> Stencil Wall Relief
+  description: Path between Lower Gate Lintel and Stencil Wall Relief
+- from: mooring-rope-coil-pile
+  direction: WEST
+  to: dockside-scale-stencil-plate
+  visible: true
+  keyString: 'true'
+  label: Mooring Rope Coil Pile -> Dockside Scale Stencil Plate
+  description: Path between Mooring Rope Coil Pile and Dockside Scale Stencil Plate
+- from: mooring-rope-coil-pile
+  direction: EAST
+  to: junk-boat-mooring-east
+  visible: true
+  keyString: 'true'
+  label: Mooring Rope Coil Pile -> Junk Boat Mooring East
+  description: Path between Mooring Rope Coil Pile and Junk Boat Mooring East
+- from: narrow-alley-mouth-split
+  direction: WEST
+  to: bottle-glass-wall-bend
+  visible: true
+  keyString: 'true'
+  label: Narrow Alley Mouth Split -> Bottle-Glass Wall Bend
+  description: Path between Narrow Alley Mouth Split and Bottle-Glass Wall Bend
+- from: narrow-alley-mouth-split
+  direction: EAST
+  to: streetlight-dead-zone
+  visible: true
+  keyString: 'true'
+  label: Narrow Alley Mouth Split -> Streetlight Dead Zone
+  description: Path between Narrow Alley Mouth Split and Streetlight Dead Zone
+- from: narrow-pass
+  direction: WEST
+  to: carved-drain-channel
+  visible: true
+  keyString: 'true'
+  label: Narrow Pass -> Carved Drain Channel
+  description: Path between Narrow Pass and Carved Drain Channel
+- from: narrow-pass
+  direction: EAST
+  to: upper-cluster-start
+  visible: true
+  keyString: 'true'
+  label: Narrow Pass -> Upper Cluster Start
+  description: Path between Narrow Pass and Upper Cluster Start
+- from: nathan-road-neon-canyon
+  direction: EAST
+  to: flicker-sign-stack
+  visible: true
+  keyString: 'true'
+  label: Nathan Road Neon Canyon -> Flicker Sign Stack
+  description: Path between Nathan Road Neon Canyon and Flicker Sign Stack
+- from: neon-countdown-junction
+  direction: WEST
+  to: side-alley-rendezvous
+  visible: true
+  keyString: 'true'
+  label: Neon Countdown Junction -> Side Alley Rendezvous
+  description: Path between Neon Countdown Junction and Side Alley Rendezvous
+- from: neon-countdown-junction
+  direction: EAST
+  to: street-map-kiosk
+  visible: true
+  keyString: 'true'
+  label: Neon Countdown Junction -> Street Map Kiosk
+  description: Path between Neon Countdown Junction and Street Map Kiosk
+- from: net-drying-racks
+  direction: EAST
+  to: container-row-a
+  visible: true
+  keyString: 'true'
+  label: Net Drying Racks -> Container Row A
+  description: Path between Net Drying Racks and Container Row A
+- from: net-drying-racks
+  direction: WEST
+  to: crane-shadow-sweep
+  visible: true
+  keyString: 'true'
+  label: Net Drying Racks -> Crane Shadow Sweep
+  description: Path between Net Drying Racks and Crane Shadow Sweep
+- from: noodle-steam-cart
+  direction: EAST
+  to: herbal-tea-stall
+  visible: true
+  keyString: 'true'
+  label: Noodle Steam Cart -> Herbal Tea Stall
+  description: Path between Noodle Steam Cart and Herbal Tea Stall
+- from: noodle-steam-cart
+  direction: WEST
+  to: pai-tau-lane-threshold
+  visible: true
+  keyString: 'true'
+  label: Noodle Steam Cart -> Pai Tau Lane Threshold
+  description: Path between Noodle Steam Cart and Pai Tau Lane Threshold
+- from: offering-rail
+  direction: WEST
+  to: three-statue-niche
+  visible: true
+  keyString: 'true'
+  label: Offering Rail -> Three-Statue Niche
+  description: Path between Offering Rail and Three-Statue Niche
+- from: offering-rail
+  direction: EAST
+  to: wind-chime-post
+  visible: true
+  keyString: 'true'
+  label: Offering Rail -> Wind Chime Post
+  description: Path between Offering Rail and Wind Chime Post
+- from: outer-wall-market-rim
+  direction: EAST
+  to: gate-mouth-phrase-check
+  visible: true
+  keyString: 'true'
+  label: Outer Wall Market Rim -> Gate Mouth Phrase Check
+  description: Path between Outer Wall Market Rim and Gate Mouth Phrase Check
+- from: outer-wall-market-rim
+  direction: WEST
+  to: runway-fence-line
+  visible: true
+  keyString: 'true'
+  label: Outer Wall Market Rim -> Runway Fence Line
+  description: Path between Outer Wall Market Rim and Runway Fence Line
+- from: overpass-shadow-stripe
+  direction: EAST
+  to: electronics-salvage-blanket
+  visible: true
+  keyString: 'true'
+  label: Overpass Shadow Stripe -> Electronics Salvage Blanket
+  description: Path between Overpass Shadow Stripe and Electronics Salvage Blanket
+- from: overpass-shadow-stripe
+  direction: WEST
+  to: loudspeaker-pole-corner
+  visible: true
+  keyString: 'true'
+  label: Overpass Shadow Stripe -> Loudspeaker Pole Corner
+  description: Path between Overpass Shadow Stripe and Loudspeaker Pole Corner
+- from: pai-tau-lane-threshold
+  direction: EAST
+  to: noodle-steam-cart
+  visible: true
+  keyString: 'true'
+  label: Pai Tau Lane Threshold -> Noodle Steam Cart
+  description: Path between Pai Tau Lane Threshold and Noodle Steam Cart
+- from: pai-tau-lane-threshold
+  direction: WEST
+  to: rooftop-exit-drop
+  visible: true
+  keyString: 'true'
+  label: Pai Tau Lane Threshold -> Rooftop Exit Drop
+  description: Path between Pai Tau Lane Threshold and Rooftop Exit Drop
+- from: pawn-window-numbers
+  direction: WEST
+  to: cinema-marquee-corner
+  visible: true
+  keyString: 'true'
+  label: Pawn Window Numbers -> Cinema Marquee Corner
+  description: Path between Pawn Window Numbers and Cinema Marquee Corner
+- from: pawn-window-numbers
+  direction: EAST
+  to: watch-repair-cart
+  visible: true
+  keyString: 'true'
+  label: Pawn Window Numbers -> Watch Repair Cart
+  description: Path between Pawn Window Numbers and Watch Repair Cart
+- from: pedestal-face-locks
+  direction: EAST
+  to: pedestal-release-niche
+  visible: true
+  keyString: 'true'
+  label: Pedestal Face Locks -> Pedestal Release Niche
+  description: Path between Pedestal Face Locks and Pedestal Release Niche
+- from: pedestal-face-locks
+  direction: WEST
+  to: veranda-threshold-sightline
+  visible: true
+  keyString: 'true'
+  label: Pedestal Face Locks -> Veranda Threshold Sightline
+  description: Path between Pedestal Face Locks and Veranda Threshold Sightline
+- from: pedestal-release-niche
+  direction: WEST
+  to: pedestal-face-locks
+  visible: true
+  keyString: 'true'
+  label: Pedestal Release Niche -> Pedestal Face Locks
+  description: Path between Pedestal Release Niche and Pedestal Face Locks
+- from: pier-shadow-timing-line
+  direction: EAST
+  to: cargo-fence-markers
+  visible: true
+  keyString: 'true'
+  label: Pier Shadow Timing Line -> Cargo Fence Markers
+  description: Path between Pier Shadow Timing Line and Cargo Fence Markers
+- from: pier-shadow-timing-line
+  direction: WEST
+  to: seawall-drain-mark
+  visible: true
+  keyString: 'true'
+  label: Pier Shadow Timing Line -> Seawall Drain Mark
+  description: Path between Pier Shadow Timing Line and Seawall Drain Mark
+- from: postbox-dead-drop-slot
+  direction: EAST
+  to: ferry-ticket-token-window
+  visible: true
+  keyString: 'true'
+  label: Postbox Dead Drop Slot -> Ferry Ticket Token Window
+  description: Path between Postbox Dead Drop Slot and Ferry Ticket Token Window
+- from: postbox-dead-drop-slot
+  direction: WEST
+  to: hill-steps-landing
+  visible: true
+  keyString: 'true'
+  label: Postbox Dead Drop Slot -> Hill Steps Landing
+  description: Path between Postbox Dead Drop Slot and Hill Steps Landing
+- from: queue-position-posts
+  direction: WEST
+  to: ferry-ticket-token-window
+  visible: true
+  keyString: 'true'
+  label: Queue Position Posts -> Ferry Ticket Token Window
+  description: Path between Queue Position Posts and Ferry Ticket Token Window
+- from: queue-position-posts
+  direction: EAST
+  to: turnstile-sightline-posters
+  visible: true
+  keyString: 'true'
+  label: Queue Position Posts -> Turnstile Sightline Posters
+  description: Path between Queue Position Posts and Turnstile Sightline Posters
+- from: rain-slick-signal-corner
+  direction: EAST
+  to: des-voeux-road-rush
+  visible: true
+  keyString: 'true'
+  label: Rain-Slick Signal Corner -> Des Voeux Road Rush
+  description: Path between Rain-Slick Signal Corner and Des Voeux Road Rush
+- from: rain-slick-signal-corner
+  direction: WEST
+  to: tram-track-crossing
+  visible: true
+  keyString: 'true'
+  label: Rain-Slick Signal Corner -> Tram-Track Crossing
+  description: Path between Rain-Slick Signal Corner and Tram-Track Crossing
+- from: receipt-punch-stall
+  direction: WEST
+  to: calligraphy-card-table
+  visible: true
+  keyString: 'true'
+  label: Receipt Punch Stall -> Calligraphy Card Table
+  description: Path between Receipt Punch Stall and Calligraphy Card Table
+- from: receipt-punch-stall
+  direction: EAST
+  to: toy-spinner-vendor
+  visible: true
+  keyString: 'true'
+  label: Receipt Punch Stall -> Toy Spinner Vendor
+  description: Path between Receipt Punch Stall and Toy Spinner Vendor
+- from: reflection-pool-edge
+  direction: WEST
+  to: bell-frame-assembly-point
+  visible: true
+  keyString: 'true'
+  label: Reflection Pool Edge -> Bell Frame Assembly Point
+  description: Path between Reflection Pool Edge and Bell Frame Assembly Point
+- from: reflection-pool-edge
+  direction: EAST
+  to: side-path-mini-buddhas
+  visible: true
+  keyString: 'true'
+  label: Reflection Pool Edge -> Side Path Mini Buddhas
+  description: Path between Reflection Pool Edge and Side Path Mini Buddhas
+- from: rest-landing
+  direction: EAST
+  to: lower-gate-lintel
+  visible: true
+  keyString: 'true'
+  label: Rest Landing -> Lower Gate Lintel
+  description: Path between Rest Landing and Lower Gate Lintel
+- from: rest-landing
+  direction: WEST
+  to: wind-chime-post
+  visible: true
+  keyString: 'true'
+  label: Rest Landing -> Wind Chime Post
+  description: Path between Rest Landing and Wind Chime Post
+- from: rooftop-bridge-plank
+  direction: WEST
+  to: rooftop-hatch-ledge
+  visible: true
+  keyString: 'true'
+  label: Rooftop Bridge Plank -> Rooftop Hatch Ledge
+  description: Path between Rooftop Bridge Plank and Rooftop Hatch Ledge
+- from: rooftop-bridge-plank
+  direction: EAST
+  to: rooftop-water-tank-line
+  visible: true
+  keyString: 'true'
+  label: Rooftop Bridge Plank -> Rooftop Water Tank Line
+  description: Path between Rooftop Bridge Plank and Rooftop Water Tank Line
+- from: rooftop-clothesline-span
+  direction: EAST
+  to: rooftop-garden-patch
+  visible: true
+  keyString: 'true'
+  label: Rooftop Clothesline Span -> Rooftop Garden Patch
+  description: Path between Rooftop Clothesline Span and Rooftop Garden Patch
+- from: rooftop-clothesline-span
+  direction: WEST
+  to: rooftop-water-tank-line
+  visible: true
+  keyString: 'true'
+  label: Rooftop Clothesline Span -> Rooftop Water Tank Line
+  description: Path between Rooftop Clothesline Span and Rooftop Water Tank Line
+- from: rooftop-exit-drop
+  direction: EAST
+  to: pai-tau-lane-threshold
+  visible: true
+  keyString: 'true'
+  label: Rooftop Exit Drop -> Pai Tau Lane Threshold
+  description: Path between Rooftop Exit Drop and Pai Tau Lane Threshold
+- from: rooftop-exit-drop
+  direction: WEST
+  to: rooftop-garden-patch
+  visible: true
+  keyString: 'true'
+  label: Rooftop Exit Drop -> Rooftop Garden Patch
+  description: Path between Rooftop Exit Drop and Rooftop Garden Patch
+- from: rooftop-garden-patch
+  direction: WEST
+  to: rooftop-clothesline-span
+  visible: true
+  keyString: 'true'
+  label: Rooftop Garden Patch -> Rooftop Clothesline Span
+  description: Path between Rooftop Garden Patch and Rooftop Clothesline Span
+- from: rooftop-garden-patch
+  direction: EAST
+  to: rooftop-exit-drop
+  visible: true
+  keyString: 'true'
+  label: Rooftop Garden Patch -> Rooftop Exit Drop
+  description: Path between Rooftop Garden Patch and Rooftop Exit Drop
+- from: rooftop-hatch-ledge
+  direction: WEST
+  to: ladder-rung-gap
+  visible: true
+  keyString: 'true'
+  label: Rooftop Hatch Ledge -> Ladder Rung Gap
+  description: Path between Rooftop Hatch Ledge and Ladder Rung Gap
+- from: rooftop-hatch-ledge
+  direction: EAST
+  to: rooftop-bridge-plank
+  visible: true
+  keyString: 'true'
+  label: Rooftop Hatch Ledge -> Rooftop Bridge Plank
+  description: Path between Rooftop Hatch Ledge and Rooftop Bridge Plank
+- from: rooftop-water-tank-line
+  direction: WEST
+  to: rooftop-bridge-plank
+  visible: true
+  keyString: 'true'
+  label: Rooftop Water Tank Line -> Rooftop Bridge Plank
+  description: Path between Rooftop Water Tank Line and Rooftop Bridge Plank
+- from: rooftop-water-tank-line
+  direction: EAST
+  to: rooftop-clothesline-span
+  visible: true
+  keyString: 'true'
+  label: Rooftop Water Tank Line -> Rooftop Clothesline Span
+  description: Path between Rooftop Water Tank Line and Rooftop Clothesline Span
+- from: runway-fence-line
+  direction: WEST
+  to: low-plane-roar-marker
+  visible: true
+  keyString: 'true'
+  label: Runway Fence Line -> Low Plane Roar Marker
+  description: Path between Runway Fence Line and Low Plane Roar Marker
+- from: runway-fence-line
+  direction: EAST
+  to: outer-wall-market-rim
+  visible: true
+  keyString: 'true'
+  label: Runway Fence Line -> Outer Wall Market Rim
+  description: Path between Runway Fence Line and Outer Wall Market Rim
+- from: sampan-drift-lane
+  direction: EAST
+  to: buoy-blink-line
+  visible: true
+  keyString: 'true'
+  label: Sampan Drift Lane -> Buoy Blink Line
+  description: Path between Sampan Drift Lane and Buoy Blink Line
+- from: sampan-drift-lane
+  direction: WEST
+  to: typhoon-shelter-lookout
+  visible: true
+  keyString: 'true'
+  label: Sampan Drift Lane -> Typhoon Shelter Lookout
+  description: Path between Sampan Drift Lane and Typhoon Shelter Lookout
+- from: seawall-drain-mark
+  direction: WEST
+  to: buoy-blink-line
+  visible: true
+  keyString: 'true'
+  label: Seawall Drain Mark -> Buoy Blink Line
+  description: Path between Seawall Drain Mark and Buoy Blink Line
+- from: seawall-drain-mark
+  direction: EAST
+  to: pier-shadow-timing-line
+  visible: true
+  keyString: 'true'
+  label: Seawall Drain Mark -> Pier Shadow Timing Line
+  description: Path between Seawall Drain Mark and Pier Shadow Timing Line
+- from: side-alley-rendezvous
+  direction: EAST
+  to: neon-countdown-junction
+  visible: true
+  keyString: 'true'
+  label: Side Alley Rendezvous -> Neon Countdown Junction
+  description: Path between Side Alley Rendezvous and Neon Countdown Junction
+- from: side-alley-rendezvous
+  direction: WEST
+  to: watch-repair-cart
+  visible: true
+  keyString: 'true'
+  label: Side Alley Rendezvous -> Watch Repair Cart
+  description: Path between Side Alley Rendezvous and Watch Repair Cart
+- from: side-path-mini-buddhas
+  direction: EAST
+  to: courtyard-corner-shrine
+  visible: true
+  keyString: 'true'
+  label: Side Path Mini Buddhas -> Courtyard Corner Shrine
+  description: Path between Side Path Mini Buddhas and Courtyard Corner Shrine
+- from: side-path-mini-buddhas
+  direction: WEST
+  to: reflection-pool-edge
+  visible: true
+  keyString: 'true'
+  label: Side Path Mini Buddhas -> Reflection Pool Edge
+  description: Path between Side Path Mini Buddhas and Reflection Pool Edge
+- from: silent-corner
+  direction: WEST
+  to: four-pose-row
+  visible: true
+  keyString: 'true'
+  label: Silent Corner -> Four-Pose Row
+  description: Path between Silent Corner and Four-Pose Row
+- from: silent-corner
+  direction: EAST
+  to: viewpoint-bench
+  visible: true
+  keyString: 'true'
+  label: Silent Corner -> Viewpoint Bench
+  description: Path between Silent Corner and Viewpoint Bench
+- from: stair-cage-exterior
+  direction: EAST
+  to: ladder-rung-gap
+  visible: true
+  keyString: 'true'
+  label: Stair Cage Exterior -> Ladder Rung Gap
+  description: Path between Stair Cage Exterior and Ladder Rung Gap
+- from: stair-cage-exterior
+  direction: WEST
+  to: well-rim-marker-plate
+  visible: true
+  keyString: 'true'
+  label: Stair Cage Exterior -> Well Rim Marker Plate
+  description: Path between Stair Cage Exterior and Well Rim Marker Plate
+- from: steam-vent-corner
+  direction: WEST
+  to: cable-canopy-crawlway
+  visible: true
+  keyString: 'true'
+  label: Steam Vent Corner -> Cable Canopy Crawlway
+  description: Path between Steam Vent Corner and Cable Canopy Crawlway
+- from: steam-vent-corner
+  direction: EAST
+  to: lightwell-courtyard-ring
+  visible: true
+  keyString: 'true'
+  label: Steam Vent Corner -> Lightwell Courtyard Ring
+  description: Path between Steam Vent Corner and Lightwell Courtyard Ring
+- from: stencil-wall-relief
+  direction: EAST
+  to: four-pose-row
+  visible: true
+  keyString: 'true'
+  label: Stencil Wall Relief -> Four-Pose Row
+  description: Path between Stencil Wall Relief and Four-Pose Row
+- from: stencil-wall-relief
+  direction: WEST
+  to: lower-gate-lintel
+  visible: true
+  keyString: 'true'
+  label: Stencil Wall Relief -> Lower Gate Lintel
+  description: Path between Stencil Wall Relief and Lower Gate Lintel
+- from: street-game-table
+  direction: WEST
+  to: fruit-crate-steps
+  visible: true
+  keyString: 'true'
+  label: Street Game Table -> Fruit Crate Steps
+  description: Path between Street Game Table and Fruit Crate Steps
+- from: street-game-table
+  direction: EAST
+  to: loudspeaker-pole-corner
+  visible: true
+  keyString: 'true'
+  label: Street Game Table -> Loudspeaker Pole Corner
+  description: Path between Street Game Table and Loudspeaker Pole Corner
+- from: street-map-kiosk
+  direction: WEST
+  to: neon-countdown-junction
+  visible: true
+  keyString: 'true'
+  label: Street Map Kiosk -> Neon Countdown Junction
+  description: Path between Street Map Kiosk and Neon Countdown Junction
+- from: street-map-kiosk
+  direction: EAST
+  to: taxi-rank-pivot
+  visible: true
+  keyString: 'true'
+  label: Street Map Kiosk -> Taxi Rank Pivot
+  description: Path between Street Map Kiosk and Taxi Rank Pivot
+- from: streetlight-dead-zone
+  direction: EAST
+  to: corridor-maze-segment-a
+  visible: true
+  keyString: 'true'
+  label: Streetlight Dead Zone -> Corridor Maze Segment A
+  description: Path between Streetlight Dead Zone and Corridor Maze Segment A
+- from: streetlight-dead-zone
+  direction: WEST
+  to: narrow-alley-mouth-split
+  visible: true
+  keyString: 'true'
+  label: Streetlight Dead Zone -> Narrow Alley Mouth Split
+  description: Path between Streetlight Dead Zone and Narrow Alley Mouth Split
+- from: switchback-marker-stone
+  direction: WEST
+  to: laughing-bend
+  visible: true
+  keyString: 'true'
+  label: Switchback Marker Stone -> Laughing Bend
+  description: Path between Switchback Marker Stone and Laughing Bend
+- from: switchback-marker-stone
+  direction: EAST
+  to: twin-staff-pair
+  visible: true
+  keyString: 'true'
+  label: Switchback Marker Stone -> Twin Staff Pair
+  description: Path between Switchback Marker Stone and Twin Staff Pair
+- from: taxi-rank-pivot
+  direction: WEST
+  to: street-map-kiosk
+  visible: true
+  keyString: 'true'
+  label: Taxi Rank Pivot -> Street Map Kiosk
+  description: Path between Taxi Rank Pivot and Street Map Kiosk
+- from: taxi-rank-pivot
+  direction: EAST
+  to: temple-street-lantern-row
+  visible: true
+  keyString: 'true'
+  label: Taxi Rank Pivot -> Temple Street Lantern Row
+  description: Path between Taxi Rank Pivot and Temple Street Lantern Row
+- from: temple-street-lantern-row
+  direction: EAST
+  to: dai-pai-dong-steam-line
+  visible: true
+  keyString: 'true'
+  label: Temple Street Lantern Row -> Dai Pai Dong Steam Line
+  description: Path between Temple Street Lantern Row and Dai Pai Dong Steam Line
+- from: temple-street-lantern-row
+  direction: WEST
+  to: taxi-rank-pivot
+  visible: true
+  keyString: 'true'
+  label: Temple Street Lantern Row -> Taxi Rank Pivot
+  description: Path between Temple Street Lantern Row and Taxi Rank Pivot
+- from: three-statue-niche
+  direction: EAST
+  to: offering-rail
+  visible: true
+  keyString: 'true'
+  label: Three-Statue Niche -> Offering Rail
+  description: Path between Three-Statue Niche and Offering Rail
+- from: three-statue-niche
+  direction: WEST
+  to: twin-staff-pair
+  visible: true
+  keyString: 'true'
+  label: Three-Statue Niche -> Twin Staff Pair
+  description: Path between Three-Statue Niche and Twin Staff Pair
+- from: toy-spinner-vendor
+  direction: EAST
+  to: alley-mirror-board
+  visible: true
+  keyString: 'true'
+  label: Toy Spinner Vendor -> Alley Mirror Board
+  description: Path between Toy Spinner Vendor and Alley Mirror Board
+- from: toy-spinner-vendor
+  direction: WEST
+  to: receipt-punch-stall
+  visible: true
+  keyString: 'true'
+  label: Toy Spinner Vendor -> Receipt Punch Stall
+  description: Path between Toy Spinner Vendor and Receipt Punch Stall
+- from: tram-stop-eastbound
+  direction: WEST
+  to: chalkboard-price-grid-wall
+  visible: true
+  keyString: 'true'
+  label: Tram Stop Eastbound -> Chalkboard Price Grid Wall
+  description: Path between Tram Stop Eastbound and Chalkboard Price Grid Wall
+- from: tram-stop-eastbound
+  direction: EAST
+  to: tram-track-crossing
+  visible: true
+  keyString: 'true'
+  label: Tram Stop Eastbound -> Tram-Track Crossing
+  description: Path between Tram Stop Eastbound and Tram-Track Crossing
+- from: tram-track-crossing
+  direction: EAST
+  to: rain-slick-signal-corner
+  visible: true
+  keyString: 'true'
+  label: Tram-Track Crossing -> Rain-Slick Signal Corner
+  description: Path between Tram-Track Crossing and Rain-Slick Signal Corner
+- from: tram-track-crossing
+  direction: WEST
+  to: tram-stop-eastbound
+  visible: true
+  keyString: 'true'
+  label: Tram-Track Crossing -> Tram Stop Eastbound
+  description: Path between Tram-Track Crossing and Tram Stop Eastbound
+- from: turnstile-sightline-posters
+  direction: EAST
+  to: boarding-bell-line
+  visible: true
+  keyString: 'true'
+  label: Turnstile Sightline Posters -> Boarding Bell Line
+  description: Path between Turnstile Sightline Posters and Boarding Bell Line
+- from: turnstile-sightline-posters
+  direction: WEST
+  to: queue-position-posts
+  visible: true
+  keyString: 'true'
+  label: Turnstile Sightline Posters -> Queue Position Posts
+  description: Path between Turnstile Sightline Posters and Queue Position Posts
+- from: twin-staff-pair
+  direction: WEST
+  to: switchback-marker-stone
+  visible: true
+  keyString: 'true'
+  label: Twin Staff Pair -> Switchback Marker Stone
+  description: Path between Twin Staff Pair and Switchback Marker Stone
+- from: twin-staff-pair
+  direction: EAST
+  to: three-statue-niche
+  visible: true
+  keyString: 'true'
+  label: Twin Staff Pair -> Three-Statue Niche
+  description: Path between Twin Staff Pair and Three-Statue Niche
+- from: typhoon-shelter-lookout
+  direction: WEST
+  to: harbor-promenade-rail-walk
+  visible: true
+  keyString: 'true'
+  label: Typhoon Shelter Lookout -> Harbor Promenade Rail Walk
+  description: Path between Typhoon Shelter Lookout and Harbor Promenade Rail Walk
+- from: typhoon-shelter-lookout
+  direction: EAST
+  to: sampan-drift-lane
+  visible: true
+  keyString: 'true'
+  label: Typhoon Shelter Lookout -> Sampan Drift Lane
+  description: Path between Typhoon Shelter Lookout and Sampan Drift Lane
+- from: upper-cluster-start
+  direction: WEST
+  to: narrow-pass
+  visible: true
+  keyString: 'true'
+  label: Upper Cluster Start -> Narrow Pass
+  description: Path between Upper Cluster Start and Narrow Pass
+- from: upper-cluster-start
+  direction: EAST
+  to: upper-gate-lintel
+  visible: true
+  keyString: 'true'
+  label: Upper Cluster Start -> Upper Gate Lintel
+  description: Path between Upper Cluster Start and Upper Gate Lintel
+- from: upper-gate-lintel
+  direction: EAST
+  to: courtyard-threshold
+  visible: true
+  keyString: 'true'
+  label: Upper Gate Lintel -> Courtyard Threshold
+  description: Path between Upper Gate Lintel and Courtyard Threshold
+- from: upper-gate-lintel
+  direction: WEST
+  to: upper-cluster-start
+  visible: true
+  keyString: 'true'
+  label: Upper Gate Lintel -> Upper Cluster Start
+  description: Path between Upper Gate Lintel and Upper Cluster Start
+- from: veranda-threshold-sightline
+  direction: WEST
+  to: courtyard-exit-rail
+  visible: true
+  keyString: 'true'
+  label: Veranda Threshold Sightline -> Courtyard Exit Rail
+  description: Path between Veranda Threshold Sightline and Courtyard Exit Rail
+- from: veranda-threshold-sightline
+  direction: EAST
+  to: pedestal-face-locks
+  visible: true
+  keyString: 'true'
+  label: Veranda Threshold Sightline -> Pedestal Face Locks
+  description: Path between Veranda Threshold Sightline and Pedestal Face Locks
+- from: viewpoint-bench
+  direction: EAST
+  to: carved-drain-channel
+  visible: true
+  keyString: 'true'
+  label: Viewpoint Bench -> Carved Drain Channel
+  description: Path between Viewpoint Bench and Carved Drain Channel
+- from: viewpoint-bench
+  direction: WEST
+  to: silent-corner
+  visible: true
+  keyString: 'true'
+  label: Viewpoint Bench -> Silent Corner
+  description: Path between Viewpoint Bench and Silent Corner
+- from: watch-repair-cart
+  direction: WEST
+  to: pawn-window-numbers
+  visible: true
+  keyString: 'true'
+  label: Watch Repair Cart -> Pawn Window Numbers
+  description: Path between Watch Repair Cart and Pawn Window Numbers
+- from: watch-repair-cart
+  direction: EAST
+  to: side-alley-rendezvous
+  visible: true
+  keyString: 'true'
+  label: Watch Repair Cart -> Side Alley Rendezvous
+  description: Path between Watch Repair Cart and Side Alley Rendezvous
+- from: well-rim-marker-plate
+  direction: WEST
+  to: lightwell-courtyard-ring
+  visible: true
+  keyString: 'true'
+  label: Well Rim Marker Plate -> Lightwell Courtyard Ring
+  description: Path between Well Rim Marker Plate and Lightwell Courtyard Ring
+- from: well-rim-marker-plate
+  direction: EAST
+  to: stair-cage-exterior
+  visible: true
+  keyString: 'true'
+  label: Well Rim Marker Plate -> Stair Cage Exterior
+  description: Path between Well Rim Marker Plate and Stair Cage Exterior
+- from: wind-chime-post
+  direction: WEST
+  to: offering-rail
+  visible: true
+  keyString: 'true'
+  label: Wind Chime Post -> Offering Rail
+  description: Path between Wind Chime Post and Offering Rail
+- from: wind-chime-post
+  direction: EAST
+  to: rest-landing
+  visible: true
+  keyString: 'true'
+  label: Wind Chime Post -> Rest Landing
+  description: Path between Wind Chime Post and Rest Landing
+- from: wire-spool-cart
+  direction: EAST
+  to: battery-lantern-swap
+  visible: true
+  keyString: 'true'
+  label: Wire Spool Cart -> Battery Lantern Swap
+  description: Path between Wire Spool Cart and Battery Lantern Swap
+- from: wire-spool-cart
+  direction: WEST
+  to: electronics-salvage-blanket
+  visible: true
+  keyString: 'true'
+  label: Wire Spool Cart -> Electronics Salvage Blanket
+  description: Path between Wire Spool Cart and Electronics Salvage Blanket

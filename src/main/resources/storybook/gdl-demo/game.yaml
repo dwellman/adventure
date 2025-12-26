@@ -1,0 +1,43 @@
+seed: 123
+preamble: You are running a tiny GDL demo.
+startPlotKey: foyer
+plots:
+  - plotKey: foyer
+    name: Foyer
+    region: DEMO
+    locationX: 0
+    locationY: 0
+    description: A small entryway with worn tiles.
+    gates:
+      - direction: north
+        toPlot: hall
+        visible: true
+        label: Foyer -> Hall
+        description: A narrow passage leads north.
+    fixtures:
+      - key: foyer-table
+        name: Entry Table
+        description: A scuffed wooden table.
+        visible: true
+    items:
+      - key: key
+        name: Key
+        description: A small brass key.
+        visible: true
+    actors:
+      - key: hero
+        name: Explorer
+        description: A curious explorer.
+        visible: true
+  - plotKey: hall
+    name: Hall
+    region: DEMO
+    locationX: 0
+    locationY: 1
+    description: A quiet hall with old portraits.
+    gates:
+      - direction: south
+        toPlot: foyer
+        visible: true
+        label: Hall -> Foyer
+        description: The foyer lies back to the south.

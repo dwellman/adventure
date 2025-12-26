@@ -1,0 +1,5 @@
+plots: &id001 [
+  ]
+fixtures: *id001
+items: *id001
+actors: *id001

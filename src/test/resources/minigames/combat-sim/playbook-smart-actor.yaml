@@ -1,0 +1,57 @@
+name: Combat Sim - Smart Actor Bandit
+game: mini.yaml
+smartActorDecisions:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: look
+      - type: UTTERANCE
+        utterance: look
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: look
+smartActorExpectations:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: look
+      - type: UTTERANCE
+        utterance: look
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: look
+steps:
+  - command: look
+    expect:
+      - Dusty Ring
+  - command: north
+    expect:
+      - Bandit Ring
+  - command: attack bandit
+    expect:
+      - Combat begins.
+      - You hit Bandit for 4.
+      - "Bandit health: 6/10"
+      - Bandit hits you for 2.
+      - "Your health: 10/12"
+  - command: attack bandit
+    expect:
+      - You hit Bandit for 4.
+      - "Bandit health: 2/10"
+      - Bandit hits you for 2.
+      - "Your health: 8/12"
+  - command: attack bandit
+    expect:
+      - You hit Bandit for 2.
+      - "Bandit health: 0/10"
+      - Bandit is defeated.
+      - You are victorious.
+  - command: quit
+    expect:
+      - Thanks for playing.

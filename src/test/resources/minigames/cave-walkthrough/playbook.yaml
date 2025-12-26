@@ -1,0 +1,50 @@
+name: Cave Walkthrough
+game: mini.yaml
+outcome: win
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Cave Entrance
+      - The mouth of a damp cave.
+  - command: north
+    expect:
+      - Cave Web
+      - A narrow passage filled with webs.
+  - command: look
+    expect:
+      - Spider Webs
+  - command: take Stick
+    expect:
+      - You take the Stick.
+  - command: take Rags
+    expect:
+      - You take the Rags.
+  - command: take Kerosene
+    expect:
+      - You take the Kerosene.
+  - command: take Flint
+    expect:
+      - You take the Flint.
+  - command: take River Stone
+    expect:
+      - You take the River Stone.
+  - command: craft Torch
+    expect:
+      - You craft a Torch.
+  - command: craft Soaked Torch
+    expect:
+      - You craft a Soaked Torch.
+  - command: craft Lit Torch
+    expect:
+      - You craft a Lit Torch.
+  - command: north
+    expect:
+      - Cave Back Chamber
+      - A narrow chamber with faint carvings on the wall.
+  - command: look Wall Writings
+    expect:
+      - Spiral runes carved deep into the stone.
+  - command: quit
+    expect:
+      - Thanks for playing.

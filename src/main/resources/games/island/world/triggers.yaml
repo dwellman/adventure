@@ -1,0 +1,243 @@
+triggers:
+  - id: reveal-time-stone
+    type: ON_ENTER
+    target: Volcano Altar
+    actions:
+      - type: REVEAL
+        target: Time Stone
+
+  - id: time-stone-trap
+    type: ON_TAKE
+    target: Time Stone
+    actions:
+      - type: SET_DESCRIPTION
+        target: Digital Watch
+        description: "The digits glow a saturated green, pulsing in a steady rhythm."
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: TICK_RATE
+        amount: 20
+      - type: RESET_LOOP
+        reason: MANUAL
+        text: "A cold green flash erupts from the stone. The island resets around you, but you remember."
+
+  - id: reveal-vine-rope
+    type: ON_ENTER
+    target: Monkey Grove
+    actions:
+      - type: REVEAL
+        target: Vine Rope
+
+  - id: vine-rope-fed
+    type: ON_TAKE
+    target: Vine Rope
+    key: 'HAS("Banana 1") || HAS("Banana 2") || HAS("Banana 3") || HAS("Banana 4") || HAS("Banana 5")'
+    actions:
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: MONKEYS_FED
+        amount: 1
+      - type: MESSAGE
+        text: "You offer the bananas. The troop calms and lets you reach the vines."
+      - type: MOVE_OWNER
+        target: Banana 1
+        owner: Chaos Monkey Troop
+      - type: MOVE_OWNER
+        target: Banana 2
+        owner: Chaos Monkey Troop
+      - type: MOVE_OWNER
+        target: Banana 3
+        owner: Chaos Monkey Troop
+      - type: MOVE_OWNER
+        target: Banana 4
+        owner: Chaos Monkey Troop
+      - type: MOVE_OWNER
+        target: Banana 5
+        owner: Chaos Monkey Troop
+
+  - id: vine-rope-trap
+    type: ON_TAKE
+    target: Vine Rope
+    key: 'World.MONKEYS_FED.amount == 0 && !(HAS("Banana 1") || HAS("Banana 2") || HAS("Banana 3") || HAS("Banana 4") || HAS("Banana 5"))'
+    actions:
+      - type: MESSAGE
+        text: "The monkeys shriek and swarm you."
+      - type: RESET_LOOP
+        reason: DEATH
+
+  - id: treehouse-skeleton-shift
+    type: ON_USE
+    target: Treehouse Skeleton
+    actions:
+      - type: MESSAGE
+        text: "You shift the bones aside, revealing a hatchet. A faint green shimmer gathers nearby. SCRATCH WARNS: THE TIME STONE BINDS THIS ISLAND. DO NOT TAKE IT."
+      - type: SET_KEY
+        target: Treehouse Skeleton
+        key: 'true'
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: SCRATCH_FREED
+        amount: 1
+      - type: REVEAL
+        target: Hatchet
+      - type: SET_VISIBLE
+        target: Scratch (Ghost)
+        visible: true
+
+  - id: old-camp-ashes
+    type: ON_USE
+    target: Campfire Ring
+    actions:
+      - type: MESSAGE
+        text: "You sift the ashes and find a torn journal page."
+      - type: REVEAL
+        target: Camp Journal Page
+
+  - id: lagoon-cove-shells
+    type: ON_USE
+    target: Shell Spiral
+    actions:
+      - type: MESSAGE
+        text: "The shells point to a waterlogged chart tucked in the rocks."
+      - type: REVEAL
+        target: Tide Chart
+
+  - id: sea-cliffs-cairn
+    type: ON_USE
+    target: Signal Cairn
+    actions:
+      - type: MESSAGE
+        text: "You find a signal mirror wedged between the stones."
+      - type: REVEAL
+        target: Signal Mirror
+
+  - id: canopy-lookout-bell
+    type: ON_USE
+    target: Lookout Bell
+    actions:
+      - type: MESSAGE
+        text: "A charcoal sketch is tucked under the bell's frame."
+      - type: REVEAL
+        target: Lookout Sketch
+
+  - id: bamboo-harvest
+    type: ON_ENTER
+    target: Bamboo Forest
+    key: 'HAS("Hatchet")'
+    actions:
+      - type: MESSAGE
+        text: "You chop a bundle of bamboo poles free with the hatchet."
+      - type: REVEAL
+        target: Bamboo Poles
+
+  - id: cave-web-burn
+    type: ON_ENTER
+    target: Cave Back Chamber
+    actions:
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: CAVE_WEB_BURNED
+        amount: 1
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: CAVE_RETURN
+        amount: 0
+      - type: SET_DESCRIPTION
+        target: Spider Webs
+        description: "Charred webs cling to the tunnel walls; the path is clear, but the air still crawls."
+      - type: MOVE_OWNER
+        target: Angry Spiders
+        owner: Cave Mouth
+      - type: SET_VISIBLE
+        target: Angry Spiders
+        visible: true
+
+  - id: cave-mouth-return-count
+    type: ON_ENTER
+    target: Cave Mouth
+    key: 'World.CAVE_WEB_BURNED.amount > 0'
+    actions:
+      - type: INCREMENT_CELL
+        target: "@WORLD"
+        cell: CAVE_RETURN
+        amount: 1
+
+  - id: cave-mouth-spider-death
+    type: ON_ENTER
+    target: Cave Mouth
+    key: 'World.CAVE_WEB_BURNED.amount > 0 && World.CAVE_RETURN.amount > 1'
+    actions:
+      - type: MESSAGE
+        text: "The greenish-black spiders swarm the entrance and drag you down."
+      - type: RESET_LOOP
+        reason: DEATH
+
+  - id: plane-wreck-entry
+    type: ON_ENTER
+    target: Plane Wreck
+    actions:
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: PLANE_WRECK_TURNS
+        amount: 0
+
+  - id: plane-wreck-turn
+    type: ON_TURN
+    target: Plane Wreck
+    actions:
+      - type: INCREMENT_CELL
+        target: "@WORLD"
+        cell: PLANE_WRECK_TURNS
+        amount: 1
+
+  - id: plane-wreck-warning
+    type: ON_TURN
+    target: Plane Wreck
+    key: 'World.PLANE_WRECK_TURNS.amount == 9'
+    actions:
+      - type: MESSAGE
+        text: "The wreck groans and shifts. One more move could bring it down."
+
+  - id: plane-wreck-collapse
+    type: ON_TURN
+    target: Plane Wreck
+    key: 'World.PLANE_WRECK_TURNS.amount >= 10'
+    actions:
+      - type: MESSAGE
+        text: "The wreck snaps free and crashes down the mountainside with you inside."
+      - type: RESET_LOOP
+        reason: DEATH
+
+  - id: plane-wreck-exit
+    type: ON_ENTER
+    target: Volcano Path
+    key: 'World.PLANE_WRECK_TURNS.amount >= 9'
+    actions:
+      - type: MESSAGE
+        text: "You leap clear as the wreck tears loose and tumbles down the slope."
+      - type: SET_VISIBLE
+        target: Plane Wreck -> Volcano Path
+        visible: false
+      - type: SET_VISIBLE
+        target: Volcano Path -> Plane Wreck
+        visible: false
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: PLANE_WRECK_TURNS
+        amount: 0
+
+  - id: raft-escape-arrival
+    type: ON_ENTER
+    target: Wreck Beach
+    key: 'HAS("Raft") && World.CLOCK.amount >= 600 && World.SCRATCH_FREED.amount > 0'
+    actions:
+      - type: END_GAME
+        text: "At first light you shove off. The raft catches the wind and the reef falls away. Scratch stands beside you, no longer a ghost, the missing letter in his hand. Behind you the volcano flares with a sharp green flash as the island folds and vanishes. You escape."
+
+  - id: raft-escape-wait
+    type: ON_TURN
+    target: Wreck Beach
+    key: 'HAS("Raft") && World.CLOCK.amount >= 600 && World.SCRATCH_FREED.amount > 0'
+    actions:
+      - type: END_GAME
+        text: "At first light you shove off. The raft catches the wind and the reef falls away. Scratch stands beside you, no longer a ghost, the missing letter in his hand. Behind you the volcano flares with a sharp green flash as the island folds and vanishes. You escape."

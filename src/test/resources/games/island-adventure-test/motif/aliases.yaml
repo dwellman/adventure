@@ -1,0 +1,21 @@
+aliases:
+  - alias: EXAMINE
+    canonical: INSPECT
+  - alias: READ
+    canonical: INSPECT
+  - alias: FORAGE
+    canonical: SEARCH
+  - alias: SCAVENGE
+    canonical: SEARCH
+  - alias: GATHER
+    canonical: SEARCH
+  - alias: BUILD
+    canonical: MAKE
+  - alias: LASH
+    canonical: MAKE
+  - alias: PADDLE
+    canonical: MOVE
+  - alias: ROW
+    canonical: MOVE
+  - alias: SWIM
+    canonical: MOVE

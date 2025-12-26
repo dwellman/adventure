@@ -1,0 +1,140 @@
+items:
+- key: basement-key
+  name: Basement Key
+  description: The Basement Key, with its ornate design and mysterious aura, glints subtly in the dim light, hinting at the
+    secrets waiting below.
+  ownerKey: study-desk-drawer-1
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: candlestick
+  name: Candlestick
+  description: An ornate candlestick, its surface glimmering with a hint of mystery, stands poised to illuminate the secrets
+    of the dining room with a flicker of flame.
+  ownerKey: dining-room
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: knife
+  name: Knife
+  description: The knife glints with a mischievous edge, its handle intricately carved with swirling patterns that seem to
+    dance in the dim light of the kitchen.
+  ownerKey: kitchen
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: lead-pipe
+  name: Lead Pipe
+  description: Lead Pipe
+  ownerKey: billiard-room
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: pocket-watch
+  name: Pocket Watch
+  description: This elegant pocket watch, with its intricate engravings and a faint ticking sound, seems to hold more than
+    just time; it whispers secrets of the mansion's past with every tick.
+  ownerKey: detective
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: revolver
+  name: Revolver
+  description: This ornate revolver gleams with a mysterious charm, its handle intricately carved with whimsical patterns
+    that hint at the secrets it may have witnessed in the dim light of the study.
+  ownerKey: study
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: rope
+  name: Rope
+  description: A sturdy rope, frayed at the ends, hints at adventures untold and secrets waiting to be unraveled.
+  ownerKey: lounge
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: wrench
+  name: Wrench
+  description: A rusty wrench, its surface speckled with age, rests quietly on a polished table, whispering tales of repairs
+    long forgotten in this grand ballroom.
+  ownerKey: ballroom
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: torn-menu
+  name: Torn Menu
+  description: A dinner menu with a note about a late delivery scribbled in the margin.
+  ownerKey: corridor-dining-kitchen
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: glass-shard
+  name: Glass Shard
+  description: A sliver of frosted glass with a faint green tint.
+  ownerKey: corridor-conservatory-ballroom
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: chalk-smudge
+  name: Chalk Smudge
+  description: Chalk dust smeared across a scrap of cloth.
+  ownerKey: corridor-billiard-dining
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: silk-thread
+  name: Silk Thread
+  description: A single silk thread caught on a frame, cut clean at one end.
+  ownerKey: corridor-hall-lounge
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: pressed-leaf
+  name: Pressed Leaf
+  description: A conservatory leaf pressed into a book page, still damp at the stem.
+  ownerKey: corridor-library-conservatory
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: ink-note
+  name: Ink Note
+  description: 'A short note blotted with fresh ink: "Keep him away from the cellar."'
+  ownerKey: corridor-study-library
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1
+- key: cellar-ledger
+  name: Cellar Ledger
+  description: A ledger of deliveries with one entry scratched out.
+  ownerKey: cellar
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    evidence:
+      capacity: 1
+      amount: 1

@@ -1,0 +1,64 @@
+name: Western Adventure Walkthrough
+game: ../../../../main/resources/games/western/game.yaml
+outcome: win
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Train Platform
+      - Station Key
+  - command: take Station Key
+    expect:
+      - You take the Station Key.
+  - command: north
+    expect:
+      - Baggage Depot
+      - Crates stacked
+      - Wire Cutters
+  - command: take Wire Cutters
+    expect:
+      - You take the Wire Cutters.
+  - command: south
+    expect:
+      - Train Platform
+  - command: west
+    expect:
+      - Telegraph Office
+      - humming with static
+  - command: west
+    expect:
+      - Dry Gulch Main Street
+      - station clock
+  - command: north
+    expect:
+      - Sheriff's Office
+      - Payroll Strongbox
+  - command: take Payroll Strongbox
+    expect:
+      - You take the Payroll Strongbox.
+  - command: south
+    expect:
+      - Dry Gulch Main Street
+  - command: east
+    expect:
+      - Telegraph Office
+  - command: east
+    expect:
+      - Train Platform
+  - command: south
+    expect:
+      - Rail Yard
+  - command: south
+    expect:
+      - Rattlesnake Bridge
+      - Dynamite
+  - command: use Wire Cutters on Bridge Charges
+    expect:
+      - clip the fuse
+  - command: north
+    expect:
+      - Rail Yard
+  - command: north
+    expect:
+      - You slam the strongbox into the baggage car
+      - Dry Gulch survives.

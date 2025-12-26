@@ -1,0 +1,11 @@
+id: island-adventure
+title: Island Adventure
+seed: 20240615
+startPlotKey: wreck-beach
+preamble: Salt stings your lips as you come to on Wreck Beach, a sand-scratched canvas backpack digging into your shoulder like the last proof you’re still alive.
+includes:
+  map: world/map.yaml
+  fixtures: world/fixtures.yaml
+  items: world/items.yaml
+  actors: world/actors.yaml
+  descriptions: narrative/descriptions.yaml

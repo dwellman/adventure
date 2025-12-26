@@ -1,0 +1,54 @@
+seed: 777
+startPlotKey: warded-chapel
+preamble: "Combat sim: armor, magic, and weakness are currently cosmetic."
+plots:
+  - plotKey: warded-chapel
+    name: Warded Chapel
+    region: MINI
+    description: A chalk ring surrounds a cracked chapel.
+    actors:
+      - key: player
+        name: Warden
+        description: A weary warden carrying a sanctified blade.
+        visible: true
+        equippedMainHandItemId: sunblade
+        equippedBodyItemId: runic-coat
+        cells:
+          health:
+            capacity: 12
+            amount: 12
+      - key: wraith
+        name: Wraith
+        description: A spectral wraith said to be weak to sunlight.
+        visible: true
+        equippedMainHandItemId: shadow-claw
+        equippedBodyItemId: grave-plate
+        cells:
+          health:
+            capacity: 8
+            amount: 8
+    items:
+      - key: sunblade
+        name: Sunblade
+        description: A holy blade said to burn the undead.
+        ownerKey: player
+        visible: true
+        weaponDamage: 4
+      - key: runic-coat
+        name: Runic Coat
+        description: A coat lined with warding runes.
+        ownerKey: player
+        visible: true
+        armorMitigation: 1
+      - key: shadow-claw
+        name: Shadow Claw
+        description: A talon of condensed night.
+        ownerKey: wraith
+        visible: true
+        weaponDamage: 2
+      - key: grave-plate
+        name: Grave Plate
+        description: Funeral plate etched with old wards.
+        ownerKey: wraith
+        visible: true
+        armorMitigation: 6

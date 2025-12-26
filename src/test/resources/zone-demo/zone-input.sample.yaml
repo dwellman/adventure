@@ -1,0 +1,55 @@
+game:
+  seed: 4242
+  preamble: "You wash ashore, clutching a salt-stained map."
+
+zones:
+  - id: coast
+    region: COAST
+    targetPlotCount: 12
+    difficulty: MEDIUM
+    pacing: BALANCED
+    topology: BRANCHY
+    anchors:
+      - key: entry
+        name: Wreck Beach
+        role: ENTRY
+        description: "Broken fuselage and the crash site stretch behind you."
+      - key: vista
+        name: Overlook
+        role: VISTA
+      - key: exit
+        name: Treehouse
+        role: EXIT
+
+fixtures:
+  - name: Driftwood Fire
+    description: "Sputtering flames struggle against the wind."
+    ownerKey: entry
+    visible: true
+
+items:
+  - name: Rope Ladder
+    description: "Knotted rope ready to climb."
+    ownerRole: EXIT
+    visible: true
+
+actors:
+  - name: Castaway
+    description: "You, dazed but breathing."
+    ownerKey: entry
+    visible: true
+
+puzzles:
+  - from: entry
+    direction: UP
+    keyString: HAS("Rope Ladder")
+    description: "The climb looks possible if you secure the rope."
+
+bridges:
+  - fromZone: coast
+    fromAnchor: exit
+    toZone: coast
+    toAnchor: entry
+    direction: DOWN
+    keyString: HAS("Rope Ladder")
+    description: "The rope ladder descends into the cave mouth."

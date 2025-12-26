@@ -1,0 +1,12 @@
+id: mansion-adventure
+title: Mansion Adventure
+seed: 1949
+startPlotKey: hall
+preamble: You are the detective in the Hall.
+includes:
+  map: world/map.yaml
+  fixtures: world/fixtures.yaml
+  items: world/items.yaml
+  actors: world/actors.yaml
+  triggers: world/triggers.yaml
+  descriptions: narrative/descriptions.yaml

@@ -1,0 +1,75 @@
+seed: 555
+startPlotKey: dusty-ring
+preamble: "Combat sim: weapons versus armor."
+plots:
+  - plotKey: dusty-ring
+    name: Dusty Ring
+    region: MINI
+    description: A tight fighting ring scratched into hardpan dirt.
+    gates:
+      - direction: N
+        toPlot: bandit-ring
+        visible: true
+        keyString: "true"
+        label: Dusty Ring -> Bandit Ring
+        description: The fight ring lies to the north.
+    actors:
+      - key: player
+        name: Ranger
+        description: A steady-handed ranger.
+        visible: true
+        skills: [Brawl]
+        equippedMainHandItemId: sabre
+        equippedBodyItemId: duster
+        cells:
+          health:
+            capacity: 12
+            amount: 12
+    items:
+      - key: sabre
+        name: Sabre
+        description: A nicked cavalry sabre.
+        ownerKey: player
+        visible: true
+        weaponDamage: 4
+      - key: duster
+        name: Duster Coat
+        description: A dusty coat with a stiff lining.
+        ownerKey: player
+        visible: true
+        armorMitigation: 1
+  - plotKey: bandit-ring
+    name: Bandit Ring
+    region: MINI
+    description: A second ring where a bandit waits with a club.
+    gates:
+      - direction: S
+        toPlot: dusty-ring
+        visible: true
+        keyString: "true"
+        label: Bandit Ring -> Dusty Ring
+        description: The dusty ring lies back to the south.
+    actors:
+      - key: bandit
+        name: Bandit
+        description: A scavenger with a mean look.
+        visible: true
+        equippedMainHandItemId: club
+        equippedBodyItemId: patched-vest
+        cells:
+          health:
+            capacity: 10
+            amount: 10
+    items:
+      - key: club
+        name: Club
+        description: A heavy wood club.
+        ownerKey: bandit
+        visible: true
+        weaponDamage: 3
+      - key: patched-vest
+        name: Patched Vest
+        description: A quilted vest with old repairs.
+        ownerKey: bandit
+        visible: true
+        armorMitigation: 0

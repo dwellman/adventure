@@ -1,0 +1,21 @@
+name: Combat Sim - Smart Actor Pass
+game: mini.yaml
+smartActorDecisions:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: look
+smartActorExpectations:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: look
+steps:
+  - command: attack bandit
+    expect:
+      - Combat begins.
+      - You hit Bandit for 3.
+      - Bandit hesitates.
+  - command: quit
+    expect:
+      - Thanks for playing.

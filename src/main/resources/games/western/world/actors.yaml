@@ -1,0 +1,19 @@
+actors:
+- key: marshal-hale
+  name: Marshal Hale
+  description: A weathered lawman wearing a borrowed badge for one night.
+  ownerKey: train-platform
+  visible: true
+  skills: [Investigation, Repair]
+  cells:
+    health:
+      capacity: 10
+      amount: 10
+    stamina:
+      capacity: 8
+      amount: 8
+- key: deputy-lane
+  name: Deputy Lane
+  description: A nervous deputy pacing, one eye on the clock and one on you.
+  ownerKey: dry-gulch-main-street
+  visible: true

@@ -1,0 +1,48 @@
+name: Dungeon Adventure 4x4
+game: mini.yaml
+outcome: combat
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Dungeon Entrance
+  - command: north
+    expect:
+      - Mossy Corridor
+  - command: north
+    expect:
+      - Bone Alcove
+  - command: north
+    expect:
+      - Chill Vault
+  - command: east
+    expect:
+      - Ossuary Nook
+  - command: east
+    expect:
+      - Sundered Chapel
+  - command: east
+    expect:
+      - Warden Lair
+  - command: attack crypt warden
+    expect:
+      - Combat begins.
+      - You hit Crypt Warden for 5.
+      - "Crypt Warden health: 10/15"
+      - Crypt Warden hits you for 2.
+      - "Your health: 10/12"
+  - command: attack crypt warden
+    expect:
+      - You hit Crypt Warden for 5.
+      - "Crypt Warden health: 5/15"
+      - Crypt Warden hits you for 2.
+      - "Your health: 8/12"
+  - command: attack crypt warden
+    expect:
+      - You hit Crypt Warden for 5.
+      - "Crypt Warden health: 0/15"
+      - Crypt Warden is defeated.
+      - You are victorious.
+  - command: quit
+    expect:
+      - Thanks for playing.

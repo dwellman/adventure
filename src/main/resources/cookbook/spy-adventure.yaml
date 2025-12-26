@@ -1,0 +1,3944 @@
+seed: 1970
+startPlot: Nathan Road Neon Canyon
+startPlotKey: nathan-road-neon-canyon
+preamble: Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the harbor handoff.
+plots:
+- plot: Alley Mirror Board
+  plotKey: alley-mirror-board
+  name: Alley Mirror Board
+  region: CITY
+  description:
+  - text: Small mirrors hang on a board to “see behind you.” One mirror is angled to reflect a specific sign far away.
+    worldClock: -1
+  gates:
+  - fromPlot: alley-mirror-board
+    from: Alley Mirror Board
+    direction: EAST
+    toPlot: backlane-clothesline-gap
+    to: Backlane Clothesline Gap
+    visible: true
+    keyString: 'true'
+    label: Alley Mirror Board -> Backlane Clothesline Gap
+    description:
+    - text: Path between Alley Mirror Board and Backlane Clothesline Gap
+      worldClock: -1
+  - fromPlot: alley-mirror-board
+    from: Alley Mirror Board
+    direction: WEST
+    toPlot: toy-spinner-vendor
+    to: Toy Spinner Vendor
+    visible: true
+    keyString: 'true'
+    label: Alley Mirror Board -> Toy Spinner Vendor
+    description:
+    - text: Path between Alley Mirror Board and Toy Spinner Vendor
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Backlane Clothesline Gap
+  plotKey: backlane-clothesline-gap
+  name: Backlane Clothesline Gap
+  region: CITY
+  description:
+  - text: Wet shirts and towels make a low roof. Clothespins form a simple pattern if you walk slowly.
+    worldClock: -1
+  gates:
+  - fromPlot: backlane-clothesline-gap
+    from: Backlane Clothesline Gap
+    direction: WEST
+    toPlot: alley-mirror-board
+    to: Alley Mirror Board
+    visible: true
+    keyString: 'true'
+    label: Backlane Clothesline Gap -> Alley Mirror Board
+    description:
+    - text: Path between Backlane Clothesline Gap and Alley Mirror Board
+      worldClock: -1
+  - fromPlot: backlane-clothesline-gap
+    from: Backlane Clothesline Gap
+    direction: EAST
+    toPlot: goldfish-bag-lane
+    to: Goldfish Bag Lane
+    visible: true
+    keyString: 'true'
+    label: Backlane Clothesline Gap -> Goldfish Bag Lane
+    description:
+    - text: Path between Backlane Clothesline Gap and Goldfish Bag Lane
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Base Stair Gate
+  plotKey: base-stair-gate
+  name: Base Stair Gate
+  region: CITY
+  description:
+  - text: The first steps rise under golden figures. A small sign warns visitors, but the real warning is the silence ahead.
+    worldClock: -1
+  gates:
+  - fromPlot: base-stair-gate
+    from: Base Stair Gate
+    direction: WEST
+    toPlot: calligraphy-table
+    to: Calligraphy Table
+    visible: true
+    keyString: 'true'
+    label: Base Stair Gate -> Calligraphy Table
+    description:
+    - text: Path between Base Stair Gate and Calligraphy Table
+      worldClock: -1
+  - fromPlot: base-stair-gate
+    from: Base Stair Gate
+    direction: EAST
+    toPlot: first-arhat-pair
+    to: First Arhat Pair
+    visible: true
+    keyString: 'true'
+    label: Base Stair Gate -> First Arhat Pair
+    description:
+    - text: Path between Base Stair Gate and First Arhat Pair
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Battery Lantern Swap
+  plotKey: battery-lantern-swap
+  name: Battery Lantern Swap
+  region: CITY
+  description:
+  - text: Lanterns glow warm and weak. A vendor offers a better battery if you show him the right mark.
+    worldClock: -1
+  gates:
+  - fromPlot: battery-lantern-swap
+    from: Battery Lantern Swap
+    direction: EAST
+    toPlot: chalkboard-price-grid-wall
+    to: Chalkboard Price Grid Wall
+    visible: true
+    keyString: 'true'
+    label: Battery Lantern Swap -> Chalkboard Price Grid Wall
+    description:
+    - text: Path between Battery Lantern Swap and Chalkboard Price Grid Wall
+      worldClock: -1
+  - fromPlot: battery-lantern-swap
+    from: Battery Lantern Swap
+    direction: WEST
+    toPlot: wire-spool-cart
+    to: Wire Spool Cart
+    visible: true
+    keyString: 'true'
+    label: Battery Lantern Swap -> Wire Spool Cart
+    description:
+    - text: Path between Battery Lantern Swap and Wire Spool Cart
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Bell Frame Assembly Point
+  plotKey: bell-frame-assembly-point
+  name: Bell Frame Assembly Point
+  region: CITY
+  description:
+  - text: A bell frame stands outdoors. Slots and grooves suggest something is meant to be assembled here.
+    worldClock: -1
+  gates:
+  - fromPlot: bell-frame-assembly-point
+    from: Bell Frame Assembly Point
+    direction: WEST
+    toPlot: courtyard-threshold
+    to: Courtyard Threshold
+    visible: true
+    keyString: 'true'
+    label: Bell Frame Assembly Point -> Courtyard Threshold
+    description:
+    - text: Path between Bell Frame Assembly Point and Courtyard Threshold
+      worldClock: -1
+  - fromPlot: bell-frame-assembly-point
+    from: Bell Frame Assembly Point
+    direction: EAST
+    toPlot: reflection-pool-edge
+    to: Reflection Pool Edge
+    visible: true
+    keyString: 'true'
+    label: Bell Frame Assembly Point -> Reflection Pool Edge
+    description:
+    - text: Path between Bell Frame Assembly Point and Reflection Pool Edge
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Boarding Bell Line
+  plotKey: boarding-bell-line
+  name: Boarding Bell Line
+  region: CITY
+  description:
+  - text: A bell rings sharp and clean. The crowd surges forward, and a handoff could happen without anyone noticing.
+    worldClock: -1
+  gates:
+  - fromPlot: boarding-bell-line
+    from: Boarding Bell Line
+    direction: EAST
+    toPlot: harbor-promenade-rail-walk
+    to: Harbor Promenade Rail Walk
+    visible: true
+    keyString: 'true'
+    label: Boarding Bell Line -> Harbor Promenade Rail Walk
+    description:
+    - text: Path between Boarding Bell Line and Harbor Promenade Rail Walk
+      worldClock: -1
+  - fromPlot: boarding-bell-line
+    from: Boarding Bell Line
+    direction: WEST
+    toPlot: turnstile-sightline-posters
+    to: Turnstile Sightline Posters
+    visible: true
+    keyString: 'true'
+    label: Boarding Bell Line -> Turnstile Sightline Posters
+    description:
+    - text: Path between Boarding Bell Line and Turnstile Sightline Posters
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Bottle-Glass Wall Bend
+  plotKey: bottle-glass-wall-bend
+  name: Bottle-Glass Wall Bend
+  region: CITY
+  description:
+  - text: Glass shards set in mortar glitter along a bend. The shards form a line that points like an arrow.
+    worldClock: -1
+  gates:
+  - fromPlot: bottle-glass-wall-bend
+    from: Bottle-Glass Wall Bend
+    direction: WEST
+    toPlot: gate-mouth-phrase-check
+    to: Gate Mouth Phrase Check
+    visible: true
+    keyString: 'true'
+    label: Bottle-Glass Wall Bend -> Gate Mouth Phrase Check
+    description:
+    - text: Path between Bottle-Glass Wall Bend and Gate Mouth Phrase Check
+      worldClock: -1
+  - fromPlot: bottle-glass-wall-bend
+    from: Bottle-Glass Wall Bend
+    direction: EAST
+    toPlot: narrow-alley-mouth-split
+    to: Narrow Alley Mouth Split
+    visible: true
+    keyString: 'true'
+    label: Bottle-Glass Wall Bend -> Narrow Alley Mouth Split
+    description:
+    - text: Path between Bottle-Glass Wall Bend and Narrow Alley Mouth Split
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Buoy Blink Line
+  plotKey: buoy-blink-line
+  name: Buoy Blink Line
+  region: CITY
+  description:
+  - text: Buoys blink in a repeating cadence. The sequence feels like numbers pretending to be lights.
+    worldClock: -1
+  gates:
+  - fromPlot: buoy-blink-line
+    from: Buoy Blink Line
+    direction: WEST
+    toPlot: sampan-drift-lane
+    to: Sampan Drift Lane
+    visible: true
+    keyString: 'true'
+    label: Buoy Blink Line -> Sampan Drift Lane
+    description:
+    - text: Path between Buoy Blink Line and Sampan Drift Lane
+      worldClock: -1
+  - fromPlot: buoy-blink-line
+    from: Buoy Blink Line
+    direction: EAST
+    toPlot: seawall-drain-mark
+    to: Seawall Drain Mark
+    visible: true
+    keyString: 'true'
+    label: Buoy Blink Line -> Seawall Drain Mark
+    description:
+    - text: Path between Buoy Blink Line and Seawall Drain Mark
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Cable Canopy Crawlway
+  plotKey: cable-canopy-crawlway
+  name: Cable Canopy Crawlway
+  region: CITY
+  description:
+  - text: Cables web overhead, dense enough to feel like a ceiling. One cable is tagged with a colored thread.
+    worldClock: -1
+  gates:
+  - fromPlot: cable-canopy-crawlway
+    from: Cable Canopy Crawlway
+    direction: WEST
+    toPlot: corridor-maze-segment-c
+    to: Corridor Maze Segment C
+    visible: true
+    keyString: 'true'
+    label: Cable Canopy Crawlway -> Corridor Maze Segment C
+    description:
+    - text: Path between Cable Canopy Crawlway and Corridor Maze Segment C
+      worldClock: -1
+  - fromPlot: cable-canopy-crawlway
+    from: Cable Canopy Crawlway
+    direction: EAST
+    toPlot: steam-vent-corner
+    to: Steam Vent Corner
+    visible: true
+    keyString: 'true'
+    label: Cable Canopy Crawlway -> Steam Vent Corner
+    description:
+    - text: Path between Cable Canopy Crawlway and Steam Vent Corner
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Calligraphy Card Table
+  plotKey: calligraphy-card-table
+  name: Calligraphy Card Table
+  region: CITY
+  description:
+  - text: Brush strokes dry on red paper squares. The seller smiles like he already knows what you will ask for.
+    worldClock: -1
+  gates:
+  - fromPlot: calligraphy-card-table
+    from: Calligraphy Card Table
+    direction: WEST
+    toPlot: chestnut-drum-rhythm-vendor
+    to: Chestnut Drum Rhythm Vendor
+    visible: true
+    keyString: 'true'
+    label: Calligraphy Card Table -> Chestnut Drum Rhythm Vendor
+    description:
+    - text: Path between Calligraphy Card Table and Chestnut Drum Rhythm Vendor
+      worldClock: -1
+  - fromPlot: calligraphy-card-table
+    from: Calligraphy Card Table
+    direction: EAST
+    toPlot: receipt-punch-stall
+    to: Receipt Punch Stall
+    visible: true
+    keyString: 'true'
+    label: Calligraphy Card Table -> Receipt Punch Stall
+    description:
+    - text: Path between Calligraphy Card Table and Receipt Punch Stall
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Calligraphy Table
+  plotKey: calligraphy-table
+  name: Calligraphy Table
+  region: CITY
+  description:
+  - text: Red slips hang like flags. One slip includes an unusual character choice that looks like a deliberate hint.
+    worldClock: -1
+  gates:
+  - fromPlot: calligraphy-table
+    from: Calligraphy Table
+    direction: EAST
+    toPlot: base-stair-gate
+    to: Base Stair Gate
+    visible: true
+    keyString: 'true'
+    label: Calligraphy Table -> Base Stair Gate
+    description:
+    - text: Path between Calligraphy Table and Base Stair Gate
+      worldClock: -1
+  - fromPlot: calligraphy-table
+    from: Calligraphy Table
+    direction: WEST
+    toPlot: chestnut-drum
+    to: Chestnut Drum
+    visible: true
+    keyString: 'true'
+    label: Calligraphy Table -> Chestnut Drum
+    description:
+    - text: Path between Calligraphy Table and Chestnut Drum
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Cargo Fence Markers
+  plotKey: cargo-fence-markers
+  name: Cargo Fence Markers
+  region: CITY
+  description:
+  - text: Fence posts carry painted marks and small cuts. Only one sequence matches the pattern you are meant to follow.
+    worldClock: -1
+  gates:
+  - fromPlot: cargo-fence-markers
+    from: Cargo Fence Markers
+    direction: EAST
+    toPlot: crane-shadow-sweep
+    to: Crane Shadow Sweep
+    visible: true
+    keyString: 'true'
+    label: Cargo Fence Markers -> Crane Shadow Sweep
+    description:
+    - text: Path between Cargo Fence Markers and Crane Shadow Sweep
+      worldClock: -1
+  - fromPlot: cargo-fence-markers
+    from: Cargo Fence Markers
+    direction: WEST
+    toPlot: pier-shadow-timing-line
+    to: Pier Shadow Timing Line
+    visible: true
+    keyString: 'true'
+    label: Cargo Fence Markers -> Pier Shadow Timing Line
+    description:
+    - text: Path between Cargo Fence Markers and Pier Shadow Timing Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Carved Drain Channel
+  plotKey: carved-drain-channel
+  name: Carved Drain Channel
+  region: CITY
+  description:
+  - text: A narrow channel runs beside the path. Rubbing its carvings reveals two digits and a direction arrow.
+    worldClock: -1
+  gates:
+  - fromPlot: carved-drain-channel
+    from: Carved Drain Channel
+    direction: EAST
+    toPlot: narrow-pass
+    to: Narrow Pass
+    visible: true
+    keyString: 'true'
+    label: Carved Drain Channel -> Narrow Pass
+    description:
+    - text: Path between Carved Drain Channel and Narrow Pass
+      worldClock: -1
+  - fromPlot: carved-drain-channel
+    from: Carved Drain Channel
+    direction: WEST
+    toPlot: viewpoint-bench
+    to: Viewpoint Bench
+    visible: true
+    keyString: 'true'
+    label: Carved Drain Channel -> Viewpoint Bench
+    description:
+    - text: Path between Carved Drain Channel and Viewpoint Bench
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Chalkboard Price Grid Wall
+  plotKey: chalkboard-price-grid-wall
+  name: Chalkboard Price Grid Wall
+  region: CITY
+  description:
+  - text: Prices are written in a tidy grid. If you overlay a punched receipt, only a few cells “light up.”
+    worldClock: -1
+  gates:
+  - fromPlot: chalkboard-price-grid-wall
+    from: Chalkboard Price Grid Wall
+    direction: WEST
+    toPlot: battery-lantern-swap
+    to: Battery Lantern Swap
+    visible: true
+    keyString: 'true'
+    label: Chalkboard Price Grid Wall -> Battery Lantern Swap
+    description:
+    - text: Path between Chalkboard Price Grid Wall and Battery Lantern Swap
+      worldClock: -1
+  - fromPlot: chalkboard-price-grid-wall
+    from: Chalkboard Price Grid Wall
+    direction: EAST
+    toPlot: tram-stop-eastbound
+    to: Tram Stop Eastbound
+    visible: true
+    keyString: 'true'
+    label: Chalkboard Price Grid Wall -> Tram Stop Eastbound
+    description:
+    - text: Path between Chalkboard Price Grid Wall and Tram Stop Eastbound
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Checkerboard Hill Glimpse
+  plotKey: checkerboard-hill-glimpse
+  name: Checkerboard Hill Glimpse
+  region: CITY
+  description:
+  - text: A checkerboard marker sits above the city like a warning. The air trembles with distant engines.
+    worldClock: -1
+  gates:
+  - fromPlot: checkerboard-hill-glimpse
+    from: Checkerboard Hill Glimpse
+    direction: WEST
+    toPlot: junk-boat-mooring-west
+    to: Junk Boat Mooring West
+    visible: true
+    keyString: 'true'
+    label: Checkerboard Hill Glimpse -> Junk Boat Mooring West
+    description:
+    - text: Path between Checkerboard Hill Glimpse and Junk Boat Mooring West
+      worldClock: -1
+  - fromPlot: checkerboard-hill-glimpse
+    from: Checkerboard Hill Glimpse
+    direction: EAST
+    toPlot: low-plane-roar-marker
+    to: Low Plane Roar Marker
+    visible: true
+    keyString: 'true'
+    label: Checkerboard Hill Glimpse -> Low Plane Roar Marker
+    description:
+    - text: Path between Checkerboard Hill Glimpse and Low Plane Roar Marker
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Chestnut Drum
+  plotKey: chestnut-drum
+  name: Chestnut Drum
+  region: CITY
+  description:
+  - text: The drum rhythm is slower here, steadier. The beat count feels like an ordering rule for later.
+    worldClock: -1
+  gates:
+  - fromPlot: chestnut-drum
+    from: Chestnut Drum
+    direction: EAST
+    toPlot: calligraphy-table
+    to: Calligraphy Table
+    visible: true
+    keyString: 'true'
+    label: Chestnut Drum -> Calligraphy Table
+    description:
+    - text: Path between Chestnut Drum and Calligraphy Table
+      worldClock: -1
+  - fromPlot: chestnut-drum
+    from: Chestnut Drum
+    direction: WEST
+    toPlot: herbal-tea-stall
+    to: Herbal Tea Stall
+    visible: true
+    keyString: 'true'
+    label: Chestnut Drum -> Herbal Tea Stall
+    description:
+    - text: Path between Chestnut Drum and Herbal Tea Stall
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Chestnut Drum Rhythm Vendor
+  plotKey: chestnut-drum-rhythm-vendor
+  name: Chestnut Drum Rhythm Vendor
+  region: CITY
+  description:
+  - text: A metal drum lid keeps time under a vendor’s palms. The beat repeats, then repeats again, exactly.
+    worldClock: -1
+  gates:
+  - fromPlot: chestnut-drum-rhythm-vendor
+    from: Chestnut Drum Rhythm Vendor
+    direction: EAST
+    toPlot: calligraphy-card-table
+    to: Calligraphy Card Table
+    visible: true
+    keyString: 'true'
+    label: Chestnut Drum Rhythm Vendor -> Calligraphy Card Table
+    description:
+    - text: Path between Chestnut Drum Rhythm Vendor and Calligraphy Card Table
+      worldClock: -1
+  - fromPlot: chestnut-drum-rhythm-vendor
+    from: Chestnut Drum Rhythm Vendor
+    direction: WEST
+    toPlot: dai-pai-dong-steam-line
+    to: Dai Pai Dong Steam Line
+    visible: true
+    keyString: 'true'
+    label: Chestnut Drum Rhythm Vendor -> Dai Pai Dong Steam Line
+    description:
+    - text: Path between Chestnut Drum Rhythm Vendor and Dai Pai Dong Steam Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Cinema Marquee Corner
+  plotKey: cinema-marquee-corner
+  name: Cinema Marquee Corner
+  region: CITY
+  description:
+  - text: Paper posters peel in layers. The marquee bulbs blink in patterns that do not match the movie times.
+    worldClock: -1
+  gates:
+  - fromPlot: cinema-marquee-corner
+    from: Cinema Marquee Corner
+    direction: WEST
+    toPlot: footbridge-sightline
+    to: Footbridge Sightline
+    visible: true
+    keyString: 'true'
+    label: Cinema Marquee Corner -> Footbridge Sightline
+    description:
+    - text: Path between Cinema Marquee Corner and Footbridge Sightline
+      worldClock: -1
+  - fromPlot: cinema-marquee-corner
+    from: Cinema Marquee Corner
+    direction: EAST
+    toPlot: pawn-window-numbers
+    to: Pawn Window Numbers
+    visible: true
+    keyString: 'true'
+    label: Cinema Marquee Corner -> Pawn Window Numbers
+    description:
+    - text: Path between Cinema Marquee Corner and Pawn Window Numbers
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Container Row A
+  plotKey: container-row-a
+  name: Container Row A
+  region: CITY
+  description:
+  - text: Containers form corridors that look identical. Stenciled letters are scraped in places, revealing hidden characters.
+    worldClock: -1
+  gates:
+  - fromPlot: container-row-a
+    from: Container Row A
+    direction: EAST
+    toPlot: container-row-b
+    to: Container Row B
+    visible: true
+    keyString: 'true'
+    label: Container Row A -> Container Row B
+    description:
+    - text: Path between Container Row A and Container Row B
+      worldClock: -1
+  - fromPlot: container-row-a
+    from: Container Row A
+    direction: WEST
+    toPlot: net-drying-racks
+    to: Net Drying Racks
+    visible: true
+    keyString: 'true'
+    label: Container Row A -> Net Drying Racks
+    description:
+    - text: Path between Container Row A and Net Drying Racks
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Container Row B
+  plotKey: container-row-b
+  name: Container Row B
+  region: CITY
+  description:
+  - text: A wider lane with more foot traffic. Boot prints cross and re-cross in a route that suggests a meeting point.
+    worldClock: -1
+  gates:
+  - fromPlot: container-row-b
+    from: Container Row B
+    direction: WEST
+    toPlot: container-row-a
+    to: Container Row A
+    visible: true
+    keyString: 'true'
+    label: Container Row B -> Container Row A
+    description:
+    - text: Path between Container Row B and Container Row A
+      worldClock: -1
+  - fromPlot: container-row-b
+    from: Container Row B
+    direction: EAST
+    toPlot: container-row-c
+    to: Container Row C
+    visible: true
+    keyString: 'true'
+    label: Container Row B -> Container Row C
+    description:
+    - text: Path between Container Row B and Container Row C
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Container Row C
+  plotKey: container-row-c
+  name: Container Row C
+  region: CITY
+  description:
+  - text: The deepest row is quieter and colder. Three crates share the same label, but only one has fresh tape.
+    worldClock: -1
+  gates:
+  - fromPlot: container-row-c
+    from: Container Row C
+    direction: WEST
+    toPlot: container-row-b
+    to: Container Row B
+    visible: true
+    keyString: 'true'
+    label: Container Row C -> Container Row B
+    description:
+    - text: Path between Container Row C and Container Row B
+      worldClock: -1
+  - fromPlot: container-row-c
+    from: Container Row C
+    direction: EAST
+    toPlot: dockside-scale-stencil-plate
+    to: Dockside Scale Stencil Plate
+    visible: true
+    keyString: 'true'
+    label: Container Row C -> Dockside Scale Stencil Plate
+    description:
+    - text: Path between Container Row C and Dockside Scale Stencil Plate
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Maze Segment A
+  plotKey: corridor-maze-segment-a
+  name: Corridor Maze Segment A
+  region: CITY
+  description:
+  - text: Walls sweat with condensation. Pipes overhead form a repeating layout like a map.
+    worldClock: -1
+  gates:
+  - fromPlot: corridor-maze-segment-a
+    from: Corridor Maze Segment A
+    direction: EAST
+    toPlot: corridor-maze-segment-b
+    to: Corridor Maze Segment B
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment A -> Corridor Maze Segment B
+    description:
+    - text: Path between Corridor Maze Segment A and Corridor Maze Segment B
+      worldClock: -1
+  - fromPlot: corridor-maze-segment-a
+    from: Corridor Maze Segment A
+    direction: WEST
+    toPlot: streetlight-dead-zone
+    to: Streetlight Dead Zone
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment A -> Streetlight Dead Zone
+    description:
+    - text: Path between Corridor Maze Segment A and Streetlight Dead Zone
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Maze Segment B
+  plotKey: corridor-maze-segment-b
+  name: Corridor Maze Segment B
+  region: CITY
+  description:
+  - text: The air is warmer here. A hanging cord brush touches your shoulder at fixed intervals.
+    worldClock: -1
+  gates:
+  - fromPlot: corridor-maze-segment-b
+    from: Corridor Maze Segment B
+    direction: WEST
+    toPlot: corridor-maze-segment-a
+    to: Corridor Maze Segment A
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment B -> Corridor Maze Segment A
+    description:
+    - text: Path between Corridor Maze Segment B and Corridor Maze Segment A
+      worldClock: -1
+  - fromPlot: corridor-maze-segment-b
+    from: Corridor Maze Segment B
+    direction: EAST
+    toPlot: corridor-maze-segment-c
+    to: Corridor Maze Segment C
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment B -> Corridor Maze Segment C
+    description:
+    - text: Path between Corridor Maze Segment B and Corridor Maze Segment C
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Maze Segment C
+  plotKey: corridor-maze-segment-c
+  name: Corridor Maze Segment C
+  region: CITY
+  description:
+  - text: A turn that always feels wrong. Scratched symbols on the wall appear in pairs, like a matching puzzle.
+    worldClock: -1
+  gates:
+  - fromPlot: corridor-maze-segment-c
+    from: Corridor Maze Segment C
+    direction: EAST
+    toPlot: cable-canopy-crawlway
+    to: Cable Canopy Crawlway
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment C -> Cable Canopy Crawlway
+    description:
+    - text: Path between Corridor Maze Segment C and Cable Canopy Crawlway
+      worldClock: -1
+  - fromPlot: corridor-maze-segment-c
+    from: Corridor Maze Segment C
+    direction: WEST
+    toPlot: corridor-maze-segment-b
+    to: Corridor Maze Segment B
+    visible: true
+    keyString: 'true'
+    label: Corridor Maze Segment C -> Corridor Maze Segment B
+    description:
+    - text: Path between Corridor Maze Segment C and Corridor Maze Segment B
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Courtyard Corner Shrine
+  plotKey: courtyard-corner-shrine
+  name: Courtyard Corner Shrine
+  region: CITY
+  description:
+  - text: A small corner shrine holds the final shard. It is hidden where respectful hands naturally avoid touching.
+    worldClock: -1
+  gates:
+  - fromPlot: courtyard-corner-shrine
+    from: Courtyard Corner Shrine
+    direction: EAST
+    toPlot: courtyard-exit-rail
+    to: Courtyard Exit Rail
+    visible: true
+    keyString: 'true'
+    label: Courtyard Corner Shrine -> Courtyard Exit Rail
+    description:
+    - text: Path between Courtyard Corner Shrine and Courtyard Exit Rail
+      worldClock: -1
+  - fromPlot: courtyard-corner-shrine
+    from: Courtyard Corner Shrine
+    direction: WEST
+    toPlot: side-path-mini-buddhas
+    to: Side Path Mini Buddhas
+    visible: true
+    keyString: 'true'
+    label: Courtyard Corner Shrine -> Side Path Mini Buddhas
+    description:
+    - text: Path between Courtyard Corner Shrine and Side Path Mini Buddhas
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Courtyard Exit Rail
+  plotKey: courtyard-exit-rail
+  name: Courtyard Exit Rail
+  region: CITY
+  description:
+  - text: A rail guides visitors forward. A latch here accepts the assembled phrase and clicks when correct.
+    worldClock: -1
+  gates:
+  - fromPlot: courtyard-exit-rail
+    from: Courtyard Exit Rail
+    direction: WEST
+    toPlot: courtyard-corner-shrine
+    to: Courtyard Corner Shrine
+    visible: true
+    keyString: 'true'
+    label: Courtyard Exit Rail -> Courtyard Corner Shrine
+    description:
+    - text: Path between Courtyard Exit Rail and Courtyard Corner Shrine
+      worldClock: -1
+  - fromPlot: courtyard-exit-rail
+    from: Courtyard Exit Rail
+    direction: EAST
+    toPlot: veranda-threshold-sightline
+    to: Veranda Threshold Sightline
+    visible: true
+    keyString: 'true'
+    label: Courtyard Exit Rail -> Veranda Threshold Sightline
+    description:
+    - text: Path between Courtyard Exit Rail and Veranda Threshold Sightline
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Courtyard Threshold
+  plotKey: courtyard-threshold
+  name: Courtyard Threshold
+  region: CITY
+  description:
+  - text: The climb releases into a wider space. Wind carries incense, and the puzzle feels closer to completion.
+    worldClock: -1
+  gates:
+  - fromPlot: courtyard-threshold
+    from: Courtyard Threshold
+    direction: EAST
+    toPlot: bell-frame-assembly-point
+    to: Bell Frame Assembly Point
+    visible: true
+    keyString: 'true'
+    label: Courtyard Threshold -> Bell Frame Assembly Point
+    description:
+    - text: Path between Courtyard Threshold and Bell Frame Assembly Point
+      worldClock: -1
+  - fromPlot: courtyard-threshold
+    from: Courtyard Threshold
+    direction: WEST
+    toPlot: upper-gate-lintel
+    to: Upper Gate Lintel
+    visible: true
+    keyString: 'true'
+    label: Courtyard Threshold -> Upper Gate Lintel
+    description:
+    - text: Path between Courtyard Threshold and Upper Gate Lintel
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Crane Shadow Sweep
+  plotKey: crane-shadow-sweep
+  name: Crane Shadow Sweep
+  region: CITY
+  description:
+  - text: A crane swings slow overhead. Its shadow acts like a clock hand across stacked containers.
+    worldClock: -1
+  gates:
+  - fromPlot: crane-shadow-sweep
+    from: Crane Shadow Sweep
+    direction: WEST
+    toPlot: cargo-fence-markers
+    to: Cargo Fence Markers
+    visible: true
+    keyString: 'true'
+    label: Crane Shadow Sweep -> Cargo Fence Markers
+    description:
+    - text: Path between Crane Shadow Sweep and Cargo Fence Markers
+      worldClock: -1
+  - fromPlot: crane-shadow-sweep
+    from: Crane Shadow Sweep
+    direction: EAST
+    toPlot: net-drying-racks
+    to: Net Drying Racks
+    visible: true
+    keyString: 'true'
+    label: Crane Shadow Sweep -> Net Drying Racks
+    description:
+    - text: Path between Crane Shadow Sweep and Net Drying Racks
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Dai Pai Dong Steam Line
+  plotKey: dai-pai-dong-steam-line
+  name: Dai Pai Dong Steam Line
+  region: CITY
+  description:
+  - text: Steam fogs the air and turns neon into halos. Bowls clink, stools scrape, and nobody looks up twice.
+    worldClock: -1
+  gates:
+  - fromPlot: dai-pai-dong-steam-line
+    from: Dai Pai Dong Steam Line
+    direction: EAST
+    toPlot: chestnut-drum-rhythm-vendor
+    to: Chestnut Drum Rhythm Vendor
+    visible: true
+    keyString: 'true'
+    label: Dai Pai Dong Steam Line -> Chestnut Drum Rhythm Vendor
+    description:
+    - text: Path between Dai Pai Dong Steam Line and Chestnut Drum Rhythm Vendor
+      worldClock: -1
+  - fromPlot: dai-pai-dong-steam-line
+    from: Dai Pai Dong Steam Line
+    direction: WEST
+    toPlot: temple-street-lantern-row
+    to: Temple Street Lantern Row
+    visible: true
+    keyString: 'true'
+    label: Dai Pai Dong Steam Line -> Temple Street Lantern Row
+    description:
+    - text: Path between Dai Pai Dong Steam Line and Temple Street Lantern Row
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Des Voeux Road Rush
+  plotKey: des-voeux-road-rush
+  name: Des Voeux Road Rush
+  region: CITY
+  description:
+  - text: Suits and porters move with purpose. Delivery tags flutter like flags, each stamped with a tiny icon.
+    worldClock: -1
+  gates:
+  - fromPlot: des-voeux-road-rush
+    from: Des Voeux Road Rush
+    direction: EAST
+    toPlot: dried-goods-sacks-lane
+    to: Dried Goods Sacks Lane
+    visible: true
+    keyString: 'true'
+    label: Des Voeux Road Rush -> Dried Goods Sacks Lane
+    description:
+    - text: Path between Des Voeux Road Rush and Dried Goods Sacks Lane
+      worldClock: -1
+  - fromPlot: des-voeux-road-rush
+    from: Des Voeux Road Rush
+    direction: WEST
+    toPlot: rain-slick-signal-corner
+    to: Rain-Slick Signal Corner
+    visible: true
+    keyString: 'true'
+    label: Des Voeux Road Rush -> Rain-Slick Signal Corner
+    description:
+    - text: Path between Des Voeux Road Rush and Rain-Slick Signal Corner
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Dockside Scale Stencil Plate
+  plotKey: dockside-scale-stencil-plate
+  name: Dockside Scale Stencil Plate
+  region: CITY
+  description:
+  - text: A weighing plate sits flush with the ground. Its stamped serial is partially obscured by chalk.
+    worldClock: -1
+  gates:
+  - fromPlot: dockside-scale-stencil-plate
+    from: Dockside Scale Stencil Plate
+    direction: WEST
+    toPlot: container-row-c
+    to: Container Row C
+    visible: true
+    keyString: 'true'
+    label: Dockside Scale Stencil Plate -> Container Row C
+    description:
+    - text: Path between Dockside Scale Stencil Plate and Container Row C
+      worldClock: -1
+  - fromPlot: dockside-scale-stencil-plate
+    from: Dockside Scale Stencil Plate
+    direction: EAST
+    toPlot: mooring-rope-coil-pile
+    to: Mooring Rope Coil Pile
+    visible: true
+    keyString: 'true'
+    label: Dockside Scale Stencil Plate -> Mooring Rope Coil Pile
+    description:
+    - text: Path between Dockside Scale Stencil Plate and Mooring Rope Coil Pile
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Dried Goods Sacks Lane
+  plotKey: dried-goods-sacks-lane
+  name: Dried Goods Sacks Lane
+  region: CITY
+  description:
+  - text: Burlap sacks stack high, smelling of sea and spice. Chalk marks on the sacks form a repeating code.
+    worldClock: -1
+  gates:
+  - fromPlot: dried-goods-sacks-lane
+    from: Dried Goods Sacks Lane
+    direction: WEST
+    toPlot: des-voeux-road-rush
+    to: Des Voeux Road Rush
+    visible: true
+    keyString: 'true'
+    label: Dried Goods Sacks Lane -> Des Voeux Road Rush
+    description:
+    - text: Path between Dried Goods Sacks Lane and Des Voeux Road Rush
+      worldClock: -1
+  - fromPlot: dried-goods-sacks-lane
+    from: Dried Goods Sacks Lane
+    direction: EAST
+    toPlot: hill-steps-landing
+    to: Hill Steps Landing
+    visible: true
+    keyString: 'true'
+    label: Dried Goods Sacks Lane -> Hill Steps Landing
+    description:
+    - text: Path between Dried Goods Sacks Lane and Hill Steps Landing
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Electronics Salvage Blanket
+  plotKey: electronics-salvage-blanket
+  name: Electronics Salvage Blanket
+  region: CITY
+  description:
+  - text: Wires, boards, and knobs spill across a blanket. A specific connector type stands out as “useful.”
+    worldClock: -1
+  gates:
+  - fromPlot: electronics-salvage-blanket
+    from: Electronics Salvage Blanket
+    direction: WEST
+    toPlot: overpass-shadow-stripe
+    to: Overpass Shadow Stripe
+    visible: true
+    keyString: 'true'
+    label: Electronics Salvage Blanket -> Overpass Shadow Stripe
+    description:
+    - text: Path between Electronics Salvage Blanket and Overpass Shadow Stripe
+      worldClock: -1
+  - fromPlot: electronics-salvage-blanket
+    from: Electronics Salvage Blanket
+    direction: EAST
+    toPlot: wire-spool-cart
+    to: Wire Spool Cart
+    visible: true
+    keyString: 'true'
+    label: Electronics Salvage Blanket -> Wire Spool Cart
+    description:
+    - text: Path between Electronics Salvage Blanket and Wire Spool Cart
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Fabric Bolt Row
+  plotKey: fabric-bolt-row
+  name: Fabric Bolt Row
+  region: CITY
+  description:
+  - text: Tall fabric rolls make a soft canyon. Certain patterns repeat with small differences, like a set of clues.
+    worldClock: -1
+  gates:
+  - fromPlot: fabric-bolt-row
+    from: Fabric Bolt Row
+    direction: EAST
+    toPlot: fruit-crate-steps
+    to: Fruit Crate Steps
+    visible: true
+    keyString: 'true'
+    label: Fabric Bolt Row -> Fruit Crate Steps
+    description:
+    - text: Path between Fabric Bolt Row and Fruit Crate Steps
+      worldClock: -1
+  - fromPlot: fabric-bolt-row
+    from: Fabric Bolt Row
+    direction: WEST
+    toPlot: goldfish-bag-lane
+    to: Goldfish Bag Lane
+    visible: true
+    keyString: 'true'
+    label: Fabric Bolt Row -> Goldfish Bag Lane
+    description:
+    - text: Path between Fabric Bolt Row and Goldfish Bag Lane
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Ferry Ticket Token Window
+  plotKey: ferry-ticket-token-window
+  name: Ferry Ticket Token Window
+  region: CITY
+  description:
+  - text: Tickets slide out with a soft slap. The clerk taps the counter twice for some customers and once for others.
+    worldClock: -1
+  gates:
+  - fromPlot: ferry-ticket-token-window
+    from: Ferry Ticket Token Window
+    direction: WEST
+    toPlot: postbox-dead-drop-slot
+    to: Postbox Dead Drop Slot
+    visible: true
+    keyString: 'true'
+    label: Ferry Ticket Token Window -> Postbox Dead Drop Slot
+    description:
+    - text: Path between Ferry Ticket Token Window and Postbox Dead Drop Slot
+      worldClock: -1
+  - fromPlot: ferry-ticket-token-window
+    from: Ferry Ticket Token Window
+    direction: EAST
+    toPlot: queue-position-posts
+    to: Queue Position Posts
+    visible: true
+    keyString: 'true'
+    label: Ferry Ticket Token Window -> Queue Position Posts
+    description:
+    - text: Path between Ferry Ticket Token Window and Queue Position Posts
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: First Arhat Pair
+  plotKey: first-arhat-pair
+  name: First Arhat Pair
+  region: CITY
+  description:
+  - text: Two statues face each other with different hand poses. Choosing the correct side feels like passing a test.
+    worldClock: -1
+  gates:
+  - fromPlot: first-arhat-pair
+    from: First Arhat Pair
+    direction: WEST
+    toPlot: base-stair-gate
+    to: Base Stair Gate
+    visible: true
+    keyString: 'true'
+    label: First Arhat Pair -> Base Stair Gate
+    description:
+    - text: Path between First Arhat Pair and Base Stair Gate
+      worldClock: -1
+  - fromPlot: first-arhat-pair
+    from: First Arhat Pair
+    direction: EAST
+    toPlot: laughing-bend
+    to: Laughing Bend
+    visible: true
+    keyString: 'true'
+    label: First Arhat Pair -> Laughing Bend
+    description:
+    - text: Path between First Arhat Pair and Laughing Bend
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Flicker Sign Stack
+  plotKey: flicker-sign-stack
+  name: Flicker Sign Stack
+  region: CITY
+  description:
+  - text: One vertical sign sputters in a steady rhythm. The “wrong” strokes look intentional, like a code.
+    worldClock: -1
+  gates:
+  - fromPlot: flicker-sign-stack
+    from: Flicker Sign Stack
+    direction: EAST
+    toPlot: footbridge-sightline
+    to: Footbridge Sightline
+    visible: true
+    keyString: 'true'
+    label: Flicker Sign Stack -> Footbridge Sightline
+    description:
+    - text: Path between Flicker Sign Stack and Footbridge Sightline
+      worldClock: -1
+  - fromPlot: flicker-sign-stack
+    from: Flicker Sign Stack
+    direction: WEST
+    toPlot: nathan-road-neon-canyon
+    to: Nathan Road Neon Canyon
+    visible: true
+    keyString: 'true'
+    label: Flicker Sign Stack -> Nathan Road Neon Canyon
+    description:
+    - text: Path between Flicker Sign Stack and Nathan Road Neon Canyon
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Footbridge Sightline
+  plotKey: footbridge-sightline
+  name: Footbridge Sightline
+  region: CITY
+  description:
+  - text: From the bridge you can read multiple signs at once. Wind carries diesel and sweet roasted sugar.
+    worldClock: -1
+  gates:
+  - fromPlot: footbridge-sightline
+    from: Footbridge Sightline
+    direction: EAST
+    toPlot: cinema-marquee-corner
+    to: Cinema Marquee Corner
+    visible: true
+    keyString: 'true'
+    label: Footbridge Sightline -> Cinema Marquee Corner
+    description:
+    - text: Path between Footbridge Sightline and Cinema Marquee Corner
+      worldClock: -1
+  - fromPlot: footbridge-sightline
+    from: Footbridge Sightline
+    direction: WEST
+    toPlot: flicker-sign-stack
+    to: Flicker Sign Stack
+    visible: true
+    keyString: 'true'
+    label: Footbridge Sightline -> Flicker Sign Stack
+    description:
+    - text: Path between Footbridge Sightline and Flicker Sign Stack
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Four-Pose Row
+  plotKey: four-pose-row
+  name: Four-Pose Row
+  region: CITY
+  description:
+  - text: Four statues in a row show four distinct mudras. One is the “odd” pose, and the odd pose gives the number.
+    worldClock: -1
+  gates:
+  - fromPlot: four-pose-row
+    from: Four-Pose Row
+    direction: EAST
+    toPlot: silent-corner
+    to: Silent Corner
+    visible: true
+    keyString: 'true'
+    label: Four-Pose Row -> Silent Corner
+    description:
+    - text: Path between Four-Pose Row and Silent Corner
+      worldClock: -1
+  - fromPlot: four-pose-row
+    from: Four-Pose Row
+    direction: WEST
+    toPlot: stencil-wall-relief
+    to: Stencil Wall Relief
+    visible: true
+    keyString: 'true'
+    label: Four-Pose Row -> Stencil Wall Relief
+    description:
+    - text: Path between Four-Pose Row and Stencil Wall Relief
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Fruit Crate Steps
+  plotKey: fruit-crate-steps
+  name: Fruit Crate Steps
+  region: CITY
+  description:
+  - text: Crates stacked into steps create a shortcut. The labels on the crates spell something if you read only the torn
+      ones.
+    worldClock: -1
+  gates:
+  - fromPlot: fruit-crate-steps
+    from: Fruit Crate Steps
+    direction: WEST
+    toPlot: fabric-bolt-row
+    to: Fabric Bolt Row
+    visible: true
+    keyString: 'true'
+    label: Fruit Crate Steps -> Fabric Bolt Row
+    description:
+    - text: Path between Fruit Crate Steps and Fabric Bolt Row
+      worldClock: -1
+  - fromPlot: fruit-crate-steps
+    from: Fruit Crate Steps
+    direction: EAST
+    toPlot: street-game-table
+    to: Street Game Table
+    visible: true
+    keyString: 'true'
+    label: Fruit Crate Steps -> Street Game Table
+    description:
+    - text: Path between Fruit Crate Steps and Street Game Table
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Gate Mouth Phrase Check
+  plotKey: gate-mouth-phrase-check
+  name: Gate Mouth Phrase Check
+  region: CITY
+  description:
+  - text: The entry is narrow and watched. People pass only after a short exchange that sounds like nonsense.
+    worldClock: -1
+  gates:
+  - fromPlot: gate-mouth-phrase-check
+    from: Gate Mouth Phrase Check
+    direction: EAST
+    toPlot: bottle-glass-wall-bend
+    to: Bottle-Glass Wall Bend
+    visible: true
+    keyString: 'true'
+    label: Gate Mouth Phrase Check -> Bottle-Glass Wall Bend
+    description:
+    - text: Path between Gate Mouth Phrase Check and Bottle-Glass Wall Bend
+      worldClock: -1
+  - fromPlot: gate-mouth-phrase-check
+    from: Gate Mouth Phrase Check
+    direction: WEST
+    toPlot: outer-wall-market-rim
+    to: Outer Wall Market Rim
+    visible: true
+    keyString: 'true'
+    label: Gate Mouth Phrase Check -> Outer Wall Market Rim
+    description:
+    - text: Path between Gate Mouth Phrase Check and Outer Wall Market Rim
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Goldfish Bag Lane
+  plotKey: goldfish-bag-lane
+  name: Goldfish Bag Lane
+  region: CITY
+  description:
+  - text: Clear plastic bags swing like little lanterns. Water glints, and the crowd parts and seals behind you.
+    worldClock: -1
+  gates:
+  - fromPlot: goldfish-bag-lane
+    from: Goldfish Bag Lane
+    direction: WEST
+    toPlot: backlane-clothesline-gap
+    to: Backlane Clothesline Gap
+    visible: true
+    keyString: 'true'
+    label: Goldfish Bag Lane -> Backlane Clothesline Gap
+    description:
+    - text: Path between Goldfish Bag Lane and Backlane Clothesline Gap
+      worldClock: -1
+  - fromPlot: goldfish-bag-lane
+    from: Goldfish Bag Lane
+    direction: EAST
+    toPlot: fabric-bolt-row
+    to: Fabric Bolt Row
+    visible: true
+    keyString: 'true'
+    label: Goldfish Bag Lane -> Fabric Bolt Row
+    description:
+    - text: Path between Goldfish Bag Lane and Fabric Bolt Row
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Harbor Promenade Rail Walk
+  plotKey: harbor-promenade-rail-walk
+  name: Harbor Promenade Rail Walk
+  region: CITY
+  description:
+  - text: The harbor opens wide and loud. Ferries cut wakes like drawn lines across a dark board.
+    worldClock: -1
+  gates:
+  - fromPlot: harbor-promenade-rail-walk
+    from: Harbor Promenade Rail Walk
+    direction: WEST
+    toPlot: boarding-bell-line
+    to: Boarding Bell Line
+    visible: true
+    keyString: 'true'
+    label: Harbor Promenade Rail Walk -> Boarding Bell Line
+    description:
+    - text: Path between Harbor Promenade Rail Walk and Boarding Bell Line
+      worldClock: -1
+  - fromPlot: harbor-promenade-rail-walk
+    from: Harbor Promenade Rail Walk
+    direction: EAST
+    toPlot: typhoon-shelter-lookout
+    to: Typhoon Shelter Lookout
+    visible: true
+    keyString: 'true'
+    label: Harbor Promenade Rail Walk -> Typhoon Shelter Lookout
+    description:
+    - text: Path between Harbor Promenade Rail Walk and Typhoon Shelter Lookout
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Herbal Tea Stall
+  plotKey: herbal-tea-stall
+  name: Herbal Tea Stall
+  region: CITY
+  description:
+  - text: Bitter and sweet jars sit side by side. The vendor taps one jar for “flip” and the other for “keep.”
+    worldClock: -1
+  gates:
+  - fromPlot: herbal-tea-stall
+    from: Herbal Tea Stall
+    direction: EAST
+    toPlot: chestnut-drum
+    to: Chestnut Drum
+    visible: true
+    keyString: 'true'
+    label: Herbal Tea Stall -> Chestnut Drum
+    description:
+    - text: Path between Herbal Tea Stall and Chestnut Drum
+      worldClock: -1
+  - fromPlot: herbal-tea-stall
+    from: Herbal Tea Stall
+    direction: WEST
+    toPlot: noodle-steam-cart
+    to: Noodle Steam Cart
+    visible: true
+    keyString: 'true'
+    label: Herbal Tea Stall -> Noodle Steam Cart
+    description:
+    - text: Path between Herbal Tea Stall and Noodle Steam Cart
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Hill Steps Landing
+  plotKey: hill-steps-landing
+  name: Hill Steps Landing
+  region: CITY
+  description:
+  - text: Stone steps climb between buildings. A handrail has notches worn into it at regular intervals.
+    worldClock: -1
+  gates:
+  - fromPlot: hill-steps-landing
+    from: Hill Steps Landing
+    direction: WEST
+    toPlot: dried-goods-sacks-lane
+    to: Dried Goods Sacks Lane
+    visible: true
+    keyString: 'true'
+    label: Hill Steps Landing -> Dried Goods Sacks Lane
+    description:
+    - text: Path between Hill Steps Landing and Dried Goods Sacks Lane
+      worldClock: -1
+  - fromPlot: hill-steps-landing
+    from: Hill Steps Landing
+    direction: EAST
+    toPlot: postbox-dead-drop-slot
+    to: Postbox Dead Drop Slot
+    visible: true
+    keyString: 'true'
+    label: Hill Steps Landing -> Postbox Dead Drop Slot
+    description:
+    - text: Path between Hill Steps Landing and Postbox Dead Drop Slot
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Junk Boat Mooring East
+  plotKey: junk-boat-mooring-east
+  name: Junk Boat Mooring East
+  region: CITY
+  description:
+  - text: Wooden hulls creak against rubber bumpers. A lantern hangs from a mast with a colored bead charm.
+    worldClock: -1
+  gates:
+  - fromPlot: junk-boat-mooring-east
+    from: Junk Boat Mooring East
+    direction: EAST
+    toPlot: junk-boat-mooring-west
+    to: Junk Boat Mooring West
+    visible: true
+    keyString: 'true'
+    label: Junk Boat Mooring East -> Junk Boat Mooring West
+    description:
+    - text: Path between Junk Boat Mooring East and Junk Boat Mooring West
+      worldClock: -1
+  - fromPlot: junk-boat-mooring-east
+    from: Junk Boat Mooring East
+    direction: WEST
+    toPlot: mooring-rope-coil-pile
+    to: Mooring Rope Coil Pile
+    visible: true
+    keyString: 'true'
+    label: Junk Boat Mooring East -> Mooring Rope Coil Pile
+    description:
+    - text: Path between Junk Boat Mooring East and Mooring Rope Coil Pile
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Junk Boat Mooring West
+  plotKey: junk-boat-mooring-west
+  name: Junk Boat Mooring West
+  region: CITY
+  description:
+  - text: The water smells sharper here. A loose plank reveals a hidden cavity large enough for a small case.
+    worldClock: -1
+  gates:
+  - fromPlot: junk-boat-mooring-west
+    from: Junk Boat Mooring West
+    direction: EAST
+    toPlot: checkerboard-hill-glimpse
+    to: Checkerboard Hill Glimpse
+    visible: true
+    keyString: 'true'
+    label: Junk Boat Mooring West -> Checkerboard Hill Glimpse
+    description:
+    - text: Path between Junk Boat Mooring West and Checkerboard Hill Glimpse
+      worldClock: -1
+  - fromPlot: junk-boat-mooring-west
+    from: Junk Boat Mooring West
+    direction: WEST
+    toPlot: junk-boat-mooring-east
+    to: Junk Boat Mooring East
+    visible: true
+    keyString: 'true'
+    label: Junk Boat Mooring West -> Junk Boat Mooring East
+    description:
+    - text: Path between Junk Boat Mooring West and Junk Boat Mooring East
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Ladder Rung Gap
+  plotKey: ladder-rung-gap
+  name: Ladder Rung Gap
+  region: CITY
+  description:
+  - text: A ladder climbs to a higher lip. One rung is missing, forcing a careful move and a deliberate choice.
+    worldClock: -1
+  gates:
+  - fromPlot: ladder-rung-gap
+    from: Ladder Rung Gap
+    direction: EAST
+    toPlot: rooftop-hatch-ledge
+    to: Rooftop Hatch Ledge
+    visible: true
+    keyString: 'true'
+    label: Ladder Rung Gap -> Rooftop Hatch Ledge
+    description:
+    - text: Path between Ladder Rung Gap and Rooftop Hatch Ledge
+      worldClock: -1
+  - fromPlot: ladder-rung-gap
+    from: Ladder Rung Gap
+    direction: WEST
+    toPlot: stair-cage-exterior
+    to: Stair Cage Exterior
+    visible: true
+    keyString: 'true'
+    label: Ladder Rung Gap -> Stair Cage Exterior
+    description:
+    - text: Path between Ladder Rung Gap and Stair Cage Exterior
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Laughing Bend
+  plotKey: laughing-bend
+  name: Laughing Bend
+  region: CITY
+  description:
+  - text: A laughing figure seems to grin at you from the turn. Counting the laughs carved nearby yields a digit.
+    worldClock: -1
+  gates:
+  - fromPlot: laughing-bend
+    from: Laughing Bend
+    direction: WEST
+    toPlot: first-arhat-pair
+    to: First Arhat Pair
+    visible: true
+    keyString: 'true'
+    label: Laughing Bend -> First Arhat Pair
+    description:
+    - text: Path between Laughing Bend and First Arhat Pair
+      worldClock: -1
+  - fromPlot: laughing-bend
+    from: Laughing Bend
+    direction: EAST
+    toPlot: switchback-marker-stone
+    to: Switchback Marker Stone
+    visible: true
+    keyString: 'true'
+    label: Laughing Bend -> Switchback Marker Stone
+    description:
+    - text: Path between Laughing Bend and Switchback Marker Stone
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Lightwell Courtyard Ring
+  plotKey: lightwell-courtyard-ring
+  name: Lightwell Courtyard Ring
+  region: CITY
+  description:
+  - text: A small open square climbs straight upward. Laundry lines cross it like a grid.
+    worldClock: -1
+  gates:
+  - fromPlot: lightwell-courtyard-ring
+    from: Lightwell Courtyard Ring
+    direction: WEST
+    toPlot: steam-vent-corner
+    to: Steam Vent Corner
+    visible: true
+    keyString: 'true'
+    label: Lightwell Courtyard Ring -> Steam Vent Corner
+    description:
+    - text: Path between Lightwell Courtyard Ring and Steam Vent Corner
+      worldClock: -1
+  - fromPlot: lightwell-courtyard-ring
+    from: Lightwell Courtyard Ring
+    direction: EAST
+    toPlot: well-rim-marker-plate
+    to: Well Rim Marker Plate
+    visible: true
+    keyString: 'true'
+    label: Lightwell Courtyard Ring -> Well Rim Marker Plate
+    description:
+    - text: Path between Lightwell Courtyard Ring and Well Rim Marker Plate
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Loudspeaker Pole Corner
+  plotKey: loudspeaker-pole-corner
+  name: Loudspeaker Pole Corner
+  region: CITY
+  description:
+  - text: A speaker crackles with announcements. A short tone sequence repeats between messages.
+    worldClock: -1
+  gates:
+  - fromPlot: loudspeaker-pole-corner
+    from: Loudspeaker Pole Corner
+    direction: EAST
+    toPlot: overpass-shadow-stripe
+    to: Overpass Shadow Stripe
+    visible: true
+    keyString: 'true'
+    label: Loudspeaker Pole Corner -> Overpass Shadow Stripe
+    description:
+    - text: Path between Loudspeaker Pole Corner and Overpass Shadow Stripe
+      worldClock: -1
+  - fromPlot: loudspeaker-pole-corner
+    from: Loudspeaker Pole Corner
+    direction: WEST
+    toPlot: street-game-table
+    to: Street Game Table
+    visible: true
+    keyString: 'true'
+    label: Loudspeaker Pole Corner -> Street Game Table
+    description:
+    - text: Path between Loudspeaker Pole Corner and Street Game Table
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Low Plane Roar Marker
+  plotKey: low-plane-roar-marker
+  name: Low Plane Roar Marker
+  region: CITY
+  description:
+  - text: A plane passes so low the sound arrives in layers. Counting the roar-beats gives a reliable timing cue.
+    worldClock: -1
+  gates:
+  - fromPlot: low-plane-roar-marker
+    from: Low Plane Roar Marker
+    direction: WEST
+    toPlot: checkerboard-hill-glimpse
+    to: Checkerboard Hill Glimpse
+    visible: true
+    keyString: 'true'
+    label: Low Plane Roar Marker -> Checkerboard Hill Glimpse
+    description:
+    - text: Path between Low Plane Roar Marker and Checkerboard Hill Glimpse
+      worldClock: -1
+  - fromPlot: low-plane-roar-marker
+    from: Low Plane Roar Marker
+    direction: EAST
+    toPlot: runway-fence-line
+    to: Runway Fence Line
+    visible: true
+    keyString: 'true'
+    label: Low Plane Roar Marker -> Runway Fence Line
+    description:
+    - text: Path between Low Plane Roar Marker and Runway Fence Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Lower Gate Lintel
+  plotKey: lower-gate-lintel
+  name: Lower Gate Lintel
+  region: CITY
+  description:
+  - text: A lintel frames the next ascent. Scratches on the stone show where others solved, failed, and tried again.
+    worldClock: -1
+  gates:
+  - fromPlot: lower-gate-lintel
+    from: Lower Gate Lintel
+    direction: WEST
+    toPlot: rest-landing
+    to: Rest Landing
+    visible: true
+    keyString: 'true'
+    label: Lower Gate Lintel -> Rest Landing
+    description:
+    - text: Path between Lower Gate Lintel and Rest Landing
+      worldClock: -1
+  - fromPlot: lower-gate-lintel
+    from: Lower Gate Lintel
+    direction: EAST
+    toPlot: stencil-wall-relief
+    to: Stencil Wall Relief
+    visible: true
+    keyString: 'true'
+    label: Lower Gate Lintel -> Stencil Wall Relief
+    description:
+    - text: Path between Lower Gate Lintel and Stencil Wall Relief
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Mooring Rope Coil Pile
+  plotKey: mooring-rope-coil-pile
+  name: Mooring Rope Coil Pile
+  region: CITY
+  description:
+  - text: Thick ropes coil like sleeping snakes. One coil is tied in a distinctive knot, like a signature.
+    worldClock: -1
+  gates:
+  - fromPlot: mooring-rope-coil-pile
+    from: Mooring Rope Coil Pile
+    direction: WEST
+    toPlot: dockside-scale-stencil-plate
+    to: Dockside Scale Stencil Plate
+    visible: true
+    keyString: 'true'
+    label: Mooring Rope Coil Pile -> Dockside Scale Stencil Plate
+    description:
+    - text: Path between Mooring Rope Coil Pile and Dockside Scale Stencil Plate
+      worldClock: -1
+  - fromPlot: mooring-rope-coil-pile
+    from: Mooring Rope Coil Pile
+    direction: EAST
+    toPlot: junk-boat-mooring-east
+    to: Junk Boat Mooring East
+    visible: true
+    keyString: 'true'
+    label: Mooring Rope Coil Pile -> Junk Boat Mooring East
+    description:
+    - text: Path between Mooring Rope Coil Pile and Junk Boat Mooring East
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Narrow Alley Mouth Split
+  plotKey: narrow-alley-mouth-split
+  name: Narrow Alley Mouth Split
+  region: CITY
+  description:
+  - text: The alley forks into two equally dark paths. Drips hit the ground in a rhythm you can follow.
+    worldClock: -1
+  gates:
+  - fromPlot: narrow-alley-mouth-split
+    from: Narrow Alley Mouth Split
+    direction: WEST
+    toPlot: bottle-glass-wall-bend
+    to: Bottle-Glass Wall Bend
+    visible: true
+    keyString: 'true'
+    label: Narrow Alley Mouth Split -> Bottle-Glass Wall Bend
+    description:
+    - text: Path between Narrow Alley Mouth Split and Bottle-Glass Wall Bend
+      worldClock: -1
+  - fromPlot: narrow-alley-mouth-split
+    from: Narrow Alley Mouth Split
+    direction: EAST
+    toPlot: streetlight-dead-zone
+    to: Streetlight Dead Zone
+    visible: true
+    keyString: 'true'
+    label: Narrow Alley Mouth Split -> Streetlight Dead Zone
+    description:
+    - text: Path between Narrow Alley Mouth Split and Streetlight Dead Zone
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Narrow Pass
+  plotKey: narrow-pass
+  name: Narrow Pass
+  region: CITY
+  description:
+  - text: The path pinches between stone and railing. A choice here commits you to one short loop before you can return.
+    worldClock: -1
+  gates:
+  - fromPlot: narrow-pass
+    from: Narrow Pass
+    direction: WEST
+    toPlot: carved-drain-channel
+    to: Carved Drain Channel
+    visible: true
+    keyString: 'true'
+    label: Narrow Pass -> Carved Drain Channel
+    description:
+    - text: Path between Narrow Pass and Carved Drain Channel
+      worldClock: -1
+  - fromPlot: narrow-pass
+    from: Narrow Pass
+    direction: EAST
+    toPlot: upper-cluster-start
+    to: Upper Cluster Start
+    visible: true
+    keyString: 'true'
+    label: Narrow Pass -> Upper Cluster Start
+    description:
+    - text: Path between Narrow Pass and Upper Cluster Start
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Nathan Road Neon Canyon
+  plotKey: nathan-road-neon-canyon
+  name: Nathan Road Neon Canyon
+  region: CITY
+  description:
+  - text: Neon stacks climb like cliffs. The sidewalk is a moving river of shoulders, reflections, and flickering characters.
+    worldClock: -1
+  gates:
+  - fromPlot: nathan-road-neon-canyon
+    from: Nathan Road Neon Canyon
+    direction: EAST
+    toPlot: flicker-sign-stack
+    to: Flicker Sign Stack
+    visible: true
+    keyString: 'true'
+    label: Nathan Road Neon Canyon -> Flicker Sign Stack
+    description:
+    - text: Path between Nathan Road Neon Canyon and Flicker Sign Stack
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Neon Countdown Junction
+  plotKey: neon-countdown-junction
+  name: Neon Countdown Junction
+  region: CITY
+  description:
+  - text: A street corner where traffic and people conflict like tides. A public clock ticks loud enough to feel.
+    worldClock: -1
+  gates:
+  - fromPlot: neon-countdown-junction
+    from: Neon Countdown Junction
+    direction: WEST
+    toPlot: side-alley-rendezvous
+    to: Side Alley Rendezvous
+    visible: true
+    keyString: 'true'
+    label: Neon Countdown Junction -> Side Alley Rendezvous
+    description:
+    - text: Path between Neon Countdown Junction and Side Alley Rendezvous
+      worldClock: -1
+  - fromPlot: neon-countdown-junction
+    from: Neon Countdown Junction
+    direction: EAST
+    toPlot: street-map-kiosk
+    to: Street Map Kiosk
+    visible: true
+    keyString: 'true'
+    label: Neon Countdown Junction -> Street Map Kiosk
+    description:
+    - text: Path between Neon Countdown Junction and Street Map Kiosk
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Net Drying Racks
+  plotKey: net-drying-racks
+  name: Net Drying Racks
+  region: CITY
+  description:
+  - text: Nets hang like dark lace. A tag line threads through them with knots that encode a count.
+    worldClock: -1
+  gates:
+  - fromPlot: net-drying-racks
+    from: Net Drying Racks
+    direction: EAST
+    toPlot: container-row-a
+    to: Container Row A
+    visible: true
+    keyString: 'true'
+    label: Net Drying Racks -> Container Row A
+    description:
+    - text: Path between Net Drying Racks and Container Row A
+      worldClock: -1
+  - fromPlot: net-drying-racks
+    from: Net Drying Racks
+    direction: WEST
+    toPlot: crane-shadow-sweep
+    to: Crane Shadow Sweep
+    visible: true
+    keyString: 'true'
+    label: Net Drying Racks -> Crane Shadow Sweep
+    description:
+    - text: Path between Net Drying Racks and Crane Shadow Sweep
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Noodle Steam Cart
+  plotKey: noodle-steam-cart
+  name: Noodle Steam Cart
+  region: CITY
+  description:
+  - text: A vendor serves bowls without looking up. He slides you thin paper that happens to be perfect for rubbings.
+    worldClock: -1
+  gates:
+  - fromPlot: noodle-steam-cart
+    from: Noodle Steam Cart
+    direction: EAST
+    toPlot: herbal-tea-stall
+    to: Herbal Tea Stall
+    visible: true
+    keyString: 'true'
+    label: Noodle Steam Cart -> Herbal Tea Stall
+    description:
+    - text: Path between Noodle Steam Cart and Herbal Tea Stall
+      worldClock: -1
+  - fromPlot: noodle-steam-cart
+    from: Noodle Steam Cart
+    direction: WEST
+    toPlot: pai-tau-lane-threshold
+    to: Pai Tau Lane Threshold
+    visible: true
+    keyString: 'true'
+    label: Noodle Steam Cart -> Pai Tau Lane Threshold
+    description:
+    - text: Path between Noodle Steam Cart and Pai Tau Lane Threshold
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Offering Rail
+  plotKey: offering-rail
+  name: Offering Rail
+  region: CITY
+  description:
+  - text: Coins and incense rest along a rail. A tile shard is tucked beneath the wood where a hand naturally falls.
+    worldClock: -1
+  gates:
+  - fromPlot: offering-rail
+    from: Offering Rail
+    direction: WEST
+    toPlot: three-statue-niche
+    to: Three-Statue Niche
+    visible: true
+    keyString: 'true'
+    label: Offering Rail -> Three-Statue Niche
+    description:
+    - text: Path between Offering Rail and Three-Statue Niche
+      worldClock: -1
+  - fromPlot: offering-rail
+    from: Offering Rail
+    direction: EAST
+    toPlot: wind-chime-post
+    to: Wind Chime Post
+    visible: true
+    keyString: 'true'
+    label: Offering Rail -> Wind Chime Post
+    description:
+    - text: Path between Offering Rail and Wind Chime Post
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Outer Wall Market Rim
+  plotKey: outer-wall-market-rim
+  name: Outer Wall Market Rim
+  region: CITY
+  description:
+  - text: Stalls cling to the outer edge like barnacles. The wall itself is patched with mismatched brick and signs.
+    worldClock: -1
+  gates:
+  - fromPlot: outer-wall-market-rim
+    from: Outer Wall Market Rim
+    direction: EAST
+    toPlot: gate-mouth-phrase-check
+    to: Gate Mouth Phrase Check
+    visible: true
+    keyString: 'true'
+    label: Outer Wall Market Rim -> Gate Mouth Phrase Check
+    description:
+    - text: Path between Outer Wall Market Rim and Gate Mouth Phrase Check
+      worldClock: -1
+  - fromPlot: outer-wall-market-rim
+    from: Outer Wall Market Rim
+    direction: WEST
+    toPlot: runway-fence-line
+    to: Runway Fence Line
+    visible: true
+    keyString: 'true'
+    label: Outer Wall Market Rim -> Runway Fence Line
+    description:
+    - text: Path between Outer Wall Market Rim and Runway Fence Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Overpass Shadow Stripe
+  plotKey: overpass-shadow-stripe
+  name: Overpass Shadow Stripe
+  region: CITY
+  description:
+  - text: Under the overpass, shadows form bars across the ground. One bar is broken, like a missing digit.
+    worldClock: -1
+  gates:
+  - fromPlot: overpass-shadow-stripe
+    from: Overpass Shadow Stripe
+    direction: EAST
+    toPlot: electronics-salvage-blanket
+    to: Electronics Salvage Blanket
+    visible: true
+    keyString: 'true'
+    label: Overpass Shadow Stripe -> Electronics Salvage Blanket
+    description:
+    - text: Path between Overpass Shadow Stripe and Electronics Salvage Blanket
+      worldClock: -1
+  - fromPlot: overpass-shadow-stripe
+    from: Overpass Shadow Stripe
+    direction: WEST
+    toPlot: loudspeaker-pole-corner
+    to: Loudspeaker Pole Corner
+    visible: true
+    keyString: 'true'
+    label: Overpass Shadow Stripe -> Loudspeaker Pole Corner
+    description:
+    - text: Path between Overpass Shadow Stripe and Loudspeaker Pole Corner
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Pai Tau Lane Threshold
+  plotKey: pai-tau-lane-threshold
+  name: Pai Tau Lane Threshold
+  region: CITY
+  description:
+  - text: The city noise thins and the hill begins. A narrow lane points upward like a promise.
+    worldClock: -1
+  gates:
+  - fromPlot: pai-tau-lane-threshold
+    from: Pai Tau Lane Threshold
+    direction: EAST
+    toPlot: noodle-steam-cart
+    to: Noodle Steam Cart
+    visible: true
+    keyString: 'true'
+    label: Pai Tau Lane Threshold -> Noodle Steam Cart
+    description:
+    - text: Path between Pai Tau Lane Threshold and Noodle Steam Cart
+      worldClock: -1
+  - fromPlot: pai-tau-lane-threshold
+    from: Pai Tau Lane Threshold
+    direction: WEST
+    toPlot: rooftop-exit-drop
+    to: Rooftop Exit Drop
+    visible: true
+    keyString: 'true'
+    label: Pai Tau Lane Threshold -> Rooftop Exit Drop
+    description:
+    - text: Path between Pai Tau Lane Threshold and Rooftop Exit Drop
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Pawn Window Numbers
+  plotKey: pawn-window-numbers
+  name: Pawn Window Numbers
+  region: CITY
+  description:
+  - text: Gold watches and jade bangles sit behind dusty glass. Small price tags form a neat number column.
+    worldClock: -1
+  gates:
+  - fromPlot: pawn-window-numbers
+    from: Pawn Window Numbers
+    direction: WEST
+    toPlot: cinema-marquee-corner
+    to: Cinema Marquee Corner
+    visible: true
+    keyString: 'true'
+    label: Pawn Window Numbers -> Cinema Marquee Corner
+    description:
+    - text: Path between Pawn Window Numbers and Cinema Marquee Corner
+      worldClock: -1
+  - fromPlot: pawn-window-numbers
+    from: Pawn Window Numbers
+    direction: EAST
+    toPlot: watch-repair-cart
+    to: Watch Repair Cart
+    visible: true
+    keyString: 'true'
+    label: Pawn Window Numbers -> Watch Repair Cart
+    description:
+    - text: Path between Pawn Window Numbers and Watch Repair Cart
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Pedestal Face Locks
+  plotKey: pedestal-face-locks
+  name: Pedestal Face Locks
+  region: CITY
+  description:
+  - text: Three lock faces are built into the pedestal base. Each accepts a digit pair, and each gives immediate feedback.
+    worldClock: -1
+  gates:
+  - fromPlot: pedestal-face-locks
+    from: Pedestal Face Locks
+    direction: EAST
+    toPlot: pedestal-release-niche
+    to: Pedestal Release Niche
+    visible: true
+    keyString: 'true'
+    label: Pedestal Face Locks -> Pedestal Release Niche
+    description:
+    - text: Path between Pedestal Face Locks and Pedestal Release Niche
+      worldClock: -1
+  - fromPlot: pedestal-face-locks
+    from: Pedestal Face Locks
+    direction: WEST
+    toPlot: veranda-threshold-sightline
+    to: Veranda Threshold Sightline
+    visible: true
+    keyString: 'true'
+    label: Pedestal Face Locks -> Veranda Threshold Sightline
+    description:
+    - text: Path between Pedestal Face Locks and Veranda Threshold Sightline
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Pedestal Release Niche
+  plotKey: pedestal-release-niche
+  name: Pedestal Release Niche
+  region: CITY
+  description:
+  - text: The final latch releases with a soft mechanical sigh. A hidden niche reveals the Jade Capsule, cold in your hand.
+    worldClock: -1
+  gates:
+  - fromPlot: pedestal-release-niche
+    from: Pedestal Release Niche
+    direction: WEST
+    toPlot: pedestal-face-locks
+    to: Pedestal Face Locks
+    visible: true
+    keyString: 'true'
+    label: Pedestal Release Niche -> Pedestal Face Locks
+    description:
+    - text: Path between Pedestal Release Niche and Pedestal Face Locks
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Pier Shadow Timing Line
+  plotKey: pier-shadow-timing-line
+  name: Pier Shadow Timing Line
+  region: CITY
+  description:
+  - text: Piers cast long shadows over painted stripes. The shadow tip lands on a different stripe each minute.
+    worldClock: -1
+  gates:
+  - fromPlot: pier-shadow-timing-line
+    from: Pier Shadow Timing Line
+    direction: EAST
+    toPlot: cargo-fence-markers
+    to: Cargo Fence Markers
+    visible: true
+    keyString: 'true'
+    label: Pier Shadow Timing Line -> Cargo Fence Markers
+    description:
+    - text: Path between Pier Shadow Timing Line and Cargo Fence Markers
+      worldClock: -1
+  - fromPlot: pier-shadow-timing-line
+    from: Pier Shadow Timing Line
+    direction: WEST
+    toPlot: seawall-drain-mark
+    to: Seawall Drain Mark
+    visible: true
+    keyString: 'true'
+    label: Pier Shadow Timing Line -> Seawall Drain Mark
+    description:
+    - text: Path between Pier Shadow Timing Line and Seawall Drain Mark
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Postbox Dead Drop Slot
+  plotKey: postbox-dead-drop-slot
+  name: Postbox Dead Drop Slot
+  region: CITY
+  description:
+  - text: A red postbox sits where it should not. The mail slot has a second, hidden seam along the edge.
+    worldClock: -1
+  gates:
+  - fromPlot: postbox-dead-drop-slot
+    from: Postbox Dead Drop Slot
+    direction: EAST
+    toPlot: ferry-ticket-token-window
+    to: Ferry Ticket Token Window
+    visible: true
+    keyString: 'true'
+    label: Postbox Dead Drop Slot -> Ferry Ticket Token Window
+    description:
+    - text: Path between Postbox Dead Drop Slot and Ferry Ticket Token Window
+      worldClock: -1
+  - fromPlot: postbox-dead-drop-slot
+    from: Postbox Dead Drop Slot
+    direction: WEST
+    toPlot: hill-steps-landing
+    to: Hill Steps Landing
+    visible: true
+    keyString: 'true'
+    label: Postbox Dead Drop Slot -> Hill Steps Landing
+    description:
+    - text: Path between Postbox Dead Drop Slot and Hill Steps Landing
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Queue Position Posts
+  plotKey: queue-position-posts
+  name: Queue Position Posts
+  region: CITY
+  description:
+  - text: Posts divide the line into lanes. Small placards show numbers that skip in a pattern.
+    worldClock: -1
+  gates:
+  - fromPlot: queue-position-posts
+    from: Queue Position Posts
+    direction: WEST
+    toPlot: ferry-ticket-token-window
+    to: Ferry Ticket Token Window
+    visible: true
+    keyString: 'true'
+    label: Queue Position Posts -> Ferry Ticket Token Window
+    description:
+    - text: Path between Queue Position Posts and Ferry Ticket Token Window
+      worldClock: -1
+  - fromPlot: queue-position-posts
+    from: Queue Position Posts
+    direction: EAST
+    toPlot: turnstile-sightline-posters
+    to: Turnstile Sightline Posters
+    visible: true
+    keyString: 'true'
+    label: Queue Position Posts -> Turnstile Sightline Posters
+    description:
+    - text: Path between Queue Position Posts and Turnstile Sightline Posters
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rain-Slick Signal Corner
+  plotKey: rain-slick-signal-corner
+  name: Rain-Slick Signal Corner
+  region: CITY
+  description:
+  - text: Everything shines here after a short rain. A reflection in a puddle shows a symbol you cannot see directly.
+    worldClock: -1
+  gates:
+  - fromPlot: rain-slick-signal-corner
+    from: Rain-Slick Signal Corner
+    direction: EAST
+    toPlot: des-voeux-road-rush
+    to: Des Voeux Road Rush
+    visible: true
+    keyString: 'true'
+    label: Rain-Slick Signal Corner -> Des Voeux Road Rush
+    description:
+    - text: Path between Rain-Slick Signal Corner and Des Voeux Road Rush
+      worldClock: -1
+  - fromPlot: rain-slick-signal-corner
+    from: Rain-Slick Signal Corner
+    direction: WEST
+    toPlot: tram-track-crossing
+    to: Tram-Track Crossing
+    visible: true
+    keyString: 'true'
+    label: Rain-Slick Signal Corner -> Tram-Track Crossing
+    description:
+    - text: Path between Rain-Slick Signal Corner and Tram-Track Crossing
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Receipt Punch Stall
+  plotKey: receipt-punch-stall
+  name: Receipt Punch Stall
+  region: CITY
+  description:
+  - text: A punch tool snaps holes into thin paper strips. The hole pattern is too consistent to be random.
+    worldClock: -1
+  gates:
+  - fromPlot: receipt-punch-stall
+    from: Receipt Punch Stall
+    direction: WEST
+    toPlot: calligraphy-card-table
+    to: Calligraphy Card Table
+    visible: true
+    keyString: 'true'
+    label: Receipt Punch Stall -> Calligraphy Card Table
+    description:
+    - text: Path between Receipt Punch Stall and Calligraphy Card Table
+      worldClock: -1
+  - fromPlot: receipt-punch-stall
+    from: Receipt Punch Stall
+    direction: EAST
+    toPlot: toy-spinner-vendor
+    to: Toy Spinner Vendor
+    visible: true
+    keyString: 'true'
+    label: Receipt Punch Stall -> Toy Spinner Vendor
+    description:
+    - text: Path between Receipt Punch Stall and Toy Spinner Vendor
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Reflection Pool Edge
+  plotKey: reflection-pool-edge
+  name: Reflection Pool Edge
+  region: CITY
+  description:
+  - text: Water reflects the statues upside down. The correct tile orientation is shown only in the reflection.
+    worldClock: -1
+  gates:
+  - fromPlot: reflection-pool-edge
+    from: Reflection Pool Edge
+    direction: WEST
+    toPlot: bell-frame-assembly-point
+    to: Bell Frame Assembly Point
+    visible: true
+    keyString: 'true'
+    label: Reflection Pool Edge -> Bell Frame Assembly Point
+    description:
+    - text: Path between Reflection Pool Edge and Bell Frame Assembly Point
+      worldClock: -1
+  - fromPlot: reflection-pool-edge
+    from: Reflection Pool Edge
+    direction: EAST
+    toPlot: side-path-mini-buddhas
+    to: Side Path Mini Buddhas
+    visible: true
+    keyString: 'true'
+    label: Reflection Pool Edge -> Side Path Mini Buddhas
+    description:
+    - text: Path between Reflection Pool Edge and Side Path Mini Buddhas
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rest Landing
+  plotKey: rest-landing
+  name: Rest Landing
+  region: CITY
+  description:
+  - text: A flat landing invites you to breathe. A carved checksum confirms whether your digits are aligned so far.
+    worldClock: -1
+  gates:
+  - fromPlot: rest-landing
+    from: Rest Landing
+    direction: EAST
+    toPlot: lower-gate-lintel
+    to: Lower Gate Lintel
+    visible: true
+    keyString: 'true'
+    label: Rest Landing -> Lower Gate Lintel
+    description:
+    - text: Path between Rest Landing and Lower Gate Lintel
+      worldClock: -1
+  - fromPlot: rest-landing
+    from: Rest Landing
+    direction: WEST
+    toPlot: wind-chime-post
+    to: Wind Chime Post
+    visible: true
+    keyString: 'true'
+    label: Rest Landing -> Wind Chime Post
+    description:
+    - text: Path between Rest Landing and Wind Chime Post
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Bridge Plank
+  plotKey: rooftop-bridge-plank
+  name: Rooftop Bridge Plank
+  region: CITY
+  description:
+  - text: A plank spans to the next roof. Wind whips laundry so it flashes like signal flags.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-bridge-plank
+    from: Rooftop Bridge Plank
+    direction: WEST
+    toPlot: rooftop-hatch-ledge
+    to: Rooftop Hatch Ledge
+    visible: true
+    keyString: 'true'
+    label: Rooftop Bridge Plank -> Rooftop Hatch Ledge
+    description:
+    - text: Path between Rooftop Bridge Plank and Rooftop Hatch Ledge
+      worldClock: -1
+  - fromPlot: rooftop-bridge-plank
+    from: Rooftop Bridge Plank
+    direction: EAST
+    toPlot: rooftop-water-tank-line
+    to: Rooftop Water Tank Line
+    visible: true
+    keyString: 'true'
+    label: Rooftop Bridge Plank -> Rooftop Water Tank Line
+    description:
+    - text: Path between Rooftop Bridge Plank and Rooftop Water Tank Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Clothesline Span
+  plotKey: rooftop-clothesline-span
+  name: Rooftop Clothesline Span
+  region: CITY
+  description:
+  - text: Clothespins are arranged in a color order. The order maps cleanly to digits if you know the key.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-clothesline-span
+    from: Rooftop Clothesline Span
+    direction: EAST
+    toPlot: rooftop-garden-patch
+    to: Rooftop Garden Patch
+    visible: true
+    keyString: 'true'
+    label: Rooftop Clothesline Span -> Rooftop Garden Patch
+    description:
+    - text: Path between Rooftop Clothesline Span and Rooftop Garden Patch
+      worldClock: -1
+  - fromPlot: rooftop-clothesline-span
+    from: Rooftop Clothesline Span
+    direction: WEST
+    toPlot: rooftop-water-tank-line
+    to: Rooftop Water Tank Line
+    visible: true
+    keyString: 'true'
+    label: Rooftop Clothesline Span -> Rooftop Water Tank Line
+    description:
+    - text: Path between Rooftop Clothesline Span and Rooftop Water Tank Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Exit Drop
+  plotKey: rooftop-exit-drop
+  name: Rooftop Exit Drop
+  region: CITY
+  description:
+  - text: A sloped roof leads to a drop point. From here you can see Kai Tak markers in the distance.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-exit-drop
+    from: Rooftop Exit Drop
+    direction: EAST
+    toPlot: pai-tau-lane-threshold
+    to: Pai Tau Lane Threshold
+    visible: true
+    keyString: 'true'
+    label: Rooftop Exit Drop -> Pai Tau Lane Threshold
+    description:
+    - text: Path between Rooftop Exit Drop and Pai Tau Lane Threshold
+      worldClock: -1
+  - fromPlot: rooftop-exit-drop
+    from: Rooftop Exit Drop
+    direction: WEST
+    toPlot: rooftop-garden-patch
+    to: Rooftop Garden Patch
+    visible: true
+    keyString: 'true'
+    label: Rooftop Exit Drop -> Rooftop Garden Patch
+    description:
+    - text: Path between Rooftop Exit Drop and Rooftop Garden Patch
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Garden Patch
+  plotKey: rooftop-garden-patch
+  name: Rooftop Garden Patch
+  region: CITY
+  description:
+  - text: A small garden fights for life in shallow soil. Stones are placed in a deliberate grid, not random.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-garden-patch
+    from: Rooftop Garden Patch
+    direction: WEST
+    toPlot: rooftop-clothesline-span
+    to: Rooftop Clothesline Span
+    visible: true
+    keyString: 'true'
+    label: Rooftop Garden Patch -> Rooftop Clothesline Span
+    description:
+    - text: Path between Rooftop Garden Patch and Rooftop Clothesline Span
+      worldClock: -1
+  - fromPlot: rooftop-garden-patch
+    from: Rooftop Garden Patch
+    direction: EAST
+    toPlot: rooftop-exit-drop
+    to: Rooftop Exit Drop
+    visible: true
+    keyString: 'true'
+    label: Rooftop Garden Patch -> Rooftop Exit Drop
+    description:
+    - text: Path between Rooftop Garden Patch and Rooftop Exit Drop
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Hatch Ledge
+  plotKey: rooftop-hatch-ledge
+  name: Rooftop Hatch Ledge
+  region: CITY
+  description:
+  - text: A hatch sits half-open, chained. The chain links are stamped with tiny numbers.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-hatch-ledge
+    from: Rooftop Hatch Ledge
+    direction: WEST
+    toPlot: ladder-rung-gap
+    to: Ladder Rung Gap
+    visible: true
+    keyString: 'true'
+    label: Rooftop Hatch Ledge -> Ladder Rung Gap
+    description:
+    - text: Path between Rooftop Hatch Ledge and Ladder Rung Gap
+      worldClock: -1
+  - fromPlot: rooftop-hatch-ledge
+    from: Rooftop Hatch Ledge
+    direction: EAST
+    toPlot: rooftop-bridge-plank
+    to: Rooftop Bridge Plank
+    visible: true
+    keyString: 'true'
+    label: Rooftop Hatch Ledge -> Rooftop Bridge Plank
+    description:
+    - text: Path between Rooftop Hatch Ledge and Rooftop Bridge Plank
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Rooftop Water Tank Line
+  plotKey: rooftop-water-tank-line
+  name: Rooftop Water Tank Line
+  region: CITY
+  description:
+  - text: Water tanks are stenciled with capacity numbers. Three tanks match the pattern you’ve been building.
+    worldClock: -1
+  gates:
+  - fromPlot: rooftop-water-tank-line
+    from: Rooftop Water Tank Line
+    direction: WEST
+    toPlot: rooftop-bridge-plank
+    to: Rooftop Bridge Plank
+    visible: true
+    keyString: 'true'
+    label: Rooftop Water Tank Line -> Rooftop Bridge Plank
+    description:
+    - text: Path between Rooftop Water Tank Line and Rooftop Bridge Plank
+      worldClock: -1
+  - fromPlot: rooftop-water-tank-line
+    from: Rooftop Water Tank Line
+    direction: EAST
+    toPlot: rooftop-clothesline-span
+    to: Rooftop Clothesline Span
+    visible: true
+    keyString: 'true'
+    label: Rooftop Water Tank Line -> Rooftop Clothesline Span
+    description:
+    - text: Path between Rooftop Water Tank Line and Rooftop Clothesline Span
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Runway Fence Line
+  plotKey: runway-fence-line
+  name: Runway Fence Line
+  region: CITY
+  description:
+  - text: A chain-link fence rattles in the wind. Painted numbers on posts jump in a pattern, not a sequence.
+    worldClock: -1
+  gates:
+  - fromPlot: runway-fence-line
+    from: Runway Fence Line
+    direction: WEST
+    toPlot: low-plane-roar-marker
+    to: Low Plane Roar Marker
+    visible: true
+    keyString: 'true'
+    label: Runway Fence Line -> Low Plane Roar Marker
+    description:
+    - text: Path between Runway Fence Line and Low Plane Roar Marker
+      worldClock: -1
+  - fromPlot: runway-fence-line
+    from: Runway Fence Line
+    direction: EAST
+    toPlot: outer-wall-market-rim
+    to: Outer Wall Market Rim
+    visible: true
+    keyString: 'true'
+    label: Runway Fence Line -> Outer Wall Market Rim
+    description:
+    - text: Path between Runway Fence Line and Outer Wall Market Rim
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Sampan Drift Lane
+  plotKey: sampan-drift-lane
+  name: Sampan Drift Lane
+  region: CITY
+  description:
+  - text: A sampan glides near the edge, quiet as a thought. The boatman nods at specific gestures only.
+    worldClock: -1
+  gates:
+  - fromPlot: sampan-drift-lane
+    from: Sampan Drift Lane
+    direction: EAST
+    toPlot: buoy-blink-line
+    to: Buoy Blink Line
+    visible: true
+    keyString: 'true'
+    label: Sampan Drift Lane -> Buoy Blink Line
+    description:
+    - text: Path between Sampan Drift Lane and Buoy Blink Line
+      worldClock: -1
+  - fromPlot: sampan-drift-lane
+    from: Sampan Drift Lane
+    direction: WEST
+    toPlot: typhoon-shelter-lookout
+    to: Typhoon Shelter Lookout
+    visible: true
+    keyString: 'true'
+    label: Sampan Drift Lane -> Typhoon Shelter Lookout
+    description:
+    - text: Path between Sampan Drift Lane and Typhoon Shelter Lookout
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Seawall Drain Mark
+  plotKey: seawall-drain-mark
+  name: Seawall Drain Mark
+  region: CITY
+  description:
+  - text: A seawall drain is stamped with a maintenance code. The metal is newer than the surrounding stone.
+    worldClock: -1
+  gates:
+  - fromPlot: seawall-drain-mark
+    from: Seawall Drain Mark
+    direction: WEST
+    toPlot: buoy-blink-line
+    to: Buoy Blink Line
+    visible: true
+    keyString: 'true'
+    label: Seawall Drain Mark -> Buoy Blink Line
+    description:
+    - text: Path between Seawall Drain Mark and Buoy Blink Line
+      worldClock: -1
+  - fromPlot: seawall-drain-mark
+    from: Seawall Drain Mark
+    direction: EAST
+    toPlot: pier-shadow-timing-line
+    to: Pier Shadow Timing Line
+    visible: true
+    keyString: 'true'
+    label: Seawall Drain Mark -> Pier Shadow Timing Line
+    description:
+    - text: Path between Seawall Drain Mark and Pier Shadow Timing Line
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Side Alley Rendezvous
+  plotKey: side-alley-rendezvous
+  name: Side Alley Rendezvous
+  region: CITY
+  description:
+  - text: The noise drops fast here. A chalk mark sits at knee height, half-smeared as if someone tried to hide it.
+    worldClock: -1
+  gates:
+  - fromPlot: side-alley-rendezvous
+    from: Side Alley Rendezvous
+    direction: EAST
+    toPlot: neon-countdown-junction
+    to: Neon Countdown Junction
+    visible: true
+    keyString: 'true'
+    label: Side Alley Rendezvous -> Neon Countdown Junction
+    description:
+    - text: Path between Side Alley Rendezvous and Neon Countdown Junction
+      worldClock: -1
+  - fromPlot: side-alley-rendezvous
+    from: Side Alley Rendezvous
+    direction: WEST
+    toPlot: watch-repair-cart
+    to: Watch Repair Cart
+    visible: true
+    keyString: 'true'
+    label: Side Alley Rendezvous -> Watch Repair Cart
+    description:
+    - text: Path between Side Alley Rendezvous and Watch Repair Cart
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Side Path Mini Buddhas
+  plotKey: side-path-mini-buddhas
+  name: Side Path Mini Buddhas
+  region: CITY
+  description:
+  - text: Smaller figures line a short path. Counting only the “different” ones yields a checksum, not a digit.
+    worldClock: -1
+  gates:
+  - fromPlot: side-path-mini-buddhas
+    from: Side Path Mini Buddhas
+    direction: EAST
+    toPlot: courtyard-corner-shrine
+    to: Courtyard Corner Shrine
+    visible: true
+    keyString: 'true'
+    label: Side Path Mini Buddhas -> Courtyard Corner Shrine
+    description:
+    - text: Path between Side Path Mini Buddhas and Courtyard Corner Shrine
+      worldClock: -1
+  - fromPlot: side-path-mini-buddhas
+    from: Side Path Mini Buddhas
+    direction: WEST
+    toPlot: reflection-pool-edge
+    to: Reflection Pool Edge
+    visible: true
+    keyString: 'true'
+    label: Side Path Mini Buddhas -> Reflection Pool Edge
+    description:
+    - text: Path between Side Path Mini Buddhas and Reflection Pool Edge
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Silent Corner
+  plotKey: silent-corner
+  name: Silent Corner
+  region: CITY
+  description:
+  - text: Sound drops as if absorbed. The clue here is the absence, and absence equals zero in this puzzle language.
+    worldClock: -1
+  gates:
+  - fromPlot: silent-corner
+    from: Silent Corner
+    direction: WEST
+    toPlot: four-pose-row
+    to: Four-Pose Row
+    visible: true
+    keyString: 'true'
+    label: Silent Corner -> Four-Pose Row
+    description:
+    - text: Path between Silent Corner and Four-Pose Row
+      worldClock: -1
+  - fromPlot: silent-corner
+    from: Silent Corner
+    direction: EAST
+    toPlot: viewpoint-bench
+    to: Viewpoint Bench
+    visible: true
+    keyString: 'true'
+    label: Silent Corner -> Viewpoint Bench
+    description:
+    - text: Path between Silent Corner and Viewpoint Bench
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Stair Cage Exterior
+  plotKey: stair-cage-exterior
+  name: Stair Cage Exterior
+  region: CITY
+  description:
+  - text: A metal stair cage rattles with each step. The landing labels are mismatched, suggesting a trick.
+    worldClock: -1
+  gates:
+  - fromPlot: stair-cage-exterior
+    from: Stair Cage Exterior
+    direction: EAST
+    toPlot: ladder-rung-gap
+    to: Ladder Rung Gap
+    visible: true
+    keyString: 'true'
+    label: Stair Cage Exterior -> Ladder Rung Gap
+    description:
+    - text: Path between Stair Cage Exterior and Ladder Rung Gap
+      worldClock: -1
+  - fromPlot: stair-cage-exterior
+    from: Stair Cage Exterior
+    direction: WEST
+    toPlot: well-rim-marker-plate
+    to: Well Rim Marker Plate
+    visible: true
+    keyString: 'true'
+    label: Stair Cage Exterior -> Well Rim Marker Plate
+    description:
+    - text: Path between Stair Cage Exterior and Well Rim Marker Plate
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Steam Vent Corner
+  plotKey: steam-vent-corner
+  name: Steam Vent Corner
+  region: CITY
+  description:
+  - text: Steam vents in short bursts. The burst count repeats, giving you a dependable number.
+    worldClock: -1
+  gates:
+  - fromPlot: steam-vent-corner
+    from: Steam Vent Corner
+    direction: WEST
+    toPlot: cable-canopy-crawlway
+    to: Cable Canopy Crawlway
+    visible: true
+    keyString: 'true'
+    label: Steam Vent Corner -> Cable Canopy Crawlway
+    description:
+    - text: Path between Steam Vent Corner and Cable Canopy Crawlway
+      worldClock: -1
+  - fromPlot: steam-vent-corner
+    from: Steam Vent Corner
+    direction: EAST
+    toPlot: lightwell-courtyard-ring
+    to: Lightwell Courtyard Ring
+    visible: true
+    keyString: 'true'
+    label: Steam Vent Corner -> Lightwell Courtyard Ring
+    description:
+    - text: Path between Steam Vent Corner and Lightwell Courtyard Ring
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Stencil Wall Relief
+  plotKey: stencil-wall-relief
+  name: Stencil Wall Relief
+  region: CITY
+  description:
+  - text: A raised relief begs to be rubbed with paper. The pattern that appears is clean, like a stamp.
+    worldClock: -1
+  gates:
+  - fromPlot: stencil-wall-relief
+    from: Stencil Wall Relief
+    direction: EAST
+    toPlot: four-pose-row
+    to: Four-Pose Row
+    visible: true
+    keyString: 'true'
+    label: Stencil Wall Relief -> Four-Pose Row
+    description:
+    - text: Path between Stencil Wall Relief and Four-Pose Row
+      worldClock: -1
+  - fromPlot: stencil-wall-relief
+    from: Stencil Wall Relief
+    direction: WEST
+    toPlot: lower-gate-lintel
+    to: Lower Gate Lintel
+    visible: true
+    keyString: 'true'
+    label: Stencil Wall Relief -> Lower Gate Lintel
+    description:
+    - text: Path between Stencil Wall Relief and Lower Gate Lintel
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Street Game Table
+  plotKey: street-game-table
+  name: Street Game Table
+  region: CITY
+  description:
+  - text: Coins flick and cups slide. The operator’s hands tell the truth, even when his mouth lies.
+    worldClock: -1
+  gates:
+  - fromPlot: street-game-table
+    from: Street Game Table
+    direction: WEST
+    toPlot: fruit-crate-steps
+    to: Fruit Crate Steps
+    visible: true
+    keyString: 'true'
+    label: Street Game Table -> Fruit Crate Steps
+    description:
+    - text: Path between Street Game Table and Fruit Crate Steps
+      worldClock: -1
+  - fromPlot: street-game-table
+    from: Street Game Table
+    direction: EAST
+    toPlot: loudspeaker-pole-corner
+    to: Loudspeaker Pole Corner
+    visible: true
+    keyString: 'true'
+    label: Street Game Table -> Loudspeaker Pole Corner
+    description:
+    - text: Path between Street Game Table and Loudspeaker Pole Corner
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Street Map Kiosk
+  plotKey: street-map-kiosk
+  name: Street Map Kiosk
+  region: CITY
+  description:
+  - text: A laminated map is creased from use. Someone has circled an area with a blunt pencil and then scratched it out.
+    worldClock: -1
+  gates:
+  - fromPlot: street-map-kiosk
+    from: Street Map Kiosk
+    direction: WEST
+    toPlot: neon-countdown-junction
+    to: Neon Countdown Junction
+    visible: true
+    keyString: 'true'
+    label: Street Map Kiosk -> Neon Countdown Junction
+    description:
+    - text: Path between Street Map Kiosk and Neon Countdown Junction
+      worldClock: -1
+  - fromPlot: street-map-kiosk
+    from: Street Map Kiosk
+    direction: EAST
+    toPlot: taxi-rank-pivot
+    to: Taxi Rank Pivot
+    visible: true
+    keyString: 'true'
+    label: Street Map Kiosk -> Taxi Rank Pivot
+    description:
+    - text: Path between Street Map Kiosk and Taxi Rank Pivot
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Streetlight Dead Zone
+  plotKey: streetlight-dead-zone
+  name: Streetlight Dead Zone
+  region: CITY
+  description:
+  - text: Light dies here as if swallowed. A single white paint mark on the ground indicates a safe step.
+    worldClock: -1
+  gates:
+  - fromPlot: streetlight-dead-zone
+    from: Streetlight Dead Zone
+    direction: EAST
+    toPlot: corridor-maze-segment-a
+    to: Corridor Maze Segment A
+    visible: true
+    keyString: 'true'
+    label: Streetlight Dead Zone -> Corridor Maze Segment A
+    description:
+    - text: Path between Streetlight Dead Zone and Corridor Maze Segment A
+      worldClock: -1
+  - fromPlot: streetlight-dead-zone
+    from: Streetlight Dead Zone
+    direction: WEST
+    toPlot: narrow-alley-mouth-split
+    to: Narrow Alley Mouth Split
+    visible: true
+    keyString: 'true'
+    label: Streetlight Dead Zone -> Narrow Alley Mouth Split
+    description:
+    - text: Path between Streetlight Dead Zone and Narrow Alley Mouth Split
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Switchback Marker Stone
+  plotKey: switchback-marker-stone
+  name: Switchback Marker Stone
+  region: CITY
+  description:
+  - text: A marker stone is worn smooth by feet. Its carved lines tell you which counts to skip.
+    worldClock: -1
+  gates:
+  - fromPlot: switchback-marker-stone
+    from: Switchback Marker Stone
+    direction: WEST
+    toPlot: laughing-bend
+    to: Laughing Bend
+    visible: true
+    keyString: 'true'
+    label: Switchback Marker Stone -> Laughing Bend
+    description:
+    - text: Path between Switchback Marker Stone and Laughing Bend
+      worldClock: -1
+  - fromPlot: switchback-marker-stone
+    from: Switchback Marker Stone
+    direction: EAST
+    toPlot: twin-staff-pair
+    to: Twin Staff Pair
+    visible: true
+    keyString: 'true'
+    label: Switchback Marker Stone -> Twin Staff Pair
+    description:
+    - text: Path between Switchback Marker Stone and Twin Staff Pair
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Taxi Rank Pivot
+  plotKey: taxi-rank-pivot
+  name: Taxi Rank Pivot
+  region: CITY
+  description:
+  - text: Taxis idle with engines rumbling. A driver watches you through the mirror like he is waiting for a signal.
+    worldClock: -1
+  gates:
+  - fromPlot: taxi-rank-pivot
+    from: Taxi Rank Pivot
+    direction: WEST
+    toPlot: street-map-kiosk
+    to: Street Map Kiosk
+    visible: true
+    keyString: 'true'
+    label: Taxi Rank Pivot -> Street Map Kiosk
+    description:
+    - text: Path between Taxi Rank Pivot and Street Map Kiosk
+      worldClock: -1
+  - fromPlot: taxi-rank-pivot
+    from: Taxi Rank Pivot
+    direction: EAST
+    toPlot: temple-street-lantern-row
+    to: Temple Street Lantern Row
+    visible: true
+    keyString: 'true'
+    label: Taxi Rank Pivot -> Temple Street Lantern Row
+    description:
+    - text: Path between Taxi Rank Pivot and Temple Street Lantern Row
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Temple Street Lantern Row
+  plotKey: temple-street-lantern-row
+  name: Temple Street Lantern Row
+  region: CITY
+  description:
+  - text: Lanterns sway over stalls packed tight. Vendors bark prices in fast Cantonese and faster hand signals.
+    worldClock: -1
+  gates:
+  - fromPlot: temple-street-lantern-row
+    from: Temple Street Lantern Row
+    direction: EAST
+    toPlot: dai-pai-dong-steam-line
+    to: Dai Pai Dong Steam Line
+    visible: true
+    keyString: 'true'
+    label: Temple Street Lantern Row -> Dai Pai Dong Steam Line
+    description:
+    - text: Path between Temple Street Lantern Row and Dai Pai Dong Steam Line
+      worldClock: -1
+  - fromPlot: temple-street-lantern-row
+    from: Temple Street Lantern Row
+    direction: WEST
+    toPlot: taxi-rank-pivot
+    to: Taxi Rank Pivot
+    visible: true
+    keyString: 'true'
+    label: Temple Street Lantern Row -> Taxi Rank Pivot
+    description:
+    - text: Path between Temple Street Lantern Row and Taxi Rank Pivot
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Three-Statue Niche
+  plotKey: three-statue-niche
+  name: Three-Statue Niche
+  region: CITY
+  description:
+  - text: Three small statues sit in a pocket wall. Only one has a base mark that matches your vendor symbol.
+    worldClock: -1
+  gates:
+  - fromPlot: three-statue-niche
+    from: Three-Statue Niche
+    direction: EAST
+    toPlot: offering-rail
+    to: Offering Rail
+    visible: true
+    keyString: 'true'
+    label: Three-Statue Niche -> Offering Rail
+    description:
+    - text: Path between Three-Statue Niche and Offering Rail
+      worldClock: -1
+  - fromPlot: three-statue-niche
+    from: Three-Statue Niche
+    direction: WEST
+    toPlot: twin-staff-pair
+    to: Twin Staff Pair
+    visible: true
+    keyString: 'true'
+    label: Three-Statue Niche -> Twin Staff Pair
+    description:
+    - text: Path between Three-Statue Niche and Twin Staff Pair
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Toy Spinner Vendor
+  plotKey: toy-spinner-vendor
+  name: Toy Spinner Vendor
+  region: CITY
+  description:
+  - text: Bright spinners blur into circles. The colors settle into a repeating order if you stop staring and start counting.
+    worldClock: -1
+  gates:
+  - fromPlot: toy-spinner-vendor
+    from: Toy Spinner Vendor
+    direction: EAST
+    toPlot: alley-mirror-board
+    to: Alley Mirror Board
+    visible: true
+    keyString: 'true'
+    label: Toy Spinner Vendor -> Alley Mirror Board
+    description:
+    - text: Path between Toy Spinner Vendor and Alley Mirror Board
+      worldClock: -1
+  - fromPlot: toy-spinner-vendor
+    from: Toy Spinner Vendor
+    direction: WEST
+    toPlot: receipt-punch-stall
+    to: Receipt Punch Stall
+    visible: true
+    keyString: 'true'
+    label: Toy Spinner Vendor -> Receipt Punch Stall
+    description:
+    - text: Path between Toy Spinner Vendor and Receipt Punch Stall
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Tram Stop Eastbound
+  plotKey: tram-stop-eastbound
+  name: Tram Stop Eastbound
+  region: CITY
+  description:
+  - text: The ding-ding bell arrives before the tram does. Route boards list stops like a coded poem.
+    worldClock: -1
+  gates:
+  - fromPlot: tram-stop-eastbound
+    from: Tram Stop Eastbound
+    direction: WEST
+    toPlot: chalkboard-price-grid-wall
+    to: Chalkboard Price Grid Wall
+    visible: true
+    keyString: 'true'
+    label: Tram Stop Eastbound -> Chalkboard Price Grid Wall
+    description:
+    - text: Path between Tram Stop Eastbound and Chalkboard Price Grid Wall
+      worldClock: -1
+  - fromPlot: tram-stop-eastbound
+    from: Tram Stop Eastbound
+    direction: EAST
+    toPlot: tram-track-crossing
+    to: Tram-Track Crossing
+    visible: true
+    keyString: 'true'
+    label: Tram Stop Eastbound -> Tram-Track Crossing
+    description:
+    - text: Path between Tram Stop Eastbound and Tram-Track Crossing
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Tram-Track Crossing
+  plotKey: tram-track-crossing
+  name: Tram-Track Crossing
+  region: CITY
+  description:
+  - text: Tracks cut the street like rails in a puzzle box. A painted arrow on the curb points the “wrong” way.
+    worldClock: -1
+  gates:
+  - fromPlot: tram-track-crossing
+    from: Tram-Track Crossing
+    direction: EAST
+    toPlot: rain-slick-signal-corner
+    to: Rain-Slick Signal Corner
+    visible: true
+    keyString: 'true'
+    label: Tram-Track Crossing -> Rain-Slick Signal Corner
+    description:
+    - text: Path between Tram-Track Crossing and Rain-Slick Signal Corner
+      worldClock: -1
+  - fromPlot: tram-track-crossing
+    from: Tram-Track Crossing
+    direction: WEST
+    toPlot: tram-stop-eastbound
+    to: Tram Stop Eastbound
+    visible: true
+    keyString: 'true'
+    label: Tram-Track Crossing -> Tram Stop Eastbound
+    description:
+    - text: Path between Tram-Track Crossing and Tram Stop Eastbound
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Turnstile Sightline Posters
+  plotKey: turnstile-sightline-posters
+  name: Turnstile Sightline Posters
+  region: CITY
+  description:
+  - text: Posters face the queue at precise angles. From one spot, their corner marks align into a symbol.
+    worldClock: -1
+  gates:
+  - fromPlot: turnstile-sightline-posters
+    from: Turnstile Sightline Posters
+    direction: EAST
+    toPlot: boarding-bell-line
+    to: Boarding Bell Line
+    visible: true
+    keyString: 'true'
+    label: Turnstile Sightline Posters -> Boarding Bell Line
+    description:
+    - text: Path between Turnstile Sightline Posters and Boarding Bell Line
+      worldClock: -1
+  - fromPlot: turnstile-sightline-posters
+    from: Turnstile Sightline Posters
+    direction: WEST
+    toPlot: queue-position-posts
+    to: Queue Position Posts
+    visible: true
+    keyString: 'true'
+    label: Turnstile Sightline Posters -> Queue Position Posts
+    description:
+    - text: Path between Turnstile Sightline Posters and Queue Position Posts
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Twin Staff Pair
+  plotKey: twin-staff-pair
+  name: Twin Staff Pair
+  region: CITY
+  description:
+  - text: Two figures hold staffs at different angles. One angle matches the city pattern you already learned.
+    worldClock: -1
+  gates:
+  - fromPlot: twin-staff-pair
+    from: Twin Staff Pair
+    direction: WEST
+    toPlot: switchback-marker-stone
+    to: Switchback Marker Stone
+    visible: true
+    keyString: 'true'
+    label: Twin Staff Pair -> Switchback Marker Stone
+    description:
+    - text: Path between Twin Staff Pair and Switchback Marker Stone
+      worldClock: -1
+  - fromPlot: twin-staff-pair
+    from: Twin Staff Pair
+    direction: EAST
+    toPlot: three-statue-niche
+    to: Three-Statue Niche
+    visible: true
+    keyString: 'true'
+    label: Twin Staff Pair -> Three-Statue Niche
+    description:
+    - text: Path between Twin Staff Pair and Three-Statue Niche
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Typhoon Shelter Lookout
+  plotKey: typhoon-shelter-lookout
+  name: Typhoon Shelter Lookout
+  region: CITY
+  description:
+  - text: Boats bob in tight rows. From here you can watch buoy lights and count their timing.
+    worldClock: -1
+  gates:
+  - fromPlot: typhoon-shelter-lookout
+    from: Typhoon Shelter Lookout
+    direction: WEST
+    toPlot: harbor-promenade-rail-walk
+    to: Harbor Promenade Rail Walk
+    visible: true
+    keyString: 'true'
+    label: Typhoon Shelter Lookout -> Harbor Promenade Rail Walk
+    description:
+    - text: Path between Typhoon Shelter Lookout and Harbor Promenade Rail Walk
+      worldClock: -1
+  - fromPlot: typhoon-shelter-lookout
+    from: Typhoon Shelter Lookout
+    direction: EAST
+    toPlot: sampan-drift-lane
+    to: Sampan Drift Lane
+    visible: true
+    keyString: 'true'
+    label: Typhoon Shelter Lookout -> Sampan Drift Lane
+    description:
+    - text: Path between Typhoon Shelter Lookout and Sampan Drift Lane
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Upper Cluster Start
+  plotKey: upper-cluster-start
+  name: Upper Cluster Start
+  region: CITY
+  description:
+  - text: Statues gather more densely. Small differences (missing bead, chipped toe) become meaningful markers.
+    worldClock: -1
+  gates:
+  - fromPlot: upper-cluster-start
+    from: Upper Cluster Start
+    direction: WEST
+    toPlot: narrow-pass
+    to: Narrow Pass
+    visible: true
+    keyString: 'true'
+    label: Upper Cluster Start -> Narrow Pass
+    description:
+    - text: Path between Upper Cluster Start and Narrow Pass
+      worldClock: -1
+  - fromPlot: upper-cluster-start
+    from: Upper Cluster Start
+    direction: EAST
+    toPlot: upper-gate-lintel
+    to: Upper Gate Lintel
+    visible: true
+    keyString: 'true'
+    label: Upper Cluster Start -> Upper Gate Lintel
+    description:
+    - text: Path between Upper Cluster Start and Upper Gate Lintel
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Upper Gate Lintel
+  plotKey: upper-gate-lintel
+  name: Upper Gate Lintel
+  region: CITY
+  description:
+  - text: Another threshold, another test. The lintel bears an inscription that reads like “myriad means many,” not literal.
+    worldClock: -1
+  gates:
+  - fromPlot: upper-gate-lintel
+    from: Upper Gate Lintel
+    direction: EAST
+    toPlot: courtyard-threshold
+    to: Courtyard Threshold
+    visible: true
+    keyString: 'true'
+    label: Upper Gate Lintel -> Courtyard Threshold
+    description:
+    - text: Path between Upper Gate Lintel and Courtyard Threshold
+      worldClock: -1
+  - fromPlot: upper-gate-lintel
+    from: Upper Gate Lintel
+    direction: WEST
+    toPlot: upper-cluster-start
+    to: Upper Cluster Start
+    visible: true
+    keyString: 'true'
+    label: Upper Gate Lintel -> Upper Cluster Start
+    description:
+    - text: Path between Upper Gate Lintel and Upper Cluster Start
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Veranda Threshold Sightline
+  plotKey: veranda-threshold-sightline
+  name: Veranda Threshold Sightline
+  region: CITY
+  description:
+  - text: You stand at the threshold and can see inside without entering. A glass shrine sits ahead, still and bright.
+    worldClock: -1
+  gates:
+  - fromPlot: veranda-threshold-sightline
+    from: Veranda Threshold Sightline
+    direction: WEST
+    toPlot: courtyard-exit-rail
+    to: Courtyard Exit Rail
+    visible: true
+    keyString: 'true'
+    label: Veranda Threshold Sightline -> Courtyard Exit Rail
+    description:
+    - text: Path between Veranda Threshold Sightline and Courtyard Exit Rail
+      worldClock: -1
+  - fromPlot: veranda-threshold-sightline
+    from: Veranda Threshold Sightline
+    direction: EAST
+    toPlot: pedestal-face-locks
+    to: Pedestal Face Locks
+    visible: true
+    keyString: 'true'
+    label: Veranda Threshold Sightline -> Pedestal Face Locks
+    description:
+    - text: Path between Veranda Threshold Sightline and Pedestal Face Locks
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Viewpoint Bench
+  plotKey: viewpoint-bench
+  name: Viewpoint Bench
+  region: CITY
+  description:
+  - text: The city opens behind you like a painted set. From this angle, several statue bases align into an order.
+    worldClock: -1
+  gates:
+  - fromPlot: viewpoint-bench
+    from: Viewpoint Bench
+    direction: EAST
+    toPlot: carved-drain-channel
+    to: Carved Drain Channel
+    visible: true
+    keyString: 'true'
+    label: Viewpoint Bench -> Carved Drain Channel
+    description:
+    - text: Path between Viewpoint Bench and Carved Drain Channel
+      worldClock: -1
+  - fromPlot: viewpoint-bench
+    from: Viewpoint Bench
+    direction: WEST
+    toPlot: silent-corner
+    to: Silent Corner
+    visible: true
+    keyString: 'true'
+    label: Viewpoint Bench -> Silent Corner
+    description:
+    - text: Path between Viewpoint Bench and Silent Corner
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Watch Repair Cart
+  plotKey: watch-repair-cart
+  name: Watch Repair Cart
+  region: CITY
+  description:
+  - text: A man works under a single lamp. Tiny gears and a green-glint lens make everything look sharper than it should.
+    worldClock: -1
+  gates:
+  - fromPlot: watch-repair-cart
+    from: Watch Repair Cart
+    direction: WEST
+    toPlot: pawn-window-numbers
+    to: Pawn Window Numbers
+    visible: true
+    keyString: 'true'
+    label: Watch Repair Cart -> Pawn Window Numbers
+    description:
+    - text: Path between Watch Repair Cart and Pawn Window Numbers
+      worldClock: -1
+  - fromPlot: watch-repair-cart
+    from: Watch Repair Cart
+    direction: EAST
+    toPlot: side-alley-rendezvous
+    to: Side Alley Rendezvous
+    visible: true
+    keyString: 'true'
+    label: Watch Repair Cart -> Side Alley Rendezvous
+    description:
+    - text: Path between Watch Repair Cart and Side Alley Rendezvous
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Well Rim Marker Plate
+  plotKey: well-rim-marker-plate
+  name: Well Rim Marker Plate
+  region: CITY
+  description:
+  - text: A metal plate rings the well edge. Rubbing it with paper reveals raised text and a partial symbol.
+    worldClock: -1
+  gates:
+  - fromPlot: well-rim-marker-plate
+    from: Well Rim Marker Plate
+    direction: WEST
+    toPlot: lightwell-courtyard-ring
+    to: Lightwell Courtyard Ring
+    visible: true
+    keyString: 'true'
+    label: Well Rim Marker Plate -> Lightwell Courtyard Ring
+    description:
+    - text: Path between Well Rim Marker Plate and Lightwell Courtyard Ring
+      worldClock: -1
+  - fromPlot: well-rim-marker-plate
+    from: Well Rim Marker Plate
+    direction: EAST
+    toPlot: stair-cage-exterior
+    to: Stair Cage Exterior
+    visible: true
+    keyString: 'true'
+    label: Well Rim Marker Plate -> Stair Cage Exterior
+    description:
+    - text: Path between Well Rim Marker Plate and Stair Cage Exterior
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Wind Chime Post
+  plotKey: wind-chime-post
+  name: Wind Chime Post
+  region: CITY
+  description:
+  - text: Chimes sing when the wind hits just right. Their tones form a simple high-low pattern like binary.
+    worldClock: -1
+  gates:
+  - fromPlot: wind-chime-post
+    from: Wind Chime Post
+    direction: WEST
+    toPlot: offering-rail
+    to: Offering Rail
+    visible: true
+    keyString: 'true'
+    label: Wind Chime Post -> Offering Rail
+    description:
+    - text: Path between Wind Chime Post and Offering Rail
+      worldClock: -1
+  - fromPlot: wind-chime-post
+    from: Wind Chime Post
+    direction: EAST
+    toPlot: rest-landing
+    to: Rest Landing
+    visible: true
+    keyString: 'true'
+    label: Wind Chime Post -> Rest Landing
+    description:
+    - text: Path between Wind Chime Post and Rest Landing
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Wire Spool Cart
+  plotKey: wire-spool-cart
+  name: Wire Spool Cart
+  region: CITY
+  description:
+  - text: Spools roll and clack as the cart bumps forward. The spool labels form a clean progression.
+    worldClock: -1
+  gates:
+  - fromPlot: wire-spool-cart
+    from: Wire Spool Cart
+    direction: EAST
+    toPlot: battery-lantern-swap
+    to: Battery Lantern Swap
+    visible: true
+    keyString: 'true'
+    label: Wire Spool Cart -> Battery Lantern Swap
+    description:
+    - text: Path between Wire Spool Cart and Battery Lantern Swap
+      worldClock: -1
+  - fromPlot: wire-spool-cart
+    from: Wire Spool Cart
+    direction: WEST
+    toPlot: electronics-salvage-blanket
+    to: Electronics Salvage Blanket
+    visible: true
+    keyString: 'true'
+    label: Wire Spool Cart -> Electronics Salvage Blanket
+    description:
+    - text: Path between Wire Spool Cart and Electronics Salvage Blanket
+      worldClock: -1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]

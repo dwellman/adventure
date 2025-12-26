@@ -1,0 +1,11 @@
+version: 0.1
+recipes:
+  - id: BAD_OWNER_UNKNOWN
+    event: BAD_OWNER_UNKNOWN
+    when:
+      actor: {}
+    then:
+      - set_open:
+          kind: KSR_TORCH
+          owner: CAVE_ENTRANCE
+          value: true

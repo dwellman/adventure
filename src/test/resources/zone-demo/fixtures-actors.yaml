@@ -1,0 +1,27 @@
+entries:
+  - key: driftwood-fire
+    name: Driftwood Fire
+    type: fixture
+    foundAt: [wreck-beach]
+    visible: true
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Ambient light/heat; scene-setting at start.
+
+  - key: broken-wagon
+    name: Broken Wagon
+    type: fixture
+    foundAt: [treehouse-approach]
+    visible: true
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Landmark near the ladder stash.
+
+  - key: castaway
+    name: Castaway (player)
+    type: actor
+    foundAt: [wreck-beach]
+    visible: true
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Player avatar; carries crafted items.

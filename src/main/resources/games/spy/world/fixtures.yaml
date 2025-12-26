@@ -1,0 +1,111 @@
+fixtures:
+- key: mirror-board
+  name: Mirror Board
+  description: A board of small mirrors bolted to the wall, one angled just wrong.
+  ownerKey: alley-mirror-board
+  visible: true
+- key: stair-plaque
+  name: Stair Plaque
+  description: A bronze plaque listing rules for the base stair, the last line scratched out.
+  ownerKey: base-stair-gate
+  visible: true
+- key: battery-crate
+  name: Battery Crate
+  description: A crate of lantern batteries with one compartment empty.
+  ownerKey: battery-lantern-swap
+  visible: true
+- key: calligraphy-rack
+  name: Calligraphy Rack
+  description: A rack of drying slips, each weighted by a river stone.
+  ownerKey: calligraphy-table
+  visible: true
+- key: marquee-panel
+  name: Marquee Panel
+  description: A panel of bulbs wired to blink in a repeating rhythm.
+  ownerKey: cinema-marquee-corner
+  visible: true
+- key: container-lock
+  name: Container Lock
+  description: A heavy lock hanging open on a container door.
+  ownerKey: container-row-a
+  visible: true
+- key: courtyard-drain
+  name: Courtyard Drain
+  description: A drain grate with fresh scrape marks on the rim.
+  ownerKey: courtyard-threshold
+  visible: true
+- key: salvage-bench
+  name: Salvage Bench
+  description: A low bench covered in loose screws and cracked circuit boards.
+  ownerKey: electronics-salvage-blanket
+  visible: true
+- key: ticket-window
+  name: Ticket Window
+  description: A small glass window with a slot worn smooth by tokens.
+  ownerKey: ferry-ticket-token-window
+  visible: true
+- key: harbor-rail
+  name: Harbor Rail
+  description: A metal rail overlooking the water, marked with chalk arrows.
+  ownerKey: harbor-promenade-rail-walk
+  visible: true
+- key: market-canopy
+  name: Market Canopy
+  description: A patched canopy hiding bundles and ledgers from the rain.
+  ownerKey: outer-wall-market-rim
+  visible: true
+- key: game-board
+  name: Street Game Board
+  description: A wooden board scratched with a grid of worn squares.
+  ownerKey: street-game-table
+  visible: true
+- key: map-stand
+  name: Map Stand
+  description: A metal stand holding a public map covered in fingerprints.
+  ownerKey: street-map-kiosk
+  visible: true
+- key: lantern-string
+  name: Lantern
+  description: A string of lanterns swaying above the vendor stalls.
+  ownerKey: temple-street-lantern-row
+  visible: true
+- key: dockside-scale
+  name: Dockside Scale
+  description: A scale plate splattered with paint and chalk marks.
+  ownerKey: dockside-scale-stencil-plate
+  visible: true
+- key: postbox-slot
+  name: Postbox
+  description: A red postbox with a mail slot and a second seam along the edge.
+  ownerKey: postbox-dead-drop-slot
+  visible: true
+- key: exit-rail-latch
+  name: Latch
+  description: A metal latch inset into the rail, sized for a service pass.
+  ownerKey: courtyard-exit-rail
+  visible: true
+- key: phrase-check
+  name: Phrase Check
+  description: A watcher waits for the nonsense exchange before letting anyone through.
+  ownerKey: gate-mouth-phrase-check
+  visible: true
+- key: corner-shrine
+  name: Shrine
+  description: A small corner shrine kept clean and undisturbed.
+  ownerKey: courtyard-corner-shrine
+  visible: true
+- key: glass-shrine
+  name: Glass Shrine
+  description: A glass shrine glows softly, its surface cold and spotless.
+  ownerKey: veranda-threshold-sightline
+  visible: true
+- key: relief-panel
+  name: Relief
+  description: A raised relief meant for rubbings, its pattern clean like a stamp.
+  ownerKey: stencil-wall-relief
+  visible: true
+- key: mast-lantern
+  name: Mast Lantern
+  description: A lantern hanging from the mast with a colored bead charm.
+  ownerKey: junk-boat-mooring-east
+  visible: true

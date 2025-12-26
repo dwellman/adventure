@@ -1,0 +1,85 @@
+triggers:
+  - id: mansion-pin-torn-menu
+    type: ON_USE
+    target: Torn Menu
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-glass-shard
+    type: ON_USE
+    target: Glass Shard
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-chalk-smudge
+    type: ON_USE
+    target: Chalk Smudge
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-silk-thread
+    type: ON_USE
+    target: Silk Thread
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-pressed-leaf
+    type: ON_USE
+    target: Pressed Leaf
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-ink-note
+    type: ON_USE
+    target: Ink Note
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-pin-cellar-ledger
+    type: ON_USE
+    target: Cellar Ledger
+    object: Case Board
+    actions:
+      - type: MOVE_OWNER
+        target: "@TARGET"
+        owner: "Case Board"
+      - type: SET_VISIBLE
+        target: "@TARGET"
+        visible: false
+  - id: mansion-win
+    type: ON_USE
+    object: Case Board
+    key: 'Hall.fixture("Case Board").evidence.amount >= 7'
+    actions:
+      - type: END_GAME
+        text: "You assemble the clues on the case board and the pattern clicks into place. The case breaks, the mansion exhales, and the truth comes into focus."

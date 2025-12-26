@@ -1,0 +1,190 @@
+ingredients:
+  - key: stick
+    name: Stick
+    type: item
+    origin: scavenged
+    foundAt: [wreck-beach]
+    usedInRecipes: [Torch]
+    unlocksGates: []
+    notes: Driftwood branch; starter fuel.
+
+  - key: rags
+    name: Rags
+    type: item
+    origin: scavenged
+    foundAt: [treehouse-approach]
+    usedInRecipes: [Torch]
+    unlocksGates: []
+    notes: Torn canvas strips.
+
+  - key: driftwood-pole
+    name: Driftwood Pole
+    type: item
+    origin: scavenged
+    foundAt: [treehouse-approach]
+    usedInRecipes: [Pole Ladder]
+    unlocksGates: []
+    notes: Long pole to extend the ladder.
+
+  - key: rope-ladder
+    name: Rope Ladder
+    type: item
+    origin: scavenged
+    foundAt: [treehouse-approach]
+    usedInRecipes: [Pole Ladder]
+    unlocksGates:
+      - Wreck Beach -> Cliff Switchback (UP/DOWN)
+    notes: Base climb tool; works alone for the cliff ascent.
+
+  - key: rope
+    name: Rope
+    type: item
+    origin: scavenged
+    foundAt: [ladder-landing]
+    usedInRecipes: [Hooked Line]
+    unlocksGates: []
+    notes: Coil of rope for rigging.
+
+  - key: fish-hook
+    name: Fish Hook
+    type: item
+    origin: scavenged
+    foundAt: [tide-pools]
+    usedInRecipes: [Hooked Line]
+    unlocksGates: []
+    notes: Small metal hook.
+
+  - key: bait
+    name: Bait
+    type: item
+    origin: scavenged
+    foundAt: [tide-pools]
+    usedInRecipes: [Set Snare]
+    unlocksGates: []
+    notes: Dried bait tin.
+
+  - key: river-stone
+    name: River Stone
+    type: item
+    origin: scavenged
+    foundAt: [tide-pools]
+    usedInRecipes: [Lit Torch]
+    unlocksGates: []
+    notes: Smooth stone for striking sparks.
+
+  - key: flint
+    name: Flint
+    type: item
+    origin: scavenged
+    foundAt: [dry-creek-bend]
+    usedInRecipes: [Lit Torch]
+    unlocksGates: []
+    notes: Sharp flint shard.
+
+  - key: tar-lump
+    name: Tar Lump
+    type: item
+    origin: scavenged
+    foundAt: [tar-pit]
+    usedInRecipes: [Patched Raft]
+    unlocksGates: []
+    notes: Warm tar plug material.
+
+  - key: punctured-raft
+    name: Punctured Raft
+    type: item
+    origin: scavenged
+    foundAt: [lagoon-shore]
+    usedInRecipes: [Patched Raft]
+    unlocksGates: []
+    notes: Needs sealing before use.
+
+  - key: snare-wire
+    name: Snare Wire
+    type: item
+    origin: scavenged
+    foundAt: [lantern-pass]
+    usedInRecipes: [Set Snare]
+    unlocksGates: []
+    notes: Thin wire for traps.
+
+  - key: oil-rag
+    name: Oil Rag
+    type: item
+    origin: scavenged
+    foundAt: [cliff-perch]
+    usedInRecipes: [Signal Torch]
+    unlocksGates: []
+    notes: Heavy, fuel-soaked cloth.
+
+  - key: kerosene
+    name: Kerosene
+    type: item
+    origin: scavenged
+    foundAt: [cliff-perch]
+    usedInRecipes: [Soaked Torch]
+    unlocksGates: []
+    notes: Lantern fuel can.
+
+  - key: driftwood-fire
+    name: Driftwood Fire
+    type: fixture
+    origin: placed
+    foundAt: [wreck-beach]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Ambient light/heat; visible from start.
+
+  - key: broken-wagon
+    name: Broken Wagon
+    type: fixture
+    origin: placed
+    foundAt: [treehouse-approach]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Flavor landmark near the tree.
+
+  - key: feather-charm
+    name: Feather Charm
+    type: item
+    origin: reward
+    foundAt: [canopy-outlook]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Light trinket reward.
+
+  - key: old-coin
+    name: Old Coin
+    type: item
+    origin: reward
+    foundAt: [shaded-cave]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Flavor treasure.
+
+  - key: herb-bundle
+    name: Herb Bundle
+    type: item
+    origin: reward
+    foundAt: [quiet-clearing]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: For flavor or future infusions.
+
+  - key: bottle-note
+    name: Bottle Note
+    type: item
+    origin: reward
+    foundAt: [offshore-sandbar]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Flavor clue in a bottle.
+
+  - key: castaway
+    name: Castaway
+    type: actor
+    origin: player
+    foundAt: [wreck-beach]
+    usedInRecipes: []
+    unlocksGates: []
+    notes: Player avatar; inventory source.

@@ -1,0 +1,350 @@
+plots:
+- key: dry-gulch-main-street
+  name: Dry Gulch Main Street
+  region: FRONTIER
+  locationX: 0
+  locationY: 0
+  description: Sun-bleached storefronts, dust, and the steady tick of the station clock.
+- key: sheriff-s-office
+  name: Sheriff's Office
+  region: FRONTIER
+  locationX: 0
+  locationY: 1
+  description: A cool room with iron bars, a heavy desk, and the town safe waiting on the dusk train.
+- key: jailhouse
+  name: Jailhouse
+  region: FRONTIER
+  locationX: -1
+  locationY: 1
+  description: Iron bars, a narrow cot, and the stale smell of last night's trouble.
+- key: general-store
+  name: General Store
+  region: FRONTIER
+  locationX: -1
+  locationY: 0
+  description: Shelves of supplies, a brass bell, and a ledger full of IOUs.
+- key: dusty-spur-saloon
+  name: Dusty Spur Saloon
+  region: FRONTIER
+  locationX: 0
+  locationY: -1
+  description: Swinging doors, brass rail, sawdust, and a piano that refuses to die.
+- key: stable-yard
+  name: Stable Yard
+  region: FRONTIER
+  locationX: -1
+  locationY: -1
+  description: Empty stalls, warm hay, and a single horse snorting in the shade.
+- key: telegraph-office
+  name: Telegraph Office
+  region: FRONTIER
+  locationX: 1
+  locationY: 0
+  description: A cramped room of wire and switches, the line dead and humming with static.
+- key: water-tower
+  name: Water Tower
+  region: FRONTIER
+  locationX: 1
+  locationY: -1
+  description: A corrugated tower with a valve wheel and a ladder baked by the sun.
+- key: train-platform
+  name: Train Platform
+  region: FRONTIER
+  locationX: 2
+  locationY: 0
+  description: Steam, coal smoke, and a long string of cars idling for the last run out of Dry Gulch.
+- key: baggage-depot
+  name: Baggage Depot
+  region: FRONTIER
+  locationX: 2
+  locationY: 1
+  description: Crates stacked to the rafters, padlocks, and a workbench littered with tools.
+- key: signal-shack
+  name: Signal Shack
+  region: FRONTIER
+  locationX: 3
+  locationY: 0
+  description: A lean shed with a signal lever and a view of the canyon line.
+- key: rail-yard
+  name: Rail Yard
+  region: FRONTIER
+  locationX: 2
+  locationY: -1
+  description: Switches, sidings, and a maze of rusted rails stretching into the heat.
+- key: canyon-overlook
+  name: Canyon Overlook
+  region: FRONTIER
+  locationX: 3
+  locationY: -1
+  description: A wind-carved ledge that looks down on the trestle and the wash below.
+- key: miners-gully
+  name: Miner's Gully
+  region: FRONTIER
+  locationX: 1
+  locationY: -2
+  description: A dusty cut through shale where miners once hauled ore by mule.
+- key: rattlesnake-bridge
+  name: Rattlesnake Bridge
+  region: FRONTIER
+  locationX: 2
+  locationY: -2
+  description: A narrow trestle over a rocky wash; the timbers groan under every gust.
+- key: old-mine
+  name: Old Mine
+  region: FRONTIER
+  locationX: 1
+  locationY: -3
+  description: A black mouth in the hillside with rails that vanish into the dark.
+gates:
+- from: dry-gulch-main-street
+  direction: NORTH
+  to: sheriff-s-office
+  visible: true
+  keyString: 'true'
+  label: Dry Gulch Main Street -> Sheriff's Office
+  description: A narrow alley rises to the sheriff's door.
+- from: sheriff-s-office
+  direction: SOUTH
+  to: dry-gulch-main-street
+  visible: true
+  keyString: 'true'
+  label: Sheriff's Office -> Dry Gulch Main Street
+  description: Saloon clatter drifts up from the street below.
+- from: sheriff-s-office
+  direction: WEST
+  to: jailhouse
+  visible: true
+  keyString: 'true'
+  label: Sheriff's Office -> Jailhouse
+  description: A barred corridor leads to the cells.
+- from: jailhouse
+  direction: EAST
+  to: sheriff-s-office
+  visible: true
+  keyString: 'true'
+  label: Jailhouse -> Sheriff's Office
+  description: The sheriff's desk waits beyond the bars.
+- from: dry-gulch-main-street
+  direction: WEST
+  to: general-store
+  visible: true
+  keyString: 'true'
+  label: Dry Gulch Main Street -> General Store
+  description: A bell jingles behind the screen door.
+- from: general-store
+  direction: EAST
+  to: dry-gulch-main-street
+  visible: true
+  keyString: 'true'
+  label: General Store -> Dry Gulch Main Street
+  description: The main street runs back toward the depot.
+- from: dry-gulch-main-street
+  direction: SOUTH
+  to: dusty-spur-saloon
+  visible: true
+  keyString: 'true'
+  label: Dry Gulch Main Street -> Dusty Spur Saloon
+  description: Warm lamplight spills through the swinging doors.
+- from: dusty-spur-saloon
+  direction: NORTH
+  to: dry-gulch-main-street
+  visible: true
+  keyString: 'true'
+  label: Dusty Spur Saloon -> Dry Gulch Main Street
+  description: The street lies beyond the brass rail.
+- from: dusty-spur-saloon
+  direction: WEST
+  to: stable-yard
+  visible: true
+  keyString: 'true'
+  label: Dusty Spur Saloon -> Stable Yard
+  description: The stable yard smells of hay and sweat.
+- from: stable-yard
+  direction: EAST
+  to: dusty-spur-saloon
+  visible: true
+  keyString: 'true'
+  label: Stable Yard -> Dusty Spur Saloon
+  description: The saloon doors swing in the sunlight.
+- from: dry-gulch-main-street
+  direction: EAST
+  to: telegraph-office
+  visible: true
+  keyString: 'true'
+  label: Dry Gulch Main Street -> Telegraph Office
+  description: A cramped office with a dead wire line.
+- from: telegraph-office
+  direction: WEST
+  to: dry-gulch-main-street
+  visible: true
+  keyString: 'true'
+  label: Telegraph Office -> Dry Gulch Main Street
+  description: The main street waits beyond the doorway.
+- from: telegraph-office
+  direction: EAST
+  to: train-platform
+  visible: true
+  keyString: 'true'
+  label: Telegraph Office -> Train Platform
+  description: Steam and whistles drift from the platform.
+- from: train-platform
+  direction: WEST
+  to: telegraph-office
+  visible: true
+  keyString: 'true'
+  label: Train Platform -> Telegraph Office
+  description: The telegraph office flickers with dead light.
+- from: telegraph-office
+  direction: SOUTH
+  to: water-tower
+  visible: true
+  keyString: 'true'
+  label: Telegraph Office -> Water Tower
+  description: A ladder descends toward the water tower.
+- from: water-tower
+  direction: NORTH
+  to: telegraph-office
+  visible: true
+  keyString: 'true'
+  label: Water Tower -> Telegraph Office
+  description: The telegraph office waits above the ladder.
+- from: water-tower
+  direction: EAST
+  to: rail-yard
+  visible: true
+  keyString: 'true'
+  label: Water Tower -> Rail Yard
+  description: Gravel crunches toward the yard switch.
+- from: rail-yard
+  direction: WEST
+  to: water-tower
+  visible: true
+  keyString: 'true'
+  label: Rail Yard -> Water Tower
+  description: The water tower rises over the yard.
+- from: water-tower
+  direction: SOUTH
+  to: miners-gully
+  visible: true
+  keyString: 'true'
+  label: Water Tower -> Miner's Gully
+  description: A dusty cut trails toward the old mine.
+- from: miners-gully
+  direction: NORTH
+  to: water-tower
+  visible: true
+  keyString: 'true'
+  label: Miner's Gully -> Water Tower
+  description: The tower stands above the gully.
+- from: miners-gully
+  direction: EAST
+  to: rattlesnake-bridge
+  visible: true
+  keyString: 'true'
+  label: Miner's Gully -> Rattlesnake Bridge
+  description: A trestle vanishes into the canyon heat.
+- from: rattlesnake-bridge
+  direction: WEST
+  to: miners-gully
+  visible: true
+  keyString: 'true'
+  label: Rattlesnake Bridge -> Miner's Gully
+  description: The gully winds back toward town.
+- from: miners-gully
+  direction: SOUTH
+  to: old-mine
+  visible: true
+  keyString: 'true'
+  label: Miner's Gully -> Old Mine
+  description: Rails dive into the mine's darkness.
+- from: old-mine
+  direction: NORTH
+  to: miners-gully
+  visible: true
+  keyString: 'true'
+  label: Old Mine -> Miner's Gully
+  description: The gully climbs back to the light.
+- from: train-platform
+  direction: NORTH
+  to: baggage-depot
+  visible: true
+  keyString: 'HAS("Station Key")'
+  label: Train Platform -> Baggage Depot
+  description: A padlocked freight door with a brass tag.
+- from: baggage-depot
+  direction: SOUTH
+  to: train-platform
+  visible: true
+  keyString: 'true'
+  label: Baggage Depot -> Train Platform
+  description: The platform is a short walk back.
+- from: train-platform
+  direction: SOUTH
+  to: rail-yard
+  visible: true
+  keyString: 'true'
+  label: Train Platform -> Rail Yard
+  description: Gravel crunches toward the yard switch.
+- from: rail-yard
+  direction: NORTH
+  to: train-platform
+  visible: true
+  keyString: 'true'
+  label: Rail Yard -> Train Platform
+  description: The platform rises above the rails.
+- from: train-platform
+  direction: EAST
+  to: signal-shack
+  visible: true
+  keyString: 'true'
+  label: Train Platform -> Signal Shack
+  description: A narrow path leads to the signal shack.
+- from: signal-shack
+  direction: WEST
+  to: train-platform
+  visible: true
+  keyString: 'true'
+  label: Signal Shack -> Train Platform
+  description: The platform lies back toward the yard.
+- from: rail-yard
+  direction: SOUTH
+  to: rattlesnake-bridge
+  visible: true
+  keyString: 'true'
+  label: Rail Yard -> Rattlesnake Bridge
+  description: A trestle vanishes into the canyon heat.
+- from: rattlesnake-bridge
+  direction: NORTH
+  to: rail-yard
+  visible: true
+  keyString: 'true'
+  label: Rattlesnake Bridge -> Rail Yard
+  description: The yard lies back toward town.
+- from: rail-yard
+  direction: EAST
+  to: canyon-overlook
+  visible: true
+  keyString: 'true'
+  label: Rail Yard -> Canyon Overlook
+  description: A ledge overlooks the bridge and wash.
+- from: canyon-overlook
+  direction: WEST
+  to: rail-yard
+  visible: true
+  keyString: 'true'
+  label: Canyon Overlook -> Rail Yard
+  description: The rail yard shimmers in the heat.
+- from: signal-shack
+  direction: SOUTH
+  to: canyon-overlook
+  visible: true
+  keyString: 'true'
+  label: Signal Shack -> Canyon Overlook
+  description: A steep trail drops toward the overlook.
+- from: canyon-overlook
+  direction: NORTH
+  to: signal-shack
+  visible: true
+  keyString: 'true'
+  label: Canyon Overlook -> Signal Shack
+  description: A ladder climb back to the signal shack.

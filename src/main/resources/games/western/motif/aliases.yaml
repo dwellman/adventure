@@ -1,0 +1,13 @@
+aliases:
+  - alias: RIDE
+    canonical: MOVE
+  - alias: GALLOP
+    canonical: MOVE
+  - alias: TROT
+    canonical: MOVE
+  - alias: SCOUT
+    canonical: SEARCH
+  - alias: TRACK
+    canonical: SEARCH
+  - alias: PROSPECT
+    canonical: SEARCH

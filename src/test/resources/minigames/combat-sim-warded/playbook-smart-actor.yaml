@@ -1,0 +1,30 @@
+name: Combat Sim - Warded Chapel (Smart Actor)
+game: mini.yaml
+smartActorDecisions:
+  - actorKey: wraith
+    decisions:
+      - type: UTTERANCE
+        utterance: attack warden
+      - type: UTTERANCE
+        utterance: look
+smartActorExpectations:
+  - actorKey: wraith
+    decisions:
+      - type: UTTERANCE
+        utterance: attack warden
+      - type: UTTERANCE
+        utterance: look
+steps:
+  - command: attack wraith
+    expect:
+      - Combat begins.
+      - You hit Wraith for 0.
+      - "Wraith health: 8/8"
+      - Wraith hits you for 1.
+      - "Your health: 11/12"
+  - command: flee
+    expect:
+      - You flee.
+  - command: quit
+    expect:
+      - Thanks for playing.

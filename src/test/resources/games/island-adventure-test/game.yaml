@@ -1,0 +1,11 @@
+id: island-adventure-test
+title: Island Adventure (Test Clock Gate)
+seed: 20240615
+startPlotKey: wreck-beach
+preamble: Salt stings your lips as you come to on Wreck Beach, a sand-scratched canvas backpack digging into your shoulder like the last proof you’re still alive.
+includes:
+  map: ../../../../main/resources/games/island/world/map.yaml
+  fixtures: ../../../../main/resources/games/island/world/fixtures.yaml
+  items: ../../../../main/resources/games/island/world/items.yaml
+  actors: ../../../../main/resources/games/island/world/actors.yaml
+  descriptions: ../../../../main/resources/games/island/narrative/descriptions.yaml

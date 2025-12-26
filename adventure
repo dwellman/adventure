@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$DIR"
+source "$DIR/scripts/common.sh"
+
+MVN_BIN="${MVN_BIN:-mvn}"
+QUIET=0
+
+usage() {
+  cat <<'EOF'
+Adventure runner.
+Usage: adventure [--verbose] [--quiet] [--mode=1980|2025] [--help]
+  --verbose   : show Maven output
+  --quiet     : suppress Maven output (CLI still prints game text)
+  --mode      : choose gameplay mode (1980 classic / 2025 LLM); default auto
+  --help      : show this help
+EOF
+}
+
+MODE="auto"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --help|-h)
+      usage
+      exit 0
+      ;;
+    --verbose)
+      QUIET=0
+      ;;
+    --quiet)
+      QUIET=1
+      ;;
+    --mode=1980|--mode=2025)
+      MODE="${1#--mode=}"
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+if [[ "${MODE}" == "2025" ]]; then
+  if [[ -z "${OPENAI_API_KEY:-}" ]]; then
+    echo "OPENAI_API_KEY not set; back to 1980" >&2
+    MODE="1980"
+  fi
+fi
+
+if [[ "${MODE}" == "auto" ]]; then
+  if [[ -n "${OPENAI_API_KEY:-}" ]]; then
+    MODE="2025"
+  else
+    MODE="1980"
+    echo "AUTO mode: no OPENAI_API_KEY; It's 1980" >&2
+  fi
+fi
+
+CMD=("${MVN_BIN}")
+build_maven_exec_cmd "$QUIET" 1 "com.demo.adventure.engine.cli.GameCli" "--mode=${MODE}"
+
+exec "${CMD[@]}"

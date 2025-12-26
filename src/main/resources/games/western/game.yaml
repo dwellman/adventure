@@ -1,0 +1,11 @@
+id: western-adventure
+title: Western Adventure
+seed: 1881
+startPlotKey: train-platform
+preamble: The Iron Rattler hisses at the platform; the payroll strongbox must be secured before sundown, and someone has wired Rattlesnake Bridge with TNT.
+includes:
+  map: world/map.yaml
+  fixtures: world/fixtures.yaml
+  items: world/items.yaml
+  actors: world/actors.yaml
+  descriptions: narrative/descriptions.yaml

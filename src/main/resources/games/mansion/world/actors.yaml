@@ -1,0 +1,31 @@
+actors:
+- key: detective
+  name: Detective
+  description: The sleuth starting in the Hall.
+  ownerKey: hall
+  visible: true
+- key: butler
+  name: Elias Crane
+  description: A precise butler with a practiced calm and watchful eyes.
+  ownerKey: dining-room
+  visible: true
+- key: heiress
+  name: Vivian Coldwater
+  description: The heir to the estate, poised and guarded behind a polished smile.
+  ownerKey: ballroom
+  visible: true
+- key: chef
+  name: Ronan Vale
+  description: A blunt kitchen chief whose attention never leaves his tools.
+  ownerKey: kitchen
+  visible: true
+- key: gardener
+  name: Mara Thorn
+  description: The groundskeeper of the conservatory, steady and unsentimental.
+  ownerKey: conservatory
+  visible: true
+- key: professor
+  name: Professor Hale
+  description: A scholar of the manor's past, eyes bright with restless focus.
+  ownerKey: library
+  visible: true

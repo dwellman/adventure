@@ -1,0 +1,39 @@
+seed: 9
+startPlotKey: start
+preamble: A test preamble.
+plots:
+  - plotKey: start
+    name: Start
+    region: TEST
+    description: Start plot.
+    gates:
+      - direction: E
+        toPlot: end
+        visible: true
+        keyString: 'HAS("Keycard")'
+        label: Start -> End
+        description: A passage.
+    fixtures:
+      - key: hidden-box
+        name: Hidden Box
+        description: A hidden box.
+        visible: false
+    items:
+      - key: keycard
+        name: Keycard
+        description: A plastic keycard.
+        visible: true
+      - key: secret-note
+        name: Secret Note
+        description: A note.
+        visible: false
+    actors:
+      - key: player
+        name: Player
+        description: The hero.
+        visible: true
+        skills: ["Lockpicking"]
+  - plotKey: end
+    name: End
+    region: TEST
+    description: End plot.

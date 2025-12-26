@@ -1,0 +1,14 @@
+smartActors:
+  - actorKey: wraith
+    promptId: smart-actor-system
+    backstory: "A warded wraith that lashes out when pressed."
+    persona:
+      role: sentinel
+      voice: hollow
+      traits: [cold, relentless]
+      goals: ["drive intruders away", "maintain the ward"]
+    policy:
+      allowedVerbs: [ATTACK, LOOK]
+      maxUtteranceLength: 60
+      cooldownTurns: 0
+      maxColorLines: 0

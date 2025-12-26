@@ -1,0 +1,24 @@
+seed: 111
+startPlotKey: start
+preamble: Mini two-plot demo.
+plots:
+  - plotKey: start
+    name: Start
+    region: MINI
+    description: A starting spot.
+    gates:
+      - direction: N
+        toPlot: north-room
+        visible: true
+        keyString: "true"
+        label: Start -> North
+        description: You see the North Room.
+    actors:
+      - key: player
+        name: Explorer
+        description: A curious explorer.
+        visible: true
+  - plotKey: north-room
+    name: North Room
+    region: MINI
+    description: A simple room to the north.

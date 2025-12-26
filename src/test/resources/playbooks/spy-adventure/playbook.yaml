@@ -1,0 +1,56 @@
+name: Spy Adventure Walkthrough
+game: ../../../../main/resources/games/spy/game.yaml
+outcome: win
+allowEarlyExit: true
+steps:
+  - command: look
+    expect:
+      - Nathan Road Neon Canyon
+  - command: east
+  - command: north
+    expect:
+      - Harbor Promenade Rail Walk
+  - command: take Harbor Schedule
+    expect:
+      - You take the Harbor Schedule.
+  - command: west
+  - command: west
+  - command: west
+  - command: west
+    expect:
+      - Ferry Ticket Token Window
+  - command: take Ferry Token
+    expect:
+      - You take the Ferry Token.
+  - command: north
+  - command: east
+  - command: south
+    expect:
+      - Alley Mirror Board
+  - command: take Alley Drop Card
+    expect:
+      - You take the Alley Drop Card.
+  - command: west
+  - command: south
+    expect:
+      - Street Map Kiosk
+  - command: take Map Overlay
+    expect:
+      - You take the Map Overlay.
+  - command: south
+  - command: east
+  - command: south
+    expect:
+      - Container Row A
+  - command: take Cargo Manifest Strip
+    expect:
+      - You take the Cargo Manifest Strip.
+  - command: north
+  - command: west
+  - command: west
+  - command: south
+    expect:
+      - Mission complete.
+  - command: quit
+    expect:
+      - Thanks for playing.

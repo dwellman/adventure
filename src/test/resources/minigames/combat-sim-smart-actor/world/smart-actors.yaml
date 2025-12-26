@@ -1,0 +1,16 @@
+smartActors:
+  - actorKey: bandit
+    promptId: smart-actor-system
+    backstory: "A jittery bandit testing the limits of smart-actor combat."
+    persona:
+      role: survivor
+      voice: clipped
+      traits: [nervous, reactive]
+      goals: ["stay alive", "escape the ring"]
+    properties:
+      caution: high
+    policy:
+      allowedVerbs: [ATTACK, FLEE]
+      maxUtteranceLength: 60
+      cooldownTurns: 0
+      maxColorLines: 0

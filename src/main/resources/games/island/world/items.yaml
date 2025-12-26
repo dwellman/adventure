@@ -1,0 +1,224 @@
+items:
+- key: banana-1
+  name: Banana 1
+  description: A vibrant banana, its yellow skin speckled with tiny brown spots, promises a sweet burst of flavor, freshly
+    picked from the grove.
+  ownerKey: bamboo-forest
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.19
+  footprintHeight: 0.19
+- key: banana-2
+  name: Banana 2
+  description: A vibrant banana, its bright yellow skin invitingly warm, promises a sweet burst of flavor from the heart of
+    the grove.
+  ownerKey: bamboo-forest
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.19
+  footprintHeight: 0.19
+- key: banana-3
+  name: Banana 3
+  description: A vibrant banana, its sun-kissed skin is dappled with flecks of gold, promising a sweet burst of flavor for
+    any adventurer brave enough to savor it.
+  ownerKey: bamboo-forest
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.19
+  footprintHeight: 0.19
+- key: banana-4
+  name: Banana 4
+  description: Golden and ripe, this banana is a testament to the lush life thriving in the Bamboo Forest, its sweet aroma
+    hinting at the adventures that await.
+  ownerKey: bamboo-forest
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.19
+  footprintHeight: 0.19
+- key: banana-5
+  name: Banana 5
+  description: A plump, golden banana, its smooth skin glimmering in the sunlight, beckons with the promise of a sweet, tropical
+    treat.
+  ownerKey: bamboo-forest
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.19
+  footprintHeight: 0.19
+- key: bamboo-poles
+  name: Bamboo Poles
+  description: A bundle of straight bamboo poles, freshly cut and ready to be lashed into a raft frame.
+  ownerKey: bamboo-forest
+  visible: false
+  fixture: false
+  keyString: 'false'
+  footprintWidth: 0.24
+  footprintHeight: 0.24
+- key: canvas-backpack
+  name: Canvas Backpack
+  description: A small canvas backpack, weathered from the salty sea air, holds memories of adventures yet to unfold.
+  ownerKey: castaway
+  visible: true
+  fixture: false
+  keyString: 'true'
+  capacityWidth: 1.0
+  capacityHeight: 1.0
+- key: cave-map-rubbing
+  name: Cave Map Rubbing
+  description: "A charcoal rubbing of the wall runes: \"Torch + river stone spark = light. Stone at the falls. Spiders guard the north tunnel.\""
+  ownerKey: cave-back-chamber
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: dead-ipad
+  name: Dead iPad
+  description: A lifeless tablet, its screen dark and silent, whispers tales of adventures yet to be discovered on this mysterious
+    adventure.
+  ownerKey: castaway
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.3
+  footprintHeight: 0.42
+- key: digital-watch
+  name: Digital Watch
+  description: A modern watch with a subtle green blink, its face reflecting the sun's rays like a beacon, promising hope
+    and adventure in the midst of the wild.
+  ownerKey: castaway
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: flint
+  name: Flint
+  description: This sharp flint shard glimmers in the dim cave light, a promising tool for igniting sparks when paired with
+    a flat river stone.
+  ownerKey: cave-inner-chamber
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: hatchet
+  name: Hatchet
+  description: The weathered hatchet, its blade dulled by time, rests beneath the skeletal remains of the treehouse, a silent
+    testament to past adventures and the mysteries yet to be uncovered.
+  ownerKey: treehouse-skeleton
+  visible: false
+  fixture: false
+  keyString: 'true'
+- key: stick
+  name: Stick
+  description: A sturdy stick, sap-streaked and ready to serve as the spine of a torch.
+  ownerKey: treehouse
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.15
+  footprintHeight: 0.15
+- key: notebook
+  name: Notebook
+  description: This loop-stable notebook, with its weathered cover and pages gently frayed at the edges, invites the explorer
+    to document every thrilling discovery on the mysterious Wreck Beach.
+  ownerKey: castaway
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: rags
+  name: Rags
+  description: Salt-crusted, torn cloth strips — perfect for wrapping a torch head and soaking fuel.
+  ownerKey: wreck-beach
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.08
+  footprintHeight: 0.08
+- key: parachute
+  name: Parachute
+  description: This well-worn silk parachute flutters gently in the breeze, its vibrant colors faded but still hinting at
+    adventures taken to the skies.
+  ownerKey: plane-wreck
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.35
+  footprintHeight: 0.35
+- key: pen
+  name: Pen
+  description: This simple ballpoint pen, though unassuming, holds the potential to capture every thrilling discovery and
+    secret of the adventure, ready to bring the explorer's adventures to life on the pages of a notebook.
+  ownerKey: castaway
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: kerosene
+  name: Kerosene
+  description: A small flask of kerosene, pungent and ready to soak a torch head.
+  ownerKey: cave-inner-chamber
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    kerosene:
+      capacity: 3
+      amount: 3
+- key: river-stone
+  name: River Stone
+  description: A polished river stone, its surface cool and flat, perfect for striking flint to coax a spark.
+  ownerKey: waterfall-pool
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: time-stone
+  name: Time Stone
+  description: The Time Stone glimmers with a cold green light, its surface pulsing with the secrets of ages long past,
+    resting quietly upon the black altar within the volcano.
+  ownerKey: volcano-altar
+  visible: false
+  fixture: false
+  keyString: 'false'
+- key: vine-rope
+  name: Vine Rope
+  description: A sturdy coil of vine rope, its surface thick and fibrous, sways gently in the breeze, while mischievous monkeys
+    with green-stained teeth keep a watchful eye on their prized possession.
+  ownerKey: monkey-grove
+  visible: false
+  fixture: false
+  keyString: 'false'
+- key: camp-journal-page
+  name: Camp Journal Page
+  description: "A torn journal page: \"The green gem pulsed, and the day rolled back. It does not want to leave the island.\""
+  ownerKey: old-camp
+  visible: false
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.1
+  footprintHeight: 0.1
+- key: tide-chart
+  name: Tide Chart
+  description: A waterlogged chart noting calm water just before first light.
+  ownerKey: lagoon-cove
+  visible: false
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.12
+  footprintHeight: 0.12
+- key: signal-mirror
+  name: Signal Mirror
+  description: A small mirror that can throw light across the cliffs when the sun hits it.
+  ownerKey: sea-cliffs
+  visible: false
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.12
+  footprintHeight: 0.12
+- key: lookout-sketch
+  name: Lookout Sketch
+  description: A charcoal sketch of the island marked with the cove, cliffs, and the volcano altar.
+  ownerKey: canopy-lookout
+  visible: false
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.12
+  footprintHeight: 0.12

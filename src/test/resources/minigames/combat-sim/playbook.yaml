@@ -1,0 +1,33 @@
+name: Combat Sim
+game: mini.yaml
+outcome: combat
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Dusty Ring
+  - command: north
+    expect:
+      - Bandit Ring
+  - command: attack bandit
+    expect:
+      - Combat begins.
+      - You hit Bandit for 4.
+      - "Bandit health: 6/10"
+      - Bandit hits you for 2.
+      - "Your health: 10/12"
+  - command: attack bandit
+    expect:
+      - You hit Bandit for 4.
+      - "Bandit health: 2/10"
+      - Bandit hits you for 2.
+      - "Your health: 8/12"
+  - command: attack bandit
+    expect:
+      - You hit Bandit for 2.
+      - "Bandit health: 0/10"
+      - Bandit is defeated.
+      - You are victorious.
+  - command: quit
+    expect:
+      - Thanks for playing.

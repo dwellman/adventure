@@ -1,0 +1,60 @@
+name: Island Adventure Escape (Test Clock Gate)
+game: ../../games/island-adventure-test/game.yaml
+outcome: win
+allowEarlyExit: true
+steps:
+  - command: look
+    expect:
+      - Wreck Beach
+  - command: north
+    expect:
+      - Treehouse
+  - command: use treehouse skeleton
+    expect:
+      - revealing a hatchet
+  - command: take hatchet
+    expect:
+      - You take the Hatchet.
+  - command: east
+    expect:
+      - Bamboo Forest
+  - command: take banana 1
+    expect:
+      - You take the Banana 1.
+  - command: take bamboo poles
+    expect:
+      - You take the Bamboo Poles.
+  - command: east
+    expect:
+      - Monkey Grove
+  - command: take vine rope
+    expect:
+      - You take the Vine Rope.
+      - You offer the bananas.
+  - command: north
+    expect:
+      - Volcano Path
+  - command: east
+    expect:
+      - Plane Wreck
+  - command: take parachute
+    expect:
+      - You take the Parachute.
+  - command: make raft
+    expect:
+      - You craft a raft.
+  - command: west
+    expect:
+      - Volcano Path
+  - command: west
+    expect:
+      - Waterfall Pool
+  - command: west
+    expect:
+      - Cave Mouth
+  - command: down
+    expect:
+      - Treehouse
+  - command: south
+    expect:
+      - You escape.

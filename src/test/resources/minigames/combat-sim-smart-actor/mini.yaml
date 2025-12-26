@@ -1,0 +1,54 @@
+seed: 909
+startPlotKey: smart-ring
+preamble: "Combat sim: smart actor decision constraints."
+plots:
+  - plotKey: smart-ring
+    name: Smart Ring
+    region: MINI
+    description: A tight ring for testing decision bounds.
+    actors:
+      - key: player
+        name: Ranger
+        description: A calm ranger testing a smart opponent.
+        visible: true
+        equippedMainHandItemId: saber
+        equippedBodyItemId: ranger-coat
+        cells:
+          health:
+            capacity: 10
+            amount: 10
+      - key: bandit
+        name: Bandit
+        description: A jittery bandit who thinks on the fly.
+        visible: true
+        equippedMainHandItemId: club
+        equippedBodyItemId: patched-vest
+        cells:
+          health:
+            capacity: 8
+            amount: 8
+    items:
+      - key: saber
+        name: Saber
+        description: A balanced cavalry saber.
+        ownerKey: player
+        visible: true
+        weaponDamage: 3
+      - key: ranger-coat
+        name: Ranger Coat
+        description: A weathered coat with light padding.
+        ownerKey: player
+        visible: true
+        armorMitigation: 1
+      - key: club
+        name: Club
+        description: A rough-hewn club.
+        ownerKey: bandit
+        visible: true
+        weaponDamage: 2
+      - key: patched-vest
+        name: Patched Vest
+        description: A vest with worn stitching.
+        ownerKey: bandit
+        visible: true
+        armorMitigation: 0

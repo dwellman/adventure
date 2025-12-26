@@ -1,0 +1,15 @@
+plots:
+  - key: ballroom
+    tags: [BALLROOM, CLUE_SCENE]
+items:
+  - key: candlestick
+    tags: [WEAPON]
+fixtures:
+  - key: study-desk
+    tags: [SEARCHABLE]
+actors:
+  - key: butler
+    tags: [SUSPECT]
+quests:
+  - key: main-case
+    tags: [QUEST_MAIN]

@@ -1,0 +1,65 @@
+name: Island Adventure Side Clues
+game: ../../games/island-adventure-test/game.yaml
+outcome: explore
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Wreck Beach
+  - command: north
+    expect:
+      - Treehouse
+  - command: west
+    expect:
+      - Old Camp
+  - command: use campfire ring
+    expect:
+      - torn journal page
+  - command: take camp journal page
+    expect:
+      - Camp Journal Page
+  - command: east
+    expect:
+      - Treehouse
+  - command: north
+    expect:
+      - Canopy Lookout
+  - command: use lookout bell
+    expect:
+      - charcoal sketch
+  - command: take lookout sketch
+    expect:
+      - Lookout Sketch
+  - command: south
+    expect:
+      - Treehouse
+  - command: south
+    expect:
+      - Wreck Beach
+  - command: east
+    expect:
+      - Tidepool Rocks
+  - command: south
+    expect:
+      - Lagoon Cove
+  - command: use shell spiral
+    expect:
+      - waterlogged chart
+  - command: take tide chart
+    expect:
+      - Tide Chart
+  - command: north
+    expect:
+      - Tidepool Rocks
+  - command: east
+    expect:
+      - Sea Cliffs
+  - command: use signal cairn
+    expect:
+      - signal mirror
+  - command: take signal mirror
+    expect:
+      - Signal Mirror
+  - command: quit
+    expect:
+      - Thanks for playing.

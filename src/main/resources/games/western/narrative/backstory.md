@@ -1,0 +1,2 @@
+You once rode with the Iron Rattler gang; now Dry Gulch pays you to keep it alive. A payroll strongbox rolls in with the dusk train, and so do old partners carrying fresh dynamite and older grudges.
+The bridge is creaking, the telegraph is cut, and the sheriff's badge is on your chest for one night only. Save the strongbox, keep the bridge intact, and get the train out before sundown closes the deal.

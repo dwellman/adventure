@@ -1,0 +1,23 @@
+aliases:
+  - alias: SNEAK
+    canonical: MOVE
+  - alias: TAIL
+    canonical: MOVE
+  - alias: INFILTRATE
+    canonical: MOVE
+  - alias: SLIP
+    canonical: MOVE
+  - alias: SCAN
+    canonical: SEARCH
+  - alias: SURVEIL
+    canonical: SEARCH
+  - alias: RECON
+    canonical: SEARCH
+  - alias: BUG
+    canonical: USE
+  - alias: HACK
+    canonical: USE
+  - alias: TAP
+    canonical: USE
+  - alias: PLANT
+    canonical: USE

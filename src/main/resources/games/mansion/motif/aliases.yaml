@@ -1,0 +1,11 @@
+aliases:
+  - alias: EXAMINE
+    canonical: INSPECT
+  - alias: INVESTIGATE
+    canonical: SEARCH
+  - alias: SNOOP
+    canonical: SEARCH
+  - alias: PROBE
+    canonical: SEARCH
+  - alias: PIN
+    canonical: USE

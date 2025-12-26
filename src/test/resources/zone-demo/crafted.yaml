@@ -1,0 +1,104 @@
+crafted:
+  - key: torch
+    name: Torch
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Stick", "Rags"]
+      consumes: ["Stick", "Rags"]
+    skill: Firemaking
+    unlocksGates: []
+    enables: [Soaked Torch, Signal Torch]
+    notes: Base light source; prerequisite for brighter variants.
+
+  - key: soaked-torch
+    name: Soaked Torch
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Torch", "Kerosene"]
+      consumes: ["Torch", "Kerosene"]
+    skill: Firemaking
+    unlocksGates: []
+    enables: [Lit Torch]
+    notes: Fuel-rich torch ready to be lit.
+
+  - key: lit-torch
+    name: Lit Torch
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Soaked Torch", "Flint", "River Stone"]
+      consumes: ["Soaked Torch"]
+      requirements: ["Soaked Torch", "Flint", "River Stone"]
+    skill: Firemaking
+    unlocksGates:
+      - Cliff Turn -> Shaded Cave (light required)
+    enables: []
+    notes: Bright light to clear webs/darkness.
+
+  - key: signal-torch
+    name: Signal Torch
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Torch", "Oil Rag"]
+      consumes: ["Torch", "Oil Rag"]
+    skill: Firemaking
+    unlocksGates:
+      - Cliff Turn -> Shaded Cave (light required)
+    enables: []
+    notes: Alternate bright torch without kerosene.
+
+  - key: pole-ladder
+    name: Pole Ladder
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Rope Ladder", "Driftwood Pole"]
+      consumes: ["Driftwood Pole"]
+    skill: Rigging
+    unlocksGates:
+      - Wreck Beach -> Cliff Switchback (UP/DOWN)
+      - Ladder Landing -> Canopy Outlook
+    enables: []
+    notes: Extended ladder; also satisfies base cliff climb.
+
+  - key: hooked-line
+    name: Hooked Line
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Rope", "Fish Hook"]
+      consumes: ["Rope", "Fish Hook"]
+    skill: Rigging
+    unlocksGates:
+      - Red Door Hall -> Cliff Perch
+    enables: []
+    notes: Lets you scramble the drop to the perch.
+
+  - key: patched-raft
+    name: Patched Raft
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Punctured Raft", "Tar Lump"]
+      consumes: ["Punctured Raft", "Tar Lump"]
+    skill: Repair
+    unlocksGates:
+      - Lagoon Shore -> Offshore Sandbar
+    enables: []
+    notes: Ferry to the sandbar.
+
+  - key: set-snare
+    name: Set Snare
+    type: item
+    origin: crafted
+    recipe:
+      inputs: ["Snare Wire", "Bait"]
+      consumes: ["Snare Wire", "Bait"]
+    skill: Trapping
+    unlocksGates:
+      - Dry Creek Bend -> Quiet Clearing
+    enables: []
+    notes: Opens the clearing for the herb reward.

@@ -1,0 +1,89 @@
+plots:
+  - key: ballroom
+    tags: [BALLROOM, CLUE_SCENE]
+  - key: conservatory
+    tags: [CONSERVATORY, CLUE_SCENE]
+  - key: dining-room
+    tags: [DINING_ROOM, ALIBI]
+  - key: kitchen
+    tags: [KITCHEN, CLUE_SCENE]
+  - key: library
+    tags: [LIBRARY, ARCHIVE]
+  - key: study
+    tags: [STUDY, ARCHIVE]
+
+items:
+  - key: candlestick
+    tags: [WEAPON, METAL]
+  - key: knife
+    tags: [WEAPON, SHARP]
+  - key: lead-pipe
+    tags: [WEAPON, HEAVY]
+  - key: revolver
+    tags: [WEAPON, FIREARM]
+  - key: rope
+    tags: [TOOL]
+  - key: torn-menu
+    tags: [CLUE, KITCHEN]
+  - key: glass-shard
+    tags: [CLUE, CONSERVATORY]
+  - key: chalk-smudge
+    tags: [CLUE, BILLIARD]
+  - key: silk-thread
+    tags: [CLUE, LOUNGE]
+  - key: pressed-leaf
+    tags: [CLUE, CONSERVATORY]
+  - key: ink-note
+    tags: [CLUE, STUDY]
+  - key: cellar-ledger
+    tags: [CLUE, CELLAR]
+
+fixtures:
+  - key: study-desk
+    tags: [DESK, SEARCHABLE]
+  - key: case-board
+    tags: [CASE_BOARD, CLUE]
+  - key: corridor-service-bell
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-mirror
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-cue-rack
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-frosted-window
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-pass-shelf
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-trophy-case
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-portrait-frame
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-sconce
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-plant-stand
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-coat-stand
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-umbrella-stand
+    tags: [CLUE, CORRIDOR]
+  - key: corridor-notice-board
+    tags: [CLUE, CORRIDOR]
+  - key: cellar-wine-rack
+    tags: [CLUE, CELLAR]
+
+actors:
+  - key: detective
+    tags: [PLAYER, INVESTIGATOR]
+  - key: butler
+    tags: [SUSPECT]
+  - key: heiress
+    tags: [SUSPECT]
+  - key: chef
+    tags: [SUSPECT]
+  - key: gardener
+    tags: [SUSPECT]
+  - key: professor
+    tags: [SUSPECT]
+
+quests:
+  - key: coldwater-case
+    tags: [QUEST_MAIN, WHO_DUNNIT]

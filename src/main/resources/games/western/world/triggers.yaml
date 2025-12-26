@@ -1,0 +1,76 @@
+triggers:
+  - id: western-tick-rate
+    type: ON_ENTER
+    target: Train Platform
+    actions:
+      - type: SET_CELL
+        target: "@WORLD"
+        cell: TICK_RATE
+        amount: 5
+
+  - id: bridge-warning
+    type: ON_ENTER
+    target: Rattlesnake Bridge
+    key: '!HAS("Bridge Signal")'
+    actions:
+      - type: MESSAGE
+        text: "Dynamite is laced along the beams, the fuse hissing in the heat."
+
+  - id: bridge-defuse
+    type: ON_USE
+    target: Wire Cutters
+    object: Bridge Charges
+    actions:
+      - type: MESSAGE
+        text: "You clip the fuse and pull the dynamite clear. The bridge settles with a long groan."
+      - type: SET_VISIBLE
+        target: Bridge Charges
+        visible: false
+      - type: SET_DESCRIPTION
+        target: Rattlesnake Bridge
+        description: "The fuse is cut and the trestle is quiet again."
+      - type: MOVE_OWNER
+        target: Bridge Signal
+        owner: "@PLAYER"
+      - type: SET_VISIBLE
+        target: Bridge Safe Signal
+        visible: true
+      - type: SET_DESCRIPTION
+        target: Bridge Safe Signal
+        description: "A green lantern now glows, telling the platform the bridge is safe."
+
+  - id: western-time-warning-1
+    type: ON_TURN
+    key: 'World.CLOCK.amount == 60'
+    actions:
+      - type: MESSAGE
+        text: "The station clock ticks louder as the day bleeds out."
+
+  - id: western-time-warning-2
+    type: ON_TURN
+    key: 'World.CLOCK.amount == 120'
+    actions:
+      - type: MESSAGE
+        text: "A low whistle rolls through the yard. Sundown is close."
+
+  - id: western-time-warning-3
+    type: ON_TURN
+    key: 'World.CLOCK.amount == 170'
+    actions:
+      - type: MESSAGE
+        text: "The Iron Rattler vents steam. Last call for the strongbox."
+
+  - id: western-timeout
+    type: ON_TURN
+    key: 'World.CLOCK.amount >= 200'
+    actions:
+      - type: END_GAME
+        text: "The Iron Rattler pulls out without you. The bridge goes up in a roar. Dry Gulch is lost."
+
+  - id: western-win
+    type: ON_ENTER
+    target: Train Platform
+    key: 'HAS("Payroll Strongbox") && HAS("Bridge Signal")'
+    actions:
+      - type: END_GAME
+        text: "You slam the strongbox into the baggage car as the green lantern swings. The bridge holds and Dry Gulch survives."

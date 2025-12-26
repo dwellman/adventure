@@ -1,0 +1,26 @@
+actors:
+- key: handler
+  name: Case Handler
+  description: A calm contact who speaks in short signals and longer pauses.
+  ownerKey: street-map-kiosk
+  visible: true
+- key: dockmaster
+  name: Dockmaster Lin
+  description: The harbor's traffic controller with a notebook full of times.
+  ownerKey: harbor-promenade-rail-walk
+  visible: true
+- key: market-vendor
+  name: Market Broker
+  description: A vendor who knows which stalls are safe and which are not.
+  ownerKey: outer-wall-market-rim
+  visible: true
+- key: projectionist
+  name: Cinema Projectionist
+  description: A projectionist with ink-stained fingers and a locked cabinet.
+  ownerKey: cinema-marquee-corner
+  visible: true
+- key: fixer
+  name: Salvage Fixer
+  description: A quiet fixer sorting parts and tracking who asked for what.
+  ownerKey: electronics-salvage-blanket
+  visible: true

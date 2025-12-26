@@ -1,0 +1,140 @@
+<command> ::=
+      <view-command>
+    | <move-command>
+    | <take-command>
+    | <drop-command>
+    | <wear-command>
+    | <use-command>
+    | <put-command>
+    | <inspect-command>
+    | <search-command>
+    | <status-command>
+    | <help-command>
+    | <hint-command>
+    | <note-command>
+    | <liquid-command>
+    ;
+
+; ---------- View / search ----------
+
+<view-command> ::=
+      "LOOK"
+    | "EXAMINE"
+    ;
+
+<search-command> ::=
+      "SEARCH"
+    | "SEARCH" <space> <container-name>
+    ;
+
+; ---------- Movement ----------
+
+<move-command> ::=
+      <direction>
+    | "GO"    <space> <direction>
+    | "WALK"  <space> <direction>
+    | "HEAD"  <space> <direction>
+    ;
+
+<direction> ::=
+      "N"
+    | "S"
+    | "E"
+    | "W"
+    | "NE"
+    | "NW"
+    | "SE"
+    | "SW"
+    ;
+
+; ---------- Items / containers ----------
+
+<take-command> ::=
+      "TAKE" <space> <thing-name>
+    | "GRAB" <space> <thing-name>
+    ;
+
+<drop-command> ::=
+      "DROP" <space> <thing-name>
+    ;
+
+<wear-command> ::=
+      "WEAR" <space> <thing-name>
+    ;
+
+<use-command> ::=
+      "USE" <space> <thing-name>
+    ;
+
+<put-command> ::=
+      "PUT" <space> <thing-name> <space> "IN" <space> <container-name>
+    ;
+
+<inspect-command> ::=
+      "INSPECT" <space> <container-name>
+    ;
+
+; ---------- Status / info ----------
+
+<status-command> ::=
+      "STATUS"
+    | "INVENTORY"
+    ;
+
+<help-command> ::=
+      "HELP"
+    | "HELP" <space> <topic-name>
+    ;
+
+<hint-command> ::=
+      "HINT" <space> <topic-name>
+    ;
+
+; ---------- Notes ----------
+
+<note-command> ::=
+      "WRITE" <space> <quoted-text>
+    | "READ"  <space> "NOTES"
+    | "READ"  <space> "NOTEBOOK"
+    ;
+
+<quoted-text> ::=
+      "\"" <note-text> "\""
+    ;
+
+<note-text> ::=
+      <note-char>
+    | <note-char> <note-text>
+    ;
+
+; ---------- Liquids ----------
+
+<liquid-command> ::=
+      "FILL"  <space> <thing-name>
+    | "EMPTY" <space> <thing-name>
+    | "POUR"  <space> <thing-name>
+    ;
+
+; ---------- Names / tokens ----------
+
+<thing-name> ::=
+      <word>
+    | <word> <space> <thing-name>
+    ;
+
+<container-name> ::=
+      <thing-name>
+    ;
+
+<topic-name> ::=
+      <word>
+    | <word> <space> <topic-name>
+    ;
+
+<note-char> ::=
+      /* any character except double quote and newline */
+
+; ---------- Lexical units ----------
+
+<word>  ::= /* single upper-case word token from world text, e.g. CANVAS, BACKPACK, DRIFTWOOD, STICK */
+<space> ::= /* one or more spaces between tokens */

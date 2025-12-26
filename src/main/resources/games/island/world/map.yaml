@@ -1,0 +1,366 @@
+plots:
+- key: bamboo-forest
+  name: Bamboo Forest
+  region: ISLAND
+  locationX: 0
+  locationY: 0
+  description: The Bamboo Forest sways gently, its tall, green stalks whispering secrets as the explorer makes their way through
+    the lush greenery, always eager for the next adventure.
+- key: cave-back-chamber
+  name: Cave Back Chamber
+  region: ISLAND
+  locationX: 2
+  locationY: -2
+  description: The Cave Back Chamber opens up like a hidden treasure trove, its rugged walls echoing stories of past explorers.
+    Shadows dance on the stone, hinting at the secrets waiting to be uncovered within this mysterious cavern.
+- key: cave-inner-chamber
+  name: Cave Inner Chamber
+  region: ISLAND
+  locationX: 2
+  locationY: -1
+  description: The Cave Inner Chamber tightens around you, damp air heavy with the smell of kerosene and old webs reaching deeper into the dark.
+- key: cave-mouth
+  name: Cave Mouth
+  region: ISLAND
+  locationX: 2
+  locationY: 0
+  description: The Cave Mouth looms ahead, a dark opening that beckons adventurers to uncover its hidden secrets, while thick
+    spider webs cling to the entrance, hinting at the mysteries waiting inside.
+- key: monkey-grove
+  name: Monkey Grove
+  region: ISLAND
+  locationX: 3
+  locationY: 0
+  description: The Monkey Grove buzzes with playful energy as a troop of mischievous monkeys chatter and swing between the
+    branches, their green-stained teeth glinting in the dappled sunlight.
+- key: plane-wreck
+  name: Plane Wreck
+  region: ISLAND
+  locationX: 4
+  locationY: 0
+  description: The remnants of the plane lie scattered across the ground, rusted metal glinting in the sun, a silent testament
+    to the adventure that once was.
+- key: tidepool-rocks
+  name: Tidepool Rocks
+  region: ISLAND
+  locationX: 5
+  locationY: 0
+  description: The Tidepool Rocks stretch out like ancient sentinels, their weathered surfaces glistening in the sun, inviting
+    explorers to uncover the secrets hidden within the shimmering pools below.
+- key: lagoon-cove
+  name: Lagoon Cove
+  region: ISLAND
+  locationX: 5
+  locationY: -1
+  description: A sheltered cove of still water where broken shells gather in the sand, quiet under the island sun.
+- key: sea-cliffs
+  name: Sea Cliffs
+  region: ISLAND
+  locationX: 6
+  locationY: 0
+  description: Wind-carved cliffs drop into the surf, seabirds circling above the spray and distant thunder.
+- key: treehouse
+  name: Treehouse
+  region: ISLAND
+  locationX: 0
+  locationY: 2
+  description: The treehouse stands tall among the branches, a weathered testament to a time of exploration, its wooden frame
+    entwined with vines and whispers of the past.
+- key: old-camp
+  name: Old Camp
+  region: ISLAND
+  locationX: -1
+  locationY: 2
+  description: A collapsed camp ring with charred logs and a tarp shredded by storms, long since abandoned.
+- key: canopy-lookout
+  name: Canopy Lookout
+  region: ISLAND
+  locationX: 0
+  locationY: 3
+  description: A high platform lashed to the treetops, where the wind carries salt and the island spreads out below.
+- key: volcano-altar
+  name: Volcano Altar
+  region: ISLAND
+  locationX: 1
+  locationY: 1
+  description: The Volcano Altar stands solemnly within the fiery heart of the adventure, a black stone pedestal that seems to
+    hum with ancient energy, beckoning explorers to uncover its secrets.
+- key: volcano-path
+  name: Volcano Path
+  region: ISLAND
+  locationX: 2
+  locationY: 1
+  description: The path winds through rocky terrain toward the rumbling caldera, every step echoing with heat and distant thunder.
+- key: waterfall-pool
+  name: Waterfall Pool
+  region: ISLAND
+  locationX: 3
+  locationY: 1
+  description: The Waterfall Pool sparkles under the sun, where crystal-clear water cascades down into a serene basin, inviting
+    explorers to pause and marvel at its beauty.
+- key: wreck-beach
+  name: Wreck Beach
+  region: ISLAND
+  locationX: 4
+  locationY: 1
+  description: The golden sands of Wreck Beach stretch invitingly, dotted with remnants of past adventures and whispers of
+    the ocean's secrets.
+gates:
+- from: bamboo-forest
+  direction: EAST
+  to: monkey-grove
+  visible: true
+  keyString: 'true'
+  label: Bamboo Forest -> Monkey Grove
+  description: 'A winding path leads eastward through the swaying bamboo, inviting adventurers to step forth into the vibrant
+    Monkey Grove.'
+- from: bamboo-forest
+  direction: SOUTH
+  to: tidepool-rocks
+  visible: true
+  keyString: 'true'
+  label: Bamboo Forest -> Tidepool Rocks
+  description: 'The path winds southward, leading adventurers from the swaying Bamboo Forest to the rugged allure of the Tidepool
+    Rocks, where the sound of crashing waves beckons with promises of new discoveries.'
+- from: bamboo-forest
+  direction: WEST
+  to: treehouse
+  visible: true
+  keyString: 'true'
+  label: Bamboo Forest -> Treehouse
+  description: 'A narrow path winds through the tall bamboo, leading westward toward the inviting Treehouse, where adventure
+    awaits.'
+- from: cave-back-chamber
+  direction: SOUTH
+  to: cave-inner-chamber
+  visible: true
+  keyString: HAS("Lit Torch")
+  label: Cave Back Chamber -> Cave Inner Chamber
+  description: Thick spider webs block the tunnel; burn them with a lit torch to pass.
+- from: cave-inner-chamber
+  direction: SOUTH
+  to: cave-mouth
+  visible: true
+  keyString: 'true'
+  label: Cave Inner Chamber -> Cave Mouth
+  description: 'The narrow passage breathes cool air back toward the cave mouth.'
+- from: cave-inner-chamber
+  direction: NORTH
+  to: cave-back-chamber
+  visible: true
+  keyString: HAS("Lit Torch")
+  label: Cave Inner Chamber -> Cave Back Chamber
+  description: Thick spider webs choke the tunnel ahead; scorch them with a lit torch to push north.
+- from: cave-mouth
+  direction: NORTH
+  to: cave-inner-chamber
+  visible: true
+  keyString: 'true'
+  label: Cave Mouth -> Cave Inner Chamber
+  description: 'A narrow tunnel squeezes north, deeper into the cave.'
+- from: cave-mouth
+  direction: DOWN
+  to: treehouse
+  visible: true
+  keyString: 'true'
+  label: Cave Mouth -> Treehouse
+  description: A rope ladder descends back to the treehouse platform.
+- from: cave-mouth
+  direction: EAST
+  to: waterfall-pool
+  visible: true
+  keyString: 'true'
+  label: Cave Mouth -> Waterfall Pool
+  description: 'The path leads eastward from the shadowy Cave Mouth, where the air hums with the promise of adventure, guiding
+    the way to the enchanting Waterfall Pool.'
+- from: monkey-grove
+  direction: WEST
+  to: bamboo-forest
+  visible: true
+  keyString: 'true'
+  label: Monkey Grove -> Bamboo Forest
+  description: 'The path stretches westward, a winding trail flanked by rustling bamboo, leading adventurers from the lively
+    chatter of the Monkey Grove to the tranquil embrace of the Bamboo Forest.'
+- from: monkey-grove
+  direction: NORTH
+  to: volcano-path
+  visible: true
+  keyString: 'true'
+  label: Monkey Grove -> Volcano Path
+  description: 'A narrow path winds northward from the lively Monkey Grove, leading adventurers through the rustling leaves
+    and playful chatter of the Chaos Monkey Troop, before opening up to the rugged terrain of the Volcano Path.'
+- from: plane-wreck
+  direction: WEST
+  to: volcano-path
+  visible: true
+  keyString: 'true'
+  label: Plane Wreck -> Volcano Path
+  description: 'The narrow path winds westward, leading explorers from the remnants of the Plane Wreck to the mysterious depths
+    of the Volcano Path.'
+- from: tidepool-rocks
+  direction: NORTH
+  to: bamboo-forest
+  visible: true
+  keyString: 'true'
+  label: Tidepool Rocks -> Bamboo Forest
+  description: 'A narrow path winds northward, leading adventurers from the vibrant Tidepool Rocks to the lush Bamboo Forest,
+    where whispers of rustling leaves beckon the curious to explore further.'
+- from: tidepool-rocks
+  direction: WEST
+  to: wreck-beach
+  visible: true
+  keyString: 'true'
+  label: Tidepool Rocks -> Wreck Beach
+  description: 'A winding path leads westward through the rocky terrain, where the rhythmic sound of crashing waves beckons
+    towards Wreck Beach.'
+- from: tidepool-rocks
+  direction: SOUTH
+  to: lagoon-cove
+  visible: true
+  keyString: 'true'
+  label: Tidepool Rocks -> Lagoon Cove
+  description: 'A narrow track slips south toward a sheltered cove, where the water turns glassy and still.'
+- from: lagoon-cove
+  direction: NORTH
+  to: tidepool-rocks
+  visible: true
+  keyString: 'true'
+  label: Lagoon Cove -> Tidepool Rocks
+  description: 'A sandy rise leads north toward the tidepools and their restless surf.'
+- from: tidepool-rocks
+  direction: EAST
+  to: sea-cliffs
+  visible: true
+  keyString: 'true'
+  label: Tidepool Rocks -> Sea Cliffs
+  description: 'A jagged path climbs east toward the sea cliffs, where the wind never rests.'
+- from: sea-cliffs
+  direction: WEST
+  to: tidepool-rocks
+  visible: true
+  keyString: 'true'
+  label: Sea Cliffs -> Tidepool Rocks
+  description: 'The trail winds back west toward the tidepools and their sunlit rocks.'
+- from: treehouse
+  direction: EAST
+  to: bamboo-forest
+  visible: true
+  keyString: 'true'
+  label: Treehouse -> Bamboo Forest
+  description: 'A narrow path winds its way east, leading from the cozy treehouse towards the swaying bamboos, beckoning the
+    explorer to step into the whispering green sanctuary of the Bamboo Forest.'
+- from: treehouse
+  direction: WEST
+  to: old-camp
+  visible: true
+  keyString: 'true'
+  label: Treehouse -> Old Camp
+  description: 'A faint trail slips west toward a forgotten camp tucked under the trees.'
+- from: old-camp
+  direction: EAST
+  to: treehouse
+  visible: true
+  keyString: 'true'
+  label: Old Camp -> Treehouse
+  description: 'A narrow trail leads back east toward the treehouse ladder.'
+- from: treehouse
+  direction: UP
+  to: cave-mouth
+  visible: true
+  keyString: 'true'
+  label: Treehouse -> Cave Mouth
+  description: A rope ladder drops into the shadowed hole above, leading toward the Cave Mouth.
+- from: treehouse
+  direction: SOUTH
+  to: wreck-beach
+  visible: true
+  keyString: 'true'
+  label: Treehouse -> Wreck Beach
+  description: 'A narrow path winds southward, leading through the lush undergrowth, beckoning adventurous souls to venture
+    toward the sandy shores of Wreck Beach.'
+- from: treehouse
+  direction: NORTH
+  to: canopy-lookout
+  visible: true
+  keyString: 'true'
+  label: Treehouse -> Canopy Lookout
+  description: 'Handholds climb north to a lookout lashed high in the canopy.'
+- from: canopy-lookout
+  direction: SOUTH
+  to: treehouse
+  visible: true
+  keyString: 'true'
+  label: Canopy Lookout -> Treehouse
+  description: 'A rope ladder descends south toward the treehouse platform.'
+- from: volcano-altar
+  direction: SOUTH
+  to: volcano-path
+  visible: true
+  keyString: 'true'
+  label: Volcano Altar -> Volcano Path
+  description: 'The path stretches invitingly southward, leading explorers from the sacred Volcano Altar to the enigmatic
+    depths of the Volcano Path, where whispers of adventure linger.'
+- from: volcano-path
+  direction: SOUTH
+  to: monkey-grove
+  visible: true
+  keyString: 'true'
+  label: Volcano Path -> Monkey Grove
+  description: 'A rugged pathway winds southward, leading adventurers from the fiery heart of the Volcano Path into the lush
+    embrace of Monkey Grove.'
+- from: volcano-path
+  direction: EAST
+  to: plane-wreck
+  visible: true
+  keyString: 'true'
+  label: Volcano Path -> Plane Wreck
+  description: 'The path winds eastward, leading adventurers away from the rumbling volcano and toward the secrets of the
+    Plane Wreck, where forgotten stories await.'
+- from: volcano-path
+  direction: NORTH
+  to: volcano-altar
+  visible: true
+  keyString: 'true'
+  label: Volcano Path -> Volcano Altar
+  description: 'A rugged trail winds northward, guiding the way through the shadow of towering peaks, leading adventurers
+    to the mysterious Volcano Altar.'
+- from: volcano-path
+  direction: WEST
+  to: waterfall-pool
+  visible: true
+  keyString: 'true'
+  label: Volcano Path -> Waterfall Pool
+  description: 'A winding path weaves westward, leading adventurers from the fiery embrace of the Volcano Path toward the
+    soothing sounds of the Waterfall Pool.'
+- from: waterfall-pool
+  direction: WEST
+  to: cave-mouth
+  visible: true
+  keyString: 'true'
+  label: Waterfall Pool -> Cave Mouth
+  description: 'The path winds westward, meandering through lush foliage, leading adventurers from the serene Waterfall Pool
+    to the shadowy depths of the Cave Mouth.'
+- from: waterfall-pool
+  direction: EAST
+  to: volcano-path
+  visible: true
+  keyString: 'true'
+  label: Waterfall Pool -> Volcano Path
+  description: 'The path winds eastward, the sound of rushing water accompanying each step, as the explorer moves eagerly
+    from the shimmering Waterfall Pool towards the rugged terrain of the Volcano Path.'
+- from: wreck-beach
+  direction: EAST
+  to: tidepool-rocks
+  visible: true
+  keyString: 'true'
+  label: Wreck Beach -> Tidepool Rocks
+  description: 'As the explorer strides eastward, the salty breeze swirls around, guiding them along the winding path from
+    Wreck Beach to the vibrant rock formations of Tidepool Rocks.'
+- from: wreck-beach
+  direction: NORTH
+  to: treehouse
+  visible: true
+  keyString: 'true'
+  label: Wreck Beach -> Treehouse
+  description: 'A narrow path weaves through the lush undergrowth, leading boldly north from Wreck Beach towards the towering
+    Treehouse, where adventure awaits.'

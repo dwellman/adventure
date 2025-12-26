@@ -1,0 +1,5 @@
+enabled: true
+maxTicks: 1440
+persistentItems:
+  - Notebook
+  - Digital Watch

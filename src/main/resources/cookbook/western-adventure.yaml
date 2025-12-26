@@ -1,0 +1,132 @@
+seed: 1881
+startPlot: Train Platform
+startPlotKey: train-platform
+preamble: The last train whistles in the distance; you have one shot to secure the payroll strongbox before it leaves Dry Gulch.
+plots:
+- plot: Train Platform
+  plotKey: train-platform
+  name: Train Platform
+  region: FRONTIER
+  description:
+  - text: A sun-baked platform with railcars idling and the heat shimmering off the tracks.
+    worldClock: -1
+  gates:
+  - fromPlot: train-platform
+    from: Train Platform
+    direction: EAST
+    toPlot: dry-gulch-main-street
+    to: Dry Gulch Main Street
+    visible: true
+    keyString: 'true'
+    label: Train Platform -> Dry Gulch Main Street
+    description:
+    - text: A creaking wooden walkway leads toward the heart of Dry Gulch.
+      worldClock: -1
+  fixtures: [
+    ]
+  items:
+  - key: platform-key
+    name: Station Key
+    description:
+    - text: A brass key tagged "Baggage".
+      worldClock: -1
+    ownerKey: train-platform
+    owner: Train Platform
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Dry Gulch Main Street
+  plotKey: dry-gulch-main-street
+  name: Dry Gulch Main Street
+  region: FRONTIER
+  description:
+  - text: A sparse street lined with shuttered shops, dust, and the ticking of the station clock.
+    worldClock: -1
+  gates:
+  - fromPlot: dry-gulch-main-street
+    from: Dry Gulch Main Street
+    direction: WEST
+    toPlot: train-platform
+    to: Train Platform
+    visible: true
+    keyString: 'true'
+    label: Dry Gulch Main Street -> Train Platform
+    description:
+    - text: Tracks glint west toward the waiting platform.
+      worldClock: -1
+  - fromPlot: dry-gulch-main-street
+    from: Dry Gulch Main Street
+    direction: NORTH
+    toPlot: sheriffs-office
+    to: Sheriff's Office
+    visible: true
+    keyString: 'true'
+    label: Dry Gulch Main Street -> Sheriff's Office
+    description:
+    - text: A narrow alley rises to the sheriff's door.
+      worldClock: -1
+  fixtures: [
+    ]
+  items:
+  - key: telegram
+    name: Urgent Telegram
+    description:
+    - text: The telegraph warns the payroll car departs at sundown.
+      worldClock: -1
+    ownerKey: dry-gulch-main-street
+    owner: Dry Gulch Main Street
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors:
+  - key: deputy
+    name: Deputy Lane
+    description:
+    - text: A nervous deputy pacing, one eye on the clock and one on you.
+      worldClock: -1
+    ownerKey: dry-gulch-main-street
+    owner: Dry Gulch Main Street
+    visible: true
+- plot: Sheriff's Office
+  plotKey: sheriffs-office
+  name: Sheriff's Office
+  region: FRONTIER
+  description:
+  - text: Cool shade, a heavy desk, and a locked strongbox waiting for the train.
+    worldClock: -1
+  gates:
+  - fromPlot: sheriffs-office
+    from: Sheriff's Office
+    direction: SOUTH
+    toPlot: dry-gulch-main-street
+    to: Dry Gulch Main Street
+    visible: true
+    keyString: 'true'
+    label: Sheriff's Office -> Dry Gulch Main Street
+    description:
+    - text: Saloon clatter drifts up from the street below.
+      worldClock: -1
+  fixtures:
+  - key: strongbox
+    name: Payroll Strongbox
+    description:
+    - text: Heavy iron strongbox stamped with the rail line crest.
+      worldClock: -1
+    ownerKey: sheriffs-office
+    owner: Sheriff's Office
+    visible: true
+  items:
+  - key: rail-manifest
+    name: Rail Manifest
+    description:
+    - text: A manifest showing the strongbox must leave on tonight's train.
+      worldClock: -1
+    ownerKey: sheriffs-office
+    owner: Sheriff's Office
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]

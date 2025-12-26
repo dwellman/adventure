@@ -1,0 +1,515 @@
+game_plan:
+  game_id: western-adventure
+  title: Western Adventure
+  steps:
+    step_1_intake_constraints:
+      role: Producer/Director
+      inputs:
+        - design_brief: "Western Adventure (time-based)"
+        - canon_sources:
+            - src/main/resources/cookbook/western-adventure.yaml
+            - src/main/resources/games/western/assets/western_adventure.png
+      process: interview one question at a time to fill constraints before story/backstory; distill scope, invariants, success criteria, and non-negotiables
+      outputs:
+        constraints_brief:
+          title: Western Adventure
+          game_type: timebound
+          description: Save the train before the T&T blows it up.
+          genre: time-based western adventure
+          motif:
+            - ticking clock
+            - train payroll
+            - dynamite threat
+          player_role: acting sheriff for one night
+          win_conditions:
+            - secure the payroll strongbox before the train departs
+            - keep the bridge intact through the night
+          lose_conditions:
+            - train departs without the strongbox
+            - bridge is destroyed
+          puzzle_count: TBD
+          mandatory_items:
+            - Payroll Strongbox
+          guardrails:
+            - do_not_rewrite_story
+            - no_ad_hoc_parsing
+            - use_command_scanner_compiler_interpreter
+          success_criteria:
+            - structured load passes
+            - playbook covers full run
+            - time-pressure mechanics are explicit
+
+    step_2_story_spec:
+      role: Storyteller
+      inputs:
+        - constraints_brief (step_1)
+      process: shape backstory, loop, beats, challenges, required artifacts
+      outputs:
+        story_spec:
+          backstory_summary: A former train robber now wearing a sheriff's badge for one night must protect a payroll strongbox as old gang members return to settle scores.
+          core_loop: gather time-sensitive intel, secure the strongbox, prevent sabotage, and reach the train before departure
+          key_beats:
+            - arrival at the platform with a deadline
+            - gather the telegram and manifest
+            - secure the strongbox from the sheriff's office
+            - resolve the gang's threat before the train departs
+          challenges:
+            - racing the clock
+            - limited information about sabotage
+          required_artifacts:
+            - Payroll Strongbox
+            - Rail Manifest
+            - Urgent Telegram
+            - Station Key
+
+    step_3_world_plan:
+      role: World Planner
+      inputs:
+        - story_spec (step_2)
+        - constraints_brief (step_1)
+      process: map plots, adjacency, gates/key expressions, and placements
+      outputs:
+        world_plan:
+          plot_count: 16
+          plots:
+            - id: dry-gulch-main-street
+              label: Dry Gulch Main Street
+              role: hub
+              description_stub: Sun-bleached storefronts, dust, and the steady tick of the station clock.
+            - id: sheriff-s-office
+              label: Sheriff's Office
+              role: puzzle
+              description_stub: A cool room with iron bars, a heavy desk, and the town safe waiting on the dusk train.
+            - id: jailhouse
+              label: Jailhouse
+              role: support
+              description_stub: Iron bars, a narrow cot, and the stale smell of last night's trouble.
+            - id: general-store
+              label: General Store
+              role: support
+              description_stub: Shelves of supplies, a brass bell, and a ledger full of IOUs.
+            - id: dusty-spur-saloon
+              label: Dusty Spur Saloon
+              role: support
+              description_stub: Swinging doors, brass rail, sawdust, and a piano that refuses to die.
+            - id: stable-yard
+              label: Stable Yard
+              role: support
+              description_stub: Empty stalls, warm hay, and a single horse snorting in the shade.
+            - id: telegraph-office
+              label: Telegraph Office
+              role: puzzle
+              description_stub: A cramped room of wire and switches, the line dead and humming with static.
+            - id: water-tower
+              label: Water Tower
+              role: support
+              description_stub: A corrugated tower with a valve wheel and a ladder baked by the sun.
+            - id: train-platform
+              label: Train Platform
+              role: start
+              description_stub: Steam, coal smoke, and a long string of cars idling for the last run out of Dry Gulch.
+            - id: baggage-depot
+              label: Baggage Depot
+              role: puzzle
+              description_stub: Crates stacked to the rafters, padlocks, and a workbench littered with tools.
+            - id: signal-shack
+              label: Signal Shack
+              role: support
+              description_stub: A lean shed with a signal lever and a view of the canyon line.
+            - id: rail-yard
+              label: Rail Yard
+              role: hub
+              description_stub: Switches, sidings, and a maze of rusted rails stretching into the heat.
+            - id: canyon-overlook
+              label: Canyon Overlook
+              role: hazard
+              description_stub: A wind-carved ledge that looks down on the trestle and the wash below.
+            - id: miners-gully
+              label: Miner's Gully
+              role: support
+              description_stub: A dusty cut through shale where miners once hauled ore by mule.
+            - id: rattlesnake-bridge
+              label: Rattlesnake Bridge
+              role: hazard
+              description_stub: A narrow trestle over a rocky wash; the timbers groan under every gust.
+            - id: old-mine
+              label: Old Mine
+              role: hazard
+              description_stub: A black mouth in the hillside with rails that vanish into the dark.
+          adjacency:
+            - from: dry-gulch-main-street
+              to: sheriff-s-office
+              direction: NORTH
+              gate_label: Dry Gulch Main Street -> Sheriff's Office
+              key_expression: true
+              visible: true
+              hint: A narrow alley rises to the sheriff's door.
+            - from: sheriff-s-office
+              to: dry-gulch-main-street
+              direction: SOUTH
+              gate_label: Sheriff's Office -> Dry Gulch Main Street
+              key_expression: true
+              visible: true
+              hint: Saloon clatter drifts up from the street below.
+            - from: sheriff-s-office
+              to: jailhouse
+              direction: WEST
+              gate_label: Sheriff's Office -> Jailhouse
+              key_expression: true
+              visible: true
+              hint: A barred corridor leads to the cells.
+            - from: jailhouse
+              to: sheriff-s-office
+              direction: EAST
+              gate_label: Jailhouse -> Sheriff's Office
+              key_expression: true
+              visible: true
+              hint: The sheriff's desk waits beyond the bars.
+            - from: dry-gulch-main-street
+              to: general-store
+              direction: WEST
+              gate_label: Dry Gulch Main Street -> General Store
+              key_expression: true
+              visible: true
+              hint: A bell jingles behind the screen door.
+            - from: general-store
+              to: dry-gulch-main-street
+              direction: EAST
+              gate_label: General Store -> Dry Gulch Main Street
+              key_expression: true
+              visible: true
+              hint: The main street runs back toward the depot.
+            - from: dry-gulch-main-street
+              to: dusty-spur-saloon
+              direction: SOUTH
+              gate_label: Dry Gulch Main Street -> Dusty Spur Saloon
+              key_expression: true
+              visible: true
+              hint: Warm lamplight spills through the swinging doors.
+            - from: dusty-spur-saloon
+              to: dry-gulch-main-street
+              direction: NORTH
+              gate_label: Dusty Spur Saloon -> Dry Gulch Main Street
+              key_expression: true
+              visible: true
+              hint: The street lies beyond the brass rail.
+            - from: dusty-spur-saloon
+              to: stable-yard
+              direction: WEST
+              gate_label: Dusty Spur Saloon -> Stable Yard
+              key_expression: true
+              visible: true
+              hint: The stable yard smells of hay and sweat.
+            - from: stable-yard
+              to: dusty-spur-saloon
+              direction: EAST
+              gate_label: Stable Yard -> Dusty Spur Saloon
+              key_expression: true
+              visible: true
+              hint: The saloon doors swing in the sunlight.
+            - from: dry-gulch-main-street
+              to: telegraph-office
+              direction: EAST
+              gate_label: Dry Gulch Main Street -> Telegraph Office
+              key_expression: true
+              visible: true
+              hint: A cramped office with a dead wire line.
+            - from: telegraph-office
+              to: dry-gulch-main-street
+              direction: WEST
+              gate_label: Telegraph Office -> Dry Gulch Main Street
+              key_expression: true
+              visible: true
+              hint: The main street waits beyond the doorway.
+            - from: telegraph-office
+              to: train-platform
+              direction: EAST
+              gate_label: Telegraph Office -> Train Platform
+              key_expression: true
+              visible: true
+              hint: Steam and whistles drift from the platform.
+            - from: train-platform
+              to: telegraph-office
+              direction: WEST
+              gate_label: Train Platform -> Telegraph Office
+              key_expression: true
+              visible: true
+              hint: The telegraph office flickers with dead light.
+            - from: telegraph-office
+              to: water-tower
+              direction: SOUTH
+              gate_label: Telegraph Office -> Water Tower
+              key_expression: true
+              visible: true
+              hint: A ladder descends toward the water tower.
+            - from: water-tower
+              to: telegraph-office
+              direction: NORTH
+              gate_label: Water Tower -> Telegraph Office
+              key_expression: true
+              visible: true
+              hint: The telegraph office waits above the ladder.
+            - from: water-tower
+              to: rail-yard
+              direction: EAST
+              gate_label: Water Tower -> Rail Yard
+              key_expression: true
+              visible: true
+              hint: Gravel crunches toward the yard switch.
+            - from: rail-yard
+              to: water-tower
+              direction: WEST
+              gate_label: Rail Yard -> Water Tower
+              key_expression: true
+              visible: true
+              hint: The water tower rises over the yard.
+            - from: water-tower
+              to: miners-gully
+              direction: SOUTH
+              gate_label: Water Tower -> Miner's Gully
+              key_expression: true
+              visible: true
+              hint: A dusty cut trails toward the old mine.
+            - from: miners-gully
+              to: water-tower
+              direction: NORTH
+              gate_label: Miner's Gully -> Water Tower
+              key_expression: true
+              visible: true
+              hint: The tower stands above the gully.
+            - from: miners-gully
+              to: rattlesnake-bridge
+              direction: EAST
+              gate_label: Miner's Gully -> Rattlesnake Bridge
+              key_expression: true
+              visible: true
+              hint: A trestle vanishes into the canyon heat.
+            - from: rattlesnake-bridge
+              to: miners-gully
+              direction: WEST
+              gate_label: Rattlesnake Bridge -> Miner's Gully
+              key_expression: true
+              visible: true
+              hint: The gully winds back toward town.
+            - from: miners-gully
+              to: old-mine
+              direction: SOUTH
+              gate_label: Miner's Gully -> Old Mine
+              key_expression: true
+              visible: true
+              hint: Rails dive into the mine's darkness.
+            - from: old-mine
+              to: miners-gully
+              direction: NORTH
+              gate_label: Old Mine -> Miner's Gully
+              key_expression: true
+              visible: true
+              hint: The gully climbs back to the light.
+            - from: train-platform
+              to: baggage-depot
+              direction: NORTH
+              gate_label: Train Platform -> Baggage Depot
+              key_expression: 'HAS("Station Key")'
+              visible: true
+              hint: A padlocked freight door with a brass tag.
+            - from: baggage-depot
+              to: train-platform
+              direction: SOUTH
+              gate_label: Baggage Depot -> Train Platform
+              key_expression: true
+              visible: true
+              hint: The platform is a short walk back.
+            - from: train-platform
+              to: rail-yard
+              direction: SOUTH
+              gate_label: Train Platform -> Rail Yard
+              key_expression: true
+              visible: true
+              hint: Gravel crunches toward the yard switch.
+            - from: rail-yard
+              to: train-platform
+              direction: NORTH
+              gate_label: Rail Yard -> Train Platform
+              key_expression: true
+              visible: true
+              hint: The platform rises above the rails.
+            - from: train-platform
+              to: signal-shack
+              direction: EAST
+              gate_label: Train Platform -> Signal Shack
+              key_expression: true
+              visible: true
+              hint: A narrow path leads to the signal shack.
+            - from: signal-shack
+              to: train-platform
+              direction: WEST
+              gate_label: Signal Shack -> Train Platform
+              key_expression: true
+              visible: true
+              hint: The platform lies back toward the yard.
+            - from: rail-yard
+              to: rattlesnake-bridge
+              direction: SOUTH
+              gate_label: Rail Yard -> Rattlesnake Bridge
+              key_expression: true
+              visible: true
+              hint: A trestle vanishes into the canyon heat.
+            - from: rattlesnake-bridge
+              to: rail-yard
+              direction: NORTH
+              gate_label: Rattlesnake Bridge -> Rail Yard
+              key_expression: true
+              visible: true
+              hint: The yard lies back toward town.
+            - from: rail-yard
+              to: canyon-overlook
+              direction: EAST
+              gate_label: Rail Yard -> Canyon Overlook
+              key_expression: true
+              visible: true
+              hint: A ledge overlooks the bridge and wash.
+            - from: canyon-overlook
+              to: rail-yard
+              direction: WEST
+              gate_label: Canyon Overlook -> Rail Yard
+              key_expression: true
+              visible: true
+              hint: The rail yard shimmers in the heat.
+            - from: signal-shack
+              to: canyon-overlook
+              direction: SOUTH
+              gate_label: Signal Shack -> Canyon Overlook
+              key_expression: true
+              visible: true
+              hint: A steep trail drops toward the overlook.
+            - from: canyon-overlook
+              to: signal-shack
+              direction: NORTH
+              gate_label: Canyon Overlook -> Signal Shack
+              key_expression: true
+              visible: true
+              hint: A ladder climb back to the signal shack.
+          placements:
+            fixtures:
+              - id: sheriffs-desk
+                plot_id: sheriff-s-office
+                label: Sheriff's Desk
+                purpose: clue anchor
+              - id: telegraph-console
+                plot_id: telegraph-office
+                label: Telegraph Console
+                purpose: clue anchor
+              - id: bridge-charges
+                plot_id: rattlesnake-bridge
+                label: Bridge Charges
+                purpose: sabotage target
+              - id: bridge-safe-signal
+                plot_id: train-platform
+                label: Bridge Safe Signal
+                purpose: win marker
+            items:
+              - id: payroll-strongbox
+                plot_id: sheriff-s-office
+                label: Payroll Strongbox
+                purpose: win artifact
+              - id: rail-manifest
+                plot_id: sheriff-s-office
+                label: Rail Manifest
+                purpose: deadline clue
+              - id: station-key
+                plot_id: train-platform
+                label: Station Key
+                purpose: access token
+              - id: urgent-telegram
+                plot_id: dry-gulch-main-street
+                label: Urgent Telegram
+                purpose: deadline clue
+              - id: wire-cutters
+                plot_id: baggage-depot
+                label: Wire Cutters
+                purpose: bridge defuse tool
+              - id: bridge-signal
+                plot_id: train-platform
+                label: Bridge Signal
+                purpose: win marker
+            actors:
+              - id: deputy-lane
+                plot_id: dry-gulch-main-street
+                label: Deputy Lane
+                purpose: informant
+
+    step_4_gdl_synthesis:
+      role: GDL Synthesizer
+      inputs:
+        - world_plan (step_3)
+      process: translate plan into GDL statements with consistent IDs/labels
+      outputs:
+        gdl_source:
+          source: |
+            # excerpt from the 16-plot plan
+            thing("game").fixture("self").kind="game".seed=1881.preamble="The Iron Rattler hisses at the platform..."
+            thing("train-platform").fixture("self").name="Train Platform".region="FRONTIER".description="Steam, coal smoke, and a long string of cars idling for the last run out of Dry Gulch."
+            thing("telegraph-office").fixture("self").name="Telegraph Office".region="FRONTIER".description="A cramped room of wire and switches, the line dead and humming with static."
+            thing("rattlesnake-bridge").fixture("self").name="Rattlesnake Bridge".region="FRONTIER".description="A narrow trestle over a rocky wash; the timbers groan under every gust."
+            thing("train-platform").fixture("north").leadsTo="baggage-depot".label="Train Platform -> Baggage Depot".keyString="HAS(\"Station Key\")".description="A padlocked freight door with a brass tag."
+            thing("station-key").fixture("self").kind="item".name="Station Key".description="A brass key tagged 'Baggage'.".owner="train-platform"
+            thing("wire-cutters").fixture("self").kind="item".name="Wire Cutters".description="Greased cutters sized for telegraph wire and fuse cord.".owner="baggage-depot"
+            actor("deputy-lane").fixture("self").name="Deputy Lane".description="A nervous deputy pacing, one eye on the clock and one on you.".owner="dry-gulch-main-street"
+
+    step_5_compile_validate:
+      role: Compiler/Validator
+      inputs:
+        - gdl_source (step_4)
+      process: run GDL scan/compile + world validation, collect errors/warnings
+      outputs:
+        build_report:
+          compile_status: TBD
+          validation_errors: []
+          warnings: []
+
+    step_6_structured_export:
+      role: Exporter
+      inputs:
+        - build_report (step_5, pass)
+        - story_spec (step_2)
+      process: emit structured YAML and narrative assets
+      outputs:
+        structured_export:
+          game_yaml: logs/gameplan/western-adventure/structured/game.yaml
+          includes:
+            map: logs/gameplan/western-adventure/structured/world/map.yaml
+            fixtures: logs/gameplan/western-adventure/structured/world/fixtures.yaml
+            items: logs/gameplan/western-adventure/structured/world/items.yaml
+            actors: logs/gameplan/western-adventure/structured/world/actors.yaml
+            descriptions: logs/gameplan/western-adventure/structured/narrative/descriptions.yaml
+          backstory_md: logs/gameplan/western-adventure/structured/narrative/backstory.md
+          crafting_yaml: none
+
+    step_7_runtime_verification:
+      role: Verifier
+      inputs:
+        - structured_export (step_6)
+        - playbooks:
+            - src/test/resources/playbooks/western-adventure/playbook.yaml
+      process: run structured load + playbook integration tests
+      outputs:
+        verification:
+          structured_load_test: TBD
+          playbook_tests: []
+
+    step_8_iterate:
+      role: Producer/Director
+      inputs:
+        - build_report (step_5)
+        - verification (step_7)
+      process: refine constraints/plan and queue next revision
+      outputs:
+        iterate:
+          deltas:
+            - verify the 16-plot adjacency and labels stay in sync with the structured map
+            - add optional side tasks without changing the core win path
+            - tune time-pressure pacing once the full map is playtested
+          next_actions:
+            - expand the playbook with an optional detour that touches new plots
+            - validate clue placement and reinforce the bridge defuse stakes
+            - keep the strongbox and bridge signal win conditions unchanged

@@ -1,0 +1,1809 @@
+seed: 1949
+startPlot: Hall
+startPlotKey: hall
+preamble: You are the detective in the Hall.
+plots:
+- plot: Ballroom
+  plotKey: ballroom
+  name: Ballroom
+  region: MANSION
+  description:
+  - text: Ballroom plot
+    worldClock: 0
+  - text: The grand Ballroom, with its sparkling chandeliers and polished floors, echoes with the whispers of a thousand unseen
+      guests, each hinting at secrets yet to be unveiled.
+    worldClock: 1
+  gates:
+  - label: Ballroom -> Corridor Ballroom-Kitchen
+    direction: EAST
+    plotA:
+      fromPlot: ballroom
+      toPlot: corridor-ballroom-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'The grand archway beckons with an inviting glow, leading east as whispers of laughter and clinking glasses
+          float past. Stepping through this passage transports one from the opulent Ballroom to the bustling Corridor, where
+          secrets await in the shadows of the kitchen. to: Corridor Ballroom-Kitchen'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-ballroom-kitchen
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage beckons to the west, leading from the lively whispers of the Ballroom to the mysteries of
+          the Corridor. As one steps through, the air tingles with anticipation, drawing closer to the enchanting secrets
+          of the grand Mansion to: Ballroom.'
+        worldClock: 1
+  - label: Ballroom -> Corridor Billiard-Ballroom
+    direction: NORTH
+    plotA:
+      fromPlot: ballroom
+      toPlot: corridor-billiard-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A grand passageway beckons from the opulent Ballroom, leading northward into the intriguing Corridor Billiard-Ballroom,
+          where whispers of laughter and secrets await. The air is thick with anticipation as one ventures forth to: Corridor
+          Billiard-Ballroom.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-billiard-ballroom
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Billiard-Ballroom
+        worldClock: -1
+  - label: Ballroom -> Corridor Conservatory-Ballroom
+    direction: WEST
+    plotA:
+      fromPlot: ballroom
+      toPlot: corridor-conservatory-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A whispering path leads westward from the grand Ballroom, beckoning curious souls to explore the enchanting
+          secrets of the Corridor Conservatory-Ballroom. to: Corridor Conservatory-Ballroom'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-conservatory-ballroom
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A mysterious archway beckons, leading eastward from the dimly lit corridor into the grander embrace of the
+          ballroom, where shadows dance and secrets linger. to: Ballroom'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: wrench
+    name: Wrench
+    description:
+    - text: Wrench
+      worldClock: 0
+    - text: A rusty wrench, its surface speckled with age, rests quietly on a polished table, whispering tales of repairs
+        long forgotten in this grand ballroom.
+      worldClock: 1
+    ownerKey: ballroom
+    owner: Ballroom
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Billiard Room
+  plotKey: billiard-room
+  name: Billiard Room
+  region: MANSION
+  description:
+  - text: Billiard Room plot
+    worldClock: 0
+  - text: The Billiard Room, a whimsical space adorned with antique cues and a vibrant green felt table, invites curious souls
+      to unravel its secrets, while the shadows seem to whisper tales of the past.
+    worldClock: 1
+  gates:
+  - label: Billiard Room -> Cellar
+    direction: DOWN
+    plotA:
+      fromPlot: billiard-room
+      toPlot: cellar
+      visible: true
+      keyString: HAS("Basement Key")
+      description:
+      - text: Path between Billiard Room and Cellar
+        worldClock: 0
+      - text: 'A creaky door swings open, inviting curious souls to descend into the depths below, where whispers of secrets
+          linger as they journey down to the Cellar. to: Cellar'
+        worldClock: 1
+    plotB:
+      fromPlot: cellar
+      toPlot: billiard-room
+      visible: true
+      keyString: HAS("Basement Key")
+      description:
+      - text: Path between Billiard Room and Cellar
+        worldClock: 0
+      - text: 'A creaky staircase spirals upward, leading from the dim Cellar to the lively Billiard Room, where laughter
+          and echoes dance in the air as whispers of secrets linger in the shadows. to: Billiard Room'
+        worldClock: 1
+  - label: Billiard Room -> Corridor Billiard-Ballroom
+    direction: SOUTH
+    plotA:
+      fromPlot: billiard-room
+      toPlot: corridor-billiard-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A narrow passage beckons, leading south from the Billiard Room towards the enigmatic Corridor Billiard-Ballroom,
+          where whispers of secrets linger in the air. to: Corridor Billiard-Ballroom'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-billiard-ballroom
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A flickering lantern casts playful shadows along the corridor, inviting curious souls to drift northward, where
+          secrets of the Billiard Room await. to: Billiard Room'
+        worldClock: 1
+  - label: Billiard Room -> Corridor Billiard-Dining
+    direction: EAST
+    plotA:
+      fromPlot: billiard-room
+      toPlot: corridor-billiard-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A mysterious gateway beckons, leading eastward from the Billiard Room, where whispers of laughter linger and
+          secrets await discovery, to: Corridor Billiard-Dining.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-billiard-dining
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A grand passageway leads west, beckoning with the promise of secrets waiting to be uncovered in the Billiard
+          Room. to: Billiard Room'
+        worldClock: 1
+  - label: Billiard Room -> Corridor Hall-Billiard
+    direction: NORTH
+    plotA:
+      fromPlot: billiard-room
+      toPlot: corridor-hall-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The passageway beckons with an air of mystery, leading north from the Billiard Room to the Corridor Hall-Billiard,
+          where shadows play tricks and secrets await. to: Corridor Hall-Billiard'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-hall-billiard
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The corridor beckons with an inviting sway, guiding adventurers southward to the Billiard Room, where secrets
+          and surprises await around every corner. to: Billiard Room'
+        worldClock: 1
+  - label: Billiard Room -> Corridor Library-Billiard
+    direction: WEST
+    plotA:
+      fromPlot: billiard-room
+      toPlot: corridor-library-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'As one steps through the archway, the shadows of the Billiard Room whisper secrets, inviting a playful journey
+          westward into the mysteries of the Corridor Library-Billiard. to: Corridor Library-Billiard'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-library-billiard
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'An ornate archway beckons with a hint of mischief, leading guests eastward through a whispering corridor that
+          promises secrets and surprises, inviting exploration to: Billiard Room.'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: lead-pipe
+    name: Lead Pipe
+    description:
+    - text: Lead Pipe
+      worldClock: -1
+    ownerKey: billiard-room
+    owner: Billiard Room
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Cellar
+  plotKey: cellar
+  name: Cellar
+  region: MANSION
+  description:
+  - text: Cellar plot
+    worldClock: 0
+  - text: The Cellar whispers secrets from the shadows, its damp air carrying the scent of aged wood and forgotten treasures,
+      inviting curious souls to uncover what lies beneath.
+    worldClock: 1
+  gates:
+  - label: Cellar -> Billiard Room
+    direction: UP
+    plotA:
+      fromPlot: cellar
+      toPlot: billiard-room
+      visible: true
+      keyString: HAS("Basement Key")
+      description:
+      - text: Path between Billiard Room and Cellar
+        worldClock: 0
+      - text: 'A creaky staircase spirals upward, leading from the dim Cellar to the lively Billiard Room, where laughter
+          and echoes dance in the air as whispers of secrets linger in the shadows. to: Billiard Room'
+        worldClock: 1
+    plotB:
+      fromPlot: billiard-room
+      toPlot: cellar
+      visible: true
+      keyString: HAS("Basement Key")
+      description:
+      - text: Path between Billiard Room and Cellar
+        worldClock: 0
+      - text: 'A creaky door swings open, inviting curious souls to descend into the depths below, where whispers of secrets
+          linger as they journey down to the Cellar. to: Cellar'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Conservatory
+  plotKey: conservatory
+  name: Conservatory
+  region: MANSION
+  description:
+  - text: Conservatory plot
+    worldClock: 0
+  - text: The Conservatory is a whimsical escape, filled with curious plants and hidden corners, where every leaf could hold
+      a secret waiting to be discovered.
+    worldClock: 1
+  gates:
+  - label: Conservatory -> Corridor Conservatory-Ballroom
+    direction: EAST
+    plotA:
+      fromPlot: conservatory
+      toPlot: corridor-conservatory-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A whimsical passageway beckons with a slight shimmer, inviting explorers to venture east from the lush Conservatory
+          into the enchanting realm of the Corridor Conservatory-Ballroom. to: Corridor Conservatory-Ballroom'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-conservatory-ballroom
+      toPlot: conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'The corridor beckons with a hint of mystery, leading westward to the inviting Conservatory, where sunlight
+          dances through lush leaves and secrets await. to: Conservatory'
+        worldClock: 1
+  - label: Conservatory -> Corridor Library-Conservatory
+    direction: NORTH
+    plotA:
+      fromPlot: conservatory
+      toPlot: corridor-library-conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'Veering north, the path beckons with a playful invitation, promising curious secrets waiting just beyond the
+          threshold to: Corridor Library-Conservatory.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-library-conservatory
+      toPlot: conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'A whimsical archway beckons, inviting adventurers to wander from the shadowy shelves of the Corridor Library
+          into the sunlit embrace of the Conservatory, where secrets bloom brightly. As one steps through, the air hums with
+          possibilities, leading the way south to: Conservatory.'
+        worldClock: 1
+  - label: Conservatory -> Lounge
+    direction: NORTH_EAST
+    plotA:
+      fromPlot: conservatory
+      toPlot: lounge
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Conservatory
+        worldClock: 0
+      - text: 'A narrow passageway beckons, leading northeast from the sunlit Conservatory into the shadowy depths of the
+          Lounge, where whispers of secrets linger. The air shifts as one steps through, carrying a hint of mystery to: Lounge.'
+        worldClock: 1
+    plotB:
+      fromPlot: lounge
+      toPlot: conservatory
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Conservatory
+        worldClock: 0
+      - text: 'The path winds playfully from the Lounge, veering southwest towards the Conservatory, where whispers of secrets
+          await in the lush greenery beyond. to: Conservatory'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Ballroom-Kitchen
+  plotKey: corridor-ballroom-kitchen
+  name: Corridor Ballroom-Kitchen
+  region: MANSION
+  description:
+  - text: Corridor Ballroom-Kitchen plot
+    worldClock: 0
+  - text: The Corridor Ballroom-Kitchen is a whimsical blend of grandeur and mystery, where echoes of laughter mingle with
+      the faint scent of spices, inviting explorers to wander deeper into this enchanting space filled with secrets.
+    worldClock: 1
+  gates:
+  - label: Corridor Ballroom-Kitchen -> Ballroom
+    direction: WEST
+    plotA:
+      fromPlot: corridor-ballroom-kitchen
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage beckons to the west, leading from the lively whispers of the Ballroom to the mysteries of
+          the Corridor. As one steps through, the air tingles with anticipation, drawing closer to the enchanting secrets
+          of the grand Mansion to: Ballroom.'
+        worldClock: 1
+    plotB:
+      fromPlot: ballroom
+      toPlot: corridor-ballroom-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'The grand archway beckons with an inviting glow, leading east as whispers of laughter and clinking glasses
+          float past. Stepping through this passage transports one from the opulent Ballroom to the bustling Corridor, where
+          secrets await in the shadows of the kitchen. to: Corridor Ballroom-Kitchen'
+        worldClock: 1
+  - label: Corridor Ballroom-Kitchen -> Kitchen
+    direction: EAST
+    plotA:
+      fromPlot: corridor-ballroom-kitchen
+      toPlot: kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'An enchanting passage leads eastward, where the whispers of culinary secrets beckon from the Kitchen, inviting
+          curious souls to explore the delights that await. to: Kitchen'
+        worldClock: 1
+    plotB:
+      fromPlot: kitchen
+      toPlot: corridor-ballroom-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage beckons to the west, leading from the bustling Kitchen into the enigmatic Corridor, where
+          whispers of secrets await in the Ballroom-Kitchen. to: Corridor Ballroom-Kitchen'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Billiard-Ballroom
+  plotKey: corridor-billiard-ballroom
+  name: Corridor Billiard-Ballroom
+  region: MANSION
+  description:
+  - text: Corridor Billiard-Ballroom plot
+    worldClock: 0
+  - text: The Corridor Billiard-Ballroom beckons with its inviting atmosphere, where the sound of clinking balls and laughter
+      echoes softly. Shadows dance playfully across the walls, hinting at secrets waiting to be uncovered as one ventures
+      deeper into the mysterious whims of the mansion.
+    worldClock: 1
+  gates:
+  - label: Corridor Billiard-Ballroom -> Ballroom
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-billiard-ballroom
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Billiard-Ballroom
+        worldClock: -1
+    plotB:
+      fromPlot: ballroom
+      toPlot: corridor-billiard-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A grand passageway beckons from the opulent Ballroom, leading northward into the intriguing Corridor Billiard-Ballroom,
+          where whispers of laughter and secrets await. The air is thick with anticipation as one ventures forth to: Corridor
+          Billiard-Ballroom.'
+        worldClock: 1
+  - label: Corridor Billiard-Ballroom -> Billiard Room
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-billiard-ballroom
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A flickering lantern casts playful shadows along the corridor, inviting curious souls to drift northward, where
+          secrets of the Billiard Room await. to: Billiard Room'
+        worldClock: 1
+    plotB:
+      fromPlot: billiard-room
+      toPlot: corridor-billiard-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Ballroom
+        worldClock: 0
+      - text: 'A narrow passage beckons, leading south from the Billiard Room towards the enigmatic Corridor Billiard-Ballroom,
+          where whispers of secrets linger in the air. to: Corridor Billiard-Ballroom'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Billiard-Dining
+  plotKey: corridor-billiard-dining
+  name: Corridor Billiard-Dining
+  region: MANSION
+  description:
+  - text: Corridor Billiard-Dining plot
+    worldClock: 0
+  - text: The Corridor Billiard-Dining is a curious blend of leisure and mystery, where the tables are set for games of chance
+      and the walls whisper secrets of past gatherings. Shadows dance playfully along the edges, inviting explorers to uncover
+      the tales hidden within this whimsical space.
+    worldClock: 1
+  gates:
+  - label: Corridor Billiard-Dining -> Billiard Room
+    direction: WEST
+    plotA:
+      fromPlot: corridor-billiard-dining
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A grand passageway leads west, beckoning with the promise of secrets waiting to be uncovered in the Billiard
+          Room. to: Billiard Room'
+        worldClock: 1
+    plotB:
+      fromPlot: billiard-room
+      toPlot: corridor-billiard-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A mysterious gateway beckons, leading eastward from the Billiard Room, where whispers of laughter linger and
+          secrets await discovery, to: Corridor Billiard-Dining.'
+        worldClock: 1
+  - label: Corridor Billiard-Dining -> Dining Room
+    direction: EAST
+    plotA:
+      fromPlot: corridor-billiard-dining
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A shadowy passage leads eastward, beckoning with whispers of laughter and clinking glasses, inviting one to
+          step through the threshold into the Dining Room. to: Dining Room'
+        worldClock: 1
+    plotB:
+      fromPlot: dining-room
+      toPlot: corridor-billiard-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A creaky archway beckons, leading westward from the Dining Room into the whimsical ambiance of the Corridor
+          Billiard-Dining, where secrets and laughter intertwine. to: Corridor Billiard-Dining'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Conservatory-Ballroom
+  plotKey: corridor-conservatory-ballroom
+  name: Corridor Conservatory-Ballroom
+  region: MANSION
+  description:
+  - text: Corridor Conservatory-Ballroom plot
+    worldClock: 0
+  - text: The Corridor Conservatory-Ballroom is a whimsical fusion of nature and elegance, where vibrant plants peek through
+      ornate windows, and the soft sound of music seems to dance through the air. Each step reveals hidden secrets of a grand
+      past, inviting explorers to uncover the stories woven into its enchanting corners.
+    worldClock: 1
+  gates:
+  - label: Corridor Conservatory-Ballroom -> Ballroom
+    direction: EAST
+    plotA:
+      fromPlot: corridor-conservatory-ballroom
+      toPlot: ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A mysterious archway beckons, leading eastward from the dimly lit corridor into the grander embrace of the
+          ballroom, where shadows dance and secrets linger. to: Ballroom'
+        worldClock: 1
+    plotB:
+      fromPlot: ballroom
+      toPlot: corridor-conservatory-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Ballroom and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A whispering path leads westward from the grand Ballroom, beckoning curious souls to explore the enchanting
+          secrets of the Corridor Conservatory-Ballroom. to: Corridor Conservatory-Ballroom'
+        worldClock: 1
+  - label: Corridor Conservatory-Ballroom -> Conservatory
+    direction: WEST
+    plotA:
+      fromPlot: corridor-conservatory-ballroom
+      toPlot: conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'The corridor beckons with a hint of mystery, leading westward to the inviting Conservatory, where sunlight
+          dances through lush leaves and secrets await. to: Conservatory'
+        worldClock: 1
+    plotB:
+      fromPlot: conservatory
+      toPlot: corridor-conservatory-ballroom
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Conservatory-Ballroom
+        worldClock: 0
+      - text: 'A whimsical passageway beckons with a slight shimmer, inviting explorers to venture east from the lush Conservatory
+          into the enchanting realm of the Corridor Conservatory-Ballroom. to: Corridor Conservatory-Ballroom'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Dining-Kitchen
+  plotKey: corridor-dining-kitchen
+  name: Corridor Dining-Kitchen
+  region: MANSION
+  description:
+  - text: Corridor Dining-Kitchen plot
+    worldClock: 0
+  - text: The Corridor Dining-Kitchen whispers of past feasts, where the clatter of dishes and flicker of candlelight linger
+      like a playful ghost, inviting the curious to explore its hidden secrets.
+    worldClock: 1
+  gates:
+  - label: Corridor Dining-Kitchen -> Dining Room
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-dining-kitchen
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage leads north, where whispers of laughter and clinking cutlery beckon from the Dining Room,
+          inviting curious souls to explore the secrets within. to: Dining Room'
+        worldClock: 1
+    plotB:
+      fromPlot: dining-room
+      toPlot: corridor-dining-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A whimsical archway beckons, whispering secrets of the Dining Room as it opens up to the mysterious Corridor
+          Dining-Kitchen, inviting curious souls to venture southward to: Corridor Dining-Kitchen.'
+        worldClock: 1
+  - label: Corridor Dining-Kitchen -> Kitchen
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-dining-kitchen
+      toPlot: kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A charming passage, beckoning wanderers to step southward into the welcoming warmth of the Kitchen, where delightful
+          aromas and culinary secrets await. to: Kitchen'
+        worldClock: 1
+    plotB:
+      fromPlot: kitchen
+      toPlot: corridor-dining-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A whimsical archway beckons, leading from the bustling Kitchen to the mysterious Corridor Dining-Kitchen, where
+          the faint sounds of laughter and clinking dishes seem to guide the way. With a gentle nudge, the path opens to the
+          north, inviting exploration to: Corridor Dining-Kitchen.'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Hall-Billiard
+  plotKey: corridor-hall-billiard
+  name: Corridor Hall-Billiard
+  region: MANSION
+  description:
+  - text: Corridor Hall-Billiard plot
+    worldClock: 0
+  - text: The Corridor Hall-Billiard stretches ahead, a playful mix of shadow and flickering candlelight, where the distant
+      sound of laughter echoes, inviting curiosity and secrets yet to be uncovered.
+    worldClock: 1
+  gates:
+  - label: Corridor Hall-Billiard -> Billiard Room
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-hall-billiard
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The corridor beckons with an inviting sway, guiding adventurers southward to the Billiard Room, where secrets
+          and surprises await around every corner. to: Billiard Room'
+        worldClock: 1
+    plotB:
+      fromPlot: billiard-room
+      toPlot: corridor-hall-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The passageway beckons with an air of mystery, leading north from the Billiard Room to the Corridor Hall-Billiard,
+          where shadows play tricks and secrets await. to: Corridor Hall-Billiard'
+        worldClock: 1
+  - label: Corridor Hall-Billiard -> Hall
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-hall-billiard
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'A curious archway beckons with a hint of mischief, leading north from the bustling Billiard room towards the
+          mysterious Hall, where secrets whisper in the shadows. to: Hall'
+        worldClock: 1
+    plotB:
+      fromPlot: hall
+      toPlot: corridor-hall-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The air shimmers with anticipation as one ventures south through the grand archway, leaving the secrets of
+          the Hall behind and stepping into the enchanting mysteries of the Corridor Hall-Billiard. to: Corridor Hall-Billiard'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Hall-Lounge
+  plotKey: corridor-hall-lounge
+  name: Corridor Hall-Lounge
+  region: MANSION
+  description:
+  - text: Corridor Hall-Lounge plot
+    worldClock: 0
+  - text: The Corridor Hall-Lounge stretches ahead, its walls adorned with portraits that seem to watch with a knowing smirk,
+      inviting curious souls to explore the mysteries that await just beyond the next door. Each step echoes with whispers
+      of the past, leading adventurers toward hidden secrets and playful enigmas.
+    worldClock: 1
+  gates:
+  - label: Corridor Hall-Lounge -> Hall
+    direction: WEST
+    plotA:
+      fromPlot: corridor-hall-lounge
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'The path winds invitingly to the west, beckoning with a whisper of secrets as it leads back to the Hall, where
+          shadows dance and stories await to be uncovered. to: Hall'
+        worldClock: 1
+    plotB:
+      fromPlot: hall
+      toPlot: corridor-hall-lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'With a playful creak, the gate swings open, inviting curious explorers to venture eastward into the mysterious
+          Corridor Hall-Lounge, where secrets await just beyond the threshold. to: Corridor Hall-Lounge'
+        worldClock: 1
+  - label: Corridor Hall-Lounge -> Lounge
+    direction: EAST
+    plotA:
+      fromPlot: corridor-hall-lounge
+      toPlot: lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'A narrow passageway beckons, leading eastward from the Corridor Hall into the mysterious Lounge, where shadows
+          dance playfully and whispers of secrets await. to: Lounge'
+        worldClock: 1
+    plotB:
+      fromPlot: lounge
+      toPlot: corridor-hall-lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'A gently creaking passage beckons, leading west from the cozy Lounge into the mysterious Corridor Hall-Lounge,
+          where secrets swirl like whispers in the air to: Corridor Hall-Lounge.'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Library-Billiard
+  plotKey: corridor-library-billiard
+  name: Corridor Library-Billiard
+  region: MANSION
+  description:
+  - text: Corridor Library-Billiard plot
+    worldClock: 0
+  - text: The Corridor Library-Billiard is a curious blend of scholarly charm and playful spirit, where the scent of old books
+      mingles with the faint echo of a distant game, inviting exploration from every corner.
+    worldClock: 1
+  gates:
+  - label: Corridor Library-Billiard -> Billiard Room
+    direction: EAST
+    plotA:
+      fromPlot: corridor-library-billiard
+      toPlot: billiard-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'An ornate archway beckons with a hint of mischief, leading guests eastward through a whispering corridor that
+          promises secrets and surprises, inviting exploration to: Billiard Room.'
+        worldClock: 1
+    plotB:
+      fromPlot: billiard-room
+      toPlot: corridor-library-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Billiard Room and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'As one steps through the archway, the shadows of the Billiard Room whisper secrets, inviting a playful journey
+          westward into the mysteries of the Corridor Library-Billiard. to: Corridor Library-Billiard'
+        worldClock: 1
+  - label: Corridor Library-Billiard -> Library
+    direction: WEST
+    plotA:
+      fromPlot: corridor-library-billiard
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'The narrow passage leads westward, a whisper of secrets echoing off the walls as one steps through, inviting
+          the curious to the cozy, book-filled Library. to: Library'
+        worldClock: 1
+    plotB:
+      fromPlot: library
+      toPlot: corridor-library-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'A whimsical passageway invites curious explorers to venture east, where the secrets of the Library blend with
+          the intrigue of the Corridor Library-Billiard, beckoning with each step. to: Corridor Library-Billiard'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Library-Conservatory
+  plotKey: corridor-library-conservatory
+  name: Corridor Library-Conservatory
+  region: MANSION
+  description:
+  - text: Corridor Library-Conservatory plot
+    worldClock: 0
+  - text: The Corridor Library-Conservatory is a curious blend of knowledge and nature, where dusty tomes whisper secrets
+      beneath the soft rustle of leaves. Dim light filters through tall windows, casting playful shadows across the rich wooden
+      shelves, inviting explorers to uncover the mysteries hidden within.
+    worldClock: 1
+  gates:
+  - label: Corridor Library-Conservatory -> Conservatory
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-library-conservatory
+      toPlot: conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'A whimsical archway beckons, inviting adventurers to wander from the shadowy shelves of the Corridor Library
+          into the sunlit embrace of the Conservatory, where secrets bloom brightly. As one steps through, the air hums with
+          possibilities, leading the way south to: Conservatory.'
+        worldClock: 1
+    plotB:
+      fromPlot: conservatory
+      toPlot: corridor-library-conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Conservatory and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'Veering north, the path beckons with a playful invitation, promising curious secrets waiting just beyond the
+          threshold to: Corridor Library-Conservatory.'
+        worldClock: 1
+  - label: Corridor Library-Conservatory -> Library
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-library-conservatory
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'A shadowy path beckons to the north, where secrets whisper through the air, leading the curious onward to the
+          Library. to: Library'
+        worldClock: 1
+    plotB:
+      fromPlot: library
+      toPlot: corridor-library-conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'As you step through the archway, the air shifts, carrying whispers of stories untold, guiding you southward
+          to the enchanting Corridor Library-Conservatory. to: Corridor Library-Conservatory'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Lounge-Dining
+  plotKey: corridor-lounge-dining
+  name: Corridor Lounge-Dining
+  region: MANSION
+  description:
+  - text: Corridor Lounge-Dining plot
+    worldClock: 0
+  - text: The Corridor Lounge-Dining is an enchanting space where shadows dance along the walls, hinting at the secrets hidden
+      within the flickering candlelight. An eclectic mix of plush seating and ornate table settings invites exploration, promising
+      delightful discoveries at every turn.
+    worldClock: 1
+  gates:
+  - label: Corridor Lounge-Dining -> Dining Room
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-lounge-dining
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'As you step through the threshold, a chill whispers past you from the Dining Room, beckoning you southward
+          into the corridor, where secrets and delightful surprises await. to: Dining Room'
+        worldClock: 1
+    plotB:
+      fromPlot: dining-room
+      toPlot: corridor-lounge-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A mysterious archway beckons, its shadows playfully flickering as if inviting a curious soul to venture north
+          to the cozy comforts of the Corridor Lounge-Dining. to: Corridor Lounge-Dining'
+        worldClock: 1
+  - label: Corridor Lounge-Dining -> Lounge
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-lounge-dining
+      toPlot: lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A narrow passage leads northward, beckoning curious souls to wander from the cozy Lounge into the mysterious
+          Corridor Lounge-Dining, where secrets linger in the air. to: Lounge'
+        worldClock: 1
+    plotB:
+      fromPlot: lounge
+      toPlot: corridor-lounge-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A mysterious passage beckons to the south, leading from the cozy ambiance of the Lounge into the intriguing
+          secrets of the Corridor Lounge-Dining, where whispers of the past dance through the air. to: Corridor Lounge-Dining'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Study-Hall
+  plotKey: corridor-study-hall
+  name: Corridor Study-Hall
+  region: MANSION
+  description:
+  - text: Corridor Study-Hall plot
+    worldClock: 0
+  - text: The Corridor Study-Hall whispers secrets of the past, with each creaking floorboard inviting curious souls to wander
+      deeper into its shadowy recesses.
+    worldClock: 1
+  gates:
+  - label: Corridor Study-Hall -> Hall
+    direction: EAST
+    plotA:
+      fromPlot: corridor-study-hall
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious passage beckons, leading east from the Corridor Study-Hall to the Hall, where secrets seem to
+          whisper through the walls. to: Hall'
+        worldClock: 1
+    plotB:
+      fromPlot: hall
+      toPlot: corridor-study-hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A whimsical archway beckons, leading westward through the enchanting Hall, where the echoes of whispers guide
+          the curious traveler to the secrets of the Corridor Study-Hall. to: Corridor Study-Hall'
+        worldClock: 1
+  - label: Corridor Study-Hall -> Study
+    direction: WEST
+    plotA:
+      fromPlot: corridor-study-hall
+      toPlot: study
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious passage stretches westward, leading from the quaint nooks of the Corridor Study-Hall into the
+          secrets of the Study, where whispers of knowledge await. to: Study'
+        worldClock: 1
+    plotB:
+      fromPlot: study
+      toPlot: corridor-study-hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious archway beckons to the east, leading from the cozy Study into the intriguing Corridor Study-Hall,
+          where whispers of secrets linger in the air. The path feels alive with anticipation as it invites curious adventurers
+          to step through to: Corridor Study-Hall.'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Corridor Study-Library
+  plotKey: corridor-study-library
+  name: Corridor Study-Library
+  region: MANSION
+  description:
+  - text: Corridor Study-Library plot
+    worldClock: 0
+  - text: The Corridor Study-Library stretches before you, lined with dusty tomes and curious artifacts, whispering secrets
+      of forgotten tales and hidden mysteries yet to be uncovered.
+    worldClock: 1
+  gates:
+  - label: Corridor Study-Library -> Library
+    direction: SOUTH
+    plotA:
+      fromPlot: corridor-study-library
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Study-Library
+        worldClock: 0
+      - text: 'The corridor beckons with a hint of mystery, leading south toward the Library, where whispers of stories linger
+          in the air and secrets await discovery. to: Library'
+        worldClock: 1
+    plotB:
+      fromPlot: library
+      toPlot: corridor-study-library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Study-Library
+        worldClock: 0
+      - text: 'The ornate archway beckons, leading northward from the cozy Library into the mysterious Corridor, where whispers
+          of secrets await in the shadows. Follow the path to: Corridor Study-Library.'
+        worldClock: 1
+  - label: Corridor Study-Library -> Study
+    direction: NORTH
+    plotA:
+      fromPlot: corridor-study-library
+      toPlot: study
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Library
+        worldClock: 0
+      - text: 'A mysterious passage beckons to the north, where secrets whisper through the air, guiding curious souls toward
+          the hidden wonders of the Study. to: Study'
+        worldClock: 1
+    plotB:
+      fromPlot: study
+      toPlot: corridor-study-library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Library
+        worldClock: 0
+      - text: 'The passage from the Study leads south, beckoning with an air of mystery as it whispers secrets of knowledge
+          and adventure, guiding curious souls to the Corridor Study-Library. to: Corridor Study-Library'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Dining Room
+  plotKey: dining-room
+  name: Dining Room
+  region: MANSION
+  description:
+  - text: Dining Room plot
+    worldClock: 0
+  - text: A grand Dining Room awaits, its long table set for a feast forgotten, with dusty plates and a flickering candlestick
+      casting playful shadows that dance upon the walls.
+    worldClock: 1
+  gates:
+  - label: Dining Room -> Corridor Billiard-Dining
+    direction: WEST
+    plotA:
+      fromPlot: dining-room
+      toPlot: corridor-billiard-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A creaky archway beckons, leading westward from the Dining Room into the whimsical ambiance of the Corridor
+          Billiard-Dining, where secrets and laughter intertwine. to: Corridor Billiard-Dining'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-billiard-dining
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Billiard-Dining
+        worldClock: 0
+      - text: 'A shadowy passage leads eastward, beckoning with whispers of laughter and clinking glasses, inviting one to
+          step through the threshold into the Dining Room. to: Dining Room'
+        worldClock: 1
+  - label: Dining Room -> Corridor Dining-Kitchen
+    direction: SOUTH
+    plotA:
+      fromPlot: dining-room
+      toPlot: corridor-dining-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A whimsical archway beckons, whispering secrets of the Dining Room as it opens up to the mysterious Corridor
+          Dining-Kitchen, inviting curious souls to venture southward to: Corridor Dining-Kitchen.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-dining-kitchen
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage leads north, where whispers of laughter and clinking cutlery beckon from the Dining Room,
+          inviting curious souls to explore the secrets within. to: Dining Room'
+        worldClock: 1
+  - label: Dining Room -> Corridor Lounge-Dining
+    direction: NORTH
+    plotA:
+      fromPlot: dining-room
+      toPlot: corridor-lounge-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A mysterious archway beckons, its shadows playfully flickering as if inviting a curious soul to venture north
+          to the cozy comforts of the Corridor Lounge-Dining. to: Corridor Lounge-Dining'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-lounge-dining
+      toPlot: dining-room
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Dining Room and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'As you step through the threshold, a chill whispers past you from the Dining Room, beckoning you southward
+          into the corridor, where secrets and delightful surprises await. to: Dining Room'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: candlestick
+    name: Candlestick
+    description:
+    - text: Candlestick
+      worldClock: 0
+    - text: An ornate candlestick, its surface glimmering with a hint of mystery, stands poised to illuminate the secrets
+        of the dining room with a flicker of flame.
+      worldClock: 1
+    ownerKey: dining-room
+    owner: Dining Room
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Hall
+  plotKey: hall
+  name: Hall
+  region: MANSION
+  description:
+  - text: Hall plot
+    worldClock: 0
+  - text: 'The Hall stretches ahead, adorned with shadows that dance playfully along the walls, whispering secrets of the
+      past and inviting curious souls to explore further. Each step echoes with the promise of mysteries waiting to be uncovered,
+      leading the way to the next adventure beyond this enchanting threshold to:'
+    worldClock: 1
+  gates:
+  - label: Hall -> Corridor Hall-Billiard
+    direction: SOUTH
+    plotA:
+      fromPlot: hall
+      toPlot: corridor-hall-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'The air shimmers with anticipation as one ventures south through the grand archway, leaving the secrets of
+          the Hall behind and stepping into the enchanting mysteries of the Corridor Hall-Billiard. to: Corridor Hall-Billiard'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-hall-billiard
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Billiard
+        worldClock: 0
+      - text: 'A curious archway beckons with a hint of mischief, leading north from the bustling Billiard room towards the
+          mysterious Hall, where secrets whisper in the shadows. to: Hall'
+        worldClock: 1
+  - label: Hall -> Corridor Hall-Lounge
+    direction: EAST
+    plotA:
+      fromPlot: hall
+      toPlot: corridor-hall-lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'With a playful creak, the gate swings open, inviting curious explorers to venture eastward into the mysterious
+          Corridor Hall-Lounge, where secrets await just beyond the threshold. to: Corridor Hall-Lounge'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-hall-lounge
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'The path winds invitingly to the west, beckoning with a whisper of secrets as it leads back to the Hall, where
+          shadows dance and stories await to be uncovered. to: Hall'
+        worldClock: 1
+  - label: Hall -> Corridor Study-Hall
+    direction: WEST
+    plotA:
+      fromPlot: hall
+      toPlot: corridor-study-hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A whimsical archway beckons, leading westward through the enchanting Hall, where the echoes of whispers guide
+          the curious traveler to the secrets of the Corridor Study-Hall. to: Corridor Study-Hall'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-study-hall
+      toPlot: hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Hall and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious passage beckons, leading east from the Corridor Study-Hall to the Hall, where secrets seem to
+          whisper through the walls. to: Hall'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: pocket-watch
+    name: Pocket Watch
+    description:
+    - text: Pocket Watch
+      worldClock: 0
+    - text: This elegant pocket watch, with its intricate engravings and a faint ticking sound, seems to hold more than just
+        time; it whispers secrets of the mansion's past with every tick.
+      worldClock: 1
+    ownerKey: detective
+    owner: Detective
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors:
+  - key: detective
+    name: Detective
+    description:
+    - text: The sleuth starting in the Hall.
+      worldClock: -1
+    ownerKey: hall
+    owner: Hall
+    visible: true
+- plot: Kitchen
+  plotKey: kitchen
+  name: Kitchen
+  region: MANSION
+  description:
+  - text: Kitchen plot
+    worldClock: 0
+  - text: The kitchen is a delightful mix of culinary chaos and curious shadows, where pots and pans hang in a playful dance,
+      waiting for the next recipe of adventure to unfold.
+    worldClock: 1
+  gates:
+  - label: Kitchen -> Corridor Ballroom-Kitchen
+    direction: WEST
+    plotA:
+      fromPlot: kitchen
+      toPlot: corridor-ballroom-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'A shadowy passage beckons to the west, leading from the bustling Kitchen into the enigmatic Corridor, where
+          whispers of secrets await in the Ballroom-Kitchen. to: Corridor Ballroom-Kitchen'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-ballroom-kitchen
+      toPlot: kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Ballroom-Kitchen
+        worldClock: 0
+      - text: 'An enchanting passage leads eastward, where the whispers of culinary secrets beckon from the Kitchen, inviting
+          curious souls to explore the delights that await. to: Kitchen'
+        worldClock: 1
+  - label: Kitchen -> Corridor Dining-Kitchen
+    direction: NORTH
+    plotA:
+      fromPlot: kitchen
+      toPlot: corridor-dining-kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A whimsical archway beckons, leading from the bustling Kitchen to the mysterious Corridor Dining-Kitchen, where
+          the faint sounds of laughter and clinking dishes seem to guide the way. With a gentle nudge, the path opens to the
+          north, inviting exploration to: Corridor Dining-Kitchen.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-dining-kitchen
+      toPlot: kitchen
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Kitchen and Corridor Dining-Kitchen
+        worldClock: 0
+      - text: 'A charming passage, beckoning wanderers to step southward into the welcoming warmth of the Kitchen, where delightful
+          aromas and culinary secrets await. to: Kitchen'
+        worldClock: 1
+  - label: Kitchen -> Study
+    direction: NORTH_WEST
+    plotA:
+      fromPlot: kitchen
+      toPlot: study
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Study and Kitchen
+        worldClock: 0
+      - text: 'A mysterious archway beckons, leading you through the shadows of the Kitchen and into the secrets that await
+          in the Study to the northwest. to: Study'
+        worldClock: 1
+    plotB:
+      fromPlot: study
+      toPlot: kitchen
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Study and Kitchen
+        worldClock: 0
+      - text: 'The path from the Study to the Kitchen winds southeast, inviting curious souls to uncover what culinary secrets
+          lay beyond the threshold. to: Kitchen'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: knife
+    name: Knife
+    description:
+    - text: Knife
+      worldClock: 0
+    - text: The knife glints with a mischievous edge, its handle intricately carved with swirling patterns that seem to dance
+        in the dim light of the kitchen.
+      worldClock: 1
+    ownerKey: kitchen
+    owner: Kitchen
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Library
+  plotKey: library
+  name: Library
+  region: MANSION
+  description:
+  - text: Library plot
+    worldClock: 0
+  - text: The Library looms with an air of mystery, where towering shelves whisper secrets of the past and the flicker of
+      candlelight dances across worn pages, inviting curious minds to explore its hidden tales.
+    worldClock: 1
+  gates:
+  - label: Library -> Corridor Library-Billiard
+    direction: EAST
+    plotA:
+      fromPlot: library
+      toPlot: corridor-library-billiard
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'A whimsical passageway invites curious explorers to venture east, where the secrets of the Library blend with
+          the intrigue of the Corridor Library-Billiard, beckoning with each step. to: Corridor Library-Billiard'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-library-billiard
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Billiard
+        worldClock: 0
+      - text: 'The narrow passage leads westward, a whisper of secrets echoing off the walls as one steps through, inviting
+          the curious to the cozy, book-filled Library. to: Library'
+        worldClock: 1
+  - label: Library -> Corridor Library-Conservatory
+    direction: SOUTH
+    plotA:
+      fromPlot: library
+      toPlot: corridor-library-conservatory
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'As you step through the archway, the air shifts, carrying whispers of stories untold, guiding you southward
+          to the enchanting Corridor Library-Conservatory. to: Corridor Library-Conservatory'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-library-conservatory
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Library-Conservatory
+        worldClock: 0
+      - text: 'A shadowy path beckons to the north, where secrets whisper through the air, leading the curious onward to the
+          Library. to: Library'
+        worldClock: 1
+  - label: Library -> Corridor Study-Library
+    direction: NORTH
+    plotA:
+      fromPlot: library
+      toPlot: corridor-study-library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Study-Library
+        worldClock: 0
+      - text: 'The ornate archway beckons, leading northward from the cozy Library into the mysterious Corridor, where whispers
+          of secrets await in the shadows. Follow the path to: Corridor Study-Library.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-study-library
+      toPlot: library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Library and Corridor Study-Library
+        worldClock: 0
+      - text: 'The corridor beckons with a hint of mystery, leading south toward the Library, where whispers of stories linger
+          in the air and secrets await discovery. to: Library'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Lounge
+  plotKey: lounge
+  name: Lounge
+  region: MANSION
+  description:
+  - text: Lounge plot
+    worldClock: 0
+  - text: The Lounge is a cozy yet curious space, filled with mismatched furniture that seems to beckon tired souls to sit
+      and share secrets, while shadows dance playfully across the walls.
+    worldClock: 1
+  gates:
+  - label: Lounge -> Conservatory
+    direction: SOUTH_WEST
+    plotA:
+      fromPlot: lounge
+      toPlot: conservatory
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Conservatory
+        worldClock: 0
+      - text: 'The path winds playfully from the Lounge, veering southwest towards the Conservatory, where whispers of secrets
+          await in the lush greenery beyond. to: Conservatory'
+        worldClock: 1
+    plotB:
+      fromPlot: conservatory
+      toPlot: lounge
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Conservatory
+        worldClock: 0
+      - text: 'A narrow passageway beckons, leading northeast from the sunlit Conservatory into the shadowy depths of the
+          Lounge, where whispers of secrets linger. The air shifts as one steps through, carrying a hint of mystery to: Lounge.'
+        worldClock: 1
+  - label: Lounge -> Corridor Hall-Lounge
+    direction: WEST
+    plotA:
+      fromPlot: lounge
+      toPlot: corridor-hall-lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'A gently creaking passage beckons, leading west from the cozy Lounge into the mysterious Corridor Hall-Lounge,
+          where secrets swirl like whispers in the air to: Corridor Hall-Lounge.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-hall-lounge
+      toPlot: lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Hall-Lounge
+        worldClock: 0
+      - text: 'A narrow passageway beckons, leading eastward from the Corridor Hall into the mysterious Lounge, where shadows
+          dance playfully and whispers of secrets await. to: Lounge'
+        worldClock: 1
+  - label: Lounge -> Corridor Lounge-Dining
+    direction: SOUTH
+    plotA:
+      fromPlot: lounge
+      toPlot: corridor-lounge-dining
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A mysterious passage beckons to the south, leading from the cozy ambiance of the Lounge into the intriguing
+          secrets of the Corridor Lounge-Dining, where whispers of the past dance through the air. to: Corridor Lounge-Dining'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-lounge-dining
+      toPlot: lounge
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Lounge and Corridor Lounge-Dining
+        worldClock: 0
+      - text: 'A narrow passage leads northward, beckoning curious souls to wander from the cozy Lounge into the mysterious
+          Corridor Lounge-Dining, where secrets linger in the air. to: Lounge'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: rope
+    name: Rope
+    description:
+    - text: Rope
+      worldClock: 0
+    - text: A sturdy rope, frayed at the ends, hints at adventures untold and secrets waiting to be unraveled.
+      worldClock: 1
+    ownerKey: lounge
+    owner: Lounge
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Study
+  plotKey: study
+  name: Study
+  region: MANSION
+  description:
+  - text: Study plot
+    worldClock: 0
+  - text: The Study beckons with its antique writing desk, where shadows dance playfully among the scattered papers, hinting
+      at secrets waiting to be uncovered.
+    worldClock: 1
+  gates:
+  - label: Study -> Corridor Study-Hall
+    direction: EAST
+    plotA:
+      fromPlot: study
+      toPlot: corridor-study-hall
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious archway beckons to the east, leading from the cozy Study into the intriguing Corridor Study-Hall,
+          where whispers of secrets linger in the air. The path feels alive with anticipation as it invites curious adventurers
+          to step through to: Corridor Study-Hall.'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-study-hall
+      toPlot: study
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Hall
+        worldClock: 0
+      - text: 'A mysterious passage stretches westward, leading from the quaint nooks of the Corridor Study-Hall into the
+          secrets of the Study, where whispers of knowledge await. to: Study'
+        worldClock: 1
+  - label: Study -> Corridor Study-Library
+    direction: SOUTH
+    plotA:
+      fromPlot: study
+      toPlot: corridor-study-library
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Library
+        worldClock: 0
+      - text: 'The passage from the Study leads south, beckoning with an air of mystery as it whispers secrets of knowledge
+          and adventure, guiding curious souls to the Corridor Study-Library. to: Corridor Study-Library'
+        worldClock: 1
+    plotB:
+      fromPlot: corridor-study-library
+      toPlot: study
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Study and Corridor Study-Library
+        worldClock: 0
+      - text: 'A mysterious passage beckons to the north, where secrets whisper through the air, guiding curious souls toward
+          the hidden wonders of the Study. to: Study'
+        worldClock: 1
+  - label: Study -> Kitchen
+    direction: SOUTH_EAST
+    plotA:
+      fromPlot: study
+      toPlot: kitchen
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Study and Kitchen
+        worldClock: 0
+      - text: 'The path from the Study to the Kitchen winds southeast, inviting curious souls to uncover what culinary secrets
+          lay beyond the threshold. to: Kitchen'
+        worldClock: 1
+    plotB:
+      fromPlot: kitchen
+      toPlot: study
+      visible: false
+      keyString: 'true'
+      description:
+      - text: Path between Study and Kitchen
+        worldClock: 0
+      - text: 'A mysterious archway beckons, leading you through the shadows of the Kitchen and into the secrets that await
+          in the Study to the northwest. to: Study'
+        worldClock: 1
+  fixtures:
+  - key: study-desk
+    name: Study Desk
+    description:
+    - text: An antique writing desk.
+      worldClock: 0
+    - text: This antique writing desk, with its intricate carvings and a hint of dust, whispers secrets of the past, inviting
+        curious minds to uncover its hidden treasures.
+      worldClock: 1
+    ownerKey: study
+    owner: Study
+    visible: true
+  - key: study-desk-drawer-1
+    name: Study Desk Drawer 1
+    description:
+    - text: Primary drawer for the desk.
+      worldClock: 0
+    - text: The drawer creaks open to reveal a curious assortment of forgotten trinkets and dusty papers, each whispering
+        secrets of the past waiting to be uncovered.
+      worldClock: 1
+    ownerKey: study-desk
+    owner: Study Desk
+    visible: true
+  items:
+  - key: basement-key
+    name: Basement Key
+    description:
+    - text: Basement Key
+      worldClock: 0
+    - text: The Basement Key, with its ornate design and mysterious aura, glints subtly in the dim light, hinting at the secrets
+        waiting below.
+      worldClock: 1
+    ownerKey: study-desk-drawer-1
+    owner: Study Desk Drawer 1
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: revolver
+    name: Revolver
+    description:
+    - text: Revolver
+      worldClock: 0
+    - text: This ornate revolver gleams with a mysterious charm, its handle intricately carved with whimsical patterns that
+        hint at the secrets it may have witnessed in the dim light of the study.
+      worldClock: 1
+    ownerKey: study
+    owner: Study
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]

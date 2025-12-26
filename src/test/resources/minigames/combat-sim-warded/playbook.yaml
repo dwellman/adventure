@@ -1,0 +1,14 @@
+name: Combat Sim - Warded Chapel
+game: mini.yaml
+steps:
+  - command: attack wraith
+    expect:
+      - Combat begins.
+      - You hit Wraith for 0.
+      - "Wraith health: 8/8"
+  - command: flee
+    expect:
+      - You flee.
+  - command: quit
+    expect:
+      - Thanks for playing.

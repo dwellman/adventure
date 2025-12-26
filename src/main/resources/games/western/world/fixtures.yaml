@@ -1,0 +1,76 @@
+fixtures:
+- key: sheriffs-desk
+  name: "Sheriff's Desk"
+  description: An oak desk scarred by years of hard decisions.
+  ownerKey: sheriff-s-office
+  visible: true
+- key: saloon-bar
+  name: Saloon Bar
+  description: A long bar with a brass rail and rings of spilled whiskey.
+  ownerKey: dusty-spur-saloon
+  visible: true
+- key: telegraph-console
+  name: Telegraph Console
+  description: A cracked key and tangled line; the relay clicks with dead air.
+  ownerKey: telegraph-office
+  visible: true
+- key: bridge-charges
+  name: Bridge Charges
+  description: Dynamite bundles lashed to the trestle, fuse running into the gulch.
+  ownerKey: rattlesnake-bridge
+  visible: true
+- key: bridge-safe-signal
+  name: Bridge Safe Signal
+  description: A lantern hook with a shuttered green glass, waiting for the all-clear.
+  ownerKey: train-platform
+  visible: false
+- key: cell-bars
+  name: Cell Bars
+  description: Thick iron bars with a lock polished by nervous hands.
+  ownerKey: jailhouse
+  visible: true
+- key: store-counter
+  name: Store Counter
+  description: A scarred counter with a brass bell and a flour scale.
+  ownerKey: general-store
+  visible: true
+- key: tack-hooks
+  name: Tack Hooks
+  description: Hooks loaded with worn bridles and cracked reins.
+  ownerKey: stable-yard
+  visible: true
+- key: water-valve
+  name: Water Valve
+  description: A rusted wheel that groans when you touch it.
+  ownerKey: water-tower
+  visible: true
+- key: signal-lever
+  name: Signal Lever
+  description: A painted lever that flips the line signal green or red.
+  ownerKey: signal-shack
+  visible: true
+- key: yard-switch
+  name: Yard Switch
+  description: A heavy switch stand greased for quick changes.
+  ownerKey: rail-yard
+  visible: true
+- key: canyon-cairn
+  name: Canyon Cairn
+  description: A stack of stones marking the safest footing.
+  ownerKey: canyon-overlook
+  visible: true
+- key: ore-cart
+  name: Ore Cart
+  description: A busted cart with flakes of silver dust in the seams.
+  ownerKey: miners-gully
+  visible: true
+- key: mine-shaft
+  name: Mine Shaft
+  description: Timber supports brace the darkness below.
+  ownerKey: old-mine
+  visible: true
+- key: depot-workbench
+  name: Depot Workbench
+  description: A workbench slick with grease and scattered nails.
+  ownerKey: baggage-depot
+  visible: true

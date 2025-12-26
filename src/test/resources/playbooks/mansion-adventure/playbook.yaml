@@ -1,0 +1,114 @@
+name: Mansion Adventure Walkthrough
+game: ../../../../main/resources/games/mansion/game.yaml
+outcome: win
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Hall
+  - command: west
+    expect:
+      - Corridor Study-Hall
+  - command: west
+    expect:
+      - Study
+  - command: take Basement Key
+    expect:
+      - You take the Basement Key.
+  - command: south
+    expect:
+      - Corridor Study-Library
+  - command: take Ink Note
+    expect:
+      - You take the Ink Note.
+  - command: south
+    expect:
+      - Library
+  - command: south
+    expect:
+      - Corridor Library-Conservatory
+  - command: take Pressed Leaf
+    expect:
+      - You take the Pressed Leaf.
+  - command: south
+    expect:
+      - Conservatory
+  - command: east
+    expect:
+      - Corridor Conservatory-Ballroom
+  - command: take Glass Shard
+    expect:
+      - You take the Glass Shard.
+  - command: east
+    expect:
+      - Ballroom
+  - command: north
+    expect:
+      - Corridor Billiard-Ballroom
+  - command: north
+    expect:
+      - Billiard Room
+  - command: down
+    expect:
+      - Cellar
+  - command: take Cellar Ledger
+    expect:
+      - You take the Cellar Ledger.
+  - command: up
+    expect:
+      - Billiard Room
+  - command: east
+    expect:
+      - Corridor Billiard-Dining
+  - command: take Chalk Smudge
+    expect:
+      - You take the Chalk Smudge.
+  - command: east
+    expect:
+      - Dining Room
+  - command: south
+    expect:
+      - Corridor Dining-Kitchen
+  - command: take Torn Menu
+    expect:
+      - You take the Torn Menu.
+  - command: north
+    expect:
+      - Dining Room
+  - command: north
+    expect:
+      - Corridor Lounge-Dining
+  - command: north
+    expect:
+      - Lounge
+  - command: west
+    expect:
+      - Corridor Hall-Lounge
+  - command: take Silk Thread
+    expect:
+      - You take the Silk Thread.
+  - command: west
+    expect:
+      - Hall
+  - command: use Torn Menu on Case Board
+    expect:
+      - You use Torn Menu on Case Board.
+  - command: use Glass Shard on Case Board
+    expect:
+      - You use Glass Shard on Case Board.
+  - command: use Chalk Smudge on Case Board
+    expect:
+      - You use Chalk Smudge on Case Board.
+  - command: use Pressed Leaf on Case Board
+    expect:
+      - You use Pressed Leaf on Case Board.
+  - command: use Ink Note on Case Board
+    expect:
+      - You use Ink Note on Case Board.
+  - command: use Cellar Ledger on Case Board
+    expect:
+      - You use Cellar Ledger on Case Board.
+  - command: use Silk Thread on Case Board
+    expect:
+      - You assemble the clues on the case board
+      - case breaks

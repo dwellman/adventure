@@ -1,0 +1,14 @@
+smartActors:
+  - actorKey: bandit
+    promptId: smart-actor-system
+    backstory: "A cagey bandit sizing up the ranger in the ring."
+    persona:
+      role: fighter
+      voice: terse
+      traits: [cagey, aggressive]
+      goals: ["win the fight", "survive the ring"]
+    policy:
+      allowedVerbs: [ATTACK, LOOK]
+      maxUtteranceLength: 60
+      cooldownTurns: 0
+      maxColorLines: 0

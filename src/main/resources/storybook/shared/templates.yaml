@@ -1,0 +1,35 @@
+descriptionTemplates:
+  fallback: "Nothing seems remarkable here."
+  regions:
+    COAST:
+      - "Salt spray lingers in the air."
+      - "Wind-scoured driftwood lines the path."
+      - "Footprints vanish into wet sand."
+    CAVE:
+      - "Moist air beads on the stone."
+      - "Echoes carry farther than they should."
+      - "A chill draft whispers through cracks."
+    FOREST:
+      - "Bamboo clacks softly overhead."
+      - "Leaf litter muffles each step."
+      - "Filtered sunlight paints the ground."
+  roles:
+    ENTRY:
+      - "The trailhead feels freshly disturbed."
+      - "It smells like new beginnings."
+    EXIT:
+      - "The way out feels close enough to taste."
+      - "You sense relief ahead."
+    VISTA:
+      - "The view opens wide here."
+      - "You can see for a long way."
+    SET_PIECE:
+      - "Something important happened here."
+      - "This spot hums with significance."
+    GATEKEEPER:
+      - "Something bars the way forward."
+      - "A challenge waits here."
+    RESOURCE:
+      - "Supplies are tucked nearby."
+      - "This spot hides something useful."
+  suffixes: []

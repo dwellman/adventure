@@ -1,0 +1,1057 @@
+seed: 20240615
+startPlot: Wreck Beach
+startPlotKey: wreck-beach
+preamble: You wake on the beach with a backpack.
+plots:
+- plot: Bamboo Forest
+  plotKey: bamboo-forest
+  name: Bamboo Forest
+  region: ISLAND
+  description:
+  - text: Bamboo Forest plot
+    worldClock: 0
+  - text: The Bamboo Forest sways gently, its tall, green stalks whispering secrets as the explorer makes their way through
+      the lush greenery, always eager for the next adventure.
+    worldClock: 1
+  gates:
+  - label: Bamboo Forest -> Monkey Grove
+    direction: EAST
+    plotA:
+      fromPlot: bamboo-forest
+      toPlot: monkey-grove
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Bamboo Forest and Monkey Grove
+        worldClock: 0
+      - text: 'A winding path leads eastward through the swaying bamboo, inviting adventurers to step forth into the vibrant
+          Monkey Grove. to: Monkey Grove'
+        worldClock: 1
+    plotB:
+      fromPlot: monkey-grove
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Bamboo Forest and Monkey Grove
+        worldClock: 0
+      - text: 'The path stretches westward, a winding trail flanked by rustling bamboo, leading adventurers from the lively
+          chatter of the Monkey Grove to the tranquil embrace of the Bamboo Forest. to: Bamboo Forest'
+        worldClock: 1
+  - label: Bamboo Forest -> Tidepool Rocks
+    direction: SOUTH
+    plotA:
+      fromPlot: bamboo-forest
+      toPlot: tidepool-rocks
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Tidepool Rocks and Bamboo Forest
+        worldClock: 0
+      - text: 'The path winds southward, leading adventurers from the swaying Bamboo Forest to the rugged allure of the Tidepool
+          Rocks, where the sound of crashing waves beckons with promises of new discoveries. to: Tidepool Rocks'
+        worldClock: 1
+    plotB:
+      fromPlot: tidepool-rocks
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Tidepool Rocks and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds northward, leading adventurers from the vibrant Tidepool Rocks to the lush Bamboo Forest,
+          where whispers of rustling leaves beckon the curious to explore further. to: Bamboo Forest'
+        worldClock: 1
+  - label: Bamboo Forest -> Treehouse
+    direction: WEST
+    plotA:
+      fromPlot: bamboo-forest
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds through the tall bamboo, leading westward toward the inviting Treehouse, where adventure
+          awaits. to: Treehouse'
+        worldClock: 1
+    plotB:
+      fromPlot: treehouse
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds its way east, leading from the cozy treehouse towards the swaying bamboos, beckoning the
+          explorer to step into the whispering green sanctuary of the Bamboo Forest. to: Bamboo Forest'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: banana-1
+    name: Banana 1
+    description:
+    - text: Fresh banana from the grove.
+      worldClock: 0
+    - text: A vibrant banana, its yellow skin speckled with tiny brown spots, promises a sweet burst of flavor, freshly picked
+        from the grove.
+      worldClock: 1
+    ownerKey: bamboo-forest
+    owner: Bamboo Forest
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: banana-2
+    name: Banana 2
+    description:
+    - text: Fresh banana from the grove.
+      worldClock: 0
+    - text: A vibrant banana, its bright yellow skin invitingly warm, promises a sweet burst of flavor from the heart of the
+        grove.
+      worldClock: 1
+    ownerKey: bamboo-forest
+    owner: Bamboo Forest
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: banana-3
+    name: Banana 3
+    description:
+    - text: Fresh banana from the grove.
+      worldClock: 0
+    - text: A vibrant banana, its sun-kissed skin is dappled with flecks of gold, promising a sweet burst of flavor for any
+        adventurer brave enough to savor it.
+      worldClock: 1
+    ownerKey: bamboo-forest
+    owner: Bamboo Forest
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: banana-4
+    name: Banana 4
+    description:
+    - text: Fresh banana from the grove.
+      worldClock: 0
+    - text: Golden and ripe, this banana is a testament to the lush life thriving in the Bamboo Forest, its sweet aroma hinting
+        at the adventures that await.
+      worldClock: 1
+    ownerKey: bamboo-forest
+    owner: Bamboo Forest
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: banana-5
+    name: Banana 5
+    description:
+    - text: Fresh banana from the grove.
+      worldClock: 0
+    - text: A plump, golden banana, its smooth skin glimmering in the sunlight, beckons with the promise of a sweet, tropical
+        treat.
+      worldClock: 1
+    ownerKey: bamboo-forest
+    owner: Bamboo Forest
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Cave Back Chamber
+  plotKey: cave-back-chamber
+  name: Cave Back Chamber
+  region: ISLAND
+  description:
+  - text: Cave Back Chamber plot
+    worldClock: 0
+  - text: The Cave Back Chamber opens up like a hidden treasure trove, its rugged walls echoing stories of past explorers.
+      Shadows dance on the stone, hinting at the secrets waiting to be uncovered within this mysterious cavern.
+    worldClock: 1
+  gates:
+  - label: Cave Back Chamber -> Cave Mouth
+    direction: SOUTH
+    plotA:
+      fromPlot: cave-back-chamber
+      toPlot: cave-mouth
+      visible: true
+      keyString: HAS("Lit Torch")
+      description:
+      - text: Path between Cave Mouth and Cave Back Chamber
+        worldClock: 0
+      - text: 'The path winds south, leading through the dimly lit tunnel, where echoes of distant droplets create an air
+          of mystery, beckoning toward the Cave Mouth. to: Cave Mouth'
+        worldClock: 1
+    plotB:
+      fromPlot: cave-mouth
+      toPlot: cave-back-chamber
+      visible: true
+      keyString: HAS("Lit Torch")
+      description:
+      - text: Path between Cave Mouth and Cave Back Chamber
+        worldClock: 0
+      - text: 'The path leads north, where the air grows cooler, and the shadows of the cave deepen, beckoning explorers to
+          uncover the secrets of the Cave Back Chamber. to: Cave Back Chamber'
+        worldClock: 1
+  fixtures:
+  - key: cave-wall-map
+    name: Cave Wall Map
+    description:
+    - text: Pirate markings carved into the stone.
+      worldClock: 0
+    - text: The cave wall is adorned with intricate pirate markings, telling tales of hidden treasures and treacherous waters,
+        each curve and line a whisper of adventure waiting to be uncovered.
+      worldClock: 1
+    ownerKey: cave-back-chamber
+    owner: Cave Back Chamber
+    visible: true
+  items:
+  - key: cave-map-rubbing
+    name: Cave Map Rubbing
+    description:
+    - text: Copied poem and map from the back wall.
+      worldClock: 0
+    - text: A treasure map, its edges frayed and ink smudged, reveals hidden paths and marked locations, whispering secrets
+        of adventure and discovery.
+      worldClock: 1
+    ownerKey: cave-back-chamber
+    owner: Cave Back Chamber
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Cave Mouth
+  plotKey: cave-mouth
+  name: Cave Mouth
+  region: ISLAND
+  description:
+  - text: Cave Mouth plot
+    worldClock: 0
+  - text: The Cave Mouth looms ahead, a dark opening that beckons adventurers to uncover its hidden secrets, while thick spider
+      webs cling to the entrance, hinting at the mysteries waiting inside.
+    worldClock: 1
+  gates:
+  - label: Cave Mouth -> Cave Back Chamber
+    direction: NORTH
+    plotA:
+      fromPlot: cave-mouth
+      toPlot: cave-back-chamber
+      visible: true
+      keyString: HAS("Lit Torch")
+      description:
+      - text: Path between Cave Mouth and Cave Back Chamber
+        worldClock: 0
+      - text: 'The path leads north, where the air grows cooler, and the shadows of the cave deepen, beckoning explorers to
+          uncover the secrets of the Cave Back Chamber. to: Cave Back Chamber'
+        worldClock: 1
+    plotB:
+      fromPlot: cave-back-chamber
+      toPlot: cave-mouth
+      visible: true
+      keyString: HAS("Lit Torch")
+      description:
+      - text: Path between Cave Mouth and Cave Back Chamber
+        worldClock: 0
+      - text: 'The path winds south, leading through the dimly lit tunnel, where echoes of distant droplets create an air
+          of mystery, beckoning toward the Cave Mouth. to: Cave Mouth'
+        worldClock: 1
+  - label: Cave Mouth -> Treehouse
+    direction: SOUTH
+    plotA:
+      fromPlot: cave-mouth
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Cave Mouth
+        worldClock: 0
+      - text: 'A winding path leads south from the Cave Mouth, where shadows dance and the air is thick with mystery, beckoning
+          the explorer to the welcoming haven of the Treehouse. to: Treehouse'
+        worldClock: 1
+    plotB:
+      fromPlot: treehouse
+      toPlot: cave-mouth
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Cave Mouth
+        worldClock: 0
+      - text: 'A narrow path winds north from the Treehouse, leading adventurers toward the looming Cave Mouth, where shadows
+          dance with the promise of untold secrets waiting to be uncovered. to: Cave Mouth'
+        worldClock: 1
+  - label: Cave Mouth -> Waterfall Pool
+    direction: EAST
+    plotA:
+      fromPlot: cave-mouth
+      toPlot: waterfall-pool
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Cave Mouth and Waterfall Pool
+        worldClock: 0
+      - text: 'The path leads eastward from the shadowy Cave Mouth, where the air hums with the promise of adventure, guiding
+          the way to the enchanting Waterfall Pool. to: Waterfall Pool'
+        worldClock: 1
+    plotB:
+      fromPlot: waterfall-pool
+      toPlot: cave-mouth
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Cave Mouth and Waterfall Pool
+        worldClock: 0
+      - text: 'The path winds westward, meandering through lush foliage, leading adventurers from the serene Waterfall Pool
+          to the shadowy depths of the Cave Mouth. to: Cave Mouth'
+        worldClock: 1
+  fixtures:
+  - key: spider-webs
+    name: Spider Webs
+    description:
+    - text: Thick webs block the back chamber.
+      worldClock: 0
+    - text: Intricate spider webs stretch across the back chamber, glistening slightly in the dim light, a testament to the
+        hidden life thriving within the cave's depths.
+      worldClock: 1
+    ownerKey: cave-mouth
+    owner: Cave Mouth
+    visible: true
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Monkey Grove
+  plotKey: monkey-grove
+  name: Monkey Grove
+  region: ISLAND
+  description:
+  - text: Monkey Grove plot
+    worldClock: 0
+  - text: The Monkey Grove buzzes with playful energy as a troop of mischievous monkeys chatter and swing between the branches,
+      their green-stained teeth glinting in the dappled sunlight.
+    worldClock: 1
+  gates:
+  - label: Monkey Grove -> Bamboo Forest
+    direction: WEST
+    plotA:
+      fromPlot: monkey-grove
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Bamboo Forest and Monkey Grove
+        worldClock: 0
+      - text: 'The path stretches westward, a winding trail flanked by rustling bamboo, leading adventurers from the lively
+          chatter of the Monkey Grove to the tranquil embrace of the Bamboo Forest. to: Bamboo Forest'
+        worldClock: 1
+    plotB:
+      fromPlot: bamboo-forest
+      toPlot: monkey-grove
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Bamboo Forest and Monkey Grove
+        worldClock: 0
+      - text: 'A winding path leads eastward through the swaying bamboo, inviting adventurers to step forth into the vibrant
+          Monkey Grove. to: Monkey Grove'
+        worldClock: 1
+  - label: Monkey Grove -> Volcano Path
+    direction: NORTH
+    plotA:
+      fromPlot: monkey-grove
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Monkey Grove and Volcano Path
+        worldClock: 0
+      - text: 'A narrow path winds northward from the lively Monkey Grove, leading adventurers through the rustling leaves
+          and playful chatter of the Chaos Monkey Troop, before opening up to the rugged terrain of the Volcano Path. to:
+          Volcano Path'
+        worldClock: 1
+    plotB:
+      fromPlot: volcano-path
+      toPlot: monkey-grove
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Monkey Grove and Volcano Path
+        worldClock: 0
+      - text: 'A rugged pathway winds southward, leading adventurers from the fiery heart of the Volcano Path into the lush
+          embrace of Monkey Grove. to: Monkey Grove'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: vine-rope
+    name: Vine Rope
+    description:
+    - text: A coil of strong vines guarded by monkeys.
+      worldClock: 0
+    - text: A sturdy coil of vine rope, its surface thick and fibrous, sways gently in the breeze, while mischievous monkeys
+        with green-stained teeth keep a watchful eye on their prized possession.
+      worldClock: 1
+    ownerKey: monkey-grove
+    owner: Monkey Grove
+    visible: false
+    fixture: false
+    keyString: 'false'
+  actors:
+  - key: chaos-monkey-troop
+    name: Chaos Monkey Troop
+    description:
+    - text: Five monkeys with green-stained teeth.
+      worldClock: -1
+    ownerKey: monkey-grove
+    owner: Monkey Grove
+    visible: true
+- plot: Plane Wreck
+  plotKey: plane-wreck
+  name: Plane Wreck
+  region: ISLAND
+  description:
+  - text: Plane Wreck plot
+    worldClock: 0
+  - text: The remnants of the plane lie scattered across the ground, rusted metal glinting in the sun, a silent testament
+      to the adventure that once was.
+    worldClock: 1
+  gates:
+  - label: Plane Wreck -> Volcano Path
+    direction: WEST
+    plotA:
+      fromPlot: plane-wreck
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Plane Wreck
+        worldClock: 0
+      - text: 'The narrow path winds westward, leading explorers from the remnants of the Plane Wreck to the mysterious depths
+          of the Volcano Path. to: Volcano Path'
+        worldClock: 1
+    plotB:
+      fromPlot: volcano-path
+      toPlot: plane-wreck
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Plane Wreck
+        worldClock: 0
+      - text: 'The path winds eastward, leading adventurers away from the rumbling volcano and toward the secrets of the Plane
+          Wreck, where forgotten stories await. to: Plane Wreck'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: parachute
+    name: Parachute
+    description:
+    - text: Silk parachute that can serve as a sail.
+      worldClock: 0
+    - text: This well-worn silk parachute flutters gently in the breeze, its vibrant colors faded but still hinting at adventures
+        taken to the skies.
+      worldClock: 1
+    ownerKey: plane-wreck
+    owner: Plane Wreck
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors: [
+    ]
+- plot: Tidepool Rocks
+  plotKey: tidepool-rocks
+  name: Tidepool Rocks
+  region: ISLAND
+  description:
+  - text: Tidepool Rocks plot
+    worldClock: 0
+  - text: The Tidepool Rocks stretch out like ancient sentinels, their weathered surfaces glistening in the sun, inviting
+      explorers to uncover the secrets hidden within the shimmering pools below.
+    worldClock: 1
+  gates:
+  - label: Tidepool Rocks -> Bamboo Forest
+    direction: NORTH
+    plotA:
+      fromPlot: tidepool-rocks
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Tidepool Rocks and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds northward, leading adventurers from the vibrant Tidepool Rocks to the lush Bamboo Forest,
+          where whispers of rustling leaves beckon the curious to explore further. to: Bamboo Forest'
+        worldClock: 1
+    plotB:
+      fromPlot: bamboo-forest
+      toPlot: tidepool-rocks
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Tidepool Rocks and Bamboo Forest
+        worldClock: 0
+      - text: 'The path winds southward, leading adventurers from the swaying Bamboo Forest to the rugged allure of the Tidepool
+          Rocks, where the sound of crashing waves beckons with promises of new discoveries. to: Tidepool Rocks'
+        worldClock: 1
+  - label: Tidepool Rocks -> Wreck Beach
+    direction: WEST
+    plotA:
+      fromPlot: tidepool-rocks
+      toPlot: wreck-beach
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Tidepool Rocks
+        worldClock: 0
+      - text: 'A winding path leads westward through the rocky terrain, where the rhythmic sound of crashing waves beckons
+          towards Wreck Beach. to: Wreck Beach'
+        worldClock: 1
+    plotB:
+      fromPlot: wreck-beach
+      toPlot: tidepool-rocks
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Tidepool Rocks
+        worldClock: 0
+      - text: 'As the explorer strides eastward, the salty breeze swirls around, guiding them along the winding path from
+          Wreck Beach to the vibrant rock formations of Tidepool Rocks. to: Tidepool Rocks'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Treehouse
+  plotKey: treehouse
+  name: Treehouse
+  region: ISLAND
+  description:
+  - text: Treehouse plot
+    worldClock: 0
+  - text: The treehouse stands tall among the branches, a weathered testament to a time of exploration, its wooden frame entwined
+      with vines and whispers of the past.
+    worldClock: 1
+  gates:
+  - label: Treehouse -> Bamboo Forest
+    direction: EAST
+    plotA:
+      fromPlot: treehouse
+      toPlot: bamboo-forest
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds its way east, leading from the cozy treehouse towards the swaying bamboos, beckoning the
+          explorer to step into the whispering green sanctuary of the Bamboo Forest. to: Bamboo Forest'
+        worldClock: 1
+    plotB:
+      fromPlot: bamboo-forest
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Bamboo Forest
+        worldClock: 0
+      - text: 'A narrow path winds through the tall bamboo, leading westward toward the inviting Treehouse, where adventure
+          awaits. to: Treehouse'
+        worldClock: 1
+  - label: Treehouse -> Cave Mouth
+    direction: NORTH
+    plotA:
+      fromPlot: treehouse
+      toPlot: cave-mouth
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Cave Mouth
+        worldClock: 0
+      - text: 'A narrow path winds north from the Treehouse, leading adventurers toward the looming Cave Mouth, where shadows
+          dance with the promise of untold secrets waiting to be uncovered. to: Cave Mouth'
+        worldClock: 1
+    plotB:
+      fromPlot: cave-mouth
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Treehouse and Cave Mouth
+        worldClock: 0
+      - text: 'A winding path leads south from the Cave Mouth, where shadows dance and the air is thick with mystery, beckoning
+          the explorer to the welcoming haven of the Treehouse. to: Treehouse'
+        worldClock: 1
+  - label: Treehouse -> Wreck Beach
+    direction: SOUTH
+    plotA:
+      fromPlot: treehouse
+      toPlot: wreck-beach
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Treehouse
+        worldClock: 0
+      - text: 'A narrow path winds southward, leading through the lush undergrowth, beckoning adventurous souls to venture
+          toward the sandy shores of Wreck Beach. to: Wreck Beach'
+        worldClock: 1
+    plotB:
+      fromPlot: wreck-beach
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Treehouse
+        worldClock: 0
+      - text: 'A narrow path weaves through the lush undergrowth, leading boldly north from Wreck Beach towards the towering
+          Treehouse, where adventure awaits. to: Treehouse'
+        worldClock: 1
+  fixtures:
+  - key: treehouse-skeleton
+    name: Treehouse Skeleton
+    description:
+    - text: The long-dead scientist slumped in the corner.
+      worldClock: 0
+    - text: The skeletal remains of the long-dead scientist sit forlornly in the corner, surrounded by the remnants of their
+        once-vibrant explorations, now just whispers of the past.
+      worldClock: 1
+    ownerKey: treehouse
+    owner: Treehouse
+    visible: true
+  items:
+  - key: hatchet
+    name: Hatchet
+    description:
+    - text: Weathered hatchet under the treehouse bones.
+      worldClock: 0
+    - text: The weathered hatchet, its blade dulled by time, rests beneath the skeletal remains of the treehouse, a silent
+        testament to past adventures and the mysteries yet to be uncovered.
+      worldClock: 1
+    ownerKey: treehouse
+    owner: Treehouse
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors:
+  - key: scratch-ghost
+    name: Scratch (Ghost)
+    description:
+    - text: Faint green shimmer around the old scientist.
+      worldClock: -1
+    ownerKey: treehouse
+    owner: Treehouse
+    visible: true
+- plot: Volcano Altar
+  plotKey: volcano-altar
+  name: Volcano Altar
+  region: ISLAND
+  description:
+  - text: Volcano Altar plot
+    worldClock: 0
+  - text: The Volcano Altar stands solemnly within the fiery heart of the adventure, a black stone pedestal that seems to hum
+      with ancient energy, beckoning explorers to uncover its secrets.
+    worldClock: 1
+  gates:
+  - label: Volcano Altar -> Volcano Path
+    direction: SOUTH
+    plotA:
+      fromPlot: volcano-altar
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Volcano Altar
+        worldClock: 0
+      - text: 'The path stretches invitingly southward, leading explorers from the sacred Volcano Altar to the enigmatic depths
+          of the Volcano Path, where whispers of adventure linger. to: Volcano Path'
+        worldClock: 1
+    plotB:
+      fromPlot: volcano-path
+      toPlot: volcano-altar
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Volcano Altar
+        worldClock: 0
+      - text: 'A rugged trail winds northward, guiding the way through the shadow of towering peaks, leading adventurers to
+          the mysterious Volcano Altar. to: Volcano Altar'
+        worldClock: 1
+  fixtures:
+  - key: time-stone-pedestal
+    name: Time Stone Pedestal
+    description:
+    - text: A black altar deep in the volcano.
+      worldClock: 0
+    - text: The Time Stone Pedestal stands solemnly within the heart of the volcano, its dark surface a stark contrast to
+        the vibrant glow of the cold green gem resting atop it, hinting at mysteries waiting to be uncovered.
+      worldClock: 1
+    ownerKey: volcano-altar
+    owner: Volcano Altar
+    visible: true
+  items:
+  - key: time-stone
+    name: Time Stone
+    description:
+    - text: A cold green gem pulsing at the altar.
+      worldClock: 0
+    - text: The Time Stone glimmers with an otherworldly light, its cold surface seeming to pulse with the secrets of ages
+        long past, resting quietly upon the black altar within the volcano.
+      worldClock: 1
+    ownerKey: volcano-altar
+    owner: Volcano Altar
+    visible: false
+    fixture: false
+    keyString: 'false'
+  actors: [
+    ]
+- plot: Volcano Path
+  plotKey: volcano-path
+  name: Volcano Path
+  region: ISLAND
+  description:
+  - text: Volcano Path plot
+    worldClock: 0
+  - text: 'The path winds through rocky terrain, leading adventurers onward with a sense of wonder and the distant rumble
+      of the volcano echoing in the air, beckoning them to the fiery heart of the adventure to:'
+    worldClock: 1
+  gates:
+  - label: Volcano Path -> Monkey Grove
+    direction: SOUTH
+    plotA:
+      fromPlot: volcano-path
+      toPlot: monkey-grove
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Monkey Grove and Volcano Path
+        worldClock: 0
+      - text: 'A rugged pathway winds southward, leading adventurers from the fiery heart of the Volcano Path into the lush
+          embrace of Monkey Grove. to: Monkey Grove'
+        worldClock: 1
+    plotB:
+      fromPlot: monkey-grove
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Monkey Grove and Volcano Path
+        worldClock: 0
+      - text: 'A narrow path winds northward from the lively Monkey Grove, leading adventurers through the rustling leaves
+          and playful chatter of the Chaos Monkey Troop, before opening up to the rugged terrain of the Volcano Path. to:
+          Volcano Path'
+        worldClock: 1
+  - label: Volcano Path -> Plane Wreck
+    direction: EAST
+    plotA:
+      fromPlot: volcano-path
+      toPlot: plane-wreck
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Plane Wreck
+        worldClock: 0
+      - text: 'The path winds eastward, leading adventurers away from the rumbling volcano and toward the secrets of the Plane
+          Wreck, where forgotten stories await. to: Plane Wreck'
+        worldClock: 1
+    plotB:
+      fromPlot: plane-wreck
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Plane Wreck
+        worldClock: 0
+      - text: 'The narrow path winds westward, leading explorers from the remnants of the Plane Wreck to the mysterious depths
+          of the Volcano Path. to: Volcano Path'
+        worldClock: 1
+  - label: Volcano Path -> Volcano Altar
+    direction: NORTH
+    plotA:
+      fromPlot: volcano-path
+      toPlot: volcano-altar
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Volcano Altar
+        worldClock: 0
+      - text: 'A rugged trail winds northward, guiding the way through the shadow of towering peaks, leading adventurers to
+          the mysterious Volcano Altar. to: Volcano Altar'
+        worldClock: 1
+    plotB:
+      fromPlot: volcano-altar
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Volcano Path and Volcano Altar
+        worldClock: 0
+      - text: 'The path stretches invitingly southward, leading explorers from the sacred Volcano Altar to the enigmatic depths
+          of the Volcano Path, where whispers of adventure linger. to: Volcano Path'
+        worldClock: 1
+  - label: Volcano Path -> Waterfall Pool
+    direction: WEST
+    plotA:
+      fromPlot: volcano-path
+      toPlot: waterfall-pool
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Waterfall Pool and Volcano Path
+        worldClock: 0
+      - text: 'A winding path weaves westward, leading adventurers from the fiery embrace of the Volcano Path toward the soothing
+          sounds of the Waterfall Pool. to: Waterfall Pool'
+        worldClock: 1
+    plotB:
+      fromPlot: waterfall-pool
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Waterfall Pool and Volcano Path
+        worldClock: 0
+      - text: 'The path winds eastward, the sound of rushing water accompanying each step, as the explorer moves eagerly from
+          the shimmering Waterfall Pool towards the rugged terrain of the Volcano Path. to: Volcano Path'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Waterfall Pool
+  plotKey: waterfall-pool
+  name: Waterfall Pool
+  region: ISLAND
+  description:
+  - text: Waterfall Pool plot
+    worldClock: 0
+  - text: The Waterfall Pool sparkles under the sun, where crystal-clear water cascades down into a serene basin, inviting
+      explorers to pause and marvel at its beauty.
+    worldClock: 1
+  gates:
+  - label: Waterfall Pool -> Cave Mouth
+    direction: WEST
+    plotA:
+      fromPlot: waterfall-pool
+      toPlot: cave-mouth
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Cave Mouth and Waterfall Pool
+        worldClock: 0
+      - text: 'The path winds westward, meandering through lush foliage, leading adventurers from the serene Waterfall Pool
+          to the shadowy depths of the Cave Mouth. to: Cave Mouth'
+        worldClock: 1
+    plotB:
+      fromPlot: cave-mouth
+      toPlot: waterfall-pool
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Cave Mouth and Waterfall Pool
+        worldClock: 0
+      - text: 'The path leads eastward from the shadowy Cave Mouth, where the air hums with the promise of adventure, guiding
+          the way to the enchanting Waterfall Pool. to: Waterfall Pool'
+        worldClock: 1
+  - label: Waterfall Pool -> Volcano Path
+    direction: EAST
+    plotA:
+      fromPlot: waterfall-pool
+      toPlot: volcano-path
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Waterfall Pool and Volcano Path
+        worldClock: 0
+      - text: 'The path winds eastward, the sound of rushing water accompanying each step, as the explorer moves eagerly from
+          the shimmering Waterfall Pool towards the rugged terrain of the Volcano Path. to: Volcano Path'
+        worldClock: 1
+    plotB:
+      fromPlot: volcano-path
+      toPlot: waterfall-pool
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Waterfall Pool and Volcano Path
+        worldClock: 0
+      - text: 'A winding path weaves westward, leading adventurers from the fiery embrace of the Volcano Path toward the soothing
+          sounds of the Waterfall Pool. to: Waterfall Pool'
+        worldClock: 1
+  fixtures: [
+    ]
+  items: [
+    ]
+  actors: [
+    ]
+- plot: Wreck Beach
+  plotKey: wreck-beach
+  name: Wreck Beach
+  region: ISLAND
+  description:
+  - text: Wreck Beach plot
+    worldClock: 0
+  - text: The golden sands of Wreck Beach stretch invitingly, dotted with remnants of past adventures and whispers of the
+      ocean's secrets.
+    worldClock: 1
+  gates:
+  - label: Wreck Beach -> Tidepool Rocks
+    direction: EAST
+    plotA:
+      fromPlot: wreck-beach
+      toPlot: tidepool-rocks
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Tidepool Rocks
+        worldClock: 0
+      - text: 'As the explorer strides eastward, the salty breeze swirls around, guiding them along the winding path from
+          Wreck Beach to the vibrant rock formations of Tidepool Rocks. to: Tidepool Rocks'
+        worldClock: 1
+    plotB:
+      fromPlot: tidepool-rocks
+      toPlot: wreck-beach
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Tidepool Rocks
+        worldClock: 0
+      - text: 'A winding path leads westward through the rocky terrain, where the rhythmic sound of crashing waves beckons
+          towards Wreck Beach. to: Wreck Beach'
+        worldClock: 1
+  - label: Wreck Beach -> Treehouse
+    direction: NORTH
+    plotA:
+      fromPlot: wreck-beach
+      toPlot: treehouse
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Treehouse
+        worldClock: 0
+      - text: 'A narrow path weaves through the lush undergrowth, leading boldly north from Wreck Beach towards the towering
+          Treehouse, where adventure awaits. to: Treehouse'
+        worldClock: 1
+    plotB:
+      fromPlot: treehouse
+      toPlot: wreck-beach
+      visible: true
+      keyString: 'true'
+      description:
+      - text: Path between Wreck Beach and Treehouse
+        worldClock: 0
+      - text: 'A narrow path winds southward, leading through the lush undergrowth, beckoning adventurous souls to venture
+          toward the sandy shores of Wreck Beach. to: Wreck Beach'
+        worldClock: 1
+  fixtures: [
+    ]
+  items:
+  - key: canvas-backpack
+    name: Canvas Backpack
+    description:
+    - text: A small canvas backpack.
+      worldClock: 0
+    - text: A small canvas backpack, weathered from the salty sea air, holds memories of adventures yet to unfold.
+      worldClock: 1
+    ownerKey: castaway
+    owner: Castaway
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: dead-ipad
+    name: Dead iPad
+    description:
+    - text: A completely drained tablet.
+      worldClock: 0
+    - text: A lifeless tablet, its screen dark and silent, whispers tales of adventures yet to be discovered on this mysterious
+        adventure.
+      worldClock: 1
+    ownerKey: castaway
+    owner: Castaway
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: digital-watch
+    name: Digital Watch
+    description:
+    - text: A modern watch with a subtle green blink.
+      worldClock: 0
+    - text: A modern watch with a subtle green blink, its face reflecting the sun's rays like a beacon, promising hope and
+        adventure in the midst of the wild.
+      worldClock: 1
+    ownerKey: castaway
+    owner: Castaway
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: flint
+    name: Flint
+    description:
+    - text: Sharp flint shard for sparks.
+      worldClock: 0
+    - text: This sharp flint shard glimmers in the sunlight, a promising tool for igniting sparks and kindling hope on the
+        journey ahead.
+      worldClock: 1
+    ownerKey: wreck-beach
+    owner: Wreck Beach
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: lit-torch
+    name: Lit Torch
+    description:
+    - text: A single lit torch; once it burns out, darkness returns.
+      worldClock: 0
+    - text: A flickering lit torch casts warm light across the sandy beach, its flame dancing like a beacon in the twilight,
+        reminding the explorer that adventure awaits, but only until the last ember fades.
+      worldClock: 1
+    ownerKey: wreck-beach
+    owner: Wreck Beach
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: notebook
+    name: Notebook
+    description:
+    - text: Loop-stable notebook.
+      worldClock: 0
+    - text: This loop-stable notebook, with its weathered cover and pages gently frayed at the edges, invites the explorer
+        to document every thrilling discovery on the mysterious Wreck Beach.
+      worldClock: 1
+    ownerKey: castaway
+    owner: Castaway
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: pen
+    name: Pen
+    description:
+    - text: Simple ballpoint pen.
+      worldClock: 0
+    - text: This simple ballpoint pen, though unassuming, holds the potential to capture every thrilling discovery and secret
+        of the adventure, ready to bring the explorer's adventures to life on the pages of a notebook.
+      worldClock: 1
+    ownerKey: castaway
+    owner: Castaway
+    visible: true
+    fixture: false
+    keyString: 'true'
+  - key: river-stone
+    name: River Stone
+    description:
+    - text: Smooth stone for striking flint.
+      worldClock: 0
+    - text: A polished river stone, its surface gleaming softly in the sunlight, perfect for striking flint and igniting a
+        spark of hope in this wild, untamed land.
+      worldClock: 1
+    ownerKey: wreck-beach
+    owner: Wreck Beach
+    visible: true
+    fixture: false
+    keyString: 'true'
+  actors:
+  - key: castaway
+    name: Castaway
+    description:
+    - text: You wake on the beach with a backpack.
+      worldClock: -1
+    ownerKey: wreck-beach
+    owner: Wreck Beach
+    visible: true

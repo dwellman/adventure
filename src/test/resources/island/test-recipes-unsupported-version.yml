@@ -1,0 +1,10 @@
+version: 0.3
+recipes:
+  - id: DUMMY_UNSUPPORTED
+    event: DUMMY_UNSUPPORTED
+    when:
+      actor:
+        inventory_has_all: [WOOD_LOG]
+    then:
+      - message:
+          text: noop

@@ -1,0 +1,12 @@
+thing("game").fixture("self").kind="game".seed=123.preamble="You are running a tiny GDL demo."
+
+thing("foyer").fixture("self").name="Foyer".region="DEMO".locationX=0.locationY=0.description="A small entryway with worn tiles.".contains=["key"]
+thing("foyer").fixture("north").leadsTo="hall".label="Foyer -> Hall".description="A narrow passage leads north."
+thing("foyer").fixture("table").name="Entry Table".description="A scuffed wooden table."
+
+thing("hall").fixture("self").name="Hall".region="DEMO".locationX=0.locationY=1.description="A quiet hall with old portraits."
+thing("hall").fixture("south").leadsTo="foyer".label="Hall -> Foyer".description="The foyer lies back to the south."
+
+thing("key").fixture("self").kind="item".name="Key".description="A small brass key."
+
+actor("hero").fixture("self").name="Explorer".description="A curious explorer.".owner="foyer".player=true

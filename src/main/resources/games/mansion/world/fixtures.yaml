@@ -1,0 +1,87 @@
+fixtures:
+- key: study-desk
+  name: Study Desk
+  description: This antique writing desk, with its intricate carvings and a hint of dust, whispers secrets of the past, inviting
+    curious minds to uncover its hidden treasures.
+  ownerKey: study
+  visible: true
+- key: study-desk-drawer-1
+  name: Study Desk Drawer 1
+  description: The drawer creaks open to reveal a curious assortment of forgotten trinkets and dusty papers, each whispering
+    secrets of the past waiting to be uncovered.
+  ownerKey: study
+  visible: true
+- key: case-board
+  name: Case Board
+  description: A corkboard laced with string and pins, ready to hold the night's evidence.
+  ownerKey: hall
+  visible: true
+  cells:
+    evidence:
+      capacity: 7
+      amount: 0
+- key: corridor-service-bell
+  name: Corridor Service Bell
+  description: A brass pull bell mounted at shoulder height, polished by countless calls.
+  ownerKey: corridor-ballroom-kitchen
+  visible: true
+- key: corridor-mirror
+  name: Corridor Mirror
+  description: A tall mirror fogged at the edges, catching only half the hallway.
+  ownerKey: corridor-billiard-ballroom
+  visible: true
+- key: corridor-cue-rack
+  name: Corridor Cue Rack
+  description: A rack of cues that looks recently disturbed.
+  ownerKey: corridor-billiard-dining
+  visible: true
+- key: corridor-frosted-window
+  name: Corridor Frosted Window
+  description: Frosted glass hides the conservatory beyond, streaked by a recent palm.
+  ownerKey: corridor-conservatory-ballroom
+  visible: true
+- key: corridor-pass-shelf
+  name: Corridor Pass Shelf
+  description: A narrow shelf with a bell and grease stains from hurried service.
+  ownerKey: corridor-dining-kitchen
+  visible: true
+- key: corridor-trophy-case
+  name: Corridor Trophy Case
+  description: Silver cups gleam behind glass, one door ajar.
+  ownerKey: corridor-hall-billiard
+  visible: true
+- key: corridor-portrait-frame
+  name: Corridor Portrait Frame
+  description: A portrait frame hangs slightly crooked, the nail freshly nicked.
+  ownerKey: corridor-hall-lounge
+  visible: true
+- key: corridor-sconce
+  name: Corridor Sconce
+  description: A dusty sconce with wax dripped down the wall.
+  ownerKey: corridor-library-billiard
+  visible: true
+- key: corridor-plant-stand
+  name: Corridor Plant Stand
+  description: A wrought stand with a damp ring where a pot used to sit.
+  ownerKey: corridor-library-conservatory
+  visible: true
+- key: corridor-coat-stand
+  name: Corridor Coat Stand
+  description: A walnut coat stand with one empty hook.
+  ownerKey: corridor-lounge-dining
+  visible: true
+- key: corridor-umbrella-stand
+  name: Corridor Umbrella Stand
+  description: A heavy stand with rainwater pooled at the bottom.
+  ownerKey: corridor-study-hall
+  visible: true
+- key: corridor-notice-board
+  name: Corridor Notice Board
+  description: Notes and invitations pinned in a hurry, one corner torn away.
+  ownerKey: corridor-study-library
+  visible: true
+- key: cellar-wine-rack
+  name: Cellar Wine Rack
+  description: A rack of dusty bottles, one slot empty and freshly wiped.
+  ownerKey: cellar
+  visible: true

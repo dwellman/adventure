@@ -1,0 +1,11 @@
+version: 0.1
+recipes:
+  - id: DUP1
+    event: DUP_EVENT
+    when:
+      actor: {}
+    then:
+      - move_item:
+          from_owner: actor
+          item_kind: STONE
+          to_owner: actor

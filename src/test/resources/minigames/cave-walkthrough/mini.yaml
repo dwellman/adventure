@@ -1,0 +1,72 @@
+seed: 222
+startPlotKey: cave-entrance
+preamble: You stand at the mouth of a damp cave.
+plots:
+  - plotKey: cave-entrance
+    name: Cave Entrance
+    region: MINI
+    description: The mouth of a damp cave.
+    gates:
+      - direction: N
+        toPlot: cave-web
+        visible: true
+        keyString: "true"
+        label: Entrance -> Web
+        description: A slick path deeper into the cave.
+    actors:
+      - key: player
+        name: Explorer
+        description: A curious explorer.
+        visible: true
+        skills: ["Firemaking"]
+  - plotKey: cave-web
+    name: Cave Web
+    region: MINI
+    description: A narrow passage filled with webs.
+    gates:
+      - direction: N
+        toPlot: cave-back
+        visible: true
+        keyString: 'HAS("Lit Torch")'
+        label: Web -> Back
+        description: A narrow squeeze beyond the webs.
+    fixtures:
+      - key: spider-webs
+        name: Spider Webs
+        description: Thick webs block the way.
+        visible: true
+    items:
+      - key: stick
+        name: Stick
+        description: A sturdy stick.
+        visible: true
+      - key: rags
+        name: Rags
+        description: Torn cloth.
+        visible: true
+      - key: kerosene
+        name: Kerosene
+        description: A small flask of fuel.
+        visible: true
+      - key: flint
+        name: Flint
+        description: Sharp flint shard.
+        visible: true
+      - key: river-stone
+        name: River Stone
+        description: Flat river stone.
+        visible: true
+    actors:
+      - key: spiders
+        name: Spiders
+        description: Clusters of cave spiders.
+        visible: true
+  - plotKey: cave-back
+    name: Cave Back Chamber
+    region: MINI
+    description: A narrow chamber with faint carvings on the wall.
+    fixtures:
+      - key: wall-writings
+        name: Wall Writings
+        description: Spiral runes carved deep into the stone.
+        visible: true

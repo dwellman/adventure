@@ -1,0 +1,30 @@
+recipes:
+  - name: Torch
+    expression: HAS("Stick") && HAS("Rags")
+    consume: ["Stick", "Rags"]
+    skill: Firemaking
+    emitLabel: Torch
+    emitDescription: A simple torch made of stick and rags.
+
+  - name: Soaked Torch
+    expression: HAS("Torch") && HAS("Kerosene")
+    consume: ["Torch", "Kerosene"]
+    skill: Firemaking
+    emitLabel: Soaked Torch
+    emitDescription: A torch soaked in kerosene, ready to be lit.
+
+  - name: Lit Torch
+    expression: HAS("Soaked Torch") && HAS("Flint") && HAS("River Stone")
+    consume: ["Soaked Torch"]
+    requirements: ["Soaked Torch", "Flint", "River Stone"]
+    skill: Firemaking
+    emitLabel: Lit Torch
+    emitDescription: A lit torch casting bright light.
+
+  - name: Raft
+    expression: HAS("Bamboo Poles") && HAS("Vine Rope") && HAS("Parachute")
+    consume: ["Bamboo Poles", "Vine Rope", "Parachute"]
+    requirements: ["Bamboo Poles", "Vine Rope", "Parachute"]
+    skill: Rigging
+    emitLabel: Raft
+    emitDescription: A sturdy bamboo raft lashed with vines and rigged with a parachute sail.

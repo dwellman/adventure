@@ -1,0 +1,45 @@
+triggers:
+  - id: reveal-note
+    type: ON_USE
+    target: Keycard
+    actions:
+      - type: REVEAL
+        target: Secret Note
+
+  - id: bad-target
+    type: ON_ENTER
+    target: Missing Plot
+    actions:
+      - type: MESSAGE
+        text: "noop"
+
+  - id: bad-action-target
+    type: ON_USE
+    target: Keycard
+    actions:
+      - type: SET_DESCRIPTION
+        target: Missing Item
+        description: "nope"
+
+  - id: invalid-key
+    type: ON_TURN
+    target: Start
+    key: 'HAS('
+    actions:
+      - type: MESSAGE
+        text: "bad"
+
+  - id: unknown-ref
+    type: ON_TURN
+    target: Start
+    key: 'World.UNKNOWN.amount > 0'
+    actions:
+      - type: MESSAGE
+        text: "bad"
+
+  - id: win
+    type: ON_ENTER
+    target: End
+    key: 'HAS("Keycard") && SKILL("Lockpicking")'
+    actions:
+      - type: END_GAME

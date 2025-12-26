@@ -1,0 +1,20 @@
+name: Two Plot Demo
+game: mini.yaml
+outcome: win
+allowEarlyExit: false
+steps:
+  - command: look
+    expect:
+      - Start
+      - A starting spot.
+  - command: north
+    expect:
+      - North Room
+      - A simple room to the north.
+  - command: south
+    expect:
+      - Start
+      - A starting spot.
+  - command: quit
+    expect:
+      - Thanks for playing.

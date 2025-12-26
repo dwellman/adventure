@@ -1,0 +1,76 @@
+triggers:
+  - id: spy-win
+    type: ON_ENTER
+    target: Pedestal Release Niche
+    key: 'HAS("Alley Drop Card") && HAS("Map Overlay") && HAS("Harbor Schedule") && HAS("Ferry Token") && HAS("Cargo Manifest Strip")'
+    actions:
+      - type: REVEAL
+        target: Jade Capsule
+      - type: MOVE_OWNER
+        target: Jade Capsule
+        owner: "@PLAYER"
+      - type: END_GAME
+        text: "The latch releases and the Jade Capsule rests cold in your palm. You ghost away before the harbor handoff. Mission complete."
+  - id: spy-stencil-rubbing
+    type: ON_USE
+    target: Dockside Stencil Card
+    key: 'SEARCH("Relief")'
+    actions:
+      - type: SET_CELL
+        target: Dockside Stencil Card
+        cell: STAMP
+        amount: 1
+      - type: REVEAL
+        target: Stencil Rubbing
+      - type: MOVE_OWNER
+        target: Stencil Rubbing
+        owner: "@PLAYER"
+      - type: MESSAGE
+        text: "You press the stencil card to the relief and lift a clean rubbing."
+  - id: spy-postbox-drop
+    type: ON_USE
+    target: Cargo Manifest Strip
+    key: 'SEARCH("Postbox")'
+    actions:
+      - type: SET_CELL
+        target: Cargo Manifest Strip
+        cell: DROP
+        amount: 1
+      - type: SET_KEY
+        target: Postbox
+        key: 'true'
+      - type: REVEAL
+        target: Gate Phrase Slip
+      - type: MOVE_OWNER
+        target: Gate Phrase Slip
+        owner: "@PLAYER"
+      - type: MESSAGE
+        text: "You slide the manifest into the hidden seam. A folded slip drops into your hand."
+  - id: spy-courtyard-latch
+    type: ON_USE
+    target: Courtyard Pass
+    key: 'SEARCH("Latch")'
+    actions:
+      - type: SET_CELL
+        target: Courtyard Pass
+        cell: PASS
+        amount: 1
+      - type: SET_KEY
+        target: Latch
+        key: 'true'
+      - type: MESSAGE
+        text: "The latch clicks and the rail shifts aside."
+  - id: spy-gate-phrase
+    type: ON_USE
+    target: Gate Phrase Slip
+    key: 'SEARCH("Phrase Check")'
+    actions:
+      - type: SET_CELL
+        target: Gate Phrase Slip
+        cell: PHRASE
+        amount: 1
+      - type: SET_KEY
+        target: Phrase Check
+        key: 'true'
+      - type: MESSAGE
+        text: "You trade the phrase. The watcher nods and lets you pass."

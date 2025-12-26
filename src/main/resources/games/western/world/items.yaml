@@ -1,0 +1,67 @@
+items:
+- key: sheriff-badge
+  name: Sheriff Badge
+  description: A tarnished badge that still carries weight in Dry Gulch.
+  ownerKey: marshal-hale
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.08
+  footprintHeight: 0.08
+- key: saddlebag
+  name: Saddlebag
+  description: A rugged saddlebag with enough room for the day's haul.
+  ownerKey: marshal-hale
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.2
+  footprintHeight: 0.2
+  capacityWidth: 0.6
+  capacityHeight: 0.6
+- key: station-key
+  name: Station Key
+  description: A brass key tagged "Baggage".
+  ownerKey: train-platform
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: urgent-telegram
+  name: Urgent Telegram
+  description: "The wire warns: bridge sabotage at sundown."
+  ownerKey: dry-gulch-main-street
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: wire-cutters
+  name: Wire Cutters
+  description: Greased cutters sized for telegraph wire and fuse cord.
+  ownerKey: baggage-depot
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: rail-manifest
+  name: Rail Manifest
+  description: A manifest showing the payroll strongbox must ride tonight's train.
+  ownerKey: sheriff-s-office
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: payroll-strongbox
+  name: Payroll Strongbox
+  description: A heavy iron strongbox stamped with the rail line crest.
+  ownerKey: sheriff-s-office
+  visible: true
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.22
+  footprintHeight: 0.22
+- key: bridge-signal
+  name: Bridge Signal
+  description: A green lantern signal reserved for the train crew.
+  ownerKey: train-platform
+  visible: false
+  fixture: false
+  keyString: 'true'
+  footprintWidth: 0.08
+  footprintHeight: 0.08

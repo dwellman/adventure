@@ -1,0 +1,150 @@
+items:
+- key: alley-drop-card
+  name: Alley Drop Card
+  description: A small card with a mirror diagram and a time window penciled on the back.
+  ownerKey: alley-mirror-board
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: marked-battery
+  name: Marked Battery
+  description: A lantern battery stamped with a tiny triangle near the terminals.
+  ownerKey: battery-lantern-swap
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: calligraphy-slip
+  name: Calligraphy Slip
+  description: A red slip with a character repeated twice, the second stroke thicker.
+  ownerKey: calligraphy-table
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: cinema-stub
+  name: Cinema Stub
+  description: A ticket stub with seat 12 circled in blue ink.
+  ownerKey: cinema-marquee-corner
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: cargo-manifest-strip
+  name: Cargo Manifest Strip
+  description: A torn manifest strip listing a container row and a midnight handoff.
+  ownerKey: container-row-a
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    DROP:
+      capacity: 1
+      amount: 1
+- key: courtyard-pass
+  name: Courtyard Pass
+  description: A laminated pass marked "service" with an old stamp from the base gate.
+  ownerKey: courtyard-threshold
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    PASS:
+      capacity: 1
+      amount: 1
+- key: salvage-tag
+  name: Salvage Tag
+  description: A price tag with a coded sequence tucked under the corner.
+  ownerKey: electronics-salvage-blanket
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: ferry-token
+  name: Ferry Token
+  description: A brass token stamped with the evening ferry route.
+  ownerKey: ferry-ticket-token-window
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: harbor-schedule
+  name: Harbor Schedule
+  description: A folded schedule with the midnight run marked in pencil.
+  ownerKey: harbor-promenade-rail-walk
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: market-coin
+  name: Market Coin
+  description: A coin drilled with a tiny hole, threaded once with string.
+  ownerKey: outer-wall-market-rim
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: street-game-tile
+  name: Street Game Tile
+  description: A lacquered tile marked with a jade circle.
+  ownerKey: street-game-table
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: map-overlay
+  name: Map Overlay
+  description: A clear sheet etched with lines that align to the kiosk map.
+  ownerKey: street-map-kiosk
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: lantern-chit
+  name: Lantern Chit
+  description: A paper chit used by the lantern sellers to track deliveries.
+  ownerKey: temple-street-lantern-row
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: dockside-stencil-card
+  name: Dockside Stencil Card
+  description: A card with paint marks that match the dockside scale stencils.
+  ownerKey: dockside-scale-stencil-plate
+  visible: true
+  fixture: false
+  keyString: 'true'
+  cells:
+    STAMP:
+      capacity: 1
+      amount: 1
+- key: tile-shard
+  name: Tile Shard
+  description: A chipped jade tile fragment etched with half a phrase.
+  ownerKey: offering-rail
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: shrine-shard
+  name: Shard
+  description: The final shard, cool to the touch, with the rest of the phrase.
+  ownerKey: courtyard-corner-shrine
+  visible: true
+  fixture: false
+  keyString: 'true'
+- key: gate-phrase-slip
+  name: Gate Phrase Slip
+  description: A folded slip with a nonsense phrase written in quick pencil.
+  ownerKey: postbox
+  visible: false
+  fixture: false
+  keyString: 'true'
+  cells:
+    PHRASE:
+      capacity: 1
+      amount: 1
+- key: stencil-rubbing
+  name: Stencil Rubbing
+  description: A clean rubbing of the relief pattern, crisp as a stamp.
+  ownerKey: relief
+  visible: false
+  fixture: false
+  keyString: 'true'
+- key: jade-capsule
+  name: Jade Capsule
+  description: A palm-sized capsule of cold green ceramic, heavier than it looks.
+  ownerKey: pedestal-release-niche
+  visible: false
+  fixture: false
+  keyString: 'true'

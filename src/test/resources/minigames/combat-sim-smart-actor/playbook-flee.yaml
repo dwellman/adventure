@@ -1,0 +1,34 @@
+name: Combat Sim - Smart Actor Attack/Flee
+game: mini.yaml
+smartActorDecisions:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: flee
+      - type: UTTERANCE
+        utterance: look
+smartActorExpectations:
+  - actorKey: bandit
+    decisions:
+      - type: UTTERANCE
+        utterance: attack ranger
+      - type: UTTERANCE
+        utterance: flee
+      - type: UTTERANCE
+        utterance: look
+steps:
+  - command: attack bandit
+    expect:
+      - Combat begins.
+      - You hit Bandit for 3.
+      - Bandit hits you for 1.
+  - command: attack bandit
+    expect:
+      - You hit Bandit for 3.
+      - Bandit flees.
+      - You are victorious.
+  - command: quit
+    expect:
+      - Thanks for playing.

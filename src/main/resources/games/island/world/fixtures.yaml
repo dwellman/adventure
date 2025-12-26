@@ -1,0 +1,47 @@
+fixtures:
+- key: cave-wall-map
+  name: Cave Wall Map
+  description: "Spiral runes carved deep into the stone: torch + river stone spark = light; a waterfall sigil marks where the stone lies; a spider glyph guards the northern tunnel beyond the webs."
+  ownerKey: cave-back-chamber
+  visible: true
+- key: spider-webs
+  name: Spider Webs
+  description: Dense spider webs choke the passage north; a lit torch could burn them away.
+  ownerKey: cave-inner-chamber
+  visible: true
+- key: time-stone-pedestal
+  name: Time Stone Pedestal
+  description: The Time Stone Pedestal stands solemnly within the heart of the volcano, its dark surface a stark contrast
+    to the vibrant glow of the cold green gem resting atop it, hinting at mysteries waiting to be uncovered.
+  ownerKey: volcano-altar
+  visible: true
+- key: treehouse-skeleton
+  name: Treehouse Skeleton
+  description: The skeletal remains of the long-dead scientist sit forlornly in the corner, surrounded by the remnants of
+    their once-vibrant explorations, now just whispers of the past.
+  ownerKey: treehouse
+  visible: true
+  cells:
+    shift:
+      capacity: 1
+      amount: 1
+- key: campfire-ring
+  name: Campfire Ring
+  description: A ring of blackened stones and cold ash, long abandoned to the rain.
+  ownerKey: old-camp
+  visible: true
+- key: shell-spiral
+  name: Shell Spiral
+  description: Pale shells arranged in a spiral, the pattern pointing toward the tide.
+  ownerKey: lagoon-cove
+  visible: true
+- key: signal-cairn
+  name: Signal Cairn
+  description: A stack of flat stones stacked high enough to be seen from the sea.
+  ownerKey: sea-cliffs
+  visible: true
+- key: lookout-bell
+  name: Lookout Bell
+  description: A rusted bell lashed to the rail, its clapper worn smooth.
+  ownerKey: canopy-lookout
+  visible: true

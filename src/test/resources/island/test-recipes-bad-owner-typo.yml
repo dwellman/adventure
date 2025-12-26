@@ -1,0 +1,10 @@
+version: 0.1
+recipes:
+  - id: BAD_OWNER_TYPO
+    event: BAD_OWNER_TYPO
+    when:
+      actor: {}
+    then:
+      - create:
+          kind: OLD_TORCH
+          owner: actor_plto

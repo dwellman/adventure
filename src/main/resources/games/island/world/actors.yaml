@@ -1,0 +1,29 @@
+actors:
+- key: castaway
+  name: Castaway
+  description: Salt stings your lips as you come to on Wreck Beach, a sand-scratched canvas backpack digging into your shoulder like the last proof you’re still alive.
+  ownerKey: wreck-beach
+  visible: true
+  skills: [Firemaking, Rigging, Repair, Trapping]
+  cells:
+    health:
+      capacity: 10
+      amount: 10
+    stamina:
+      capacity: 6
+      amount: 6
+- key: chaos-monkey-troop
+  name: Chaos Monkey Troop
+  description: Five monkeys with green-stained teeth.
+  ownerKey: monkey-grove
+  visible: true
+- key: scratch-ghost
+  name: Scratch (Ghost)
+  description: A faint green shimmer clings to the old scientist's silhouette.
+  ownerKey: treehouse
+  visible: false
+- key: angry-spiders
+  name: Angry Spiders
+  description: A swarm of angry spiders skitters from the scorched webs, swarming the cave entrance.
+  ownerKey: cave-back-chamber
+  visible: false
