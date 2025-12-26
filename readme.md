@@ -155,11 +155,14 @@ Crafting rules:
 - Design overview: `docs/design/readme.md`
 - Key expression syntax: `docs/design/key-expression.md`
 
-## Adventure Travel Posters
-![island_adventure.png](src/main/resources/games/island/island_adventure.png)
+## Island Adventure Travel Poster
+![island_adventure.png](docs/img/island_adventure.png)
 
-![western_adventure.png](src/main/resources/games/western/western_adventure.png)
+## Mansion Adventure Travel Poster
+![mansion_adventure.png](docs/img/mansion_adventure.png)
 
-![mansion_adventure.png](src/main/resources/games/mansion/mansion_adventure.png)
+## Spy Adventure Travel Poster
+![spy_adventure.png](docs/img/spy_adventure.png)
 
-![spy_adventure.png](src/main/resources/games/spy/spy_adventure.png)
+## Wester Adventure Travel Poster
+![western_adventure.png](docs/img/western_adventure.png)
