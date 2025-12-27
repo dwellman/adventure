@@ -83,7 +83,7 @@ Commands:
             new GameOption(1, "Island Adventure", "src/main/resources/games/island/game.yaml", "CASTAWAY THRILLS. Jungle traps, cliffside caves, and a desperate raft-for-freedom dash before the adventure claims you for good.", false),
             new GameOption(2, "Mansion Adventure", "src/main/resources/games/mansion/game.yaml", "THE MYSTERY HOUSE. Secret doors. Creaking halls. One wrong turn and the mansion keeps you forever.", false),
             new GameOption(3, "Western Adventure", "src/main/resources/games/western/game.yaml", "TERROR AT DEAD-MAN’S GULCH. TNT on the rails. The Iron Rattler thundering in. One last chance at Rattlesnake Bridge.", false),
-            new GameOption(4, "Spy Adventure", "src/main/resources/games/spy/game.yaml", "TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the WOPR before it lights the world up.", false),
+            new GameOption(4, "Spy Adventure", "src/main/resources/games/spy/game.yaml", "TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the Jade Capsule before it lights the world up.", false),
             new GameOption(6, "Zone Builder Demo", "logs/zone-game.yaml", "Generated from src/test/resources/zone-demo/zone-input.sample.yaml (run ZoneBuilderCli to refresh).", true)
     );
 

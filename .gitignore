@@ -30,3 +30,5 @@ docs/.DS_Store
 .idea/misc.xml
 .idea/vcs.xml
 target/
+screenlog.0
+/logs
