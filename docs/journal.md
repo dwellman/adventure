@@ -1352,3 +1352,7 @@ _
 ## 2025-12-30 — v1.0 deep clean
 - Scope: Deep clean sweep to align docs/README/runbook with current narration exit rules, interaction gating, and conversation routing; archived conversation TODO list.
 - Tests: `mvn -q test`
+
+## 2025-12-30 — Quit-to-menu + coverage lift
+- Scope: Quit now returns to the main menu, menu quit exits the program; added CLI flow/helper tests plus RuntimeLoader/AiJson coverage to push engine.cli and ai.client over 80%.
+- Tests: `mvn -q test`

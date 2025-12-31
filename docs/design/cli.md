@@ -11,6 +11,7 @@ Authoritative AI/CLI runtime runbook:
 - **AI integration:** Runtime translator/narrator templates and role prompts live in `src/main/resources/agents/` (some agent prompts are not wired into GameCli yet); `application.properties` controls debug/model/temperature/top_p/logprobs. Interpreter deterministic; Narrator tone-only.
 - **Builder tools:** `GameBuilderCli`, `ArchitectCli`, `ZoneBuilderCli`, `GardenerCli`, `GameStructExporter`, `GamePlanCli` with wrappers (`./builder`). Use YAML + structured loader; no legacy prompt paths.
 - **Inputs:** Always go through `CommandScanner`/`TokenType` normalization; per-game `motif/aliases.yaml` can extend scanner keywords; no hand parsing.
+- **Quit behavior:** `quit`/`q` ends the current game and returns to the main menu; `q` from the menu exits the program.
 - **Invariants:** Player-facing output must stay free of debug spew; no hardcoded game logic in CLI; AI enabled only with `--mode=2025` and `OPENAI_API_KEY`.
 - **Patterns:** Grounding (structured loads), Orchestration (Interpreter → Engine → Narrator, one step per tick), Verification (tests/receipts), Trust UX (debug off, no hidden mechanics), Learning (BUJO + future judges/golden transcripts).
 - **Testing patterns:** See `docs/design/pattern-tests.md` for grounding/orchestration/verification/trust-UX/learning test strategies.

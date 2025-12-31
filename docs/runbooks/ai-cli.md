@@ -100,6 +100,7 @@ Supported properties:
 - Narrator prompts are compiled per command variant with minimal context (scene/action/color/emote/check).
 - Interaction prompts (dice/choice/confirm) block all other routing until resolved.
 - Conversations are explicit: `@<actor>` or `talk <actor>` start, “okay, bye” ends, and all input routes to the active actor until exit.
+- `quit`/`q` ends the current game and returns to the main menu; `q` from the menu exits the program.
 - Classic fallback runs only when AI is disabled and only when the compiler cannot parse the input; it must use scanner tokens only.
 - Smart actors run only in 2025 mode with AI enabled; during combat they are limited to ATTACK/FLEE and otherwise pass with a hesitation.
 

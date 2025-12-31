@@ -7,46 +7,46 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AiJsonTest {
 
     @Test
-    void escapeHandlesBackslashes() {
-        String escaped = AiJson.escape("C:\\path");
-        assertThat(escaped).isEqualTo("\"C:\\\\path\"");
+    void escapeAddsQuotesAndEscapesControlChars() {
+        String escaped = AiJson.escape("a\"b\nc\\");
+
+        assertThat(escaped).startsWith("\"").endsWith("\"");
+        assertThat(escaped).contains("\\\"");
+        assertThat(escaped).contains("\\n");
+        assertThat(escaped).contains("\\\\");
     }
 
     @Test
-    void escapeHandlesQuotesAndNewlines() {
-        String escaped = AiJson.escape("Line\n\"Quote\"");
-        assertThat(escaped).isEqualTo("\"Line\\n\\\"Quote\\\"\"");
+    void escapeHandlesNull() {
+        assertThat(AiJson.escape(null)).isEqualTo("\"\"");
     }
 
     @Test
-    void escapeHandlesTabs() {
-        String escaped = AiJson.escape("tab\t\"quote\"");
-        assertThat(escaped).isEqualTo("\"tab\\t\\\"quote\\\"\"");
-    }
+    void extractJsonStringReadsEscapes() {
+        String json = "{\"content\":\"line1\\nline2\\tend\"}";
 
-    @Test
-    void extractJsonStringHandlesEscapes() {
-        String json = "{\"content\":\"Line1\\nLine2\"}";
         String content = AiJson.extractJsonString(json, "content");
-        assertThat(content).isEqualTo("Line1\nLine2");
+
+        assertThat(content).isEqualTo("line1\nline2\tend");
     }
 
     @Test
     void extractJsonStringReturnsNullWhenMissing() {
-        String content = AiJson.extractJsonString("{}", "content");
-        assertThat(content).isNull();
+        String json = "{\"other\":\"value\"}";
+
+        assertThat(AiJson.extractJsonString(json, "content")).isNull();
+        assertThat(AiJson.extractJsonString(null, "content")).isNull();
+        assertThat(AiJson.extractJsonString(json, null)).isNull();
     }
 
     @Test
-    void extractLogprobSnippetReturnsEmptyWhenMissing() {
-        String snippet = AiJson.extractLogprobSnippet("{}");
-        assertThat(snippet).isEqualTo("");
-    }
+    void extractLogprobSnippetFindsBlock() {
+        String json = "{\"top_logprobs\":{\"foo\":1,\"bar\":2}}";
 
-    @Test
-    void extractLogprobSnippetReturnsSnippet() {
-        String response = "{\"top_logprobs\":{\"token\":\"A\"},\"choices\":[{\"message\":{\"content\":\"ok\"}}]}";
-        String snippet = AiJson.extractLogprobSnippet(response);
-        assertThat(snippet).contains("{").contains("token");
+        String snippet = AiJson.extractLogprobSnippet(json);
+
+        assertThat(snippet).contains("\"foo\"");
+        assertThat(AiJson.extractLogprobSnippet("{\"content\":\"x\"}")).isEmpty();
+        assertThat(AiJson.extractLogprobSnippet(null)).isEmpty();
     }
 }

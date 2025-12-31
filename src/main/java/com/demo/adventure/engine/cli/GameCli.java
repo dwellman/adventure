@@ -79,7 +79,7 @@ Commands:
 - **search/explore** - Poke around for hidden items
 - **dice(<sides>,<target>)** - Roll a check when prompted (example: dice(20,15))
 - **help (h, ?)** - Show this help
-- **quit (q)** - Exit the game
+- **quit (q)** - Return to the main menu
 """;
 
     private record GameOption(int index, String name, String resource, String tagline, boolean hidden) { }
@@ -135,6 +135,7 @@ Commands:
     private Map<String, String> aliasMap = VerbAliases.aliasMap();
     private SceneNarrator narrator;
     private GameRuntime runtime;
+    private boolean returnToMenu;
 
     public GameCli(GameMode mode) {
         // Keep player output clean even when GameCli is constructed directly (tests bypass main()).
@@ -185,6 +186,9 @@ Commands:
                 try {
                     GameSave save = RuntimeLoader.loadSave(selected.resource());
                     walkabout(selected, save, scanner);
+                    if (returnToMenu) {
+                        continue;
+                    }
                     return;
                 } catch (Exception ex) {
                     println("Failed to load game: " + ex.getMessage());
@@ -228,6 +232,7 @@ Commands:
     // Pattern: Orchestration
     // - Runs the core translator -> command -> engine -> narrator loop with a single translation pass.
     private void walkabout(GameOption option, GameSave save, Scanner scanner) throws GameBuilderException {
+        returnToMenu = false;
         LoopConfig loopConfig = RuntimeLoader.loadLoopConfig(option.resource);
         LoopRuntime loopRuntime = new LoopRuntime(save, loopConfig);
         WorldBuildResult world = loopRuntime.buildWorld();
@@ -424,6 +429,9 @@ gameLoop:
             if (handler == null) {
                 runtime.narrate("Unknown command. Type help for commands.");
                 continue;
+            }
+            if (cmd.action() == CommandAction.QUIT) {
+                returnToMenu = true;
             }
             CommandOutcome outcome = handler.handle(context, cmd);
             if (outcome.endGame()) {
