@@ -1,0 +1,294 @@
+# Cleaning Log
+
+| Date | Scope | Commands | Status | Owner | Notes |
+| --- | --- | --- | --- | --- | --- |
+| 2025-12-21 | Repo-wide deep clean sweep | `mvn -q test` | Clean | Codex | Added housekeeping docs/logs, updated README/docs, cleared stale TODO, kept `KeyExpressionScanner.readString` reserved for upcoming work. |
+| 2025-12-21 | Docs cleanup (storybook/doc paths) | none | Clean | Codex | Moved zone-input sample into docs/ingredients, relocated Island backstory to storybook, added key expression syntax doc under docs/architecture, updated references. |
+| 2025-12-21 | Docs reorg (architecture/guides) + prompt extensions | none | Clean | Codex | Moved design docs into docs/architecture, moved the walkthrough into docs/guides, and renamed prompt templates to .md. |
+| 2025-12-21 | Docs reorg (design/index) | none | Clean | Codex | Renamed docs/architecture to docs/design, moved index content into docs/index.md, and simplified docs/README.md. |
+| 2025-12-21 | Docs archive removal | none | Clean | Codex | Removed docs/archive and updated references. |
+| 2025-12-21 | Docs ingredients removal | none | Clean | Codex | Moved zone-demo samples into src/test/resources/zone-demo and updated references. |
+| 2025-12-21 | README overhaul | none | Clean | Codex | Expanded README with setup, runtime overview, and authoring guidance. |
+| 2025-12-22 | Storybook resources move | `mvn -q -Dtest=StorybookValidateCliSmokeTest,ZoneGraphBuilderTest test` | Clean | Codex | Relocated storybook bundles into src/main/resources and switched shared loader to classpath resources. |
+| 2025-12-22 | Prompts resources move | `mvn -q -Dtest=StorybookValidateCliSmokeTest test` | Clean | Codex | Moved prompt markdown files into src/main/resources/prompts and loaded the gardener system prompt via classpath resources. |
+| 2025-12-22 | Markdown filename standardization | none | Clean | Codex | Renamed markdown files to lowercase hyphenated names, shortened long design doc names and prompt filenames, and updated references. |
+| 2025-12-23 | AI runbook/doc alignment | none | Clean | Codex | Updated AI docs to match runtime prompt paths and mode gating; added skill doc and today/tomorrow/someday list; removed root todo. |
+| 2025-12-23 | Target artifacts cleanup | none | Clean | Codex | Removed tracked target artifacts after adding target/ to .gitignore. |
+| 2025-12-23 | AI runbook doc alignment sweep | `rm todo.md` | Clean | Codex | Removed the temporary todo file after updating runbook/CLI docs and skill references. |
+| 2025-12-23 | Workspace artifact cleanup | `rm -- -h logs/crafting-flow.log.1` | Clean | Codex | Removed stray untracked artifacts from prior tooling runs. |
+| 2025-12-23 | Smart actor architecture doc sweep | `git status -sb` | Clean | Codex | Logged the smart actor architecture doc update and verified workspace state. |
+| 2025-12-23 | Mansion smart actor roster sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added mansion smart-actor roster data, a generic smart actor prompt, and new suspect actors; verified structured load. |
+| 2025-12-25 | Smart actor runtime + combat sim | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest,SmartActorDecisionParserTest,SmartActorSpecLoaderTest,SmartActorTagLoaderTest test` | Clean | Codex | Wired smart actor runtime execution and added combat sim playbook coverage with deterministic dice. |
+| 2025-12-23 | Smart actor history/backstory sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added smart-actor backstory and history metadata for RAG and updated the smart-actor prompt inputs. |
+| 2025-12-23 | Smart actor RAG contract sweep | `git status -sb` | Clean | Codex | Documented deterministic history retrieval and context injection rules for smart actors. |
+| 2025-12-23 | Island backstory/assets sweep | `git status -sb` | Clean | Codex | Checked in user-provided Island backstory edits and game art assets. |
+| 2025-12-23 | Smart actor RAG baseline sweep | `mvn -q -Dtest=SmartActorHistoryStoreTest,SmartActorSpecLoaderTest test` | Clean | Codex | Added smart-actor history store/loader with deterministic retrieval and unit tests. |
+| 2025-12-23 | Smart actor context builder sweep | `mvn -q -Dtest=SmartActorContextBuilderTest test` | Clean | Codex | Added context tag merging and history snippet retrieval with targeted tests. |
+| 2025-12-23 | Smart actor tag sources sweep | `mvn -q -Dtest=SmartActorTagLoaderTest,SmartActorContextInputBuilderTest test` | Clean | Codex | Added tag source loading + context input builder to feed explicit tags into RAG. |
+| 2025-12-23 | Clean build verification | `mvn -q test` | Clean | Codex | Adjusted smart-actor tag tests to ignore ordering and ran full test suite. |
+| 2025-12-23 | Translator command-only sweep | `mvn -q -Dtest=TranslatorServiceTest,TranslationOrchestratorTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,PromptEvaluationHarnessTest,TranslatorRoutingGoldenTest test` | Clean | Codex | Simplified translator flow to local-parse-first and command-only JSON; updated prompts/tests/docs and removed the translation trace fixture. |
+| 2025-12-23 | Translator and narrator simplification sweep | `mvn -q -Dtest=TranslatorServiceTest,TranslationOrchestratorTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,PromptEvaluationHarnessTest,TranslatorRoutingGoldenTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest,NarratorFallbackTest test` | Clean | Codex | Removed translator JSON output, dropped narrator style overrides, and moved narrator calls to Spring AI; refreshed prompt goldens and docs. |
+| 2025-12-23 | Mini game YAML + script test sweep | `mvn -q -Dtest=MiniGameScriptIntegrationTest test` | Clean | Codex | Added YAML-backed mini game fixtures with scripts and removed the legacy cave mini integration test. |
+| 2025-12-23 | Clean build verification | `mvn -q test` | Clean | Codex | Full suite run after mini game script integration. |
+| 2025-12-23 | Mini game playbook sweep | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest test` | Clean | Codex | Switched mini game scripts to playbook YAML/MD fixtures with per-step output validation. |
+| 2025-12-23 | BUUI console wrap sweep | `mvn -q -Dtest=ConsolePrinterTest test` | Clean | Codex | Added ConsolePrinter word-wrapping utility with edge padding. |
+| 2025-12-23 | ConsolePrinter CLI wiring | `mvn -q -Dtest=ConsolePrinterTest,GameCliExitFormattingTest,MiniGamePlaybookIntegrationTest test` | Clean | Codex | Routed GameCli/NarrationService output through ConsolePrinter with indentation-aware wrapping. |
+| 2025-12-23 | BuuiConsole CLI print sweep | `mvn -q -Dtest=ConsolePrinterTest,MiniGamePlaybookIntegrationTest test` | Clean | Codex | Added BuuiConsole helpers and refactored CLI tool output to use print/printRaw wrappers. |
+| 2025-12-23 | BUUI markdown rendering sweep | `mvn -q -Dtest=ConsolePrinterTest,MarkdownRendererTest test` | Clean | Codex | Added markdown detection/rendering for lists/tables/headings in BUUI output. |
+| 2025-12-23 | BUUI menu sweep | `mvn -q -Dtest=BuuiMenuTest test` | Clean | Codex | Added BuuiMenu helper and wired GameCli menu rendering to it. |
+| 2025-12-23 | BUUI menu prompt sweep | `mvn -q -Dtest=BuuiMenuTest test` | Clean | Codex | Added BuuiMenu prompt helper and wired GameCli prompts to it. |
+| 2025-12-23 | BUUI markdown novel formatting sweep | `mvn -q -Dtest=ConsolePrinterTest,MarkdownRendererTest test` | Clean | Codex | Added paragraph indentation, centered headings, scene break rendering, and bullet dots for markdown output. |
+| 2025-12-23 | BUUI markdown paragraph spacing | `mvn -q -Dtest=MarkdownRendererTest test` | Clean | Codex | Added blank line insertion after markdown paragraphs. |
+| 2025-12-25 | Spy Adventure playbook deep clean | `mvn -q -Dtest=SpyAdventurePlaybookIntegrationTest test`; `mvn -q test` | Clean | Codex | Rebuilt Spy Adventure playbook path using explicit gates, refreshed playbook MD, and removed stray log artifacts. |
+| 2025-12-25 | 1980 motif verb spot checks | `printf '1\nlook\nscavenge\nread rags\npaddle east\nlook\nrow west\nquit\n' | ./adventure --mode=1980 --quiet`; `printf '2\nlook\nexamine case board\nprobe\nwest\nlook\neast\nquit\n' | ./adventure --mode=1980 --quiet`; `printf '3\nlook\nscout\nride east\nlook\ntrot west\nquit\n' | ./adventure --mode=1980 --quiet`; `printf '4\nlook\nsurveil\nsneak east\nscan\ntail west\nquit\n' | ./adventure --mode=1980 --quiet` | Clean | Codex | Validated motif verb alias parsing across all four adventures. |
+| 2025-12-25 | Motif verb transcripts | `./adventure --mode=1980 --quiet` (captured to `docs/playtests/1980-motif-spotcheck-2025-12-25.md`) | Clean | Codex | Saved ASCII-normalized transcripts for the 1980 motif-verb spot checks. |
+| 2025-12-25 | Game folder restructure | `mvn -q -Dtest=GameMenuStructuredLoadTest,GdlCliSmokeTest,SmartActorSpecLoaderTest test` | Clean | Codex | Moved Island/Mansion/Western/Spy resources into world/narrative/motif/assets, updated loaders/exporters/docs, and added per-game README notes. |
+| 2025-12-23 | BUUI response gutter | `mvn -q -Dtest=ConsolePrinterTest,MarkdownRendererTest test` | Clean | Codex | Added a left gutter for ConsolePrinter response output. |
+| 2025-12-23 | Narrator fallback gutter sweep | `mvn -q -Dtest=NarratorFallbackTest test` | Clean | Codex | Updated narrator fallback test expectations for guttered output. |
+| 2025-12-23 | Game header spacing sweep | `mvn -q -Dtest=GameCliExitFormattingTest test` | Clean | Codex | Added a blank line after the game header banner for readability. |
+| 2025-12-23 | Narration scene header sweep | `git status -sb` | Clean | Codex | Trimmed narration snapshots to location + exits for action outputs. |
+| 2025-12-23 | Narrator detail level sweep | `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test` | Clean | Codex | Added SCENE_DETAIL_LEVEL to narrator prompt to suppress extra detail when only header snapshots are available. |
+| 2025-12-24 | GameCli mini-game sweep | `git status -sb` | Clean | Codex | Removed the mini-game menu/loader so mini games live only in tests. |
+| 2025-12-24 | Command handler refactor sweep | `git status -sb` | Clean | Codex | Split GameCli command handling into per-command handler classes. |
+| 2025-12-24 | CLI package split + interpreter regroup | `mvn -q test` | Clean | Codex | Moved CLI runtime/command/ai classes, regrouped command parsing under CommandInterpreter, and refreshed docs/scripts/tests. |
+| 2025-12-24 | CLI runtime extraction sweep | `mvn -q test` | Clean | Codex | Moved GameCli command logic into GameRuntime/SceneNarrator/RuntimeLoader and updated CLI tests/docs. |
+| 2025-12-24 | Package domain reorg sweep |  | Clean | Codex | Moved packages into engine/domain/authoring/ai roots and updated scripts/docs/tests. |
+| 2025-12-24 | Prompt template migration | `mvn -q -Dtest=TranslatorPromptCoverageTest,TranslatorPromptGoldenTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test` | Clean | Codex | Moved runtime prompt templates into `src/main/resources/agents` and updated loader paths/docs. |
+| 2025-12-24 | Remove empty legacy package dirs | none | Clean | Codex | Deleted empty legacy directories under `src/main/java` and `src/test/java` after package reorg. |
+| 2025-12-24 | Align ZoneGraphBuilderTest location | none | Clean | Codex | Moved zone graph builder test into `authoring/zone` to match package layout. |
+| 2025-12-24 | Minigame playbook relocation | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest test` | Clean | Codex | Moved mini-game playbooks into `src/test/resources/minigames` and updated integration test paths. |
+| 2025-12-24 | Remove stale zone test path | none | Clean | Codex | Deleted the old `authoring/builder` test path after relocating ZoneGraphBuilderTest. |
+| 2025-12-24 | Rename AI translator/narrator classes | `mvn -q -Dtest=TranslationOrchestratorTest,NarratorFallbackTest test` | Clean | Codex | Renamed OpenAI translator/narrator classes to `CommandTranslator` and `NarratorService` and updated references. |
+| 2025-12-24 | AI GDL protocol doc | none | Clean | Codex | Documented the Adventure Vibe Coder protocol with role-based inputs/process/outputs. |
+| 2025-12-24 | Western Vibe Builder template | none | Clean | Codex | Added a Western Adventure template with step-by-step inputs/process/outputs and updated the docs index. |
+| 2025-12-24 | Vibe Builder interview detail | none | Clean | Codex | Added timebound Western attributes and one-question interview guidance to the Vibe Builder protocol/template. |
+| 2025-12-24 | Vibe Builder plan moved to Today | none | Clean | Codex | Added the Vibe Builder task list to `docs/bujo/today-tomorrow-someday.md`. |
+| 2025-12-24 | Vibe Builder role contracts + prompts | none | Clean | Codex | Documented role contracts/output schemas and added constraints/storyteller/world planner/GDL synthesizer prompts. |
+| 2025-12-24 | Vibe Builder CLI orchestration | `mvn -q -DskipTests compile` | Clean | Codex | Added VibeBuilderCli with receipts, authoring agent client, and CLI docs. |
+| 2025-12-24 | Vibe Builder compile/export sweep | `mvn -q -DskipTests compile` | Clean | Codex | Wired GDL compile/validate + structured export and updated Vibe Builder prompts/docs/templates. |
+| 2025-12-24 | Western playbook test sweep | `mvn -q -Dtest=WesternAdventurePlaybookIntegrationTest test` | Clean | Codex | Added Western Adventure playbook fixtures and integration test coverage. |
+| 2025-12-24 | GamePlan rename sweep | `mvn -q -DskipTests compile` | Clean | Codex | Renamed Vibe Builder to GamePlan across CLI/docs/prompts/templates and refreshed paths. |
+| 2025-12-24 | Western expansion sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Expanded Western Adventure structure and added loop/triggers for time pressure and win/lose states. |
+| 2025-12-24 | Western playbook sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest,WesternAdventurePlaybookIntegrationTest test` | Clean | Codex | Adjusted Western inventory markers and refreshed the playbook for the win path. |
+| 2025-12-24 | Western map 16-plot sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest,WesternAdventurePlaybookIntegrationTest test` | Clean | Codex | Expanded Western Adventure map to 16 plots and added fixtures for the new locations. |
+| 2025-12-24 | Island map 16-plot sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Expanded Island Adventure map to 16 plots with new side locations and gates. |
+| 2025-12-24 | Island side clue sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added Island side-clue fixtures/items and ON_USE triggers for new plots; updated the Western GamePlan doc layout. |
+| 2025-12-24 | Island playbook sweep | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest test` | Clean | Codex | Added an Island Adventure side-clue playbook (YAML + MD) and integration test coverage. |
+| 2025-12-24 | Mansion corridor clue sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added corridor fixtures/items and tags to make mansion corridor plots purposeful. |
+| 2025-12-24 | Spy baseline content sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added Spy Adventure fixtures/items/actors, smart-actor specs, and tags for the large map. |
+| 2025-12-24 | World BOM print guard sweep | `mvn -q -Dtest=WorldAssemblerPrintsBomOnSuccessTest test` | Clean | Codex | Gated World Bill of Materials output behind a system property to avoid CLI debug leakage. |
+| 2025-12-24 | Trigger inventory refresh sweep | `mvn -q -Dtest=TriggerEngineTest,GameCliCraftTest test` | Clean | Codex | Refreshed inventory from the registry after trigger outcomes to reflect moved items. |
+| 2025-12-24 | Mansion/Spy win triggers sweep | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Added end-game triggers and wired triggers.yaml into the Mansion and Spy game bundles. |
+| 2025-12-24 | Open fixture item access sweep | `mvn -q -Dtest=GameRuntimeTakeFixtureItemTest test` | Clean | Codex | Allowed take/look of items stored in open fixtures at the current plot. |
+| 2025-12-24 | Mansion playbook sweep | `mvn -q -Dtest=MansionAdventurePlaybookIntegrationTest test` | Clean | Codex | Added a Mansion Adventure playbook + integration test and suppressed key-expression debug output in GameCli construction. |
+| 2025-12-24 | Mansion case board sweep |  | Clean | Codex | Added a case board fixture, clue evidence cells, and pin-to-win triggers; updated the Mansion playbook. |
+| 2025-12-24 | Mansion evidence cell sweep |  | Clean | Codex | Dropped manual case clue counters and used case-board evidence cell transfers for the Mansion win check. |
+| 2025-12-24 | Mansion 1980 playthrough sweep |   ~ AI disabled (mode=Z1980, apiKey=missing)
+┌───────────────────────────────────────────────────────────────────┐
+│                       BUUI Adventure (1980)                       │
+├─────┬───────────────────┬─────────────────────────────────────────┤
+│   # │ Game              │ Description                             │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   1 │ Island Adventure  │ CASTAWAY THRILLS. Jungle traps,         │
+│     │                   │ cliffside caves, and a desperate        │
+│     │                   │ raft-for-freedom dash before the        │
+│     │                   │ adventure claims you for good.          │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   2 │ Mansion Adventure │ THE MYSTERY HOUSE. Secret doors.        │
+│     │                   │ Creaking halls. One wrong turn and the  │
+│     │                   │ mansion keeps you forever.              │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   3 │ Western Adventure │ TERROR AT DEAD-MAN’S GULCH. TNT on the  │
+│     │                   │ rails. The Iron Rattler thundering in.  │
+│     │                   │ One last chance at Rattlesnake Bridge.  │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   4 │ Spy Adventure     │ TRAUMA-BOND, INTERNATIONAL MAN OF       │
+│     │                   │ MAYHEM. Glamour, gadgets, and a race to │
+│     │                   │ disarm the WOPR before it lights the    │
+│     │                   │ world up.                               │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   q │ Quit              │                                         │
+└─────┴───────────────────┴─────────────────────────────────────────┘
+
+Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.3:java (default-cli) on project adventure: An exception occurred while executing the Java class. No line found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException | Clean | Codex | Manual 1980 Mansion playthrough to validate the case-board pinning flow end-to-end. |
+| 2025-12-24 | Mansion alternate verbs sweep |   ~ AI disabled (mode=Z1980, apiKey=missing)
+┌───────────────────────────────────────────────────────────────────┐
+│                       BUUI Adventure (1980)                       │
+├─────┬───────────────────┬─────────────────────────────────────────┤
+│   # │ Game              │ Description                             │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   1 │ Island Adventure  │ CASTAWAY THRILLS. Jungle traps,         │
+│     │                   │ cliffside caves, and a desperate        │
+│     │                   │ raft-for-freedom dash before the        │
+│     │                   │ adventure claims you for good.          │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   2 │ Mansion Adventure │ THE MYSTERY HOUSE. Secret doors.        │
+│     │                   │ Creaking halls. One wrong turn and the  │
+│     │                   │ mansion keeps you forever.              │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   3 │ Western Adventure │ TERROR AT DEAD-MAN’S GULCH. TNT on the  │
+│     │                   │ rails. The Iron Rattler thundering in.  │
+│     │                   │ One last chance at Rattlesnake Bridge.  │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   4 │ Spy Adventure     │ TRAUMA-BOND, INTERNATIONAL MAN OF       │
+│     │                   │ MAYHEM. Glamour, gadgets, and a race to │
+│     │                   │ disarm the WOPR before it lights the    │
+│     │                   │ world up.                               │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   q │ Quit              │                                         │
+└─────┴───────────────────┴─────────────────────────────────────────┘
+
+Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.3:java (default-cli) on project adventure: An exception occurred while executing the Java class. No line found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException | Clean | Codex | Manual 1980 Mansion pass using alternate verbs/aliases; EXAMINE is not mapped without a Mansion alias file. |
+| 2025-12-24 | Mansion aliases sweep |   ~ AI disabled (mode=Z1980, apiKey=missing)
+┌───────────────────────────────────────────────────────────────────┐
+│                       BUUI Adventure (1980)                       │
+├─────┬───────────────────┬─────────────────────────────────────────┤
+│   # │ Game              │ Description                             │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   1 │ Island Adventure  │ CASTAWAY THRILLS. Jungle traps,         │
+│     │                   │ cliffside caves, and a desperate        │
+│     │                   │ raft-for-freedom dash before the        │
+│     │                   │ adventure claims you for good.          │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   2 │ Mansion Adventure │ THE MYSTERY HOUSE. Secret doors.        │
+│     │                   │ Creaking halls. One wrong turn and the  │
+│     │                   │ mansion keeps you forever.              │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   3 │ Western Adventure │ TERROR AT DEAD-MAN’S GULCH. TNT on the  │
+│     │                   │ rails. The Iron Rattler thundering in.  │
+│     │                   │ One last chance at Rattlesnake Bridge.  │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   4 │ Spy Adventure     │ TRAUMA-BOND, INTERNATIONAL MAN OF       │
+│     │                   │ MAYHEM. Glamour, gadgets, and a race to │
+│     │                   │ disarm the WOPR before it lights the    │
+│     │                   │ world up.                               │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   q │ Quit              │                                         │
+└─────┴───────────────────┴─────────────────────────────────────────┘
+
+Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.3:java (default-cli) on project adventure: An exception occurred while executing the Java class. No line found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException | Clean | Codex | Added Mansion aliases.yaml for motif verbs (EXAMINE/INVESTIGATE/PIN) and verified EXAMINE works. |
+| 2025-12-24 | Motif verbs sweep |   ~ AI disabled (mode=Z1980, apiKey=missing)
+┌───────────────────────────────────────────────────────────────────┐
+│                       BUUI Adventure (1980)                       │
+├─────┬───────────────────┬─────────────────────────────────────────┤
+│   # │ Game              │ Description                             │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   1 │ Island Adventure  │ CASTAWAY THRILLS. Jungle traps,         │
+│     │                   │ cliffside caves, and a desperate        │
+│     │                   │ raft-for-freedom dash before the        │
+│     │                   │ adventure claims you for good.          │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   2 │ Mansion Adventure │ THE MYSTERY HOUSE. Secret doors.        │
+│     │                   │ Creaking halls. One wrong turn and the  │
+│     │                   │ mansion keeps you forever.              │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   3 │ Western Adventure │ TERROR AT DEAD-MAN’S GULCH. TNT on the  │
+│     │                   │ rails. The Iron Rattler thundering in.  │
+│     │                   │ One last chance at Rattlesnake Bridge.  │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   4 │ Spy Adventure     │ TRAUMA-BOND, INTERNATIONAL MAN OF       │
+│     │                   │ MAYHEM. Glamour, gadgets, and a race to │
+│     │                   │ disarm the WOPR before it lights the    │
+│     │                   │ world up.                               │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   q │ Quit              │                                         │
+└─────┴───────────────────┴─────────────────────────────────────────┘
+
+Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.3:java (default-cli) on project adventure: An exception occurred while executing the Java class. No line found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException | Clean | Codex | Added motif verb alias YAMLs for Island/Mansion/Western/Spy and validated per-game aliases. |
+| 2025-12-24 | Spy motif verbs sweep |   ~ AI disabled (mode=Z1980, apiKey=missing)
+┌───────────────────────────────────────────────────────────────────┐
+│                       BUUI Adventure (1980)                       │
+├─────┬───────────────────┬─────────────────────────────────────────┤
+│   # │ Game              │ Description                             │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   1 │ Island Adventure  │ CASTAWAY THRILLS. Jungle traps,         │
+│     │                   │ cliffside caves, and a desperate        │
+│     │                   │ raft-for-freedom dash before the        │
+│     │                   │ adventure claims you for good.          │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   2 │ Mansion Adventure │ THE MYSTERY HOUSE. Secret doors.        │
+│     │                   │ Creaking halls. One wrong turn and the  │
+│     │                   │ mansion keeps you forever.              │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   3 │ Western Adventure │ TERROR AT DEAD-MAN’S GULCH. TNT on the  │
+│     │                   │ rails. The Iron Rattler thundering in.  │
+│     │                   │ One last chance at Rattlesnake Bridge.  │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   4 │ Spy Adventure     │ TRAUMA-BOND, INTERNATIONAL MAN OF       │
+│     │                   │ MAYHEM. Glamour, gadgets, and a race to │
+│     │                   │ disarm the WOPR before it lights the    │
+│     │                   │ world up.                               │
+├─────┼───────────────────┼─────────────────────────────────────────┤
+│   q │ Quit              │                                         │
+└─────┴───────────────────┴─────────────────────────────────────────┘
+
+Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.3:java (default-cli) on project adventure: An exception occurred while executing the Java class. No line found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException | Clean | Codex | Ran a 1980 Spy Adventure pass with motif verbs to confirm alias parsing and help output. |
+
+| 2025-12-25 | Smart actor combat + warded sim | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest,SmartActorCombatPlaybookIntegrationTest test` | Clean | Codex | Added warded combat sim playbook and smart-actor combat harness. |
+
+| 2025-12-25 | Playbook scripted smart actors | `mvn -q -Dtest=SmartActorCombatPlaybookIntegrationTest,MiniGamePlaybookIntegrationTest test` | Clean | Codex | Added smartActorDecisions support in playbook YAML for deterministic combat tests. |
+| 2025-12-25 | Playbook expectations + smart-actor combat turn fix | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest,MansionAdventurePlaybookIntegrationTest,WesternAdventurePlaybookIntegrationTest,SpyAdventurePlaybookIntegrationTest,MiniGamePlaybookIntegrationTest,SmartActorCombatPlaybookIntegrationTest test` | Clean | Codex | Added shared playbook parsing/expectations, flee playbook coverage, and smart-actor combat turn advancement fix. |
+| 2025-12-25 | Smart-actor minigame playbook variants | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest,SmartActorCombatPlaybookIntegrationTest test` | Clean | Codex | Added smart-actor playbook variants/specs for combat-sim minigames and fixed playbook segment slicing. |
+| 2025-12-25 | Smart-actor combat targeting | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest,SmartActorCombatPlaybookIntegrationTest test` | Clean | Codex | Updated player plot ownership on move so smart actors can target the player in combat and aligned playbook expectations. |
+| 2025-12-25 | Testing strategy doc | none | Clean | Codex | Documented the testing strategy and agent validation workflow for game verification. |
+| 2025-12-25 | Spy Adventure 1980 scoreboard | none | Clean | Codex | Logged the 1980 Spy Adventure run with runtime and blocking issues in `docs/scoreboard.md`. |
+| 2025-12-25 | Island/Mansion/Western 1980 scoreboard | none | Clean | Codex | Logged 1980 playthroughs for Island, Mansion, and Western in `docs/scoreboard.md` with runtime and blocking issues. |
+| 2025-12-25 | Spy mechanics fixes | `mvn -q -Dtest=GameMenuStructuredLoadTest,SpyAdventurePlaybookIntegrationTest test` | Clean | Codex | Added missing Spy fixtures/items and ON_USE triggers for phrase/pass/stencil interactions. |
+| 2025-12-25 | Island loop + hatchet fixes | `mvn -q -Dtest=GameMenuStructuredLoadTest,IslandAdventurePlaybookIntegrationTest test` | Clean | Codex | Moved the hatchet under the Treehouse Skeleton and removed the Time Stone tick-rate acceleration. |
+| 2025-12-25 | Island Scratch warning | `mvn -q -Dtest=GameMenuStructuredLoadTest,IslandAdventurePlaybookIntegrationTest test` | Clean | Codex | Added a capitalized Scratch warning about the Time Stone trap and clarified his warden role. |
+| 2025-12-25 | Game integrity check | `mvn -q -Dtest=GameIntegrityTest test` | Clean | Codex | Added deterministic integrity check with bounded reachability, config/report helpers, and updated the testing strategy doc. |
+| 2025-12-25 | Island Scratch description | none | Clean | Codex | Softened Scratch's description to avoid early Time Stone spoilers. |
+| 2025-12-25 | Time Stone tick-rate | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest test` | Clean | Codex | Restored Time Stone tick-rate acceleration on take for Island. |
+| 2025-12-25 | BuuiConsole output suppression | `mvn -q -Dtest=ConsolePrinterTest test` | Clean | Codex | Added BuuiConsole/ConsolePrinter mute toggle for silencing CLI output in tests. |
+| 2025-12-25 | Playbook console capture | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest,MansionAdventurePlaybookIntegrationTest,WesternAdventurePlaybookIntegrationTest,SpyAdventurePlaybookIntegrationTest,MiniGamePlaybookIntegrationTest,SmartActorCombatPlaybookIntegrationTest test` | Clean | Codex | Added ConsoleCaptureExtension and refit playbook integration tests for per-suite output capture. |
+| 2025-12-25 | Console capture expansion | `mvn -q -Dtest=NarratorFallbackTest,GameCliCombatErrorTest,GameCliExitFormattingTest,WorldAssemblerPrintsBomOnSuccessTest,WorldAssemblerPrintsReportOnFailureTest,GdlCliSmokeTest,StorybookValidateCliSmokeTest,KeyExpressionEvaluatorTest test` | Clean | Codex | Extended ConsoleCaptureExtension to capture stderr and refit CLI-output tests to use it. |
+| 2025-12-25 | Console capture cleanup | `mvn -q -Dtest=ConsolePrinterTest test` | Clean | Codex | Updated ConsolePrinterTest to use ConsoleCaptureExtension instead of manual output swapping. |
+| 2025-12-25 | Island crafting audit | `mvn -q -Dtest=GameMenuStructuredLoadTest test` | Clean | Codex | Pruned unused Island crafting recipes and traced the raft chain for reachability. |
+| 2025-12-25 | Island raft setup + integrity defaults | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest,GameIntegrityTest test`; `mvn -q test` | Clean | Codex | Enlarged the Island backpack, added a raft playbook, and widened integrity sweep defaults. |
+| 2025-12-25 | Island test-game win gate | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest,GameIntegrityTest test`; `mvn -q test` | Clean | Codex | Added a test-only Island game YAML with reduced clock gate and an escape playbook. |
+| 2025-12-26 | Dungeon adventure minigame | `mvn -q -Dtest=MiniGamePlaybookIntegrationTest test` | Clean | Codex | Added a 4x4 dungeon adventure minigame with combat and a playbook for integration tests. |
+| 2025-12-26 | Integrity test gating | `mvn -q -Dtest=GameIntegrityTest test` | Clean | Codex | Skipped GameIntegrityTest by default and documented the opt-in flag for long runs. |
+| 2025-12-26 | Mansion/Western win playbooks | `mvn -q -Dtest=MansionAdventurePlaybookIntegrationTest,WesternAdventurePlaybookIntegrationTest test` | Clean | Codex | Enforced full win paths in Mansion/Western playbooks and aligned win expectations with trigger output. |
+| 2025-12-26 | 1980 wins recorded | `./adventure --mode=1980 --quiet < /tmp/island-1980-win-input.txt > docs/playtests/2025-12-26-island-1980-walkthrough.md`; `./adventure --mode=1980 --quiet < /tmp/mansion-1980-win-input.txt > docs/playtests/2025-12-26-mansion-1980-walkthrough.md`; `./adventure --mode=1980 --quiet < /tmp/western-1980-win-input.txt > docs/playtests/2025-12-26-western-1980-walkthrough.md` | Clean | Codex | Logged scripted 1980 wins and updated the scoreboard. |
+| 2025-12-26 | Integrity sweep | `mvn -q -Dtest=GameIntegrityTest -DrunIntegrity=true test` | Clean | Codex | Ran full integrity sweep with the opt-in flag and refreshed testing strategy verification. |
+| 2025-12-26 | Full test suite | `mvn -q test` | Clean | Codex | Release verification run. |
+| 2025-12-26 | Spy 1980 win recorded | `./adventure --mode=1980 --quiet < /tmp/spy-1980-win-input.txt > docs/playtests/2025-12-26-spy-1980-walkthrough.md` | Clean | Codex | Logged scripted Spy 1980 win and updated the scoreboard. |
+| 2025-12-26 | Docs/runbook reorg | none | Clean | Codex | Moved root-level docs into docs/, added logs hub, and consolidated AI/CLI runbooks. |
+| 2025-12-26 | Island test-game relocation | none | Clean | Codex | Moved Island test-only game bundle into src/test/resources/games and repointed playbooks. |
+| 2025-12-26 | Adventure playbook harness | `mvn -q -Dtest=IslandAdventurePlaybookIntegrationTest,MansionAdventurePlaybookIntegrationTest,WesternAdventurePlaybookIntegrationTest,SpyAdventurePlaybookIntegrationTest test` | Clean | Codex | Added shared adventure playbook runner and refit playbook integration tests. |
+| 2025-12-26 | Package reorg + Spy id | `mvn -q test` | Clean | Codex | Moved AI runtime/authoring packages, renamed engine session to runtime, and standardized Spy game id/path and docs. |
+| 2025-12-26 | Docs structure + package-info | not run | Clean | Codex | Added architecture/games/glossary/ADR docs, runbook index, and package-info summaries for core packages. |
+| 2025-12-26 | Workspace process doc | not run | Clean | Codex | Added parent-level PROCESS.md with Java/Markdown standards and documentation workflow. |
+| 2025-12-27 | AI client refactor (remove Spring AI) | `mvn -q -Dtest=AiJsonTest,CommandTranslatorTest,AuthoringAgentClientTest,SmartActorServiceTest,AiDmAgentTest,AiFixtureDescriptionExpanderTest,OpenAiHttpFixtureDescriptionExpanderTest test` | Clean | Codex | Introduced a shared chat client + JSON utilities, rewired AI callers to the internal HTTP client, and removed Spring AI deps. |
+| 2025-12-30 | v1.0 deep clean sweep | `mvn -q test` | Clean | Codex | Updated docs/runbook/README, clarified narration exit rules and input routing, and archived the conversation TODO. |
+| 2025-12-30 | Quit/menu coverage + secret scan | `mvn -q test`; `rg -n OPENAI_API_KEY` | Clean | Codex | Verified no secrets/PII; only key references and test stubs. |
