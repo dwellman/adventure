@@ -112,12 +112,24 @@ public final class CommandContext {
         runtime.put(target, object);
     }
 
+    public void rollDice(String argument) {
+        runtime.rollDice(argument);
+    }
+
+    public void talk(String target) {
+        runtime.talk(target);
+    }
+
     public Direction parseDirection(String target) {
         return runtime.parseDirection(target);
     }
 
     public UUID move(Direction direction) {
         return runtime.move(direction);
+    }
+
+    public MoveResult tryMove(Direction direction) {
+        return runtime.tryMove(direction);
     }
 
     public TriggerOutcome fireTrigger(TriggerType type, Thing target, Thing object) {

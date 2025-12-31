@@ -1,6 +1,15 @@
 package com.demo.adventure.ai.runtime.dm;
 
-import org.springframework.ai.chat.client.ChatClient;
+import com.demo.adventure.ai.client.AiChatClient;
+import com.demo.adventure.ai.client.AiChatMessage;
+import com.demo.adventure.ai.client.AiChatRequest;
+import com.demo.adventure.ai.client.AiChatResponse;
+import com.demo.adventure.ai.client.OpenAiChatClient;
+import com.demo.adventure.ai.runtime.AiConfig;
+import com.demo.adventure.ai.runtime.AiPromptPrinter;
+
+import java.time.Duration;
+import java.util.List;
 
 /**
  * DM agent backed by an LLM. Returns a rewritten narration line or null to fall back.
@@ -12,27 +21,47 @@ public final class AiDmAgent implements DmAgent {
             - Use the provided context only; do not invent items or exits.
             - Keep tone warm and curious.
             """;
+    private static final AiConfig CONFIG = AiConfig.load();
+    private static final String MODEL = CONFIG.getString("ai.narrator.model", "gpt-4o-mini");
+    private static final double TEMPERATURE = CONFIG.getDouble("ai.narrator.temperature", 0.3);
+    private static final double TOP_P = CONFIG.getDouble("ai.narrator.top_p", 1.0);
+    private static final Duration TIMEOUT = Duration.ofSeconds(40);
+    private static final AiChatClient DEFAULT_CLIENT = new OpenAiChatClient();
 
-    private final ChatClient chatClient;
+    private final AiChatClient chatClient;
+    private final String apiKey;
 
-    public AiDmAgent(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public AiDmAgent(AiChatClient chatClient) {
+        this(chatClient, null);
+    }
+
+    public AiDmAgent(AiChatClient chatClient, String apiKey) {
+        this.chatClient = chatClient == null ? DEFAULT_CLIENT : chatClient;
+        this.apiKey = apiKey;
     }
 
     @Override
     // Pattern: Trust UX
     // - Returns null on failure so the deterministic base narration remains authoritative.
     public String narrate(DmAgentContext context) throws Exception {
-        if (chatClient == null || context == null) {
+        if (chatClient == null || context == null || apiKey == null || apiKey.isBlank()) {
             return null;
         }
         try {
             String user = buildUserPrompt(context);
-            return chatClient.prompt()
-                    .system(SYSTEM_PROMPT)
-                    .user(user)
-                    .call()
-                    .content();
+            AiPromptPrinter.printChatPrompt("dm", SYSTEM_PROMPT, user, false);
+            AiChatRequest request = AiChatRequest.builder()
+                    .model(MODEL)
+                    .messages(List.of(
+                            AiChatMessage.system(SYSTEM_PROMPT),
+                            AiChatMessage.user(user)
+                    ))
+                    .temperature(TEMPERATURE)
+                    .topP(TOP_P)
+                    .timeout(TIMEOUT)
+                    .build();
+            AiChatResponse response = chatClient.chat(apiKey, request);
+            return response == null ? null : response.content();
         } catch (Exception ex) {
             return null; // fail safe: do not alter narration on agent failure
         }

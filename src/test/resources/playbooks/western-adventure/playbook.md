@@ -14,7 +14,7 @@ Steps:
 5. Command: `south`
    Expect: Train Platform.
 6. Command: `west`
-   Expect: Telegraph Office; humming with static.
+   Expect: Telegraph Office; dead line and static.
 7. Command: `west`
    Expect: Dry Gulch Main Street; station clock.
 8. Command: `north`

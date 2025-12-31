@@ -27,11 +27,15 @@ class TranslatorPromptCoverageTest {
         assertThat(prompt).contains("PLAYER_TEXT: attack goblin");
 
         assertThat(prompt).contains("attack <target>");
+        assertThat(prompt).contains("talk <actor>");
         assertThat(prompt).contains("run away");
         assertThat(prompt).contains("inspect <thing>");
         assertThat(prompt).contains("open <thing>");
         assertThat(prompt).contains("use <thing>");
         assertThat(prompt).contains("put <item> <preposition> <object>");
+        assertThat(prompt).contains("dice(<sides>,<target>)");
+        assertThat(prompt).contains("where am i");
+        assertThat(prompt).contains("shares a word");
     }
 
     @Test

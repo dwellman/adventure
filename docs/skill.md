@@ -15,7 +15,7 @@ Keep AI CLI documentation aligned with the live translator -> engine -> narrator
 
 ## Workflow
 1. Read `src/main/java/com/demo/adventure/engine/cli/GameCli.java` and `src/main/java/com/demo/adventure/ai/runtime/TranslationOrchestrator.java`.
-2. Check runtime templates in `src/main/resources/agents/translator.md` and `src/main/resources/agents/narrator.md`.
+2. Check the translator template in `src/main/resources/agents/translator.md` and the compiled narrator prompt in `src/main/java/com/demo/adventure/ai/runtime/NarratorPromptBuilder.java`.
 3. Review role/agent prompts in `src/main/resources/agents/` and note whether they are wired into GameCli 2025 flow.
 4. Verify classic fallback behavior in `src/main/java/com/demo/adventure/engine/command/handlers/ClassicCommandFallback.java`.
 5. Update `docs/runbooks/ai-cli.md`, `docs/design/ai-cli-mode.md`, and `docs/design/cli.md` to match actuals.

@@ -35,4 +35,22 @@ class TextUtilsTest {
         assertThat(TextUtils.pad("a", 3, Alignment.RIGHT)).isEqualTo("  a");
         assertThat(TextUtils.pad("a", 3, Alignment.CENTER)).isEqualTo(" a ");
     }
+
+    @Test
+    void wrapAndTruncateIgnoreAnsiCodes() {
+        AnsiStyle.setEnabledOverride(true);
+        try {
+            String styled = InlineMarkdown.format("**alpha beta**");
+            List<String> lines = TextUtils.wrap(styled, 5);
+
+            assertThat(TextUtils.visibleLength(styled)).isEqualTo("alpha beta".length());
+            assertThat(lines.stream().map(AnsiStyle::strip).toList())
+                    .containsExactly("alpha", "beta");
+
+            String truncated = TextUtils.truncate(styled, 3);
+            assertThat(AnsiStyle.strip(truncated)).isEqualTo("alp");
+        } finally {
+            AnsiStyle.setEnabledOverride(null);
+        }
+    }
 }

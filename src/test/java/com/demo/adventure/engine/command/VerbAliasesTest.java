@@ -27,6 +27,11 @@ class VerbAliasesTest {
     }
 
     @Test
+    void normalizesRollToDice() {
+        assertThat(VerbAliases.canonicalize("roll")).isEqualTo("DICE");
+    }
+
+    @Test
     void reverseLookupIncludesStrikeAlias() {
         assertThat(VerbAliases.aliasesFor("attack")).contains("STRIKE");
     }

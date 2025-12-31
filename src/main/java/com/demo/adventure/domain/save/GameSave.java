@@ -1,5 +1,6 @@
 package com.demo.adventure.domain.save;
 
+import com.demo.adventure.domain.model.Thing;
 import com.demo.adventure.engine.mechanics.cells.CellSpec;
 
 import java.util.HashMap;
@@ -100,9 +101,6 @@ public record GameSave(
     }
 
     private static String normalizeCellKey(String name) {
-        if (name == null) {
-            return "";
-        }
-        return name.trim().toUpperCase(Locale.ROOT);
+        return Thing.normalizeCellKey(name);
     }
 }

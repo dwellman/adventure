@@ -14,6 +14,7 @@ import com.demo.adventure.engine.command.CommandAction;
 import com.demo.adventure.engine.command.Token;
 import com.demo.adventure.engine.command.TokenType;
 import com.demo.adventure.engine.command.interpreter.CommandScanner;
+import com.demo.adventure.ai.runtime.smart.SmartActorDecision;
 import com.demo.adventure.domain.kernel.ContainerPacker;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
@@ -49,6 +50,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -56,6 +58,27 @@ import java.util.stream.Collectors;
 public final class GameRuntime {
 
     private static final UUID PLAYER_ID = UUID.fromString("00000000-0000-0000-0000-00000000feed");
+    private static final String EMOTE_PREFIX = "EMOTE:";
+    private static final String CHECK_REQUEST_PREFIX = "CHECK_REQUEST:";
+    private static final String CHECK_RESULT_PREFIX = "CHECK_RESULT:";
+    private static final int EMOTE_CHECK_SIDES = 20;
+    private static final int EMOTE_CHECK_TARGET = 15;
+    private static final Set<String> EMOTE_CHECK_KEYWORDS = Set.of(
+            "distract",
+            "convince",
+            "persuade",
+            "intimidate",
+            "deceive",
+            "lie",
+            "sneak",
+            "steal",
+            "pick",
+            "unlock",
+            "hide",
+            "escape",
+            "bluff",
+            "charm"
+    );
 
     private final SceneNarrator narrator;
     private final Consumer<String> emitter;
@@ -73,6 +96,10 @@ public final class GameRuntime {
     private Map<String, CraftingRecipe> craftingRecipes;
     private Map<String, TokenType> extraKeywords = Map.of();
     private SmartActorRuntime smartActorRuntime;
+    private PendingEmoteCheck pendingEmoteCheck;
+    private InteractionState interactionState = InteractionState.none();
+    private UUID conversationActorId;
+    private String conversationActorLabel = "";
 
     public GameRuntime(SceneNarrator narrator, Consumer<String> emitter, boolean aiEnabled) {
         this.narrator = narrator;
@@ -98,6 +125,10 @@ public final class GameRuntime {
         this.triggerEngine = triggerEngine;
         this.craftingRecipes = craftingRecipes;
         this.extraKeywords = extraKeywords == null ? Map.of() : extraKeywords;
+        this.pendingEmoteCheck = null;
+        this.interactionState = InteractionState.none();
+        this.conversationActorId = null;
+        this.conversationActorLabel = "";
     }
 
     public void configureSmartActors(SmartActorRuntime smartActorRuntime) {
@@ -546,24 +577,230 @@ public final class GameRuntime {
             narrate("Nothing special to the " + dir.toLongName().toLowerCase(Locale.ROOT) + ".");
             return;
         }
-        String gateDesc = gate.getDescription();
+        String gateDesc = stripGateDestinationTag(gate.getDescriptionFrom(currentPlot));
         if (gateDesc != null && !gateDesc.isBlank()) {
-            narrate(gateDesc);
+            narrate(formatDirectionLook(dir, gateDesc));
         } else {
-            narrate("You see an exit to the " + dir.toLongName().toLowerCase(Locale.ROOT) + ".");
+            narrate(formatDirectionLook(dir, "You see an exit."));
         }
     }
 
+    public boolean isConversationActive() {
+        return conversationActorId != null;
+    }
+
+    public String conversationActorLabel() {
+        return conversationActorLabel == null ? "" : conversationActorLabel;
+    }
+
+    public InteractionState interactionState() {
+        return interactionState == null ? InteractionState.none() : interactionState;
+    }
+
+    public enum MentionResolutionType {
+        MATCH,
+        AMBIGUOUS,
+        NONE
+    }
+
+    public record MentionResolution(MentionResolutionType type, UUID actorId, String actorLabel, int tokensMatched) {
+        public static MentionResolution none() {
+            return new MentionResolution(MentionResolutionType.NONE, null, "", 0);
+        }
+
+        public static MentionResolution ambiguous() {
+            return new MentionResolution(MentionResolutionType.AMBIGUOUS, null, "", 0);
+        }
+    }
+
+    public MentionResolution resolveMentionActor(List<String> tokens) {
+        if (registry == null || currentPlot == null || tokens == null || tokens.isEmpty()) {
+            return MentionResolution.none();
+        }
+        List<String> mentionTokens = normalizeTokens(tokens);
+        if (mentionTokens.isEmpty()) {
+            return MentionResolution.none();
+        }
+        List<Actor> actors = visibleActorsAtPlot(registry, currentPlot);
+        if (actors.isEmpty()) {
+            return MentionResolution.none();
+        }
+        List<MentionCandidate> candidates = new ArrayList<>();
+        for (Actor actor : actors) {
+            int matchLength = mentionMatchLength(actor, mentionTokens);
+            if (matchLength > 0) {
+                candidates.add(new MentionCandidate(actor, matchLength));
+            }
+        }
+        if (candidates.isEmpty()) {
+            return MentionResolution.none();
+        }
+        int best = candidates.stream().mapToInt(MentionCandidate::tokensMatched).max().orElse(0);
+        List<MentionCandidate> top = candidates.stream()
+                .filter(candidate -> candidate.tokensMatched() == best)
+                .toList();
+        if (top.size() != 1) {
+            return MentionResolution.ambiguous();
+        }
+        Actor actor = top.get(0).actor();
+        String label = actor.getLabel();
+        String safeLabel = label == null ? "" : label.trim();
+        return new MentionResolution(MentionResolutionType.MATCH, actor.getId(), safeLabel, best);
+    }
+
+    public void endConversation() {
+        if (conversationActorId == null) {
+            return;
+        }
+        conversationActorId = null;
+        conversationActorLabel = "";
+        narrate("You end the conversation.");
+    }
+
+    public void talk(String target) {
+        if (target == null || target.isBlank()) {
+            narrate("Talk to whom?");
+            return;
+        }
+        Actor actor = findVisibleActorByKeyOrLabel(registry, currentPlot, target);
+        if (actor == null) {
+            narrate("You don't see " + target + " here.");
+            return;
+        }
+        conversationActorId = actor.getId();
+        String label = actor.getLabel();
+        String safeLabel = label == null || label.isBlank() ? "someone" : label;
+        conversationActorLabel = safeLabel;
+        narrate("You turn to " + safeLabel + ".");
+    }
+
+    public void talkToConversation(String playerUtterance) {
+        if (conversationActorId == null) {
+            narrate("No one is listening.");
+            return;
+        }
+        Actor actor = registry == null ? null : registry.get(conversationActorId) instanceof Actor found ? found : null;
+        if (actor == null || !actor.isVisible() || currentPlot == null || !currentPlot.equals(actor.getOwnerId())) {
+            conversationActorId = null;
+            conversationActorLabel = "";
+            narrate("No one answers.");
+            return;
+        }
+        talkToActor(actor, playerUtterance);
+    }
+
+    private void talkToActor(Actor actor, String playerUtterance) {
+        if (actor == null) {
+            narrate("No one answers.");
+            return;
+        }
+        String label = actor.getLabel() == null || actor.getLabel().isBlank() ? "Someone" : actor.getLabel();
+        if (!aiEnabled || smartActorRuntime == null || !smartActorRuntime.handlesActor(actor.getId())) {
+            narrate(label + " has nothing to say.");
+            return;
+        }
+        SmartActorDecision decision;
+        try {
+            decision = smartActorRuntime.respondToPlayer(this, actor.getId(), playerUtterance);
+        } catch (GameBuilderException ex) {
+            narrate(label + " has nothing to say.");
+            return;
+        }
+        if (decision == null) {
+            narrate(label + " has nothing to say.");
+            return;
+        }
+        String reply = switch (decision.type()) {
+            case COLOR -> decision.color();
+            case UTTERANCE -> decision.utterance();
+            case NONE -> "";
+        };
+        String cleaned = reply == null ? "" : reply.replace("\r", " ").replace("\n", " ").trim();
+        if (cleaned.isBlank()) {
+            narrate(label + " has nothing to say.");
+            return;
+        }
+        narrate(label + ": " + cleaned);
+    }
+
+    private String formatDirectionLook(Direction dir, String description) {
+        String prefix = directionPrefix(dir);
+        String desc = description == null ? "" : description.trim();
+        if (desc.isEmpty()) {
+            desc = "Nothing special.";
+        }
+        return prefix + ": " + desc;
+    }
+
+    private String directionPrefix(Direction dir) {
+        if (dir == null) {
+            return "There";
+        }
+        return switch (dir) {
+            case UP -> "Up";
+            case DOWN -> "Down";
+            default -> "To the " + directionLabel(dir);
+        };
+    }
+
+    private String directionLabel(Direction dir) {
+        String raw = dir == null ? "" : dir.toLongName();
+        return raw.toLowerCase(Locale.ROOT).replace('_', ' ');
+    }
+
+    private String stripGateDestinationTag(String description) {
+        if (description == null || description.isBlank()) {
+            return description;
+        }
+        String trimmed = description.trim();
+        int idx = trimmed.toLowerCase(Locale.ROOT).lastIndexOf(" to:");
+        if (idx == -1) {
+            return trimmed;
+        }
+        String before = trimmed.substring(0, idx).trim();
+        String dest = trimmed.substring(idx + 4).trim();
+        if (dest.isEmpty()) {
+            return trimmed;
+        }
+        if (before.toLowerCase(Locale.ROOT).contains(dest.toLowerCase(Locale.ROOT))) {
+            return before;
+        }
+        return trimmed;
+    }
+
     public void describe() {
-        Plot plot = registry == null || currentPlot == null ? null : registry.get(currentPlot) instanceof Plot current ? current : null;
-        if (plot == null) {
+        String rawScene = buildSceneSnapshot();
+        if (rawScene.isBlank()) {
             narrate("(unknown location)");
             return;
         }
+        narrate(rawScene);
+        if (!outputSuppressed && narrator != null) {
+            narrator.updateScene(rawScene);
+        }
+    }
+
+    public void primeScene() {
+        if (narrator == null) {
+            return;
+        }
+        String rawScene = buildSceneSnapshot();
+        if (!rawScene.isBlank()) {
+            narrator.updateScene(rawScene);
+        }
+    }
+
+    private String buildSceneSnapshot() {
+        Plot plot = registry == null || currentPlot == null ? null : registry.get(currentPlot) instanceof Plot current ? current : null;
+        if (plot == null) {
+            return "";
+        }
         StringBuilder snapshot = new StringBuilder();
-        snapshot.append(plot.getLabel()).append("\n");
+        if (plot.getLabel() != null && !plot.getLabel().isBlank()) {
+            snapshot.append("# ").append(plot.getLabel().trim()).append("\n");
+        }
         if (plot.getDescription() != null && !plot.getDescription().isBlank()) {
-            snapshot.append(plot.getDescription()).append("\n");
+            snapshot.append(plot.getDescription().trim()).append("\n");
         }
 
         List<Item> fixtures = registry.getEverything().values().stream()
@@ -608,36 +845,23 @@ public final class GameRuntime {
 
         List<Gate> exits = exits();
         if (!exits.isEmpty()) {
-            String dirList = exits.stream()
+            List<String> dirList = exits.stream()
                     .map(g -> {
                         Direction d = g.directionFrom(currentPlot);
                         if (d == null) {
                             return null;
                         }
-                        boolean open = isGateOpen(g, registry, playerId, currentPlot);
-                        if (open) {
-                            return d.toLongName();
-                        }
-                        String hint = g.getDescriptionFrom(currentPlot);
-                        if (hint == null || hint.isBlank()) {
-                            hint = "blocked";
-                        }
-                        String cleanedHint = sanitizeHint(hint).replaceAll("[\\p{Punct}]+$", "").trim();
-                        return d.toLongName() + " (" + cleanedHint + ")";
+                        return d.toLongName();
                     })
                     .filter(Objects::nonNull)
                     .sorted()
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("");
-            if (!dirList.isBlank()) {
-                snapshot.append("Exits: ").append(dirList).append("\n");
+                    .toList();
+            if (!dirList.isEmpty()) {
+                String separator = " \u2022 ";
+                snapshot.append("Exits: ").append(String.join(separator, dirList)).append("\n");
             }
         }
-        String rawScene = snapshot.toString().trim();
-        narrate(rawScene);
-        if (!outputSuppressed && narrator != null) {
-            narrator.updateScene(rawScene);
-        }
+        return snapshot.toString().trim();
     }
 
     public Item take(String name) {
@@ -938,22 +1162,25 @@ public final class GameRuntime {
     }
 
     public UUID move(Direction direction) {
+        return tryMove(direction).nextPlotId();
+    }
+
+    public MoveResult tryMove(Direction direction) {
         if (direction == null) {
-            return null;
+            return MoveResult.none();
         }
         for (Gate gate : exits()) {
             Direction dir = gate.directionFrom(currentPlot);
             if (dir == direction) {
                 if (!isGateOpen(gate, registry, playerId, currentPlot)) {
-                    String desc = gate.getDescriptionFrom(currentPlot);
+                    String desc = stripGateDestinationTag(gate.getDescriptionFrom(currentPlot));
                     String reason = (desc == null || desc.isBlank()) ? "That way is blocked." : ensurePeriod(desc);
-                    narrate(reason);
-                    return null;
+                    return MoveResult.blocked(reason);
                 }
-                return gate.otherSide(currentPlot);
+                return MoveResult.moved(gate.otherSide(currentPlot));
             }
         }
-        return null;
+        return MoveResult.none();
     }
 
     public Direction parseDirection(String token) {
@@ -1053,6 +1280,57 @@ public final class GameRuntime {
         narrator.narrate(text);
     }
 
+    public void emote(String rawEmote) {
+        String emoteText = normalizeEmoteText(rawEmote);
+        if (emoteText.isBlank()) {
+            return;
+        }
+        if (emoteNeedsCheck(emoteText)) {
+            pendingEmoteCheck = new PendingEmoteCheck(emoteText, EMOTE_CHECK_SIDES, EMOTE_CHECK_TARGET);
+            interactionState = InteractionState.awaitingDice(formatDiceCall(pendingEmoteCheck.sides(), pendingEmoteCheck.target()));
+            narrate(formatCheckRequest(pendingEmoteCheck));
+            return;
+        }
+        pendingEmoteCheck = null;
+        interactionState = InteractionState.none();
+        narrate(formatEmote(emoteText));
+    }
+
+    public void rollDice(String argument) {
+        if (outputSuppressed) {
+            return;
+        }
+        if (pendingEmoteCheck == null || interactionState.type() != InteractionType.AWAITING_DICE) {
+            interactionState = InteractionState.none();
+            narrate("No check to roll.");
+            return;
+        }
+        DiceSpec spec = parseDiceSpec(argument);
+        if (spec == null) {
+            spec = new DiceSpec(pendingEmoteCheck.sides(), pendingEmoteCheck.target());
+        }
+        if (!matchesPending(spec, pendingEmoteCheck)) {
+            String expected = interactionState.expectedToken();
+            if (expected.isBlank()) {
+                expected = formatDiceCall(pendingEmoteCheck.sides(), pendingEmoteCheck.target());
+            }
+            narrate("Roll " + expected + ".");
+            return;
+        }
+        DiceCheckResult result;
+        try {
+            result = evaluateDiceCheck(spec.sides(), spec.target());
+        } catch (RuntimeException ex) {
+            narrate(ex.getMessage());
+            return;
+        }
+        String outcome = result.success() ? "SUCCESS" : "FAIL";
+        String resolved = formatCheckResult(result.roll(), spec.target(), outcome, pendingEmoteCheck.emoteText());
+        pendingEmoteCheck = null;
+        interactionState = InteractionState.none();
+        narrate(resolved);
+    }
+
     public void narrateColor(String color) {
         if (outputSuppressed) {
             return;
@@ -1130,20 +1408,6 @@ public final class GameRuntime {
         }
         CellMutationReceipt receipt = CellOps.consume(thing, cellName, delta);
         registry.recordCellMutation(receipt);
-    }
-
-    private String sanitizeHint(String hint) {
-        // Keep exit hint rendering clean for comma-joined lists (doc: docs/guides/new-game-walkthrough.md#narration-rules).
-        String trimmed = hint == null ? "" : hint.trim();
-        while (!trimmed.isEmpty()) {
-            char last = trimmed.charAt(trimmed.length() - 1);
-            if (last == '.' || last == ',' || last == ';' || last == ':' || last == '!') {
-                trimmed = trimmed.substring(0, trimmed.length() - 1).trim();
-                continue;
-            }
-            break;
-        }
-        return trimmed.isBlank() ? "blocked" : trimmed;
     }
 
     private String ensurePeriod(String text) {
@@ -1352,6 +1616,135 @@ public final class GameRuntime {
                 .orElse(null);
     }
 
+    private Actor findVisibleActorByKeyOrLabel(KernelRegistry registry, UUID plotId, String labelOrKey) {
+        Actor actor = findVisibleActorByLabel(registry, plotId, labelOrKey);
+        if (actor != null) {
+            return actor;
+        }
+        UUID actorId = actorIdForKey(labelOrKey);
+        if (actorId == null || registry == null || plotId == null) {
+            return null;
+        }
+        Actor byId = registry.get(actorId) instanceof Actor found ? found : null;
+        if (byId == null || !byId.isVisible() || !plotId.equals(byId.getOwnerId())) {
+            return null;
+        }
+        return byId;
+    }
+
+    private int mentionMatchLength(Actor actor, List<String> mentionTokens) {
+        if (actor == null || mentionTokens == null || mentionTokens.isEmpty()) {
+            return 0;
+        }
+        int best = 0;
+        List<String> labelTokens = tokenizeLabel(actor.getLabel());
+        if (!labelTokens.isEmpty()) {
+            best = Math.max(best, longestPrefixMatch(mentionTokens, labelTokens));
+            if (labelTokens.contains(mentionTokens.get(0))) {
+                best = Math.max(best, 1);
+            }
+        }
+        best = Math.max(best, keyMatchLength(actor.getId(), mentionTokens));
+        return best;
+    }
+
+    private int longestPrefixMatch(List<String> left, List<String> right) {
+        if (left == null || right == null) {
+            return 0;
+        }
+        int max = Math.min(left.size(), right.size());
+        int matched = 0;
+        for (int i = 0; i < max; i++) {
+            if (!left.get(i).equals(right.get(i))) {
+                break;
+            }
+            matched = i + 1;
+        }
+        return matched;
+    }
+
+    private int keyMatchLength(UUID actorId, List<String> mentionTokens) {
+        if (actorId == null || mentionTokens == null || mentionTokens.isEmpty()) {
+            return 0;
+        }
+        int best = 0;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < mentionTokens.size(); i++) {
+            if (i > 0) {
+                sb.append(' ');
+            }
+            sb.append(mentionTokens.get(i));
+            UUID candidate = actorIdForKey(sb.toString());
+            if (actorId.equals(candidate)) {
+                best = i + 1;
+            }
+        }
+        return best;
+    }
+
+    private List<String> normalizeTokens(List<String> tokens) {
+        if (tokens == null || tokens.isEmpty()) {
+            return List.of();
+        }
+        List<String> normalized = new ArrayList<>();
+        for (String token : tokens) {
+            if (token == null) {
+                continue;
+            }
+            String trimmed = token.trim();
+            if (trimmed.isEmpty()) {
+                continue;
+            }
+            normalized.add(trimmed.toLowerCase(Locale.ROOT));
+        }
+        return normalized;
+    }
+
+    private List<String> tokenizeLabel(String label) {
+        if (label == null || label.isBlank()) {
+            return List.of();
+        }
+        List<Token> tokens = CommandScanner.scan(label);
+        List<String> words = new ArrayList<>();
+        for (Token token : tokens) {
+            if (token == null || token.type == TokenType.EOL || token.type == TokenType.HELP) {
+                continue;
+            }
+            if (token.type == TokenType.STRING) {
+                splitIntoWords(token.lexeme, words);
+                continue;
+            }
+            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
+            if (!lexeme.isEmpty()) {
+                words.add(lexeme.toLowerCase(Locale.ROOT));
+            }
+        }
+        return words;
+    }
+
+    private void splitIntoWords(String lexeme, List<String> words) {
+        if (lexeme == null || words == null) {
+            return;
+        }
+        for (String part : lexeme.split("\\s+")) {
+            if (part == null) {
+                continue;
+            }
+            String trimmed = part.trim();
+            if (!trimmed.isEmpty()) {
+                words.add(trimmed.toLowerCase(Locale.ROOT));
+            }
+        }
+    }
+
+    private UUID actorIdForKey(String key) {
+        if (key == null || key.isBlank()) {
+            return null;
+        }
+        String normalized = key.trim().toLowerCase(Locale.ROOT);
+        return UUID.nameUUIDFromBytes(("actor:" + normalized).getBytes(StandardCharsets.UTF_8));
+    }
+
     private List<Actor> visibleActorsAtPlot(KernelRegistry registry, UUID plotId) {
         if (registry == null || plotId == null) {
             return List.of();
@@ -1362,6 +1755,9 @@ public final class GameRuntime {
                 .filter(Actor::isVisible)
                 .filter(actor -> plotId.equals(actor.getOwnerId()))
                 .toList();
+    }
+
+    private record MentionCandidate(Actor actor, int tokensMatched) {
     }
 
     private Thing findThingByLabel(KernelRegistry registry, UUID plotId, UUID playerId, String label) {
@@ -1643,5 +2039,162 @@ public final class GameRuntime {
                 .map(Item.class::cast)
                 .filter(i -> playerId.equals(i.getOwnerId()))
                 .collect(java.util.stream.Collectors.toCollection(ArrayList::new));
+    }
+
+    private String normalizeEmoteText(String rawEmote) {
+        if (rawEmote == null) {
+            return "";
+        }
+        String trimmed = rawEmote.trim();
+        if (trimmed.length() >= EMOTE_PREFIX.length()
+                && trimmed.regionMatches(true, 0, EMOTE_PREFIX, 0, EMOTE_PREFIX.length())) {
+            trimmed = trimmed.substring(EMOTE_PREFIX.length()).trim();
+        }
+        return trimmed;
+    }
+
+    private boolean emoteNeedsCheck(String emoteText) {
+        if (emoteText == null || emoteText.isBlank()) {
+            return false;
+        }
+        List<Token> tokens = CommandScanner.scan(emoteText);
+        for (Token token : tokens) {
+            if (token == null || token.type == TokenType.EOL) {
+                continue;
+            }
+            if (token.type == TokenType.STRING) {
+                for (String part : token.lexeme.split("\\s+")) {
+                    if (EMOTE_CHECK_KEYWORDS.contains(part.toLowerCase(Locale.ROOT))) {
+                        return true;
+                    }
+                }
+                continue;
+            }
+            if (token.type != TokenType.IDENTIFIER) {
+                continue;
+            }
+            String lexeme = token.lexeme == null ? "" : token.lexeme.trim().toLowerCase(Locale.ROOT);
+            if (EMOTE_CHECK_KEYWORDS.contains(lexeme)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private DiceSpec parseDiceSpec(String argument) {
+        if (argument == null || argument.isBlank()) {
+            return null;
+        }
+        List<Token> tokens = CommandScanner.scan(argument);
+        List<Integer> values = new ArrayList<>();
+        for (Token token : tokens) {
+            if (token == null || token.type == TokenType.EOL) {
+                continue;
+            }
+            if (token.type != TokenType.IDENTIFIER && token.type != TokenType.NUMBER && token.type != TokenType.STRING) {
+                continue;
+            }
+            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
+            if (lexeme.isEmpty()) {
+                continue;
+            }
+            int parsed = parseDiceNumber(lexeme);
+            if (parsed > 0) {
+                values.add(parsed);
+            }
+            if (values.size() >= 2) {
+                break;
+            }
+        }
+        if (values.size() < 2) {
+            return null;
+        }
+        return new DiceSpec(values.get(0), values.get(1));
+    }
+
+    private int parseDiceNumber(String lexeme) {
+        String trimmed = lexeme == null ? "" : lexeme.trim();
+        if (trimmed.isEmpty()) {
+            return -1;
+        }
+        if (trimmed.startsWith("d") || trimmed.startsWith("D")) {
+            trimmed = trimmed.substring(1);
+        }
+        try {
+            return Integer.parseInt(trimmed);
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
+    }
+
+    private DiceCheckResult evaluateDiceCheck(int sides, int target) {
+        KeyExpressionEvaluator.DiceRoller previous = KeyExpressionEvaluator.getDefaultDiceRoller();
+        List<Integer> rolls = new ArrayList<>();
+        KeyExpressionEvaluator.setDefaultDiceRoller(s -> {
+            int roll = previous.roll(s);
+            rolls.add(roll);
+            return roll;
+        });
+        boolean success;
+        try {
+            success = KeyExpressionEvaluator.evaluate("DICE(" + sides + ") >= " + target);
+        } finally {
+            KeyExpressionEvaluator.setDefaultDiceRoller(previous);
+        }
+        int roll = rolls.isEmpty() ? 0 : rolls.get(rolls.size() - 1);
+        return new DiceCheckResult(roll, success);
+    }
+
+    private String formatDiceCall(int sides, int target) {
+        return "dice(" + sides + ", " + target + ")";
+    }
+
+    private String formatEmote(String emoteText) {
+        return EMOTE_PREFIX + " " + emoteText;
+    }
+
+    private String formatCheckRequest(PendingEmoteCheck check) {
+        return CHECK_REQUEST_PREFIX + " " + formatDiceCall(check.sides(), check.target())
+                + " | " + EMOTE_PREFIX + " " + check.emoteText();
+    }
+
+    private String formatCheckResult(int roll, int target, String outcome, String emoteText) {
+        return CHECK_RESULT_PREFIX + " roll=" + roll + " target=" + target + " outcome=" + outcome
+                + " | " + EMOTE_PREFIX + " " + emoteText;
+    }
+
+    private boolean matchesPending(DiceSpec spec, PendingEmoteCheck pending) {
+        if (spec == null || pending == null) {
+            return false;
+        }
+        return spec.sides() == pending.sides() && spec.target() == pending.target();
+    }
+
+    private record PendingEmoteCheck(String emoteText, int sides, int target) {
+    }
+
+    private record DiceSpec(int sides, int target) {
+    }
+
+    private record DiceCheckResult(int roll, boolean success) {
+    }
+
+    public enum InteractionType {
+        NONE,
+        AWAITING_DICE,
+        AWAITING_CHOICE,
+        AWAITING_CONFIRM
+    }
+
+    public record InteractionState(InteractionType type, String expectedToken, String promptLine) {
+        public static InteractionState none() {
+            return new InteractionState(InteractionType.NONE, "", "");
+        }
+
+        public static InteractionState awaitingDice(String diceCall) {
+            String expected = diceCall == null ? "" : diceCall.trim();
+            String prompt = expected.isEmpty() ? "Roll dice." : "Roll " + expected + ".";
+            return new InteractionState(InteractionType.AWAITING_DICE, expected, prompt);
+        }
     }
 }

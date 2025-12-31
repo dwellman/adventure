@@ -47,19 +47,20 @@ public final class VerbAliases {
 
     private static Map<String, String> buildAliasMap() {
         Map<String, String> map = new LinkedHashMap<>();
-        map.put("GO", "MOVE");
+        map.put("?", "HELP");
         map.put("CLIMB", "MOVE");
         map.put("CRAFT", "MAKE");
-        map.put("GRAB", "TAKE");
-        map.put("EXPLORE", "SEARCH");
-        map.put("STRIKE", "ATTACK");
-        map.put("L", "LOOK");
-        map.put("I", "INVENTORY");
-        map.put("H", "HELP");
-        map.put("?", "HELP");
-        map.put("Q", "QUIT");
         map.put("EXIT", "QUIT");
+        map.put("EXPLORE", "SEARCH");
+        map.put("GO", "MOVE");
+        map.put("GRAB", "TAKE");
+        map.put("H", "HELP");
+        map.put("I", "INVENTORY");
+        map.put("L", "LOOK");
+        map.put("Q", "QUIT");
+        map.put("ROLL", "DICE");
         map.put("RUN", "MOVE");
+        map.put("STRIKE", "ATTACK");
         return Collections.unmodifiableMap(map);
     }
 

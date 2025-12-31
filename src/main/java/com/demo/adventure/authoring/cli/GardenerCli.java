@@ -102,18 +102,18 @@ public final class GardenerCli extends BuuiConsole {
         if (validateOnly) {
             int plotChanges = countPlotChanges(save, patch);
             int thingChanges = countThingChanges(save, patch);
-            print("Validation OK");
-            print("Fingerprint: " + fingerprint + " (matches)");
-            print("Plots changed: " + plotChanges + " | Things changed: " + thingChanges);
+            println("Validation OK");
+            println("Fingerprint: " + fingerprint + " (matches)");
+            println("Plots changed: " + plotChanges + " | Things changed: " + thingChanges);
             String fpPrefix = fingerprint == null ? "" : fingerprint.substring(0, Math.min(8, fingerprint.length()));
-            print("Coverage: plots " + coverage.patchedPlots() + "/" + coverage.totalPlots() + " (PASS), things " +
+            println("Coverage: plots " + coverage.patchedPlots() + "/" + coverage.totalPlots() + " (PASS), things " +
                     coverage.patchedThings() + "/" + coverage.totalThings() + (coverage.missingThings() > 0 ? " (WARN)" : " (PASS)") +
                     " | fingerprint " + fpPrefix);
             if (coverage.missingThings() > 0) {
-                print("Warning: missing thing patches, sample missing IDs: " + coverage.sampleMissingThings());
+                println("Warning: missing thing patches, sample missing IDs: " + coverage.sampleMissingThings());
             }
             if (result.warnings() != null && !result.warnings().isEmpty()) {
-                result.warnings().forEach(w -> print("Warning: " + w));
+                result.warnings().forEach(w -> println("Warning: " + w));
             }
             return;
         }
@@ -123,9 +123,9 @@ public final class GardenerCli extends BuuiConsole {
             Files.createDirectories(output.getParent());
         }
         GameSaveYamlWriter.write(patched, output);
-        print("Patched game written to " + output.toAbsolutePath());
+        println("Patched game written to " + output.toAbsolutePath());
         if (result.warnings() != null && !result.warnings().isEmpty()) {
-            result.warnings().forEach(w -> print("Warning: " + w));
+            result.warnings().forEach(w -> println("Warning: " + w));
         }
     }
 

@@ -46,6 +46,11 @@ public class TableBuilder {
         return this;
     }
 
+    public TableBuilder maxWidth(int maxWidth) {
+        this.style = this.style.withMaxWidth(maxWidth);
+        return this;
+    }
+
     public TableBuilder cellPadding(int padding) {
         this.style = this.style.withCellPadding(padding);
         return this;

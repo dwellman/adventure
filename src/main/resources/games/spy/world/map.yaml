@@ -16,8 +16,7 @@ plots:
   region: CITY
   locationX: 2
   locationY: 0
-  description: The first steps rise under golden figures. A small sign warns visitors, but the real warning is the silence
-    ahead.
+  description: The first steps rise under golden figures. A small sign warns visitors, and the stairway is quiet.
 - key: battery-lantern-swap
   name: Battery Lantern Swap
   region: CITY
@@ -41,31 +40,31 @@ plots:
   region: CITY
   locationX: 0
   locationY: 1
-  description: Glass shards set in mortar glitter along a bend. The shards form a line that points like an arrow.
+  description: Glass shards set in mortar line the bend. The shards form a straight line.
 - key: buoy-blink-line
   name: Buoy Blink Line
   region: CITY
   locationX: 1
   locationY: 1
-  description: Buoys blink in a repeating cadence. The sequence feels like numbers pretending to be lights.
+  description: Buoys blink in a repeating cadence. The sequence follows a numeric pattern.
 - key: cable-canopy-crawlway
   name: Cable Canopy Crawlway
   region: CITY
   locationX: 2
   locationY: 1
-  description: Cables web overhead, dense enough to feel like a ceiling. One cable is tagged with a colored thread.
+  description: Cables run overhead in a dense grid. One cable is tagged with a colored thread.
 - key: calligraphy-card-table
   name: Calligraphy Card Table
   region: CITY
   locationX: 3
   locationY: 1
-  description: Brush strokes dry on red paper squares. The seller smiles like he already knows what you will ask for.
+  description: Brush strokes dry on red paper squares. The seller watches you closely.
 - key: calligraphy-table
   name: Calligraphy Table
   region: CITY
   locationX: 4
   locationY: 1
-  description: Red slips hang like flags. One slip includes an unusual character choice that looks like a deliberate hint.
+  description: Red slips hang in rows. One slip includes an unusual character choice that appears intentional.
 - key: cargo-fence-markers
   name: Cargo Fence Markers
   region: CITY
@@ -89,13 +88,13 @@ plots:
   region: CITY
   locationX: 2
   locationY: 2
-  description: A checkerboard marker sits above the city like a warning. The air trembles with distant engines.
+  description: A checkerboard marker sits above the city. The air trembles with distant engines.
 - key: chestnut-drum
   name: Chestnut Drum
   region: CITY
   locationX: 3
   locationY: 2
-  description: The drum rhythm is slower here, steadier. The beat count feels like an ordering rule for later.
+  description: The drum rhythm is slower here, steady. The beat count suggests an ordering rule.
 - key: chestnut-drum-rhythm-vendor
   name: Chestnut Drum Rhythm Vendor
   region: CITY
@@ -131,7 +130,7 @@ plots:
   region: CITY
   locationX: 3
   locationY: 3
-  description: Walls sweat with condensation. Pipes overhead form a repeating layout like a map.
+  description: Condensation runs on the walls. Overhead pipes form a repeating layout.
 - key: corridor-maze-segment-b
   name: Corridor Maze Segment B
   region: CITY
@@ -143,7 +142,7 @@ plots:
   region: CITY
   locationX: 5
   locationY: 3
-  description: A turn that always feels wrong. Scratched symbols on the wall appear in pairs, like a matching puzzle.
+  description: A tight turn in the path. Scratched symbols on the wall appear in pairs.
 - key: courtyard-corner-shrine
   name: Courtyard Corner Shrine
   region: CITY
@@ -161,13 +160,13 @@ plots:
   region: CITY
   locationX: 2
   locationY: 4
-  description: The climb releases into a wider space. Wind carries incense, and the puzzle feels closer to completion.
+  description: The climb opens into a wider space. Wind carries incense.
 - key: crane-shadow-sweep
   name: Crane Shadow Sweep
   region: CITY
   locationX: 3
   locationY: 4
-  description: A crane swings slow overhead. Its shadow acts like a clock hand across stacked containers.
+  description: A crane swings overhead. Its shadow sweeps across stacked containers.
 - key: dai-pai-dong-steam-line
   name: Dai Pai Dong Steam Line
   region: CITY
@@ -179,7 +178,7 @@ plots:
   region: CITY
   locationX: 5
   locationY: 4
-  description: Suits and porters move with purpose. Delivery tags flutter like flags, each stamped with a tiny icon.
+  description: Suits and porters move with purpose. Delivery tags flutter, each stamped with a tiny icon.
 - key: dockside-scale-stencil-plate
   name: Dockside Scale Stencil Plate
   region: CITY
@@ -203,7 +202,7 @@ plots:
   region: CITY
   locationX: 3
   locationY: 5
-  description: Tall fabric rolls make a soft canyon. Certain patterns repeat with small differences, like a set of clues.
+  description: Tall fabric rolls form a narrow passage. Certain patterns repeat with small differences.
 - key: ferry-ticket-token-window
   name: Ferry Ticket Token Window
   region: CITY
@@ -215,13 +214,13 @@ plots:
   region: CITY
   locationX: 5
   locationY: 5
-  description: Two statues face each other with different hand poses. Choosing the correct side feels like passing a test.
+  description: Two statues face each other with different hand poses.
 - key: flicker-sign-stack
   name: Flicker Sign Stack
   region: CITY
   locationX: 0
   locationY: 6
-  description: One vertical sign sputters in a steady rhythm. The “wrong” strokes look intentional, like a code.
+  description: One vertical sign sputters in a steady rhythm. The "wrong" strokes look intentional.
 - key: footbridge-sightline
   name: Footbridge Sightline
   region: CITY
@@ -246,19 +245,19 @@ plots:
   region: CITY
   locationX: 4
   locationY: 6
-  description: The entry is narrow and watched. People pass only after a short exchange that sounds like nonsense.
+  description: The entry is narrow and watched. People pass only after a short exchange of nonsense words.
 - key: goldfish-bag-lane
   name: Goldfish Bag Lane
   region: CITY
   locationX: 5
   locationY: 6
-  description: Clear plastic bags swing like little lanterns. Water glints, and the crowd parts and seals behind you.
+  description: Clear plastic bags swing overhead. Water glints, and the crowd parts and seals behind you.
 - key: harbor-promenade-rail-walk
   name: Harbor Promenade Rail Walk
   region: CITY
   locationX: 0
   locationY: 7
-  description: The harbor opens wide and loud. Ferries cut wakes like drawn lines across a dark board.
+  description: The harbor opens wide and loud. Ferries cut wakes in straight lines across the dark water.
 - key: herbal-tea-stall
   name: Herbal Tea Stall
   region: CITY
@@ -294,13 +293,13 @@ plots:
   region: CITY
   locationX: 0
   locationY: 8
-  description: A laughing figure seems to grin at you from the turn. Counting the laughs carved nearby yields a digit.
+  description: A carved laughing figure sits at the turn. Counting the laughs carved nearby yields a digit.
 - key: lightwell-courtyard-ring
   name: Lightwell Courtyard Ring
   region: CITY
   locationX: 1
   locationY: 8
-  description: A small open square climbs straight upward. Laundry lines cross it like a grid.
+  description: A small open square climbs straight upward. Laundry lines cross it in a grid.
 - key: loudspeaker-pole-corner
   name: Loudspeaker Pole Corner
   region: CITY
@@ -324,7 +323,7 @@ plots:
   region: CITY
   locationX: 5
   locationY: 8
-  description: Thick ropes coil like sleeping snakes. One coil is tied in a distinctive knot, like a signature.
+  description: Thick ropes coil on the ground. One coil is tied in a distinctive knot.
 - key: narrow-alley-mouth-split
   name: Narrow Alley Mouth Split
   region: CITY
@@ -342,19 +341,19 @@ plots:
   region: CITY
   locationX: 2
   locationY: 9
-  description: Neon stacks climb like cliffs. The sidewalk is a moving river of shoulders, reflections, and flickering characters. Listening, you catch tram bells and a low-high-low taxi horn motif repeating in the hum.
+  description: Neon stacks climb high. The sidewalk is crowded with shoulders, reflections, and flickering characters. Tram bells and a low-high-low taxi horn motif repeat in the hum.
 - key: neon-countdown-junction
   name: Neon Countdown Junction
   region: CITY
   locationX: 3
   locationY: 9
-  description: A street corner where traffic and people conflict like tides. A public clock ticks loud enough to feel.
+  description: A street corner where traffic and people conflict. A public clock ticks loud enough to hear.
 - key: net-drying-racks
   name: Net Drying Racks
   region: CITY
   locationX: 4
   locationY: 9
-  description: Nets hang like dark lace. A tag line threads through them with knots that encode a count.
+  description: Nets hang overhead. A tag line threads through them with knots that encode a count.
 - key: noodle-steam-cart
   name: Noodle Steam Cart
   region: CITY
@@ -372,19 +371,19 @@ plots:
   region: CITY
   locationX: 1
   locationY: 10
-  description: Stalls cling to the outer edge like barnacles. The wall itself is patched with mismatched brick and signs.
+  description: Stalls line the outer edge. The wall itself is patched with mismatched brick and signs.
 - key: overpass-shadow-stripe
   name: Overpass Shadow Stripe
   region: CITY
   locationX: 2
   locationY: 10
-  description: Under the overpass, shadows form bars across the ground. One bar is broken, like a missing digit.
+  description: Under the overpass, shadows form bars across the ground. One bar is broken.
 - key: pai-tau-lane-threshold
   name: Pai Tau Lane Threshold
   region: CITY
   locationX: 3
   locationY: 10
-  description: The city noise thins and the hill begins. A narrow lane points upward like a promise.
+  description: The city noise thins and the hill begins. A narrow lane points upward.
 - key: pawn-window-numbers
   name: Pawn Window Numbers
   region: CITY
@@ -445,13 +444,13 @@ plots:
   region: CITY
   locationX: 1
   locationY: 12
-  description: A flat landing invites you to breathe. A carved checksum confirms whether your digits are aligned so far.
+  description: A flat landing provides a place to rest. A carved checksum confirms whether your digits are aligned so far.
 - key: rooftop-bridge-plank
   name: Rooftop Bridge Plank
   region: CITY
   locationX: 2
   locationY: 12
-  description: A plank spans to the next roof. Wind whips laundry so it flashes like signal flags.
+  description: A plank spans to the next roof. Wind whips laundry so it flashes in bursts.
 - key: rooftop-clothesline-span
   name: Rooftop Clothesline Span
   region: CITY
@@ -535,7 +534,7 @@ plots:
   region: CITY
   locationX: 4
   locationY: 14
-  description: A raised relief begs to be rubbed with paper. The pattern that appears is clean, like a stamp.
+  description: A raised relief is suited for a paper rubbing. The pattern that appears is clean and stamped.
 - key: street-game-table
   name: Street Game Table
   region: CITY
@@ -566,7 +565,7 @@ plots:
   region: CITY
   locationX: 3
   locationY: 15
-  description: Taxis idle with engines rumbling. A driver watches you through the mirror like he is waiting for a signal.
+  description: Taxis idle with engines rumbling. A driver watches you through the mirror.
 - key: temple-street-lantern-row
   name: Temple Street Lantern Row
   region: CITY
@@ -590,13 +589,13 @@ plots:
   region: CITY
   locationX: 1
   locationY: 16
-  description: The ding-ding bell arrives before the tram does. Route boards list stops like a coded poem.
+  description: The bell rings before the tram arrives. Route boards list stops in a coded order.
 - key: tram-track-crossing
   name: Tram-Track Crossing
   region: CITY
   locationX: 2
   locationY: 16
-  description: Tracks cut the street like rails in a puzzle box. A painted arrow on the curb points the “wrong” way.
+  description: Tracks cut the street in straight rails. A painted arrow on the curb points the "wrong" way.
 - key: turnstile-sightline-posters
   name: Turnstile Sightline Posters
   region: CITY
@@ -626,7 +625,7 @@ plots:
   region: CITY
   locationX: 1
   locationY: 17
-  description: Another threshold, another test. The lintel bears an inscription that reads like “myriad means many,” not literal.
+  description: Another threshold, another test. The lintel bears an inscription that reads "myriad means many," not literal.
 - key: veranda-threshold-sightline
   name: Veranda Threshold Sightline
   region: CITY
@@ -638,7 +637,7 @@ plots:
   region: CITY
   locationX: 3
   locationY: 17
-  description: The city opens behind you like a painted set. From this angle, several statue bases align into an order.
+  description: The city opens behind you. From this angle, several statue bases align into an order.
 - key: watch-repair-cart
   name: Watch Repair Cart
   region: CITY
@@ -656,7 +655,7 @@ plots:
   region: CITY
   locationX: 0
   locationY: 18
-  description: Chimes sing when the wind hits just right. Their tones form a simple high-low pattern like binary.
+  description: Chimes ring when the wind hits. Their tones form a simple high-low pattern.
 - key: wire-spool-cart
   name: Wire Spool Cart
   region: CITY

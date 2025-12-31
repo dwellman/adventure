@@ -18,8 +18,10 @@ import com.demo.adventure.engine.command.handlers.GameCommandHandler;
 import com.demo.adventure.engine.command.Command;
 import com.demo.adventure.engine.command.CommandAction;
 import com.demo.adventure.engine.command.CommandParseError;
+import com.demo.adventure.engine.command.Token;
 import com.demo.adventure.engine.command.TokenType;
 import com.demo.adventure.engine.command.VerbAliases;
+import com.demo.adventure.engine.command.interpreter.CommandScanner;
 import com.demo.adventure.engine.command.interpreter.CommandInterpreter;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
@@ -56,25 +58,28 @@ public final class GameCli extends BuuiConsole implements CommandOutput {
 
     private static final String HELP_TEXT = """
 Commands:
-  move (go) <direction> Move (N,S,E,W,NE,NW,SE,SW,UP,DOWN)
-  n|s|e|w|u|d|ne|nw|se|sw Shortcut movement
-  look (l)       Describe the current plot
-  look <thing>   Inspect an item/fixture/actor you can see or carry
-  inspect <thing> Look closely at an item/fixture/actor
-  listen         Quick re-read of the current scene (alias of look)
-  take <item>    Pick up a visible item here
-  drop <item>    Drop an item from your inventory
-  put <item>     Drop an item from your inventory
-  open <thing>   Try opening a visible item or gate
-  use <thing>    Try using an item
-  attack <target> Attack a visible actor
-  flee/run away  Try to escape combat
-  inventory (i)  Show what you're carrying
-  craft <item>   Craft an item if you have the ingredients
-  how craft <item> Show required skill and ingredients
-  search/explore Poke around for hidden items
-  help (h, ?)    Show this help
-  quit (q)       Exit the game
+- **move (go) <direction>** - Move (N,S,E,W,NE,NW,SE,SW,UP,DOWN)
+- **n|s|e|w|u|d|ne|nw|se|sw** - Shortcut movement
+- **look (l)** - Describe the current plot
+- **look <thing>** - Inspect an item/fixture/actor you can see or carry
+- **inspect <thing>** - Look closely at an item/fixture/actor
+- **listen** - Quick re-read of the current scene (alias of look)
+- **take <item>** - Pick up a visible item here
+- **drop <item>** - Drop an item from your inventory
+- **put <item>** - Drop an item from your inventory
+- **open <thing>** - Try opening a visible item or gate
+- **use <thing>** - Try using an item
+- **attack <target>** - Attack a visible actor
+- **flee/run away** - Try to escape combat
+- **talk <actor>** - Start a conversation with a visible actor
+- **@<actor>** - Start/switch conversation; say "okay, bye" to end
+- **inventory (i)** - Show what you're carrying
+- **craft <item>** - Craft an item if you have the ingredients
+- **how craft <item>** - Show required skill and ingredients
+- **search/explore** - Poke around for hidden items
+- **dice(<sides>,<target>)** - Roll a check when prompted (example: dice(20,15))
+- **help (h, ?)** - Show this help
+- **quit (q)** - Exit the game
 """;
 
     private record GameOption(int index, String name, String resource, String tagline, boolean hidden) { }
@@ -122,6 +127,7 @@ Commands:
     private final boolean aiEnabled;
     private final boolean translatorDebug;
     private final boolean smartActorDebug;
+    private final boolean smartActorLocalOnly;
     private final NarrationService narrationService;
     private final TranslatorService translatorService;
     private final CommandInterpreter commandInterpreter = new CommandInterpreter();
@@ -139,6 +145,7 @@ Commands:
         this.aiEnabled = this.mode == GameMode.Z2025 && this.apiKey != null && !this.apiKey.isBlank();
         this.translatorDebug = config.getBoolean("ai.translator.debug", false);
         this.smartActorDebug = config.getBoolean("ai.smart_actor.debug", false);
+        this.smartActorLocalOnly = isSmartActorLocalOnly(config);
         this.narrationService = new NarrationService(
                 aiEnabled,
                 apiKey,
@@ -146,9 +153,9 @@ Commands:
         );
         this.translatorService = new TranslatorService(aiEnabled, apiKey);
         if (!aiEnabled) {
-            print("~ AI disabled (mode=" + this.mode + ", apiKey=" + (apiKey == null ? "missing" : "present") + ")");
+            println("~ AI disabled (mode=" + this.mode + ", apiKey=" + (apiKey == null ? "missing" : "present") + ")");
         } else {
-            print("~ AI enabled (mode=2025)");
+            println("~ AI enabled (mode=2025)");
         }
     }
 
@@ -167,12 +174,12 @@ Commands:
                         input.equalsIgnoreCase("quit") ||
                         input.equalsIgnoreCase("exit")
                 ) {
-                    print("Goodbye.");
+                    println("Goodbye.");
                     return;
                 }
                 GameOption selected = parseSelection(input);
                 if (selected == null) {
-                    print("Unknown selection: " + input);
+                    println("Unknown selection: " + input);
                     continue;
                 }
                 try {
@@ -180,7 +187,7 @@ Commands:
                     walkabout(selected, save, scanner);
                     return;
                 } catch (Exception ex) {
-                    print("Failed to load game: " + ex.getMessage());
+                    println("Failed to load game: " + ex.getMessage());
                 }
             }
         }
@@ -236,14 +243,14 @@ Commands:
         runtime.seedInventoryPlacements(inventory, inventoryPlacements);
 
         printBlank();
-        print("=== " + option.name() + " ===");
+        println("=== " + option.name() + " ===");
         printBlank();
         if (save.preamble() != null && !save.preamble().isBlank()) {
-            print(save.preamble());
+            printNarration(save.preamble());
         }
         String backstory = RuntimeLoader.loadBackstory(option.resource);
         if (backstory != null && !backstory.isBlank()) {
-            print(backstory);
+            printNarration(backstory);
         }
         narrator.setBackstory(backstory);
 
@@ -264,6 +271,7 @@ Commands:
                 craftingRecipes,
                 extraAliases
         );
+        runtime.primeScene();
         List<SmartActorSpec> smartActorSpecs = RuntimeLoader.loadSmartActorSpecs(option.resource);
         SmartActorTagIndex smartActorTags = RuntimeLoader.loadSmartActorTags(option.resource);
         if (aiEnabled && !smartActorSpecs.isEmpty()) {
@@ -278,6 +286,7 @@ Commands:
                     commandHandlers,
                     smartActorDebug
             );
+            smartActorRuntime.setLocalOnly(this.smartActorLocalOnly);
             runtime.configureSmartActors(smartActorRuntime);
         }
         CommandContext context = new CommandContext(this, runtime);
@@ -295,6 +304,61 @@ gameLoop:
                 continue;
             }
             printBlank();
+            GameRuntime.InteractionState interactionState = runtime.interactionState();
+            if (interactionState.type() != GameRuntime.InteractionType.NONE) {
+                if (interactionState.type() == GameRuntime.InteractionType.AWAITING_DICE) {
+                    Command diceCommand = parseCommand(input);
+                    if (diceCommand != null && !diceCommand.hasError() && diceCommand.action() == CommandAction.DICE) {
+                        narrator.setLastCommand("dice");
+                        runtime.rollDice(diceCommand.argument());
+                    } else {
+                        String prompt = interactionState.promptLine();
+                        if (prompt == null || prompt.isBlank()) {
+                            String expected = interactionState.expectedToken();
+                            prompt = expected == null || expected.isBlank() ? "Roll dice." : "Roll " + expected + ".";
+                        }
+                        runtime.narrate(prompt);
+                    }
+                    continue;
+                }
+                runtime.narrate("Finish the current prompt before acting.");
+                continue;
+            }
+            MentionParse mention = resolveMention(input);
+            if (runtime.isConversationActive()) {
+                if (isConversationExit(input)) {
+                    narrator.setLastCommand("");
+                    runtime.endConversation();
+                    continue;
+                }
+                MentionHandling mentionHandling = handleMention(mention);
+                if (mentionHandling == MentionHandling.END_GAME) {
+                    return;
+                }
+                if (mentionHandling != MentionHandling.NOT_HANDLED) {
+                    continue;
+                }
+                String actorLabel = runtime.conversationActorLabel();
+                narrator.setLastCommand(actorLabel.isBlank() ? "talk" : "talk " + actorLabel);
+                runtime.talkToConversation(input);
+                CommandOutcome turnOutcome = runtime.advanceTurn();
+                if (turnOutcome.endGame()) {
+                    return;
+                }
+                if (turnOutcome.skipTurnAdvance()) {
+                    continue;
+                }
+                continue;
+            }
+
+            MentionHandling mentionHandling = handleMention(mention);
+            if (mentionHandling == MentionHandling.END_GAME) {
+                return;
+            }
+            if (mentionHandling != MentionHandling.NOT_HANDLED) {
+                continue;
+            }
+
             String commandText = input;
             Command cmd = parseCommand(commandText);
             boolean localValid = isValidCommand(cmd);
@@ -316,7 +380,12 @@ gameLoop:
                             System.out::println
                     );
                     if (outcome.type() == TranslationOrchestrator.OutcomeType.FAILED) {
-                        print("~ translator failed; please rephrase (try HELP or a direction).");
+                        println("~ translator failed; please rephrase (try HELP or a direction).");
+                        continue gameLoop;
+                    }
+                    if (outcome.type() == TranslationOrchestrator.OutcomeType.EMOTE) {
+                        narrator.setLastCommand("");
+                        runtime.emote(outcome.commandText());
                         continue gameLoop;
                     }
                     commandText = outcome.commandText();
@@ -337,7 +406,7 @@ gameLoop:
             narrator.setLastCommand(commandText);
             if (cmd.hasError()) {
                 if (translated) {
-                    print("~ translator failed; please rephrase (try HELP or a direction).");
+                    println("~ translator failed; please rephrase (try HELP or a direction).");
                     continue gameLoop;
                 }
                 runtime.narrate(formatCommandError(cmd.error()));
@@ -345,7 +414,7 @@ gameLoop:
             }
             if (cmd.action() == CommandAction.UNKNOWN) {
                 if (translated) {
-                    print("~ translator failed; please rephrase (try HELP or a direction).");
+                    println("~ translator failed; please rephrase (try HELP or a direction).");
                     continue;
                 }
                 runtime.narrate("Unknown command. Type help for commands.");
@@ -388,6 +457,165 @@ gameLoop:
         }
         String suffix = error.column() >= 0 ? " (col " + (error.column() + 1) + ")" : "";
         return "Invalid command: " + error.message() + suffix;
+    }
+
+    private boolean isConversationExit(String input) {
+        List<Token> tokens = CommandScanner.scan(input);
+        List<String> words = new ArrayList<>();
+        for (Token token : tokens) {
+            if (token == null || token.type == TokenType.EOL || token.type == TokenType.HELP) {
+                continue;
+            }
+            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
+            if (lexeme.isEmpty()) {
+                continue;
+            }
+            if (token.type == TokenType.STRING) {
+                for (String part : lexeme.split("\\s+")) {
+                    if (!part.isBlank()) {
+                        words.add(part);
+                    }
+                }
+                continue;
+            }
+            words.add(lexeme);
+        }
+        if (words.size() != 2) {
+            return false;
+        }
+        return "okay".equalsIgnoreCase(words.get(0)) && "bye".equalsIgnoreCase(words.get(1));
+    }
+
+    private enum MentionParseType {
+        NONE,
+        INVALID,
+        AMBIGUOUS,
+        UNKNOWN,
+        MATCH
+    }
+
+    private record MentionParse(MentionParseType type, String actorLabel, String utterance) {
+        static MentionParse none() {
+            return new MentionParse(MentionParseType.NONE, "", "");
+        }
+    }
+
+    private enum MentionHandling {
+        NOT_HANDLED,
+        CONTINUE,
+        END_GAME
+    }
+
+    private MentionParse resolveMention(String input) {
+        if (runtime == null || input == null || input.isBlank()) {
+            return MentionParse.none();
+        }
+        List<Token> tokens = CommandScanner.scan(input);
+        int mentionIndex = findMentionToken(tokens);
+        if (mentionIndex < 0) {
+            return MentionParse.none();
+        }
+        List<String> beforeWords = collectWords(tokens, 0, mentionIndex);
+        List<String> afterWords = collectWords(tokens, mentionIndex + 1, tokens.size());
+        if (afterWords.isEmpty()) {
+            return new MentionParse(MentionParseType.INVALID, "", "");
+        }
+        GameRuntime.MentionResolution resolution = runtime.resolveMentionActor(afterWords);
+        if (resolution.type() == GameRuntime.MentionResolutionType.NONE) {
+            return new MentionParse(MentionParseType.UNKNOWN, "", "");
+        }
+        if (resolution.type() == GameRuntime.MentionResolutionType.AMBIGUOUS) {
+            return new MentionParse(MentionParseType.AMBIGUOUS, "", "");
+        }
+        String actorLabel = resolution.actorLabel() == null ? "" : resolution.actorLabel().trim();
+        List<String> utteranceTokens = new ArrayList<>(beforeWords);
+        int consumed = Math.max(0, resolution.tokensMatched());
+        if (consumed < afterWords.size()) {
+            utteranceTokens.addAll(afterWords.subList(consumed, afterWords.size()));
+        }
+        String utterance = String.join(" ", utteranceTokens).trim();
+        return new MentionParse(MentionParseType.MATCH, actorLabel, utterance);
+    }
+
+    private MentionHandling handleMention(MentionParse mention) throws GameBuilderException {
+        if (mention == null || mention.type() == MentionParseType.NONE) {
+            return MentionHandling.NOT_HANDLED;
+        }
+        switch (mention.type()) {
+            case INVALID -> {
+                narrate("Talk to whom?");
+                return MentionHandling.CONTINUE;
+            }
+            case AMBIGUOUS -> {
+                narrate("Be specific.");
+                return MentionHandling.CONTINUE;
+            }
+            case UNKNOWN -> {
+                narrate("You don't see anyone by that name.");
+                return MentionHandling.CONTINUE;
+            }
+            case MATCH -> {
+                String label = mention.actorLabel() == null ? "" : mention.actorLabel().trim();
+                if (label.isBlank()) {
+                    narrate("No one answers.");
+                    return MentionHandling.CONTINUE;
+                }
+                narrator.setLastCommand("talk " + label);
+                runtime.talk(label);
+                if (!mention.utterance().isBlank()) {
+                    runtime.talkToConversation(mention.utterance());
+                }
+                CommandOutcome turnOutcome = runtime.advanceTurn();
+                if (turnOutcome.endGame()) {
+                    return MentionHandling.END_GAME;
+                }
+                return MentionHandling.CONTINUE;
+            }
+            default -> {
+                return MentionHandling.NOT_HANDLED;
+            }
+        }
+    }
+
+    private int findMentionToken(List<Token> tokens) {
+        if (tokens == null || tokens.isEmpty()) {
+            return -1;
+        }
+        for (int i = 0; i < tokens.size(); i++) {
+            Token token = tokens.get(i);
+            if (token != null && token.type == TokenType.TALK) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private List<String> collectWords(List<Token> tokens, int startIdx, int endIdx) {
+        if (tokens == null || tokens.isEmpty() || startIdx >= endIdx) {
+            return List.of();
+        }
+        int safeEnd = Math.min(tokens.size(), endIdx);
+        List<String> words = new ArrayList<>();
+        for (int i = Math.max(0, startIdx); i < safeEnd; i++) {
+            Token token = tokens.get(i);
+            if (token == null || token.type == TokenType.EOL || token.type == TokenType.HELP || token.type == TokenType.TALK) {
+                continue;
+            }
+            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
+            if (lexeme.isEmpty()) {
+                continue;
+            }
+            if (token.type == TokenType.STRING) {
+                for (String part : lexeme.split("\\s+")) {
+                    if (!part.isBlank()) {
+                        words.add(part);
+                    }
+                }
+                continue;
+            }
+            words.add(lexeme);
+        }
+        return words;
     }
 
     @Override
@@ -463,6 +691,15 @@ gameLoop:
             key = System.getProperty("OPENAI_API_KEY");
         }
         return key;
+    }
+
+    private boolean isSmartActorLocalOnly(AiConfig config) {
+        String scope = config == null ? "" : config.getString("ai.smart_actor.scope", "local");
+        if (scope == null) {
+            return true;
+        }
+        String normalized = scope.trim().toLowerCase(Locale.ROOT);
+        return !(normalized.equals("global") || normalized.equals("all"));
     }
 
 }

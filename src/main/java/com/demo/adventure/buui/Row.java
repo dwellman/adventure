@@ -1,14 +1,13 @@
 package com.demo.adventure.buui;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Row {
     private final List<Cell> cells;
 
     public Row(List<Cell> cells) {
-        this.cells = Collections.unmodifiableList(new ArrayList<>(cells));
+        this.cells = List.copyOf(cells);
     }
 
     public static Row of(Object... values) {

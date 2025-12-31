@@ -1,7 +1,7 @@
 # World Building Pipeline (Pre-Game) — Design v0.4
 
 Status: Draft (design-only)  
-Last verified: 2025-12-13 (America/Denver)
+Last verified: 2025-12-30 (v1.0 deep clean)
 
 ## Purpose
 
@@ -208,7 +208,7 @@ Run gameplay with AI affordances while keeping mechanics deterministic.
 ### Roles
 - **Translator**: deterministic command mapper. Inputs: player text, visible fixtures/items, inventory, last scene text. No backstory. Outputs one command (single-line command string). No invention; only uses the allowed command surface.
 - **Engine**: authoritative state machine. Executes commands, updates world state, and emits factual snapshots (location, fixtures/items/actors, exits). Translator/narrator never mutate mechanics.
-- **Narrator**: stateless rewrite layer. Inputs: engine output, BACKSTORY, LAST_COMMAND. Must keep mechanics factual (no new fixtures/items/exits/state changes). Allowed to add limited atmospheric flavor and one short reaction to playful commands in sparse scenes. Always includes exits; fixtures/items only if present.
+- **Narrator**: rewrite layer with command-specific prompt variants. Inputs are minimal per variant (scene snapshot vs. action result vs. color/emote/check). Must keep mechanics factual (no new fixtures/items/exits/state changes). Paraphrase is allowed if facts are preserved. Destination names and direction words must stay exact when used. Exits are appended only for scene output.
 
 ### Outputs per turn
 - On command: engine snapshot + narrated rewrite.

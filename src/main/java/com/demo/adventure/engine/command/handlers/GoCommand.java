@@ -1,6 +1,7 @@
 package com.demo.adventure.engine.command.handlers;
 
 import com.demo.adventure.engine.runtime.CommandContext;
+import com.demo.adventure.engine.runtime.MoveResult;
 import com.demo.adventure.engine.command.Command;
 import com.demo.adventure.engine.command.CommandAction;
 import com.demo.adventure.support.exceptions.GameBuilderException;
@@ -19,9 +20,15 @@ public final class GoCommand implements GameCommandHandler {
     @Override
     public CommandOutcome handle(CommandContext context, Command command) throws GameBuilderException {
         Direction direction = context.parseDirection(command.target());
-        UUID next = context.move(direction);
+        MoveResult result = context.tryMove(direction);
+        UUID next = result.nextPlotId();
         if (next == null) {
-            context.narrate("You can't go that way.");
+            String reason = result.blockedReason();
+            if (reason == null || reason.isBlank()) {
+                context.narrate("You can't go that way.");
+            } else {
+                context.narrate(reason);
+            }
             return CommandOutcome.none();
         }
         context.setCurrentPlot(next);

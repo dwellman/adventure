@@ -1,20 +1,22 @@
 package com.demo.adventure.authoring.gardener.ai;
 
+import com.demo.adventure.ai.client.AiChatClient;
+import com.demo.adventure.ai.client.AiChatMessage;
+import com.demo.adventure.ai.client.AiChatRequest;
+import com.demo.adventure.ai.client.AiChatResponse;
+import com.demo.adventure.ai.client.OpenAiChatClient;
+import com.demo.adventure.ai.runtime.AiPromptPrinter;
+import com.demo.adventure.authoring.gardener.FixtureDescriptionExpander;
+import com.demo.adventure.authoring.gardener.GardenerDescriptionPatch;
+import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.domain.model.Direction;
 import com.demo.adventure.domain.model.Gate;
 import com.demo.adventure.domain.model.Item;
-import com.demo.adventure.domain.model.Thing;
-import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.domain.model.Plot;
-import com.demo.adventure.authoring.gardener.FixtureDescriptionExpander;
-import com.demo.adventure.authoring.gardener.GardenerDescriptionPatch;
+import com.demo.adventure.domain.model.Thing;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,9 +33,9 @@ import java.util.UUID;
  */
 public final class OpenAiHttpFixtureDescriptionExpander implements FixtureDescriptionExpander {
     private static final String MODEL = "gpt-4o-mini";
-    private static final URI ENDPOINT = URI.create("https://api.openai.com/v1/chat/completions");
     private static final Duration TIMEOUT = Duration.ofSeconds(Long.getLong("gardener.ai.timeout.seconds", 120L));
     private static final String SYSTEM_PROMPT = loadPrompt();
+    private static final AiChatClient CHAT_CLIENT = new OpenAiChatClient();
     private final String voice;
     private final String overview;
 
@@ -67,32 +69,19 @@ public final class OpenAiHttpFixtureDescriptionExpander implements FixtureDescri
     }
 
     private static String callOpenAi(String apiKey, String systemPrompt, String userPrompt) throws Exception {
-        String body = """
-                {
-                  "model": "%s",
-                  "messages": [
-                    {"role":"system","content":%s},
-                    {"role":"user","content":%s}
-                  ],
-                  "temperature": 0.7,
-                  "response_format": {"type":"json_object"}
-                }
-                """.formatted(MODEL, jsonEscape(systemPrompt), jsonEscape(userPrompt));
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(ENDPOINT)
+        AiPromptPrinter.printChatPrompt("gardener", systemPrompt, userPrompt, false);
+        AiChatRequest request = AiChatRequest.builder()
+                .model(MODEL)
+                .messages(List.of(
+                        AiChatMessage.system(systemPrompt),
+                        AiChatMessage.user(userPrompt)
+                ))
+                .temperature(0.7)
+                .responseFormat(AiChatRequest.ResponseFormat.jsonObject())
                 .timeout(TIMEOUT)
-                .header("Authorization", "Bearer " + apiKey)
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
-        if (response.statusCode() / 100 != 2) {
-            throw new IllegalStateException("status " + response.statusCode());
-        }
-        return response.body();
+        AiChatResponse response = CHAT_CLIENT.chat(apiKey, request);
+        return response == null ? null : response.content();
     }
 
     @SuppressWarnings("unchecked")
@@ -101,19 +90,7 @@ public final class OpenAiHttpFixtureDescriptionExpander implements FixtureDescri
         if (response == null || response.isBlank() || target == null) {
             return patches;
         }
-        Object parsed = new Yaml().load(response);
-        if (!(parsed instanceof Map<?, ?> root)) {
-            return patches;
-        }
-        Object choicesObj = root.get("choices");
-        if (!(choicesObj instanceof List<?> choices) || choices.isEmpty()) {
-            return patches;
-        }
-        Object messageObj = ((Map<String, Object>) choices.get(0)).get("message");
-        if (!(messageObj instanceof Map<?, ?> msg)) {
-            return patches;
-        }
-        String content = parseContent(msg.get("content"));
+        String content = parseContent(response);
         if (content == null || content.isBlank()) {
             return patches;
         }
@@ -425,11 +402,6 @@ public final class OpenAiHttpFixtureDescriptionExpander implements FixtureDescri
 
     private static String nullToEmpty(String text) {
         return text == null ? "" : text;
-    }
-
-    private static String jsonEscape(String text) {
-        String escaped = text.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n");
-        return "\"" + escaped + "\"";
     }
 
     private static String loadPrompt() {

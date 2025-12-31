@@ -82,6 +82,26 @@ public final class CommandCompiler {
             return new CommandNode.Verb(action, phrase);
         }
 
+        if (action == CommandAction.LOOK) {
+            PhraseParseResult result = parsePhrase(tokens, 1, safeInput, false);
+            if (result.error != null) {
+                return new CommandNode.Error(result.error);
+            }
+            CommandPhrase phrase = normalizeLookPhrase(tokens, 1, result.phrase);
+            return new CommandNode.Verb(action, phrase);
+        }
+
+        if (action == CommandAction.TALK) {
+            PhraseParseResult result = parsePhrase(tokens, 1, safeInput, true);
+            if (result.error != null) {
+                return new CommandNode.Error(result.error);
+            }
+            if (result.phrase.raw().isBlank()) {
+                return error("Talk to whom?", first, safeInput);
+            }
+            return new CommandNode.Verb(action, result.phrase);
+        }
+
         PhraseParseResult result = parsePhrase(tokens, 1, safeInput, false);
         if (result.error != null) {
             return new CommandNode.Error(result.error);
@@ -117,6 +137,7 @@ public final class CommandCompiler {
             case SEARCH -> CommandAction.EXPLORE;
             case HOW -> CommandAction.HOW;
             case MAKE -> CommandAction.CRAFT;
+            case DICE -> CommandAction.DICE;
             case TAKE -> CommandAction.TAKE;
             case DROP -> CommandAction.DROP;
             case MOVE, GO -> CommandAction.GO;
@@ -125,6 +146,7 @@ public final class CommandCompiler {
             case STRIKE -> CommandAction.ATTACK;
             case FLEE -> CommandAction.FLEE;
             case PUT -> CommandAction.PUT;
+            case TALK -> CommandAction.TALK;
             default -> null;
         };
     }
@@ -269,5 +291,25 @@ public final class CommandCompiler {
             sb.append(token.lexeme);
         }
         return sb.toString().trim();
+    }
+
+    private CommandPhrase normalizeLookPhrase(List<Token> tokens, int startIdx, CommandPhrase phrase) {
+        List<Token> args = collectArgs(tokens, startIdx);
+        if (args.isEmpty()) {
+            return phrase;
+        }
+        Token first = args.get(0);
+        if (first.type == TokenType.IDENTIFIER && isAroundAlias(first.lexeme)) {
+            return CommandPhrase.empty();
+        }
+        return phrase;
+    }
+
+    private boolean isAroundAlias(String lexeme) {
+        if (lexeme == null || lexeme.isBlank()) {
+            return false;
+        }
+        String normalized = lexeme.trim().toLowerCase(Locale.ROOT);
+        return normalized.equals("around") || normalized.equals("arround");
     }
 }

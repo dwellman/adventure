@@ -1,7 +1,7 @@
 items:
 - key: sheriff-badge
   name: Sheriff Badge
-  description: A tarnished badge that still carries weight in Dry Gulch.
+  description: A tarnished badge from Dry Gulch.
   ownerKey: marshal-hale
   visible: true
   fixture: false
@@ -10,7 +10,7 @@ items:
   footprintHeight: 0.08
 - key: saddlebag
   name: Saddlebag
-  description: A rugged saddlebag with enough room for the day's haul.
+  description: A saddlebag with room for a day's haul.
   ownerKey: marshal-hale
   visible: true
   fixture: false

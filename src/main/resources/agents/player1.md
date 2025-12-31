@@ -1,6 +1,6 @@
 # Player1 – Island LLM PlayerAgent (Lab Mode)
 _Version: v2.0_  
-_Role: External PlayerAgent using Spring AI tool-calling_
+_Role: External PlayerAgent using tool-calling_
 
 ---
 

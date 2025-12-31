@@ -1,6 +1,6 @@
 # Deep Clean Log
 
-Last verified: 2025-12-25 (Codex — deep clean sweep)
+Last verified: 2025-12-30 (v1.0 deep clean)
 
 Use this file to log deep-clean passes. Keep entries chronological and concise.
 
@@ -46,3 +46,11 @@ Use this file to log deep-clean passes. Keep entries chronological and concise.
 - Docs: `src/test/resources/playbooks/island-adventure/game.yaml`, `src/test/resources/playbooks/island-adventure/playbook-escape.yaml`, `src/test/resources/playbooks/island-adventure/playbook-escape.md`, `docs/housekeeping/cleaning.log`, `docs/housekeeping/deep-clean-checklist.md`, `docs/design/testing-strategy.md`, BUJO, journal updated.
 - Status: Clean (2025-12-25, Codex)
 - Risks/Follow-ups: Integrity sweep still caps at 5,000 states; Island win remains warning until search strategy improves.
+
+## 2025-12-30 — v1.0 deep clean — Codex
+- Scope: Deep clean pass to align docs/runbooks/README with current narrator/translator routing, interaction gating, and conversation behavior; archived conversation TODO list.
+- Commands: `mvn -q test`
+- Coverage: Not collected (no coverage tool configured).
+- Docs: `readme.md`, `docs/architecture/overview.md`, `docs/design/ai-roles.md`, `docs/design/cli.md`, `docs/design/pipeline.md`, `docs/design/smart-actors.md`, `docs/design/todo-conversation.md`, `docs/index.md`, `docs/runbooks/ai-cli.md`, BUJO, journal updated.
+- Status: Clean (2025-12-30, Codex)
+- Risks/Follow-ups: InteractionState currently gates dice only; choice/confirm prompts remain a scaffold.

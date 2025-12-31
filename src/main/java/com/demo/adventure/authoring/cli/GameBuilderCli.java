@@ -151,7 +151,7 @@ public final class GameBuilderCli extends BuuiConsole {
         try {
             if (output != null) {
                 GameSaveYamlWriter.write(save, output);
-                print("Wrote YAML to " + output.toAbsolutePath());
+                println("Wrote YAML to " + output.toAbsolutePath());
             } else {
                 // Default to stdout for ease of piping or redirects.
                 printText(GameSaveYamlWriter.toYaml(save));

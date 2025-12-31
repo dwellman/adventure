@@ -24,7 +24,7 @@ class GameCliExitFormattingTest {
     final ConsoleCaptureExtension console = new ConsoleCaptureExtension();
 
     @Test
-    void exitHintsStripTrailingPunctuation() throws Exception {
+    void exitListOmitsGateHints() throws Exception {
         KernelRegistry registry = new KernelRegistry();
         Plot origin = new PlotBuilder()
                 .withLabel("Lagoon Shore")
@@ -70,7 +70,7 @@ class GameCliExitFormattingTest {
         console.reset();
         runtime.describe();
         String output = console.output();
-        assertThat(output).contains("Exits: SOUTH (A patched raft could ferry you to the sandbar), WEST");
-        assertThat(output).doesNotContain("sandbar.),");
+        assertThat(output).contains("Exits: SOUTH \u2022 WEST");
+        assertThat(output).doesNotContain("sandbar");
     }
 }

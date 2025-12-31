@@ -16,7 +16,7 @@ plots:
   region: FRONTIER
   locationX: -1
   locationY: 1
-  description: Iron bars, a narrow cot, and the stale smell of last night's trouble.
+  description: Iron bars, a narrow cot, and a stale smell.
 - key: general-store
   name: General Store
   region: FRONTIER
@@ -28,7 +28,7 @@ plots:
   region: FRONTIER
   locationX: 0
   locationY: -1
-  description: Swinging doors, brass rail, sawdust, and a piano that refuses to die.
+  description: Swinging doors, a brass rail, sawdust, and an old piano.
 - key: stable-yard
   name: Stable Yard
   region: FRONTIER
@@ -40,13 +40,13 @@ plots:
   region: FRONTIER
   locationX: 1
   locationY: 0
-  description: A cramped room of wire and switches, the line dead and humming with static.
+  description: A cramped room of wire and switches with a dead line and static.
 - key: water-tower
   name: Water Tower
   region: FRONTIER
   locationX: 1
   locationY: -1
-  description: A corrugated tower with a valve wheel and a ladder baked by the sun.
+  description: A corrugated tower with a valve wheel and a sun-warmed ladder.
 - key: train-platform
   name: Train Platform
   region: FRONTIER
@@ -88,7 +88,7 @@ plots:
   region: FRONTIER
   locationX: 2
   locationY: -2
-  description: A narrow trestle over a rocky wash; the timbers groan under every gust.
+  description: A narrow trestle over a rocky wash with wind-worn timbers.
 - key: old-mine
   name: Old Mine
   region: FRONTIER

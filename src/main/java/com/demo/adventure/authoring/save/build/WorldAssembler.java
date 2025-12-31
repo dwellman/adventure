@@ -136,15 +136,17 @@ public final class WorldAssembler {
                 continue;
             }
             if (fromPlot.getGateId(direction) != null) {
+                updateGateDescription(registry, fromPlot.getGateId(direction), fromId, gateSpec.description());
                 continue;
             }
             Direction opposite = Direction.oppositeOf(direction);
             if (opposite != null && toPlot.getGateId(opposite) != null) {
+                updateGateDescription(registry, toPlot.getGateId(opposite), fromId, gateSpec.description());
                 continue;
             }
-                try {
-                    // Gates are plain graph edges: keyString gates traversal; regions do not block cross-zone links.
-                    builder.connectPlots(
+            try {
+                // Gates are plain graph edges: keyString gates traversal; regions do not block cross-zone links.
+                builder.connectPlots(
                             gateSpec.fromPlotId(),
                             gateSpec.direction(),
                             gateSpec.toPlotId(),
@@ -160,6 +162,19 @@ public final class WorldAssembler {
 
         synthesizeMissingGates(registry, builder);
         return registry;
+    }
+
+    private void updateGateDescription(KernelRegistry registry, UUID gateId, UUID fromPlotId, String description) {
+        if (registry == null || gateId == null || fromPlotId == null) {
+            return;
+        }
+        if (description == null || description.isBlank()) {
+            return;
+        }
+        Object gate = registry.get(gateId);
+        if (gate instanceof Gate found) {
+            found.recordDescriptionFrom(fromPlotId, description, 0);
+        }
     }
 
     /**

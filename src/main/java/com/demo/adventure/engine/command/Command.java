@@ -21,11 +21,15 @@ public record Command(
     }
 
     public static Command unknown() {
-        return new Command(CommandAction.UNKNOWN, "", "", null, null, null);
+        return new Command(
+                CommandAction.UNKNOWN, "", "", null, null, null
+        );
     }
 
     public static Command error(CommandParseError error) {
-        return new Command(CommandAction.UNKNOWN, "", "", null, null, error);
+        return new Command(
+                CommandAction.UNKNOWN, "", "", null, null, error
+        );
     }
 
     public boolean hasError() {

@@ -232,6 +232,7 @@ class SmartActorRuntimeTest {
                     List.of(),
                     List.of("EAST"),
                     "",
+                    "",
                     List.of()
             );
         }

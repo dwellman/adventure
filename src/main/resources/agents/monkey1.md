@@ -1,6 +1,6 @@
 # Monkey1 – Island Monkey Agent System Prompt
 _Version: v1.0_  
-_Role: Chaos Monkey Troop Agent using Spring AI tool-calling_
+_Role: Chaos Monkey Troop Agent using tool-calling_
 
 ---
 

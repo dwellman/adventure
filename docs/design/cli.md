@@ -1,5 +1,7 @@
 # CLI Architecture (TODAY → TOMORROW → SOMEDAY)
 
+Last verified: 2025-12-30 (v1.0 deep clean)
+
 Authoritative AI/CLI runtime runbook:
 - `docs/runbooks/ai-cli.md`
 
@@ -12,6 +14,13 @@ Authoritative AI/CLI runtime runbook:
 - **Invariants:** Player-facing output must stay free of debug spew; no hardcoded game logic in CLI; AI enabled only with `--mode=2025` and `OPENAI_API_KEY`.
 - **Patterns:** Grounding (structured loads), Orchestration (Interpreter → Engine → Narrator, one step per tick), Verification (tests/receipts), Trust UX (debug off, no hidden mechanics), Learning (BUJO + future judges/golden transcripts).
 - **Testing patterns:** See `docs/design/pattern-tests.md` for grounding/orchestration/verification/trust-UX/learning test strategies.
+
+### Input routing order (deterministic)
+1) **InteractionState** (awaiting dice/choice/confirm) consumes the turn; only the expected input is accepted.
+2) Conversation exit (`okay, bye`) ends the current conversation.
+3) `@` mention starts/switches conversation and optionally forwards remaining text as the utterance.
+4) Active conversation routes all input to the addressed actor.
+5) Normal command flow (CommandScanner/Compiler; translator only if enabled).
 
 ### Text diagram (CLI surface)
 ```

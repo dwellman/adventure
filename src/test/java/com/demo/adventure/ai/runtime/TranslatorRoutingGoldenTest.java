@@ -28,6 +28,7 @@ class TranslatorRoutingGoldenTest {
             assertThat(result.type()).isEqualTo(parseType(parts[0]));
             switch (result.type()) {
                 case COMMAND -> assertThat(result.command()).isEqualTo(parts[1]);
+                case EMOTE -> assertThat(result.command()).startsWith("EMOTE:");
                 case ERROR -> assertThat(result.error()).isNotBlank();
             }
         }

@@ -15,25 +15,34 @@ public class BorderCharacters {
     public final String rightSeparator;
 
     public static BorderCharacters ascii() {
-        return new BorderCharacters("+", "+", "+", "+", "+", "-", "|", "+", "+", "+", "+", "+");
+        return new BorderCharacters(
+                "+", "+", "+", "+", "+",
+                "-", "|", "+", "+", "+",
+                "+", "+"
+        );
     }
 
     public static BorderCharacters boxDrawing() {
-        return new BorderCharacters("┌", "┐", "└", "┘", "┴", "─", "│", "┬", "┼", "┼", "├", "┤");
+        return new BorderCharacters(
+                "┌", "┐", "└", "┘", "┴", "─",
+                "│", "┬", "┼", "┼", "├", "┤"
+        );
     }
 
-    public BorderCharacters(String topLeft,
-                            String topRight,
-                            String bottomLeft,
-                            String bottomRight,
-                            String bottomCenter,
-                            String horizontal,
-                            String vertical,
-                            String headerSeparator,
-                            String titleSeparator,
-                            String intersection,
-                            String leftSeparator,
-                            String rightSeparator) {
+    public BorderCharacters(
+            String topLeft,
+            String topRight,
+            String bottomLeft,
+            String bottomRight,
+            String bottomCenter,
+            String horizontal,
+            String vertical,
+            String headerSeparator,
+            String titleSeparator,
+            String intersection,
+            String leftSeparator,
+            String rightSeparator
+    ) {
         this.topLeft = topLeft;
         this.topRight = topRight;
         this.bottomLeft = bottomLeft;

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +18,15 @@ class NarratorPromptGoldenTest {
                 "look",
                 "Garden\nExits: east",
                 "Garden\nExits: east",
-                "Backstory line"
+                "Backstory line",
+                List.of(
+                        new RecentAction("look", "You scan the garden."),
+                        new RecentAction("go east", "You step onto a mossy path.")
+                ),
+                List.of(
+                        new RecentNarration("Steam coils across the platform."),
+                        new RecentNarration("A whistle fades into the canyon.")
+                )
         );
 
         Path path = Path.of("src/test/resources/ai/narrator/prompt-engine-golden.txt");
@@ -32,7 +41,15 @@ class NarratorPromptGoldenTest {
                 "look",
                 "Garden\nExits: east",
                 "A breeze stirs.",
-                "Backstory line"
+                "Backstory line",
+                List.of(
+                        new RecentAction("look", "You scan the garden."),
+                        new RecentAction("go east", "You step onto a mossy path.")
+                ),
+                List.of(
+                        new RecentNarration("Steam coils across the platform."),
+                        new RecentNarration("A whistle fades into the canyon.")
+                )
         );
 
         Path path = Path.of("src/test/resources/ai/narrator/prompt-snapshot-golden.txt");

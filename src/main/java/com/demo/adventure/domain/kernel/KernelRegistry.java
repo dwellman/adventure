@@ -36,14 +36,14 @@ public final class KernelRegistry {
         return everything.get(id);
     }
 
-    public boolean moveOwnership(UUID thingId, UUID newOwnerId) {
+    public void moveOwnership(UUID thingId, UUID newOwnerId) {
         Thing thing = everything.get(thingId);
         if (thing == null) {
-            return false;
+            return;
         }
         UUID source = thing.getOwnerId();
         if (Objects.equals(source, newOwnerId)) {
-            return true;
+            return;
         }
         if (source != null) {
             ownershipIndex.computeIfPresent(source, (k, v) -> {
@@ -56,7 +56,6 @@ public final class KernelRegistry {
         }
         thing.setOwnerId(newOwnerId);
         log.info(() -> "Move: " + label(thing) + " source=" + source + " target=" + newOwnerId);
-        return true;
     }
 
     public List<Gate> findGates(UUID sourcePlotId, Direction direction) {

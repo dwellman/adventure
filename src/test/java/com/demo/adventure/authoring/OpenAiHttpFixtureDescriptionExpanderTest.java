@@ -9,6 +9,7 @@ import com.demo.adventure.domain.model.Plot;
 import com.demo.adventure.domain.model.PlotBuilder;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.authoring.gardener.GardenerDescriptionPatch;
+import com.demo.adventure.ai.client.AiJson;
 import com.demo.adventure.authoring.gardener.ai.OpenAiHttpFixtureDescriptionExpander;
 import org.junit.jupiter.api.Test;
 
@@ -110,11 +111,8 @@ class OpenAiHttpFixtureDescriptionExpanderTest {
 
         UUID gateId = (UUID) invokeTarget(gateTarget, "id");
         String response = String.join("\n",
-                "choices:",
-                "  - message:",
-                "      content: |",
-                "        - thingId: " + gateId,
-                "          description: Crossing line"
+                "- thingId: " + gateId,
+                "  description: Crossing line"
         );
 
         @SuppressWarnings("unchecked")
@@ -308,7 +306,7 @@ class OpenAiHttpFixtureDescriptionExpanderTest {
 
     @Test
     void jsonEscapeQuotesStrings() throws Exception {
-        String escaped = (String) invokeStatic("jsonEscape", new Class<?>[]{String.class}, "Hello \"world\"");
+        String escaped = AiJson.escape("Hello \"world\"");
         assertThat(escaped).isEqualTo("\"Hello \\\"world\\\"\"");
     }
 

@@ -33,7 +33,8 @@ public final class RuntimeLoader {
     }
 
     public static GameSave loadSave(String resourcePath) throws IOException {
-        // Grounding: prefer structured filesystem games; fail loud on structured breakage (no silent fallback to monolithic).
+        // Grounding: prefer structured filesystem games; fail loud on structured breakage
+        // (no silent fallback to monolithic).
         Path fsPath = Path.of(resourcePath);
         boolean isGdl = resourcePath.toLowerCase(Locale.ROOT).endsWith(".gdl");
         if (Files.exists(fsPath)) {
@@ -86,7 +87,9 @@ public final class RuntimeLoader {
                     throw new IllegalStateException("Failed to read backstory: " + backstoryPath, ex);
                 }
             }
-            throw new IllegalStateException("Missing backstory file: " + dir.resolve("narrative/backstory.md"));
+            throw new IllegalStateException(
+                    "Missing backstory file: " + dir.resolve("narrative/backstory.md"
+                    ));
         }
         String[] candidates = classpathCandidates(resourcePath, "narrative", "backstory.md");
         try (InputStream in = openClasspathResource(candidates)) {
@@ -146,7 +149,9 @@ public final class RuntimeLoader {
                 return VerbAliasLoader.load(in);
             }
         } catch (IOException ex) {
-            throw new IllegalStateException("Failed to load verb aliases from classpath: " + candidates[0], ex);
+            throw new IllegalStateException(
+                    "Failed to load verb aliases from classpath: " + candidates[0], ex
+            );
         }
         return Map.of();
     }
@@ -172,7 +177,9 @@ public final class RuntimeLoader {
                 return LoopConfigLoader.load(in);
             }
         } catch (IOException ex) {
-            throw new IllegalStateException("Failed to load loop config from classpath: " + candidates[0], ex);
+            throw new IllegalStateException(
+                    "Failed to load loop config from classpath: " + candidates[0], ex
+            );
         }
         return LoopConfig.disabled();
     }
@@ -198,7 +205,9 @@ public final class RuntimeLoader {
                 return TriggerConfigLoader.load(in);
             }
         } catch (IOException ex) {
-            throw new IllegalStateException("Failed to load trigger config from classpath: " + candidates[0], ex);
+            throw new IllegalStateException(
+                    "Failed to load trigger config from classpath: " + candidates[0], ex
+            );
         }
         return List.of();
     }
@@ -250,7 +259,9 @@ public final class RuntimeLoader {
                 return SmartActorTagLoader.load(in);
             }
         } catch (IOException ex) {
-            throw new IllegalStateException("Failed to load smart actor tags from classpath: " + candidates[0], ex);
+            throw new IllegalStateException(
+                    "Failed to load smart actor tags from classpath: " + candidates[0], ex
+            );
         }
         return SmartActorTagIndex.empty();
     }

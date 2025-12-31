@@ -22,9 +22,11 @@ public final class CommandHandlers {
         register(handlers, new ExploreCommand());
         register(handlers, new CraftCommand());
         register(handlers, new HowCommand());
+        register(handlers, new DiceCommand());
         register(handlers, new TakeCommand());
         register(handlers, new DropCommand());
         register(handlers, new OpenCommand());
+        register(handlers, new TalkCommand());
         register(handlers, new UseCommand());
         register(handlers, new AttackCommand());
         register(handlers, new FleeCommand());

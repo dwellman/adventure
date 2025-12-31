@@ -14,7 +14,9 @@ public final class TakeCommand implements GameCommandHandler {
     }
 
     @Override
-    public CommandOutcome handle(CommandContext context, Command command) throws GameBuilderException {
+    public CommandOutcome handle(
+            CommandContext context, Command command
+    ) throws GameBuilderException {
         Item taken = context.take(command.target());
         if (taken == null) {
             return CommandOutcome.none();

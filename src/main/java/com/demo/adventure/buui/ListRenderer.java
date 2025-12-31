@@ -8,7 +8,7 @@ public final class ListRenderer {
     private ListRenderer() {
     }
 
-    public static final String BULLET = "\u2022";
+    public static final String BULLET = "•";
 
     public record ListItem(int indent, String bullet, String text) {
         public ListItem {
@@ -37,20 +37,21 @@ public final class ListRenderer {
             int indent = Math.max(0, item.indent());
             String indentPrefix = " ".repeat(indent);
             String bullet = item.bullet();
-            String text = item.text().trim();
+            String text = TextUtils.trimWhitespace(item.text());
+            int bulletVisible = TextUtils.visibleLength(bullet);
             String prefix = indentPrefix + bullet + " ";
             if (text.isEmpty()) {
                 lines.add(indentPrefix + bullet);
                 continue;
             }
-            int available = Math.max(1, effectiveWidth - prefix.length());
+            int available = Math.max(1, effectiveWidth - (indent + bulletVisible + 1));
             List<String> wrapped = TextUtils.wrap(text, available);
             for (int i = 0; i < wrapped.size(); i++) {
                 String line = wrapped.get(i);
                 if (i == 0) {
                     lines.add(prefix + line);
                 } else {
-                    String pad = indentPrefix + " ".repeat(bullet.length() + 1);
+                    String pad = indentPrefix + " ".repeat(bulletVisible + 1);
                     lines.add(pad + line);
                 }
             }

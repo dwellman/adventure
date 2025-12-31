@@ -28,13 +28,15 @@ public final class BuuiMenu {
     private final List<MenuItem> items;
     private final RenderStyle style;
 
-    private BuuiMenu(String title,
-                     String keyHeader,
-                     String itemHeader,
-                     String descriptionHeader,
-                     int minKeyWidth,
-                     List<MenuItem> items,
-                     RenderStyle style) {
+    private BuuiMenu(
+            String title,
+            String keyHeader,
+            String itemHeader,
+            String descriptionHeader,
+            int minKeyWidth,
+            List<MenuItem> items,
+            RenderStyle style
+    ) {
         this.title = title;
         this.keyHeader = keyHeader;
         this.itemHeader = itemHeader;

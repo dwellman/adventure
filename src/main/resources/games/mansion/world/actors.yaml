@@ -7,7 +7,7 @@ actors:
 - key: butler
   name: Elias Crane
   description: A precise butler with a practiced calm and watchful eyes.
-  ownerKey: dining-room
+  ownerKey: hall
   visible: true
 - key: heiress
   name: Vivian Coldwater

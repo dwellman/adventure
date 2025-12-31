@@ -1,7 +1,7 @@
 # Smart Actor Architecture (Draft)
 
 Status: In progress (runtime wired, combat integration enabled with constrained verbs)
-Last verified: 2025-12-25
+Last verified: 2025-12-30
 
 ## Goal
 Define AI-backed in-world actors with personality, unique memories, and attributes while keeping mechanics deterministic and engine-owned.
@@ -85,6 +85,30 @@ smartActors:
 - Default cadence: run each eligible smart actor once per player turn; cooldownTurns gates repeats.
 - COLOR/NONE results do not mutate state; they do not advance the loop timer.
 - Combat turns: smart actors can act during combat, but only ATTACK/FLEE are allowed; invalid outputs become a passed turn (\"hesitates\") so combat can advance.
+
+## Player conversations (2025 mode)
+Goal: let the player address a smart actor directly without heuristics while keeping mechanics deterministic.
+
+Conversation entry/exit:
+- Start: `@<ActorKeyOrLabel>` (example: `@Butler`) or `talk <actor>` / `talk to <actor>`.
+- End: exact phrase "okay, bye" (punctuation allowed, tokenized via CommandScanner).
+- While active, all player input is treated as dialogue to the active actor until the exit phrase.
+
+Parsing + grounding:
+- `@` mention routing is deterministic and uses CommandScanner tokens; the mention can appear anywhere in the line.
+- Actor lookup accepts exact label match, exact key match, or a label-prefix token match. A single-token label match is allowed only when it is unique among visible actors.
+- Longest token match wins; ambiguous matches emit a deterministic "Be specific." response.
+- No fuzzy matching, no edit distance, no heuristic guesses.
+- Any remaining tokens (before or after the resolved actor name) are forwarded as the player utterance for that turn.
+
+Smart actor reply contract:
+- When the player is speaking to a smart actor, the prompt includes `context.playerUtterance`.
+- The smart actor returns a single-line JSON decision with `type=COLOR` and `color` as a short spoken reply.
+- Replies do not execute commands or change state; they are narrated as dialogue.
+
+Scheduling:
+- A conversation reply suppresses that actor's autonomous action in the same turn.
+- Other actors may still act after the player turn.
 
 ## Memory model
 - Memory entries are append-only, scoped, non-mechanical.

@@ -6,15 +6,17 @@ cd "$DIR"
 source "$DIR/scripts/common.sh"
 
 MVN_BIN="${MVN_BIN:-mvn}"
-QUIET=0
+QUIET=1
 
 usage() {
   cat <<'EOF'
 Adventure runner.
 Usage: adventure [--verbose] [--quiet] [--mode=1980|2025] [--help]
-  --verbose   : show Maven output
+  --verbose   : show Maven output (default is quiet)
   --quiet     : suppress Maven output (CLI still prints game text)
   --mode      : choose gameplay mode (1980 classic / 2025 LLM); default auto
+  BUUI_STYLE  : path to a .style file for markdown output (defaults to ./standard.style if present)
+  AI_PROMPTS_PRINT : set true to print system/user prompts before LLM requests
   --help      : show this help
 EOF
 }
@@ -58,6 +60,10 @@ if [[ "${MODE}" == "auto" ]]; then
     MODE="1980"
     echo "AUTO mode: no OPENAI_API_KEY; It's 1980" >&2
   fi
+fi
+
+if [[ -z "${BUUI_STYLE:-}" && -f "$DIR/standard.style" ]]; then
+  export BUUI_STYLE="$DIR/standard.style"
 fi
 
 CMD=("${MVN_BIN}")

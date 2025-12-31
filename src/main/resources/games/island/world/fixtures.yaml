@@ -11,14 +11,12 @@ fixtures:
   visible: true
 - key: time-stone-pedestal
   name: Time Stone Pedestal
-  description: The Time Stone Pedestal stands solemnly within the heart of the volcano, its dark surface a stark contrast
-    to the vibrant glow of the cold green gem resting atop it, hinting at mysteries waiting to be uncovered.
+  description: A dark stone pedestal with a cold green gem on top.
   ownerKey: volcano-altar
   visible: true
 - key: treehouse-skeleton
   name: Treehouse Skeleton
-  description: The skeletal remains of the long-dead scientist sit forlornly in the corner, surrounded by the remnants of
-    their once-vibrant explorations, now just whispers of the past.
+  description: Skeletal remains in the corner with scattered remnants of past exploration.
   ownerKey: treehouse
   visible: true
   cells:

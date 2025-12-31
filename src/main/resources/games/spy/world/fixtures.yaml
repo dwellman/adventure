@@ -66,7 +66,7 @@ fixtures:
   visible: true
 - key: lantern-string
   name: Lantern
-  description: A string of lanterns swaying above the vendor stalls.
+  description: A string of lanterns hangs above the vendor stalls.
   ownerKey: temple-street-lantern-row
   visible: true
 - key: dockside-scale
@@ -96,7 +96,7 @@ fixtures:
   visible: true
 - key: glass-shrine
   name: Glass Shrine
-  description: A glass shrine glows softly, its surface cold and spotless.
+  description: A glass shrine glows, its surface cold and spotless.
   ownerKey: veranda-threshold-sightline
   visible: true
 - key: relief-panel

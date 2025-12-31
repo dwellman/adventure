@@ -1,7 +1,7 @@
 fixtures:
 - key: sheriffs-desk
   name: "Sheriff's Desk"
-  description: An oak desk scarred by years of hard decisions.
+  description: An oak desk with deep scratches.
   ownerKey: sheriff-s-office
   visible: true
 - key: saloon-bar
@@ -21,12 +21,12 @@ fixtures:
   visible: true
 - key: bridge-safe-signal
   name: Bridge Safe Signal
-  description: A lantern hook with a shuttered green glass, waiting for the all-clear.
+  description: A lantern hook with a shuttered green glass.
   ownerKey: train-platform
   visible: false
 - key: cell-bars
   name: Cell Bars
-  description: Thick iron bars with a lock polished by nervous hands.
+  description: Thick iron bars with a polished lock.
   ownerKey: jailhouse
   visible: true
 - key: store-counter
@@ -41,7 +41,7 @@ fixtures:
   visible: true
 - key: water-valve
   name: Water Valve
-  description: A rusted wheel that groans when you touch it.
+  description: A rusted wheel.
   ownerKey: water-tower
   visible: true
 - key: signal-lever
@@ -66,7 +66,7 @@ fixtures:
   visible: true
 - key: mine-shaft
   name: Mine Shaft
-  description: Timber supports brace the darkness below.
+  description: Timber supports brace the space below.
   ownerKey: old-mine
   visible: true
 - key: depot-workbench

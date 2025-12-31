@@ -13,6 +13,7 @@ public record SmartActorWorldSnapshot(
         List<String> inventory,
         List<String> exits,
         String lastScene,
+        String playerUtterance,
         List<String> receipts
 ) {
     public SmartActorWorldSnapshot {
@@ -26,6 +27,7 @@ public record SmartActorWorldSnapshot(
         inventory = inventory == null ? List.of() : List.copyOf(inventory);
         exits = exits == null ? List.of() : List.copyOf(exits);
         lastScene = lastScene == null ? "" : lastScene.trim();
+        playerUtterance = playerUtterance == null ? "" : playerUtterance.trim();
         receipts = receipts == null ? List.of() : List.copyOf(receipts);
     }
 }

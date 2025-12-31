@@ -55,6 +55,7 @@ public final class CommandScanner {
                 case ' ', '\t', '\r', '\n', ',', '.', '(', ')' -> {
                     // skip
                 }
+                case '@' -> tokens.add(new Token(TokenType.TALK, String.valueOf(c), start));
                 case '"' -> tokens.add(readString(start));
                 case '?' -> tokens.add(new Token(TokenType.HELP, String.valueOf(c), start));
                 default -> {
@@ -116,78 +117,79 @@ public final class CommandScanner {
 
     private void loadDefaultKeywords() {
         // Actions
-        keywords.put("EAT", TokenType.EAT);
+        keywords.put("ATTACK", TokenType.STRIKE);
         keywords.put("CLIMB", TokenType.MOVE);
+        keywords.put("CRAFT", TokenType.MAKE);
+        keywords.put("DICE", TokenType.DICE);
         keywords.put("DROP", TokenType.DROP);
+        keywords.put("EAT", TokenType.EAT);
+        keywords.put("EXIT", TokenType.QUIT);
+        keywords.put("EXPLORE", TokenType.SEARCH);
+        keywords.put("FLEE", TokenType.FLEE);
         keywords.put("GO", TokenType.MOVE);
-        keywords.put("MOVE", TokenType.MOVE);
         keywords.put("GRAB", TokenType.TAKE);
+        keywords.put("HOW", TokenType.HOW);
+        keywords.put("I", TokenType.INVENTORY);
         keywords.put("INSPECT", TokenType.INSPECT);
         keywords.put("INVENTORY", TokenType.INVENTORY);
-        keywords.put("I", TokenType.INVENTORY);
         keywords.put("JUMP", TokenType.JUMP);
         keywords.put("L", TokenType.LOOK);
-        keywords.put("LOOK", TokenType.LOOK);
         keywords.put("LISTEN", TokenType.LISTEN);
+        keywords.put("LOOK", TokenType.LOOK);
         keywords.put("MAKE", TokenType.MAKE);
-        // Keep player verbs normalized: CRAFT and MAKE collapse to the same token so
-        // downstream command handlers don't need to special-case synonyms.
-        keywords.put("CRAFT", TokenType.MAKE);
-        keywords.put("ATTACK", TokenType.STRIKE);
+        keywords.put("MOVE", TokenType.MOVE);
         keywords.put("OPEN", TokenType.OPEN);
         keywords.put("PUT", TokenType.PUT);
+        keywords.put("Q", TokenType.QUIT);
+        keywords.put("QUIT", TokenType.QUIT);
+        keywords.put("ROLL", TokenType.DICE);
+        keywords.put("RUN", TokenType.MOVE);
         keywords.put("SEARCH", TokenType.SEARCH);
-        keywords.put("EXPLORE", TokenType.SEARCH);
         keywords.put("SOAK", TokenType.SOAK);
         keywords.put("STRIKE", TokenType.STRIKE);
         keywords.put("SWIM", TokenType.SWIM);
         keywords.put("TAKE", TokenType.TAKE);
+        keywords.put("TALK", TokenType.TALK);
         keywords.put("USE", TokenType.USE);
-        keywords.put("HOW", TokenType.HOW);
-        keywords.put("QUIT", TokenType.QUIT);
-        keywords.put("FLEE", TokenType.FLEE);
-        keywords.put("RUN", TokenType.MOVE);
-        keywords.put("EXIT", TokenType.QUIT);
-        keywords.put("Q", TokenType.QUIT);
 
         // Directions
+        keywords.put("D", TokenType.DOWN);
+        keywords.put("DOWN", TokenType.DOWN);
         keywords.put("E", TokenType.EAST);
         keywords.put("EAST", TokenType.EAST);
         keywords.put("N", TokenType.NORTH);
         keywords.put("NE", TokenType.NORTH_EAST);
         keywords.put("NORTH", TokenType.NORTH);
         keywords.put("NORTH_EAST", TokenType.NORTH_EAST);
-        keywords.put("NORTHEAST", TokenType.NORTH_EAST);
-        keywords.put("NW", TokenType.NORTH_WEST);
         keywords.put("NORTH_WEST", TokenType.NORTH_WEST);
+        keywords.put("NORTHEAST", TokenType.NORTH_EAST);
         keywords.put("NORTHWEST", TokenType.NORTH_WEST);
+        keywords.put("NW", TokenType.NORTH_WEST);
         keywords.put("S", TokenType.SOUTH);
         keywords.put("SE", TokenType.SOUTH_EAST);
         keywords.put("SOUTH", TokenType.SOUTH);
         keywords.put("SOUTH_EAST", TokenType.SOUTH_EAST);
-        keywords.put("SOUTHEAST", TokenType.SOUTH_EAST);
         keywords.put("SOUTH_WEST", TokenType.SOUTH_WEST);
+        keywords.put("SOUTHEAST", TokenType.SOUTH_EAST);
         keywords.put("SOUTHWEST", TokenType.SOUTH_WEST);
         keywords.put("SW", TokenType.SOUTH_WEST);
-        keywords.put("W", TokenType.WEST);
-        keywords.put("WEST", TokenType.WEST);
         keywords.put("U", TokenType.UP);
         keywords.put("UP", TokenType.UP);
-        keywords.put("D", TokenType.DOWN);
-        keywords.put("DOWN", TokenType.DOWN);
+        keywords.put("W", TokenType.WEST);
+        keywords.put("WEST", TokenType.WEST);
 
         // Keywords
-        keywords.put("FROM", TokenType.FROM);
-        keywords.put("HELP", TokenType.HELP);
-        keywords.put("H", TokenType.HELP);
         keywords.put("?", TokenType.HELP);
+        keywords.put("AWAY", TokenType.AWAY);
+        keywords.put("FROM", TokenType.FROM);
+        keywords.put("H", TokenType.HELP);
+        keywords.put("HELP", TokenType.HELP);
         keywords.put("IN", TokenType.IN);
         keywords.put("INTO", TokenType.INTO);
         keywords.put("ON", TokenType.ON);
         keywords.put("TO", TokenType.TO);
-        keywords.put("WITH", TokenType.WITH);
         keywords.put("USING", TokenType.USING);
-        keywords.put("AWAY", TokenType.AWAY);
+        keywords.put("WITH", TokenType.WITH);
     }
 
     private void mergeKeywords(Map<String, TokenType> extraKeywords) {

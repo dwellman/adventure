@@ -80,6 +80,7 @@ public final class SmartActorPromptBuilder {
         ctx.put("inventory", snapshot.inventory());
         ctx.put("exits", snapshot.exits());
         ctx.put("lastScene", snapshot.lastScene());
+        ctx.put("playerUtterance", snapshot.playerUtterance());
         ctx.put("receipts", snapshot.receipts());
         return ctx;
     }

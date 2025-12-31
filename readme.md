@@ -1,6 +1,6 @@
 # BUUI Adventure
 
-Last verified: 2025-12-24 (layout + prompt path update)
+Last verified: 2025-12-30 (v1.0 deep clean)
 
 A 1980s-style, turn-based text adventure engine with a modern AI-assisted CLI mode.
 You can play it, inspect the prompts, and tune the mechanics and content.
@@ -141,7 +141,8 @@ Crafting rules:
 - Mode selection: `--mode=1980` or `--mode=2025`.
 - Translator maps player text to commands; narrator rewrites the engine output.
 - Prompts:
-  - Runtime templates: `src/main/resources/agents/translator.md`, `src/main/resources/agents/narrator.md`
+  - Runtime translator template: `src/main/resources/agents/translator.md`
+  - Narrator prompts are compiled on demand in `src/main/java/com/demo/adventure/ai/runtime/NarratorPromptBuilder.java`
   - Role contracts: `src/main/resources/agents/`
 - Debug toggles live in `application.properties` (`ai.translator.debug`, `ai.narrator.debug`).
 

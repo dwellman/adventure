@@ -18,7 +18,9 @@ public final class WorldRecipe {
     private final List<GateSpec> gates;
     private final List<FixtureSpec> fixtures;
 
-    public WorldRecipe(long seed, UUID startPlotId, List<PlotSpec> plots, List<GateSpec> gates, List<FixtureSpec> fixtures) {
+    public WorldRecipe(
+            long seed, UUID startPlotId, List<PlotSpec> plots, List<GateSpec> gates, List<FixtureSpec> fixtures
+    ) {
         this.seed = seed;
         this.startPlotId = Objects.requireNonNull(startPlotId, "startPlotId");
         this.plots = List.copyOf(Objects.requireNonNullElse(plots, List.of()));
@@ -68,7 +70,9 @@ public final class WorldRecipe {
         // Key expressions gate movement; regions are not enforced here so gates can bridge any plots/zones.
     }
 
-    public record FixtureSpec(UUID id, String name, String description, UUID ownerId, boolean visible, Map<String, CellSpec> cells) {
+    public record FixtureSpec(
+            UUID id, String name, String description, UUID ownerId, boolean visible, Map<String, CellSpec> cells
+    ) {
         public FixtureSpec {
             cells = normalizeCells(cells);
         }

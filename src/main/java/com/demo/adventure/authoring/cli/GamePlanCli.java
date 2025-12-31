@@ -117,7 +117,7 @@ public final class GamePlanCli extends BuuiConsole {
                     writeReceipt(outDir, "constraints_interview", "failed", "Empty question text");
                     return;
                 }
-                print("Q" + (questionId == null ? "" : " " + questionId) + ": " + questionText);
+                println("Q" + (questionId == null ? "" : " " + questionId) + ": " + questionText);
                 String answer = reader.readLine();
                 if (answer == null) {
                     writeReceipt(outDir, "constraints_interview", "failed", "No answer provided");
@@ -236,7 +236,7 @@ public final class GamePlanCli extends BuuiConsole {
         writeReceipt(outDir, "iterate", "pending", "iterate.yaml");
 
         writePipelineReceipt(outDir, gameId);
-        print("GamePlan outputs written to: " + outDir);
+        println("GamePlan outputs written to: " + outDir);
     }
 
     private Map<String, Object> runAgentStep(String apiKey,

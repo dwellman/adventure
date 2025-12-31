@@ -60,4 +60,27 @@ class AsciiRendererTest {
         assertThat(rendered).contains("| 1 ");
         assertThat(rendered).contains("a...");
     }
+
+    @Test
+    void renderShrinksColumnsToMaxWidth() {
+        RenderStyle style = RenderStyle.defaults()
+                .withBorder(BorderCharacters.ascii())
+                .withShowRowSeparators(false)
+                .withMaxWidth(24);
+        Table table = Table.builder()
+                .style(style)
+                .addColumn(Column.builder("Name").minWidth(4).maxWidth(30).build())
+                .addColumn(Column.builder("Value").minWidth(4).maxWidth(30).build())
+                .addRow("AlphaBetaGamma", "DeltaEpsilonZeta")
+                .build();
+
+        String[] lines = new AsciiRenderer().render(table).split("\\R");
+
+        for (String line : lines) {
+            if (line == null || line.isEmpty()) {
+                continue;
+            }
+            assertThat(TextUtils.visibleLength(line)).isLessThanOrEqualTo(24);
+        }
+    }
 }

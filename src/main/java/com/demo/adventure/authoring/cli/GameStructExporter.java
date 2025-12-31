@@ -95,7 +95,7 @@ public final class GameStructExporter extends BuuiConsole {
             return 1;
         }
         export(save, id, title, preambleOverride, outDir);
-        print("Exported structured game to " + outDir.toAbsolutePath());
+        println("Exported structured game to " + outDir.toAbsolutePath());
         return 0;
     }
 

@@ -44,6 +44,26 @@ class GameRuntimeCoverageTest {
     }
 
     @Test
+    void primeSceneSeedsSnapshot() throws Exception {
+        RuntimeHarness harness = new RuntimeHarness();
+
+        harness.runtime.primeScene();
+
+        assertThat(harness.runtime.lastSceneState()).contains("Start");
+        assertThat(harness.runtime.lastSceneState()).contains("Exits:");
+    }
+
+    @Test
+    void gateDescriptionsUseFromPlot() throws Exception {
+        RuntimeHarness harness = new RuntimeHarness();
+
+        com.demo.adventure.domain.model.Gate gate = harness.findGate("Start -> Hall");
+
+        assertThat(gate.getDescriptionFrom(harness.plotAId())).isEqualTo("A blocked door");
+        assertThat(gate.getDescriptionFrom(harness.plotBId())).isEqualTo("An open door");
+    }
+
+    @Test
     void takeDropAndInventoryFlow() throws Exception {
         RuntimeHarness harness = new RuntimeHarness();
 
@@ -308,6 +328,14 @@ class GameRuntimeCoverageTest {
                     .map(v -> (com.demo.adventure.domain.model.Gate) v)
                     .filter(g -> label.equalsIgnoreCase(g.getLabel()))
                     .forEach(g -> g.setKey("true"));
+        }
+
+        private UUID plotAId() {
+            return plotAId;
+        }
+
+        private UUID plotBId() {
+            return plotBId;
         }
 
         private com.demo.adventure.domain.model.Gate findGate(String label) {

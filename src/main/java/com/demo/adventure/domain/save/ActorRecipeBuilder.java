@@ -83,6 +83,8 @@ public final class ActorRecipeBuilder {
         if (ownerId == null) {
             throw new IllegalStateException("Actor ownerId is required");
         }
-        return new GameSave.ActorRecipe(id, name, description, ownerId, visible, skills, equippedMainHandItemId, equippedBodyItemId, cells);
+        return new GameSave.ActorRecipe(
+                id, name, description, ownerId, visible, skills, equippedMainHandItemId, equippedBodyItemId, cells
+        );
     }
 }

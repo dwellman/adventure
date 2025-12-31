@@ -51,7 +51,7 @@ public final class StorybookValidateCli extends BuuiConsole {
         try {
             GameSave save = GameSaveYamlLoader.load(input);
             new GameSaveAssembler().apply(save);
-            print("Validation OK");
+            println("Validation OK");
             return 0;
         } catch (GameBuilderException ex) {
             System.err.println("Validation failed: " + ex.getMessage());

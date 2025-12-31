@@ -60,6 +60,34 @@ class CommandCompilerTest {
     }
 
     @Test
+    void parsesLookAroundAsLook() {
+        Command cmd = parse("look around");
+        assertThat(cmd.action()).isEqualTo(CommandAction.LOOK);
+        assertThat(cmd.target()).isEmpty();
+    }
+
+    @Test
+    void parsesLookAroundSentenceAsLook() {
+        Command cmd = parse("look around and tell me what I see");
+        assertThat(cmd.action()).isEqualTo(CommandAction.LOOK);
+        assertThat(cmd.target()).isEmpty();
+    }
+
+    @Test
+    void parsesLookArroundAsLook() {
+        Command cmd = parse("look arround");
+        assertThat(cmd.action()).isEqualTo(CommandAction.LOOK);
+        assertThat(cmd.target()).isEmpty();
+    }
+
+    @Test
+    void parsesLookArroundSentenceAsLook() {
+        Command cmd = parse("look arround and tell me what I see");
+        assertThat(cmd.action()).isEqualTo(CommandAction.LOOK);
+        assertThat(cmd.target()).isEmpty();
+    }
+
+    @Test
     void parsesCraftFromMakeToken() {
         Command cmd = parse("craft torch");
         assertThat(cmd.action()).isEqualTo(CommandAction.CRAFT);
@@ -127,6 +155,41 @@ class CommandCompilerTest {
         Command cmd = parse("run north");
         assertThat(cmd.action()).isEqualTo(CommandAction.GO);
         assertThat(cmd.target()).isEqualTo("north");
+    }
+
+    @Test
+    void parsesDiceCommand() {
+        Command cmd = parse("dice(20,15)");
+        assertThat(cmd.action()).isEqualTo(CommandAction.DICE);
+        assertThat(cmd.argument()).isEqualTo("20 15");
+    }
+
+    @Test
+    void parsesTalkWithTarget() {
+        Command cmd = parse("talk butler");
+        assertThat(cmd.action()).isEqualTo(CommandAction.TALK);
+        assertThat(cmd.target()).isEqualTo("butler");
+    }
+
+    @Test
+    void parsesTalkWithLeadingTo() {
+        Command cmd = parse("talk to butler");
+        assertThat(cmd.action()).isEqualTo(CommandAction.TALK);
+        assertThat(cmd.target()).isEqualTo("butler");
+    }
+
+    @Test
+    void parsesAtMentionAsTalk() {
+        Command cmd = parse("@butler");
+        assertThat(cmd.action()).isEqualTo(CommandAction.TALK);
+        assertThat(cmd.target()).isEqualTo("butler");
+    }
+
+    @Test
+    void parsesAtMentionWithFullName() {
+        Command cmd = parse("@Elias Crane");
+        assertThat(cmd.action()).isEqualTo(CommandAction.TALK);
+        assertThat(cmd.target()).isEqualTo("Elias Crane");
     }
 
     @Test

@@ -3,6 +3,7 @@ package com.demo.adventure.ai.runtime;
 import com.demo.adventure.engine.command.Command;
 import com.demo.adventure.engine.command.CommandAction;
 import com.demo.adventure.engine.command.CommandPhrase;
+import com.demo.adventure.engine.command.interpreter.CommandInterpreter;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
@@ -67,6 +68,141 @@ class TranslationOrchestratorTest {
         assertThat(outcome.failureMessage()).contains("translator produced invalid command");
         assertThat(translator.prompts()).hasSize(1);
         assertThat(logs).isEmpty();
+    }
+
+    @Test
+    void rejectsDirectionCommandWhenInputHasNoDirectionToken() {
+        QueueTranslator translator = new QueueTranslator(List.of(
+                commandLine("look east")
+        ));
+        TranslatorService service = new TranslatorService(true, "test", translator);
+        List<String> logs = new ArrayList<>();
+        CommandInterpreter interpreter = new CommandInterpreter();
+
+        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
+                service,
+                "can i get on the train",
+                List.of(),
+                List.of(),
+                List.of(),
+                "",
+                true,
+                interpreter::interpret,
+                logs::add
+        );
+
+        assertThat(outcome.type()).isEqualTo(TranslationOrchestrator.OutcomeType.FAILED);
+        assertThat(outcome.failureMessage()).contains("ungrounded command");
+        assertThat(logs).containsExactly(
+                "~ translator input='can i get on the train'",
+                "~ translator rejected ungrounded command: look east"
+        );
+    }
+
+    @Test
+    void rejectsUngroundedIdentifierCommand() {
+        QueueTranslator translator = new QueueTranslator(List.of(
+                commandLine("inspect ledger")
+        ));
+        TranslatorService service = new TranslatorService(true, "test", translator);
+        List<String> logs = new ArrayList<>();
+        CommandInterpreter interpreter = new CommandInterpreter();
+
+        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
+                service,
+                "can i get on the train",
+                List.of(),
+                List.of(),
+                List.of(),
+                "",
+                true,
+                interpreter::interpret,
+                logs::add
+        );
+
+        assertThat(outcome.type()).isEqualTo(TranslationOrchestrator.OutcomeType.FAILED);
+        assertThat(outcome.failureMessage()).contains("ungrounded command");
+        assertThat(logs).containsExactly(
+                "~ translator input='can i get on the train'",
+                "~ translator rejected ungrounded command: inspect ledger"
+        );
+    }
+
+    @Test
+    void acceptsEmoteWhenGrounded() {
+        QueueTranslator translator = new QueueTranslator(List.of(
+                commandLine("EMOTE: Do a little dance.")
+        ));
+        TranslatorService service = new TranslatorService(true, "test", translator);
+        List<String> logs = new ArrayList<>();
+        CommandInterpreter interpreter = new CommandInterpreter();
+
+        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
+                service,
+                "Do a little dance.",
+                List.of(),
+                List.of(),
+                List.of(),
+                "",
+                true,
+                interpreter::interpret,
+                logs::add
+        );
+
+        assertThat(outcome.type()).isEqualTo(TranslationOrchestrator.OutcomeType.EMOTE);
+        assertThat(outcome.commandText()).isEqualTo("EMOTE: Do a little dance.");
+        assertThat(logs).containsExactly(
+                "~ translator input='Do a little dance.'",
+                "~ translator emote: Do a little dance."
+        );
+    }
+
+    @Test
+    void acceptsVisibleFixtureLabelNotInInput() {
+        QueueTranslator translator = new QueueTranslator(List.of(
+                commandLine("inspect case board")
+        ));
+        TranslatorService service = new TranslatorService(true, "test", translator);
+        CommandInterpreter interpreter = new CommandInterpreter();
+
+        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
+                service,
+                "is there anything interesting about the board?",
+                List.of("Case Board"),
+                List.of(),
+                List.of(),
+                "",
+                false,
+                interpreter::interpret,
+                text -> {}
+        );
+
+        assertThat(outcome.type()).isEqualTo(TranslationOrchestrator.OutcomeType.COMMAND);
+        assertThat(outcome.commandText()).isEqualTo("inspect case board");
+    }
+
+    @Test
+    void rejectsVisibleLabelWhenInputHasNoOverlap() {
+        QueueTranslator translator = new QueueTranslator(List.of(
+                commandLine("inspect case board")
+        ));
+        TranslatorService service = new TranslatorService(true, "test", translator);
+        CommandInterpreter interpreter = new CommandInterpreter();
+
+        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
+                service,
+                "oh cool",
+                List.of("Case Board"),
+                List.of(),
+                List.of(),
+                "",
+                false,
+                interpreter::interpret,
+                text -> {}
+        );
+
+        assertThat(outcome.type()).isEqualTo(TranslationOrchestrator.OutcomeType.FAILED);
+        assertThat(outcome.failureMessage()).contains("ungrounded command");
     }
 
     private static Command parseCommand(String commandText) {

@@ -1,7 +1,5 @@
 package com.demo.adventure.buui;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Table {
@@ -16,8 +14,8 @@ public class Table {
           String title,
           RenderStyle style,
           FormatterRegistry formatterRegistry) {
-        this.columns = Collections.unmodifiableList(new ArrayList<>(columns));
-        this.rows = Collections.unmodifiableList(new ArrayList<>(rows));
+        this.columns = List.copyOf(columns);
+        this.rows = List.copyOf(rows);
         this.title = title;
         this.style = style;
         this.formatterRegistry = formatterRegistry;

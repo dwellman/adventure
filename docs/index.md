@@ -1,6 +1,6 @@
 # Docs Index
 
-Last verified: 2025-12-26 (runbook + docs reorg)
+Last verified: 2025-12-30 (v1.0 deep clean)
 
 Authoritative references:
 - `docs/architecture/overview.md` – package map + runtime flow diagram.
@@ -16,6 +16,7 @@ Authoritative references:
 - `docs/runbooks/testing-strategy.md` – testing strategy and agent validation workflow for games.
 - `docs/design/gameplan-western.yaml` – Adventure GamePlan template filled for Western Adventure.
 - `docs/design/smart-actors.md` – architecture for AI-backed in-world actors (planned).
+- `docs/design/todo-conversation.md` – completed @mention smart-actor conversation checklist (archived).
 - `docs/runbooks/new-game-walkthrough.md` – “build a new game and walkabout acceptance” guide (includes Gardener/exit/crafting expectations).
 - `docs/guides/quickstart.md` – developer quickstart checklist.
 - `docs/glossary.md` – shared terminology and definitions.

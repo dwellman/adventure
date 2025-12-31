@@ -1,0 +1,63 @@
+heading-1 {
+  font-weight: bold;
+  color: bright_blue;
+}
+
+heading-2 {
+  font-weight: bold;
+  color: bright_cyan;
+}
+
+heading-3 {
+  font-weight: bold;
+  color: bright_magenta;
+}
+
+heading-4 {
+  font-weight: bold;
+  color: bright_white;
+}
+
+table-header {
+  font-weight: bold;
+  color: bright_white;
+}
+
+list-bullet {
+  color: bright_cyan;
+}
+
+blockquote {
+  font-style: italic;
+  color: bright_black;
+}
+
+code-block {
+  color: bright_black;
+}
+
+inline-code {
+  color: bright_black;
+}
+
+scene-break {
+  color: bright_black;
+}
+
+strong {
+  font-weight: bold;
+}
+
+emphasis {
+  font-style: italic;
+}
+
+section-label {
+  font-weight: bold;
+  color: bright_white;
+}
+
+exit-line {
+  font-weight: bold;
+  color: bright_yellow;
+}

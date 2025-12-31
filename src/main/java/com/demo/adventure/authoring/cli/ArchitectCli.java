@@ -167,7 +167,7 @@ public final class ArchitectCli extends BuuiConsole {
         try {
             if (output != null) {
                 GameSaveYamlWriter.write(save, output);
-                print("Wrote YAML to " + output.toAbsolutePath());
+                println("Wrote YAML to " + output.toAbsolutePath());
             } else {
                 printText(GameSaveYamlWriter.toYaml(save));
             }

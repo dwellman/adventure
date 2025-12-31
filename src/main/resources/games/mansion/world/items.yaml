@@ -1,62 +1,56 @@
 items:
 - key: basement-key
   name: Basement Key
-  description: The Basement Key, with its ornate design and mysterious aura, glints subtly in the dim light, hinting at the
-    secrets waiting below.
+  description: A basement key with an ornate design.
   ownerKey: study-desk-drawer-1
   visible: true
   fixture: false
   keyString: 'true'
 - key: candlestick
   name: Candlestick
-  description: An ornate candlestick, its surface glimmering with a hint of mystery, stands poised to illuminate the secrets
-    of the dining room with a flicker of flame.
+  description: An ornate candlestick for the dining room.
   ownerKey: dining-room
   visible: true
   fixture: false
   keyString: 'true'
 - key: knife
   name: Knife
-  description: The knife glints with a mischievous edge, its handle intricately carved with swirling patterns that seem to
-    dance in the dim light of the kitchen.
+  description: A knife with a carved handle.
   ownerKey: kitchen
   visible: true
   fixture: false
   keyString: 'true'
 - key: lead-pipe
   name: Lead Pipe
-  description: Lead Pipe
+  description: A lead pipe.
   ownerKey: billiard-room
   visible: true
   fixture: false
   keyString: 'true'
 - key: pocket-watch
   name: Pocket Watch
-  description: This elegant pocket watch, with its intricate engravings and a faint ticking sound, seems to hold more than
-    just time; it whispers secrets of the mansion's past with every tick.
+  description: A pocket watch with an engraved case and a faint tick.
   ownerKey: detective
   visible: true
   fixture: false
   keyString: 'true'
 - key: revolver
   name: Revolver
-  description: This ornate revolver gleams with a mysterious charm, its handle intricately carved with whimsical patterns
-    that hint at the secrets it may have witnessed in the dim light of the study.
+  description: A revolver with a carved handle.
   ownerKey: study
   visible: true
   fixture: false
   keyString: 'true'
 - key: rope
   name: Rope
-  description: A sturdy rope, frayed at the ends, hints at adventures untold and secrets waiting to be unraveled.
+  description: A sturdy rope, frayed at the ends.
   ownerKey: lounge
   visible: true
   fixture: false
   keyString: 'true'
 - key: wrench
   name: Wrench
-  description: A rusty wrench, its surface speckled with age, rests quietly on a polished table, whispering tales of repairs
-    long forgotten in this grand ballroom.
+  description: A rusty wrench on a polished table.
   ownerKey: ballroom
   visible: true
   fixture: false

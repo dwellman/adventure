@@ -151,7 +151,7 @@ public final class ZoneBuilderCli extends BuuiConsole {
             Files.createDirectories(output.getParent());
         }
         GameSaveYamlWriter.write(save, output);
-        print("Wrote game to " + output.toAbsolutePath());
+        println("Wrote game to " + output.toAbsolutePath());
 
         if (structuredOut != null) {
             if (structuredId == null || structuredId.isBlank()) {
@@ -161,19 +161,19 @@ public final class ZoneBuilderCli extends BuuiConsole {
                 structuredTitle = structuredId;
             }
             GameStructExporter.export(save, structuredId, structuredTitle, null, structuredOut);
-            print("Wrote structured game to " + structuredOut.toAbsolutePath());
+            println("Wrote structured game to " + structuredOut.toAbsolutePath());
         }
 
         ValidationReport validation = validate(save, warnings);
         if (emitMetrics && output.getParent() != null) {
             Path metricsPath = output.getParent().resolve(METRICS_FILENAME);
             Files.writeString(metricsPath, validation.asJson(), StandardCharsets.UTF_8);
-            print("Metrics written to " + metricsPath.toAbsolutePath());
+            println("Metrics written to " + metricsPath.toAbsolutePath());
         }
         if (emitReport && output.getParent() != null) {
             Path reportPath = output.getParent().resolve(REPORT_FILENAME);
             Files.writeString(reportPath, validation.reportText(), StandardCharsets.UTF_8);
-            print("Report written to " + reportPath.toAbsolutePath());
+            println("Report written to " + reportPath.toAbsolutePath());
         }
         if (emitBom) {
             try {

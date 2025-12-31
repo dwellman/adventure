@@ -1095,3 +1095,260 @@ _
 ## 2025-12-26 — GamePlan/ListRenderer test fixes
 - Scope: Added stricter YAML key validation for GamePlan CLI and fixed ListRendererTest to allow null list items.
 - Tests: `mvn -q -Dtest=GamePlanCliTest,ListRendererTest test`
+
+## 2025-12-27 — AI client refactor
+- Scope: Added a shared AI chat client + JSON utilities, removed Spring AI dependencies, rewired narrator/translator/smart actor/authoring/gardener/DM calls, and updated AI prompt docs/tests.
+- Tests: `mvn -q -Dtest=AiJsonTest,CommandTranslatorTest,AuthoringAgentClientTest,SmartActorServiceTest,AiDmAgentTest,AiFixtureDescriptionExpanderTest,OpenAiHttpFixtureDescriptionExpanderTest test`
+
+## 2025-12-29 — Markdown compiler pipeline
+- Scope: Added MarkdownCompiler + MarkdownDocument for tokenized markdown compilation, wired MarkdownRenderer through the compiler, and added printCompiled helpers for precompiled output.
+- Tests: `mvn -q -Dtest=MarkdownScannerTest,MarkdownCompilerTest,MarkdownRendererTest,BuuiMarkdownTest,ConsolePrinterTest test`
+
+## 2025-12-29 — Markdown style sheets
+- Scope: Added CSS-like markdown style sheets with a parser, standard.style template, and style-aware compilation (defaults load standard.style when present and otherwise render plain text); inline color tags are invalid and error with reporting.
+- Tests: `mvn -q -Dtest=InlineMarkdownTest,MarkdownRendererTest,MarkdownRendererComprehensiveTest,MarkdownStyleSheetTest,MarkdownCompilerTest,MarkdownScannerTest,BuuiMarkdownTest,ConsolePrinterTest test`
+
+## 2025-12-29 — Markdown-first printing
+- Scope: Added MarkdownScanner detection, switched print() to markdown-first with new println() for plain text, and updated authoring CLIs + runbook.
+- Tests: `mvn -q -Dtest=ConsolePrinterTest,MarkdownRendererTest,BuuiMarkdownTest test`
+
+## 2025-12-29 — Buui list helper
+- Scope: Added a BuuiList renderer for numbered title + options output and test coverage.
+- Tests: `mvn -q -Dtest=BuuiListTest test`
+
+## 2025-12-29 — Buui ANSI styling
+- Scope: Added ANSI markdown styling (bold/italic/colors) with NO_COLOR handling across BUUI renderers, plus BUUI styling docs (architecture + runbook), BuuiMarkup helpers, and a BuuiStyleDemo sample.
+- Tests: `mvn -q -Dtest=AsciiRendererTest,BuuiMenuTest,ConsolePrinterTest,ListRendererTest,MarkdownRendererTest,TextUtilsTest,InlineMarkdownTest,BuuiListTest test`; `mvn -q -Dtest=BuuiMarkupTest test`
+
+## 2025-12-29 — Markdown style map coverage
+- Scope: Mapped markdown inline/paragraph/list/table defaults through MarkdownStyleMap before ANSI encoding and updated BUUI runbook mapping notes.
+- Tests: `mvn -q -Dtest=InlineMarkdownTest,MarkdownRendererTest,AsciiRendererTest test`
+
+## 2025-12-29 — Inline markdown base toggles
+- Scope: Ensured inline bold/italic markers toggle correctly even when base styles (e.g., blockquotes/headings) are active.
+- Tests: `mvn -q -Dtest=InlineMarkdownTest,MarkdownRendererTest,AsciiRendererTest test`
+
+## 2025-12-29 — ListRenderer ANSI trim fix
+- Scope: Avoided stripping ANSI escape codes by replacing list-item `trim()` with whitespace-only trimming.
+- Tests: `mvn -q -Dtest=ListRendererTest,TextUtilsTest,MarkdownRendererTest,InlineMarkdownTest,AsciiRendererTest test`
+
+## 2025-12-29 — Comprehensive markdown coverage
+- Scope: Added a comprehensive markdown rendering test covering headings, lists, tables, code fences, scene breaks, and inline styles.
+- Tests: `mvn -q -Dtest=MarkdownRendererComprehensiveTest test`
+
+## 2025-12-29 — Markdown narrator prompts + help
+- Scope: Switched CLI help text to markdown formatting and updated narrator prompt templates to request markdown output.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-29 — Preamble narration formatting
+- Scope: Routed game preambles/backstory through a markdown narration printer, using blockquotes for plain text narration.
+- Tests: `mvn -q -Dtest=ConsolePrinterTest test`
+
+## 2025-12-29 — BuuiMarkdown render
+- Scope: Added BuuiMarkdown.render to centralize narration markdown formatting and kept ConsolePrinter narration aligned.
+- Tests: `mvn -q -Dtest=BuuiMarkdownTest,ConsolePrinterTest test`
+
+## 2025-12-29 — Markdown section formatting
+- Scope: Split markdown narration from section labels (Items/Exits) and kept exits flush-left for cleaner CLI output.
+- Tests: `mvn -q -Dtest=MarkdownRendererTest test`
+
+## 2025-12-29 — Markdown style validation
+- Scope: Tightened markdown style parsing, made standard.style loading strict/lazy, and report invalid style sheets as markdown validation errors.
+- Tests: `mvn -q -Dtest=MarkdownStyleSheetTest,InlineMarkdownTest,MarkdownRendererTest test`
+
+## 2025-12-29 — Narrator raw fallback output
+- Scope: Used println for AI-disabled narrator fallbacks so raw output remains plain.
+- Tests: `mvn -q -Dtest=NarratorFallbackTest test`
+
+## 2025-12-29 — BUUI style selection + table width
+- Scope: Made BUUI style selection opt-in via BUUI_STYLE, centralized layout defaults (gutter/edge padding), and added max-width table rendering with header truncation.
+- Tests: `mvn -q -Dtest=MarkdownStyleSheetTest,InlineMarkdownTest,MarkdownRendererTest,AsciiRendererTest,ConsolePrinterTest,BuuiListTest test`
+
+## 2025-12-29 — Adventure launcher BUUI_STYLE default
+- Scope: Defaulted the `./adventure` launcher to use `standard.style` when present.
+- Tests: not run (launcher script change only)
+
+## 2025-12-29 — Narration gutter dot
+## 2025-12-29 — Narration gutter bullets
+- Scope: Dropped blockquote indentation, added a paragraph-leading bullet gutter, and normalized narration paragraphs to a single blank line.
+- Tests: `mvn -q -Dtest=BuuiMarkdownTest,MarkdownRendererTest,ConsolePrinterTest test`
+
+## 2025-12-29 — Markdown narrator fallback formatting
+- Scope: Rendered AI-disabled narration through markdown, stripped heading markers for fallback headers, and switched exit separators to bullets with section/exit styling in standard.style.
+- Tests: `mvn -q -Dtest=ConsolePrinterTest,NarratorFallbackTest,GameCliExitFormattingTest test`
+
+## 2025-12-29 — Adventure launcher default quiet
+- Scope: Defaulted `./adventure` to quiet Maven output; `--verbose` enables logs.
+- Tests: not run (script change only)
+
+## 2025-12-29 — Narrator exits normalization
+- Scope: Updated narrator prompt to copy the exact "Exits:" line and normalized AI output to enforce it; fallback now preserves the Exits line verbatim.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorFallbackTest,NarratorPromptSelectionTest test`
+
+## 2025-12-29 — Scene snapshot priming
+- Scope: Prime scene snapshots on game start so AI narration always has exits available to render.
+- Tests: `mvn -q -Dtest=GameRuntimeCoverageTest,NarratorFallbackTest test`
+
+## 2025-12-29 — Smart actor local scope
+- Scope: In CLI, smart actors now run only when co-located with the player to avoid long post-narration pauses; scope is configurable via `ai.smart_actor.scope`.
+- Tests: `mvn -q -Dtest=SmartActorRuntimeTest test`
+
+## 2025-12-29 — Gate descriptions per side
+- Scope: Preserve per-side gate descriptions from YAML so directional looks reflect the correct direction.
+- Tests: `mvn -q -Dtest=GameRuntimeCoverageTest test`
+
+## 2025-12-29 — Look around normalization
+- Scope: Normalized LOOK commands that start with "around" and updated the translator prompt to map direction questions to LOOK.
+- Tests: `mvn -q -Dtest=CommandCompilerTest,TranslatorPromptGoldenTest test`
+
+## 2025-12-29 — Narrator location anchoring
+- Scope: Anchored narrator output to the engine’s location line when AI output drifts and suppressed snapshot context when raw output already includes exits.
+- Tests: `mvn -q -Dtest=NarrationServiceTest test`
+
+## 2025-12-29 — Narrator multi-scene fallback
+- Scope: Restored multi-scene error handling so snapshot fallback preserves color narration.
+- Tests: `mvn -q -Dtest=NarratorFallbackTest,NarrationServiceTest test`
+
+## 2025-12-29 — Narrator action-result enforcement
+- Scope: Appended missing action-result text (e.g., look-direction gate descriptions) to AI narration output.
+- Tests: `mvn -q -Dtest=NarrationServiceTest test`
+
+## 2025-12-29 — Look-target narration focus
+- Scope: Focused look-target narration on the action result using scanner tokens and updated the narrator prompt to require concise look responses.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorPromptGoldenTest test`
+
+## 2025-12-29 — Compiled narrator prompt
+- Scope: Replaced the narrator template with a per-context compiled prompt and removed narrator prompt files from resources.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-29 — Narrator prompt minimal mode
+- Scope: Simplified the compiled narrator prompt to a smaller, mode-focused contract.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-29 — Narrator prompt rewrite focus
+- Scope: Reframed the narrator prompt as a compact rewrite instruction with only key facts.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Narrator recent actions context
+- Scope: Added a RECENT_ACTIONS block to narrator prompts using the last 2 canonical commands and sanitized engine outputs.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorFallbackTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Exits list omits gate hints
+- Scope: Exits list now renders directions only, with gate descriptions reserved for look-direction results.
+- Tests: `mvn -q -Dtest=GameCliExitFormattingTest test`
+
+## 2025-12-30 — Look around misspelling alias
+- Scope: Normalized "look arround" to the look-around behavior to avoid noisy action-result narration.
+- Tests: `mvn -q -Dtest=CommandCompilerTest test`
+
+## 2025-12-30 — Blocked move narration cleanup
+- Scope: Blocked movement now emits only the gate description (or a generic message when no gate) to avoid duplicate narration.
+- Tests: `mvn -q -Dtest=GoCommandTest test`
+
+## 2025-12-30 — Narrator recent narration context
+- Scope: Added RECENT_NARRATION (last 2 narrator outputs, sanitized) to the narrator prompt for continuity.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorFallbackTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest,GoCommandTest test`
+
+## 2025-12-30 — Look-direction prefix
+- Scope: Look-direction responses now prefix gate descriptions with the direction label (e.g., "To the north:").
+- Tests: `mvn -q -Dtest=GoCommandTest test`
+
+## 2025-12-30 — Translator direction grounding
+- Scope: Reject translated direction commands unless the player input contains the same direction token; updated translator prompt guidance.
+- Tests: `mvn -q -Dtest=TranslationOrchestratorTest,TranslatorPromptGoldenTest test`
+
+## 2025-12-30 — Translator grounding guard (all tokens)
+- Scope: Translator outputs are rejected unless argument tokens (directions/identifiers/strings) appear in player input; adds a second guard test.
+- Tests: `mvn -q -Dtest=TranslationOrchestratorTest,TranslatorPromptGoldenTest test`
+
+## 2025-12-30 — LLM prompt printing toggle
+- Scope: Added prompt printing hooks for all LLM callers (including gardener expanders) and documented the `ai.prompts.print` toggle.
+- Tests: Not run (config/runbook + prompt logging wiring).
+
+## 2025-12-30 — Adventure launcher prompt logging
+- Scope: Set `AI_PROMPTS_PRINT=true` in `./adventure` to always print LLM prompts.
+- Tests: Not run (launcher env change).
+
+## 2025-12-30 — Narrator prompt cadence update
+- Scope: Shifted narrator prompt to second-person present tense with tighter cadence, removed verbatim ACTION_RESULT guidance, and added destination name fidelity rules.
+- Tests: Not run (prompt text changes).
+
+## 2025-12-30 — Emote narration path
+- Scope: Translator can emit `EMOTE: ...`, CLI routes emotes directly to narration without advancing state, and narrator prompts enforce emote-specific output rules.
+- Tests: `mvn -q -Dtest=TranslatorPromptGoldenTest,TranslationOrchestratorTest,TranslatorServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Emote dice checks
+- Scope: Added DICE command parsing/handling, emote check requests/results in engine output, and narrator prompt modes for CHECK_REQUEST/CHECK_RESULT.
+- Tests: `mvn -q -Dtest=CommandCompilerTest,CommandScannerTest,VerbAliasesTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,TranslatorServiceTest,TranslationOrchestratorTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest,NarrationServiceTest test`
+
+## 2025-12-30 — Emote/check prompt tightening
+- Scope: Forbade scene-source detail use in EMOTE/CHECK outputs and forced a direct roll sentence format.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Narrator look formatting fixes
+- Scope: Suppressed location sentences for look/inspect/listen narration, appended fixtures/items blocks from scene output, normalized dice call spacing, and refreshed narrator prompt goldens/tests.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Narrator plain language pass
+- Scope: Tightened narrator prompt rules to require plain, literal wording, avoid figurative language, and avoid blank lines inside the narration paragraph.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Plain world descriptions pass
+- Scope: Rewrote mansion/island/western/spy world descriptions to plain, literal sentences across plots, gates, fixtures, and items.
+- Tests: `mvn -q -Dtest=GameMenuStructuredLoadTest test`; `mvn -q -Dtest=WesternAdventurePlaybookIntegrationTest test`
+
+## 2025-12-30 — Narrator literal gating fallback
+- Scope: Enforced exact-wording narrator prompts, removed location sentences across modes, and added deterministic fallback when LLM output drifts.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Command-specific narrator prompts
+- Scope: Added per-command narrator prompt modes (scene/look-target/look-direction/action/color/emote/check), trimmed prompt content, and updated runbook/design docs.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Narrator grounding leniency
+- Scope: Relaxed narrator grounding thresholds by prompt mode, allowed emote/check paraphrase with direction-token blocking, and gated fallback logs behind the debug flag.
+- Tests: `mvn -q -Dtest=NarrationServiceTest test`
+
+## 2025-12-30 — Adventure launcher prompt output mute
+- Scope: Removed default `AI_PROMPTS_PRINT=true` from `./adventure` so prompts stay quiet unless explicitly enabled.
+- Tests: Not run (launcher change).
+
+## 2025-12-30 — Translator location question mapping
+- Scope: Added translator prompt rule to map “where am I/are we” to `look`, and removed the scanner/compiler alias and help entry.
+- Tests: `mvn -q -Dtest=TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,CommandCompilerTest test`
+
+## 2025-12-30 — Narrator prompt intent context
+- Scope: Added PLAYER_TEXT/LAST_COMMAND context blocks to narrator prompts (v0.30) and added deterministic translator handling for “where am I/are we” to short-circuit to `look`.
+- Tests: `mvn -q -Dtest=TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,TranslatorServiceTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest test`
+
+## 2025-12-30 — Emote tightening + gate tag cleanup
+- Scope: Tightened emote narration to one sentence with no ambient/backstory drift unless in recent actions, added location-question intent guidance to narrator prompts (v0.31), and stripped trailing `to:` destination tags from look-direction/blocked-move gate descriptions.
+- Tests: `mvn -q -Dtest=NarratorPromptGoldenTest,NarratorPromptSelectionTest,GoCommandTest test`
+
+## 2025-12-30 — Translator grounding with visible labels
+- Scope: Relaxed translator grounding to accept visible fixture/item/inventory labels not present in player input and updated translator prompt to allow using visible labels for partial references.
+- Tests: `mvn -q -Dtest=TranslationOrchestratorTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest test`
+
+## 2025-12-30 — Exits only on scene narration
+- Scope: Stopped appending exits for action/inspect/search narration, updated narrator prompt v0.32 intent guidance, and adjusted fallbacks/tests accordingly.
+- Tests: `mvn -q -Dtest=NarrationServiceTest,NarratorFallbackTest,NarratorPromptGoldenTest,NarratorPromptSelectionTest,GoCommandTest test`
+
+## 2025-12-30 — Translator label overlap gating
+- Scope: Restricted visible-label grounding to cases where player input shares a word with the label, preventing reactions like “oh cool” from becoming inspect commands.
+- Tests: `mvn -q -Dtest=TranslationOrchestratorTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest test`
+
+## 2025-12-30 — Smart actor conversation (@mention)
+- Scope: Added TALK command and @mention conversation flow, wired smart-actor replies with player utterance context/history, updated translator prompt to include talk, and moved the mansion butler to the Hall.
+- Tests: `mvn -q -Dtest=CommandCompilerTest,SmartActorRuntimeTest,TranslatorPromptGoldenTest,TranslatorPromptCoverageTest,GameMenuStructuredLoadTest test`
+
+## 2025-12-30 — Mention resolution + identity routing
+- Scope: Expanded @mention parsing to allow token-prefix/unique single-token actor matches and mid-line mentions; added deterministic translator routing for “who is <name>” to `look <name>`.
+- Tests: `mvn -q -Dtest=TranslatorServiceTest,MentionResolutionTest test`
+
+## 2025-12-30 — Interaction state gating
+- Scope: Added InteractionState (awaiting dice) to gate input routing before conversation/commands and documented deterministic routing order.
+- Tests: `mvn -q -Dtest=TranslatorServiceTest,MentionResolutionTest,InteractionStateTest test`
+
+## 2025-12-30 — v1.0 deep clean
+- Scope: Deep clean sweep to align docs/README/runbook with current narration exit rules, interaction gating, and conversation routing; archived conversation TODO list.
+- Tests: `mvn -q test`

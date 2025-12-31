@@ -24,7 +24,7 @@ steps:
   - command: west
     expect:
       - Telegraph Office
-      - humming with static
+      - dead line and static
   - command: west
     expect:
       - Dry Gulch Main Street

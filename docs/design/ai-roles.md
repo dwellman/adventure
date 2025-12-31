@@ -14,7 +14,23 @@ Runtime contract reference:
 ## TODAY (working)
 - **Interpreter (runtime, 2025 mode):** deterministic mapper from player NL → canonical command; may not invent mechanics.
 - **Engine:** executes commands, updates world, emits authoritative turn result (location header, description, exits/items/fixtures as appropriate).
-- **Narrator:** rewrites the engine turn with tone; may add color but must not add exits/items/fixtures/objectives/requirements/state changes.
+- **Narrator:** rewrite layer for readability/flow; uses command-specific prompt variants (not a single global template). May add tone but must not add exits/items/fixtures/objectives/requirements/state changes.
+
+### Narrator prompt specialization (runtime)
+The narrator prompt is assembled per command intent using `CommandScanner` tokens and engine output shape.
+Each variant receives only the minimum context needed to rewrite:
+- **SCENE:** `LOOK` (no target), `LISTEN`, successful `MOVE/GO` arrivals → rewrite scene snapshot (location + description + fixtures/items), append exits verbatim.
+- **LOOK_TARGET:** `LOOK <thing>`, `INSPECT` → rewrite action result only (no exits).
+- **LOOK_DIRECTION:** `LOOK <direction>` / “what is east” → rewrite gate/exit action result; direction names must remain exact; no exits appended.
+- **ACTION_RESULT:** generic verbs (`SEARCH/EXPLORE`, `TAKE/DROP/PUT`, `OPEN/USE`, `ATTACK/FLEE`, etc.) → rewrite action result only (no exits).
+- **COLOR_EVENT:** rewrite the color line only (no exits).
+- **EMOTE / CHECK_REQUEST / CHECK_RESULT:** rewrite emote/check lines only; no exits/location line.
+
+Constraints:
+- No new entities, exits, locations, or mechanics.
+- Paraphrase is allowed if facts are preserved.
+- Destination names and direction words must stay exact when used.
+- Grounding guard is mode-specific and paraphrase-tolerant; on failure, the system falls back to deterministic engine output.
 
 ## TOMORROW (in motion / conceptual)
 - **Storyteller (authoring):** interactive interview to produce a Game Spec (backstory, genre/tone, quests/puzzles, cast, fixtures/NPCs, constraints like cozy vs hero’s journey).

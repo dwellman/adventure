@@ -127,8 +127,7 @@ public abstract class Thing {
     }
 
     public void setKey(String key) {
-        String safeKey = key == null ? "" : key;
-        this.key = safeKey;
+        this.key = key == null ? "" : key;
     }
 
     public String getVisibilityKey() {
@@ -136,8 +135,7 @@ public abstract class Thing {
     }
 
     public void setVisibilityKey(String visibilityKey) {
-        String safeKey = visibilityKey == null ? "true" : visibilityKey;
-        this.visibilityKey = safeKey;
+        this.visibilityKey = visibilityKey == null ? "true" : visibilityKey;
     }
 
     public int getTtl() {

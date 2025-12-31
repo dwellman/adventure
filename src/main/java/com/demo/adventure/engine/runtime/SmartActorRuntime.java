@@ -53,7 +53,9 @@ public final class SmartActorRuntime {
     private final Map<CommandAction, GameCommandHandler> handlers;
     private final Map<UUID, Integer> lastActionTurn = new HashMap<>();
     private final boolean debug;
+    private boolean localOnly;
     private int turnIndex;
+    private long dialogueSequence;
 
     public SmartActorRuntime(SmartActorRegistry registry,
                              SmartActorTagIndex tagIndex,
@@ -94,6 +96,10 @@ public final class SmartActorRuntime {
         return actorId != null && registry.specFor(actorId) != null;
     }
 
+    public void setLocalOnly(boolean localOnly) {
+        this.localOnly = localOnly;
+    }
+
     public CommandOutcome advanceTurn(GameRuntime runtime) throws GameBuilderException {
         if (runtime == null || registry.isEmpty() || runtime.inCombat()) {
             return CommandOutcome.none();
@@ -107,6 +113,9 @@ public final class SmartActorRuntime {
             }
             Actor actor = runtime.registry().get(actorId) instanceof Actor found ? found : null;
             if (actor == null || !actor.isVisible() || actor.getOwnerId() == null) {
+                continue;
+            }
+            if (localOnly && !samePlot(actor.getOwnerId(), runtime.currentPlotId())) {
                 continue;
             }
             UUID plotId = actor.getOwnerId();
@@ -155,6 +164,39 @@ public final class SmartActorRuntime {
         SmartActorDecisionParser.Result decisionResult = planner.decide(prompt);
         CommandOutcome outcome = handleCombatDecision(runtime, actorId, spec, context, snapshot, decisionResult);
         return outcome == null ? CommandOutcome.none() : outcome;
+    }
+
+    public SmartActorDecision respondToPlayer(GameRuntime runtime, UUID actorId, String playerUtterance) throws GameBuilderException {
+        if (runtime == null || actorId == null || registry.isEmpty()) {
+            return null;
+        }
+        SmartActorSpec spec = registry.specFor(actorId);
+        if (spec == null) {
+            return null;
+        }
+        Actor actor = runtime.registry().get(actorId) instanceof Actor found ? found : null;
+        if (actor == null || !actor.isVisible() || actor.getOwnerId() == null) {
+            return null;
+        }
+        UUID plotId = actor.getOwnerId();
+        SmartActorContextInput input = inputBuilder.build(runtime.registry(), actorId, plotId, Set.of());
+        SmartActorContext context = contextBuilder.build(spec, input);
+        SmartActorWorldSnapshot snapshot = buildSnapshot(runtime, actorId, playerUtterance);
+        if (snapshot == null) {
+            return null;
+        }
+        SmartActorPrompt prompt = SmartActorPromptBuilder.build(spec, context, snapshot);
+        SmartActorDecisionParser.Result decisionResult = planner.decide(prompt);
+        if (decisionResult == null || decisionResult.type() != SmartActorDecisionParser.Result.Type.DECISION) {
+            return null;
+        }
+        SmartActorDecision decision = decisionResult.decision();
+        if (decision == null) {
+            return null;
+        }
+        recordConversationHistory(spec, context, playerUtterance, decision);
+        markActedNextTurn(actorId);
+        return decision;
     }
 
     private CommandOutcome handleDecision(GameRuntime runtime,
@@ -405,6 +447,12 @@ public final class SmartActorRuntime {
         }
     }
 
+    private void markActedNextTurn(UUID actorId) {
+        if (actorId != null) {
+            lastActionTurn.put(actorId, turnIndex + 1);
+        }
+    }
+
     private void recordHistory(SmartActorSpec spec, SmartActorContext context, String text) {
         if (spec == null || context == null) {
             return;
@@ -424,7 +472,67 @@ public final class SmartActorRuntime {
         );
     }
 
+    private void recordConversationHistory(SmartActorSpec spec,
+                                           SmartActorContext context,
+                                           String playerUtterance,
+                                           SmartActorDecision decision) {
+        if (spec == null || context == null || decision == null) {
+            return;
+        }
+        if (spec.history() == null || spec.history().storeKey().isBlank()) {
+            return;
+        }
+        long timestamp = nextDialogueTimestamp();
+        String storeKey = spec.history().storeKey();
+        String actorKey = spec.actorKey() == null ? "actor" : spec.actorKey();
+        String utterance = playerUtterance == null ? "" : playerUtterance.trim();
+        if (!utterance.isBlank()) {
+            historyStore.append(
+                    storeKey,
+                    actorKey + ":player:" + timestamp,
+                    "PLAYER: " + utterance,
+                    context.contextTags(),
+                    SmartActorHistoryScope.ACTOR,
+                    timestamp,
+                    "player"
+            );
+        }
+        String reply = switch (decision.type()) {
+            case COLOR -> decision.color();
+            case UTTERANCE -> decision.utterance();
+            case NONE -> "";
+        };
+        String cleaned = reply == null ? "" : reply.trim();
+        if (!cleaned.isBlank()) {
+            historyStore.append(
+                    storeKey,
+                    actorKey + ":reply:" + timestamp,
+                    "REPLY: " + cleaned,
+                    context.contextTags(),
+                    SmartActorHistoryScope.ACTOR,
+                    timestamp,
+                    "smart-actor"
+            );
+        }
+    }
+
+    private long nextDialogueTimestamp() {
+        dialogueSequence++;
+        return (turnIndex * 1000L) + dialogueSequence;
+    }
+
+    private boolean samePlot(UUID actorPlot, UUID playerPlot) {
+        if (actorPlot == null || playerPlot == null) {
+            return false;
+        }
+        return actorPlot.equals(playerPlot);
+    }
+
     private SmartActorWorldSnapshot buildSnapshot(GameRuntime runtime, UUID actorId) throws GameBuilderException {
+        return buildSnapshot(runtime, actorId, "");
+    }
+
+    private SmartActorWorldSnapshot buildSnapshot(GameRuntime runtime, UUID actorId, String playerUtterance) throws GameBuilderException {
         return runtime.runAsActor(actorId, true, false, () -> {
             Actor actor = runtime.registry().get(actorId) instanceof Actor found ? found : null;
             Plot plot = runtime.currentPlot();
@@ -450,6 +558,7 @@ public final class SmartActorRuntime {
                     inventory,
                     exits,
                     lastScene,
+                    playerUtterance,
                     receipts
             );
         });

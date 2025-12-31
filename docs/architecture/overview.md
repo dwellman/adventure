@@ -1,13 +1,17 @@
 # Architecture Overview
 
+Last verified: 2025-12-30 (v1.0 deep clean)
+
 Purpose: provide a short map of the runtime and authoring surfaces without diving into implementation detail.
 
 ## CLI flow (1980 and 2025)
-1. Player input flows through `CommandScanner` and `CommandCompiler`.
-2. If compilation succeeds, the command executes through `GameCommandHandler` -> `GameRuntime`.
-3. In 2025 mode, if compilation fails, the input is sent to `TranslatorService` which returns a single command string.
-4. The translated command re-enters the same scanner/compiler/handler pipeline.
-5. The engine output is narrated (AI rewrite in 2025, direct output in 1980).
+1. If an interaction prompt is pending (dice/choice/confirm), the CLI consumes only the expected input.
+2. `@` mentions start/switch conversations; “okay, bye” ends them; while active, input is dialogue.
+3. Otherwise, player input flows through `CommandScanner` and `CommandCompiler`.
+4. If compilation succeeds, the command executes through `GameCommandHandler` -> `GameRuntime`.
+5. In 2025 mode, if compilation fails, the input is sent to `TranslatorService` which returns a single command string.
+6. The translated command re-enters the same scanner/compiler/handler pipeline.
+7. The engine output is narrated (AI rewrite in 2025, direct output in 1980).
 
 ## Package map
 | Package | Responsibility | Notes |
@@ -24,6 +28,16 @@ Purpose: provide a short map of the runtime and authoring surfaces without divin
 | `com.demo.adventure.domain` | Core game model and kernel registry | Shared by engine and authoring. |
 | `com.demo.adventure.buui` | CLI formatting and console utilities | Word-wrap, markdown formatting, menu helpers. |
 
+## BUUI output styling
+BUUI uses markdown-style inline markers for emphasis in all console output (text, lists, tables, menus); colors come from the active style sheet.
+
+Examples:
+```
+This is **bold**, _italic_, and `code`.
+```
+
+Colors are configured via a `.style` file set by `BUUI_STYLE` (base + bright variants like `green` or `bright_green`); inline color tags are invalid and will error. If the style file fails validation, markdown output is suppressed with a reported error. Set `NO_COLOR=1` to suppress ANSI codes.
+
 ## Resource layout
 - `src/main/resources/games/<id>/` contains structured world/narrative/motif assets used at runtime.
 - `src/main/resources/agents/` contains translator/narrator prompts for 2025 mode.
@@ -31,5 +45,5 @@ Purpose: provide a short map of the runtime and authoring surfaces without divin
 
 ## Guardrails
 - All commands, including directions, go through the scanner/compiler/handlers.
-- Translator returns a single command string; it does not answer questions or emit narration.
-- Narration rewrites are tone-only; mechanics and exits remain factual.
+- Translator returns a single command string or `EMOTE: ...`; it does not answer questions or emit narration.
+- Narration rewrites are tone-only; mechanics remain factual and exits are only appended on scene output.

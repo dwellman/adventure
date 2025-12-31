@@ -36,9 +36,17 @@ class ConsolePrinterTest {
     }
 
     @Test
-    void printAddsLeftGutter() {
+    void printAddsMarkdownIndent() {
         console.reset();
-        ConsolePrinter.print("alpha", 10, 0);
+        ConsolePrinter.print("alpha", 20, 0);
+
+        assertThat(console.output()).isEqualTo("  alpha\n");
+    }
+
+    @Test
+    void printlnKeepsPlainIndent() {
+        console.reset();
+        ConsolePrinter.println("alpha", 10, 0);
 
         assertThat(console.output()).isEqualTo("  alpha\n");
     }
@@ -54,5 +62,32 @@ class ConsolePrinterTest {
         }
 
         assertThat(console.output()).isEmpty();
+    }
+
+    @Test
+    void printNarrationUsesParagraphBullets() {
+        String previousGutter = System.getProperty("BUUI_GUTTER");
+        AnsiStyle.setEnabledOverride(false);
+        try {
+            System.setProperty("BUUI_GUTTER", "2");
+            console.reset();
+            ConsolePrinter.printNarration("Alpha beta gamma delta\n\nEpsilon zeta eta theta", 20, 0);
+
+            String bullet = ListRenderer.BULLET;
+            String expected = bullet + " Alpha beta gamma\n"
+                    + "  delta\n"
+                    + "\n"
+                    + bullet + " Epsilon zeta eta\n"
+                    + "  theta\n";
+
+            assertThat(console.output()).isEqualTo(expected);
+        } finally {
+            AnsiStyle.setEnabledOverride(null);
+            if (previousGutter == null) {
+                System.clearProperty("BUUI_GUTTER");
+            } else {
+                System.setProperty("BUUI_GUTTER", previousGutter);
+            }
+        }
     }
 }

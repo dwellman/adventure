@@ -19,6 +19,8 @@ public final class UseCommand implements GameCommandHandler {
         if (!result.valid()) {
             return CommandOutcome.none();
         }
-        return context.resolveTriggerOutcome(context.fireTrigger(TriggerType.ON_USE, result.source(), result.object()));
+        return context.resolveTriggerOutcome(context.fireTrigger(
+                TriggerType.ON_USE, result.source(), result.object()
+        ));
     }
 }
