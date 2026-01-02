@@ -35,7 +35,7 @@ final class RuntimeEmoteDice {
 
     private final GameRuntime runtime;
     private PendingEmoteCheck pendingEmoteCheck;
-    private GameRuntime.InteractionState interactionState = GameRuntime.InteractionState.none();
+    private InteractionState interactionState = InteractionState.none();
 
     RuntimeEmoteDice(GameRuntime runtime) {
         this.runtime = runtime;
@@ -43,11 +43,11 @@ final class RuntimeEmoteDice {
 
     void reset() {
         pendingEmoteCheck = null;
-        interactionState = GameRuntime.InteractionState.none();
+        interactionState = InteractionState.none();
     }
 
-    GameRuntime.InteractionState interactionState() {
-        return interactionState == null ? GameRuntime.InteractionState.none() : interactionState;
+    InteractionState interactionState() {
+        return interactionState == null ? InteractionState.none() : interactionState;
     }
 
     void emote(String rawEmote) {
@@ -57,14 +57,14 @@ final class RuntimeEmoteDice {
         }
         if (emoteNeedsCheck(emoteText)) {
             pendingEmoteCheck = new PendingEmoteCheck(emoteText, EMOTE_CHECK_SIDES, EMOTE_CHECK_TARGET);
-            interactionState = GameRuntime.InteractionState.awaitingDice(
+            interactionState = InteractionState.awaitingDice(
                     formatDiceCall(pendingEmoteCheck.sides(), pendingEmoteCheck.target())
             );
             runtime.narrate(formatCheckRequest(pendingEmoteCheck));
             return;
         }
         pendingEmoteCheck = null;
-        interactionState = GameRuntime.InteractionState.none();
+        interactionState = InteractionState.none();
         runtime.narrate(formatEmote(emoteText));
     }
 
@@ -72,8 +72,8 @@ final class RuntimeEmoteDice {
         if (runtime.isOutputSuppressed()) {
             return;
         }
-        if (pendingEmoteCheck == null || interactionState.type() != GameRuntime.InteractionType.AWAITING_DICE) {
-            interactionState = GameRuntime.InteractionState.none();
+        if (pendingEmoteCheck == null || interactionState.type() != InteractionType.AWAITING_DICE) {
+            interactionState = InteractionState.none();
             runtime.narrate("No check to roll.");
             return;
         }
@@ -99,7 +99,7 @@ final class RuntimeEmoteDice {
         String outcome = result.success() ? "SUCCESS" : "FAIL";
         String resolved = formatCheckResult(result.roll(), spec.target(), outcome, pendingEmoteCheck.emoteText());
         pendingEmoteCheck = null;
-        interactionState = GameRuntime.InteractionState.none();
+        interactionState = InteractionState.none();
         runtime.narrate(resolved);
     }
 

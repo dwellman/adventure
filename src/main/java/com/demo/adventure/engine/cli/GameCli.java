@@ -4,16 +4,9 @@ import com.demo.adventure.buui.BuuiConsole;
 import com.demo.adventure.buui.BuuiMenu;
 import com.demo.adventure.ai.runtime.AiConfig;
 import com.demo.adventure.ai.runtime.NarrationService;
-import com.demo.adventure.ai.runtime.TranslationOrchestrator;
 import com.demo.adventure.ai.runtime.TranslatorService;
-import com.demo.adventure.ai.runtime.smart.SmartActorPlanner;
-import com.demo.adventure.ai.runtime.smart.SmartActorRegistry;
-import com.demo.adventure.ai.runtime.smart.SmartActorSpec;
-import com.demo.adventure.ai.runtime.smart.SmartActorTagIndex;
 import com.demo.adventure.engine.command.CommandOutput;
-import com.demo.adventure.engine.command.handlers.ClassicCommandFallback;
 import com.demo.adventure.engine.command.handlers.CommandHandlers;
-import com.demo.adventure.engine.command.handlers.CommandOutcome;
 import com.demo.adventure.engine.command.handlers.GameCommandHandler;
 import com.demo.adventure.engine.command.Command;
 import com.demo.adventure.engine.command.CommandAction;
@@ -21,27 +14,14 @@ import com.demo.adventure.engine.command.CommandParseError;
 import com.demo.adventure.engine.command.Token;
 import com.demo.adventure.engine.command.TokenType;
 import com.demo.adventure.engine.command.VerbAliases;
-import com.demo.adventure.engine.command.interpreter.CommandScanner;
 import com.demo.adventure.engine.command.interpreter.CommandInterpreter;
-import com.demo.adventure.authoring.save.io.FootprintRule;
-import com.demo.adventure.domain.kernel.KernelRegistry;
-import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
-import com.demo.adventure.support.exceptions.GameBuilderException;
 import com.demo.adventure.engine.mechanics.keyexpr.KeyExpressionEvaluator;
-import com.demo.adventure.domain.model.Item;
-import com.demo.adventure.domain.model.Rectangle2D;
 import com.demo.adventure.engine.runtime.GameRuntime;
-import com.demo.adventure.engine.runtime.CommandContext;
 import com.demo.adventure.engine.runtime.SceneNarrator;
-import com.demo.adventure.engine.runtime.SmartActorRuntime;
-import com.demo.adventure.authoring.save.build.WorldBuildResult;
-import com.demo.adventure.engine.flow.loop.LoopConfig;
-import com.demo.adventure.engine.flow.loop.LoopRuntime;
 import com.demo.adventure.domain.save.GameSave;
-import com.demo.adventure.engine.flow.trigger.TriggerEngine;
+import com.demo.adventure.support.exceptions.GameBuilderException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -92,7 +72,7 @@ Commands:
         new GameCli(mode).run();
     }
 
-    private enum GameMode { Z1980, Z2025;
+    enum GameMode { Z1980, Z2025;
         static GameMode fromArgs(String[] args) {
             if (args == null) {
                 return Z1980;
@@ -128,7 +108,7 @@ Commands:
     private Map<String, String> aliasMap = VerbAliases.aliasMap();
     private SceneNarrator narrator;
     private GameRuntime runtime;
-    private boolean returnToMenu;
+    private final GameSessionRunner sessionRunner;
 
     public GameCli(GameMode mode) {
         // Keep player output clean even when GameCli is constructed directly (tests bypass main()).
@@ -147,6 +127,7 @@ Commands:
                 config.getBoolean("ai.narrator.debug", false)
         );
         this.translatorService = new TranslatorService(aiEnabled, apiKey);
+        this.sessionRunner = new GameSessionRunner(this);
         if (!aiEnabled) {
             println("~ AI disabled (mode=" + this.mode + ", apiKey=" + (apiKey == null ? "missing" : "present") + ")");
         } else {
@@ -191,16 +172,19 @@ Commands:
                 }
                 try {
                     GameSave save = RuntimeLoader.loadSave(selected.resource());
-                    walkabout(selected, save, scanner);
-                    if (returnToMenu) {
-                        continue;
+                    boolean returnToMenu = sessionRunner.run(selected, save, scanner);
+                    if (!returnToMenu) {
+                        return;
                     }
-                    return;
                 } catch (Exception ex) {
                     println("Failed to load game: " + ex.getMessage());
                 }
             }
         }
+    }
+
+    private void walkabout(GameCatalogEntry option, GameSave save, Scanner scanner) throws GameBuilderException {
+        sessionRunner.run(option, save, scanner);
     }
 
     private void printMenu() {
@@ -235,402 +219,96 @@ Commands:
         }
     }
 
-    // Pattern: Orchestration
-    // - Runs the core translator -> command -> engine -> narrator loop with a single translation pass.
-    private void walkabout(GameCatalogEntry option, GameSave save, Scanner scanner) throws GameBuilderException {
-        returnToMenu = false;
-        LoopConfig loopConfig = RuntimeLoader.loadLoopConfig(option.resource());
-        List<FootprintRule> footprintRules = RuntimeLoader.loadFootprintRules(option.resource());
-        LoopRuntime loopRuntime = new LoopRuntime(save, loopConfig, footprintRules);
-        WorldBuildResult world = loopRuntime.buildWorld();
-        KernelRegistry registry = world.registry();
-        UUID currentPlot = world.startPlotId();
+    GameMode mode() {
+        return mode;
+    }
 
-        narrator = new SceneNarrator(narrationService);
-        runtime = new GameRuntime(narrator, this::emit, aiEnabled);
+    boolean aiEnabled() {
+        return aiEnabled;
+    }
 
-        UUID playerId = runtime.findPlayerActor(registry, currentPlot);
-        List<Item> inventory = new ArrayList<>(runtime.startingInventory(registry, playerId));
-        Map<UUID, Map<UUID, Rectangle2D>> inventoryPlacements = new HashMap<>();
-        runtime.seedInventoryPlacements(inventory, inventoryPlacements);
+    String apiKey() {
+        return apiKey;
+    }
 
+    boolean translatorDebug() {
+        return translatorDebug;
+    }
+
+    boolean smartActorDebug() {
+        return smartActorDebug;
+    }
+
+    boolean smartActorLocalOnly() {
+        return smartActorLocalOnly;
+    }
+
+    NarrationService narrationService() {
+        return narrationService;
+    }
+
+    TranslatorService translatorService() {
+        return translatorService;
+    }
+
+    CommandInterpreter commandInterpreter() {
+        return commandInterpreter;
+    }
+
+    Map<CommandAction, GameCommandHandler> commandHandlers() {
+        return commandHandlers;
+    }
+
+    void setNarrator(SceneNarrator narrator) {
+        this.narrator = narrator;
+    }
+
+    void setRuntime(GameRuntime runtime) {
+        this.runtime = runtime;
+    }
+
+    void setAliasMap(Map<String, String> aliasMap) {
+        this.aliasMap = aliasMap == null ? Map.of() : aliasMap;
+    }
+
+    void printBlankLine() {
         printBlank();
-        println("=== " + option.name() + " ===");
-        printBlank();
-        if (save.preamble() != null && !save.preamble().isBlank()) {
-            printNarration(save.preamble());
-        }
-        String backstory = RuntimeLoader.loadBackstory(option.resource());
-        if (backstory != null && !backstory.isBlank()) {
-            printNarration(backstory);
-        }
-        narrator.setBackstory(backstory);
+    }
 
-        Map<String, CraftingRecipe> craftingRecipes = RuntimeLoader.loadCraftingRecipes(option.resource());
-        Map<String, TokenType> extraAliases = RuntimeLoader.loadVerbAliases(option.resource());
-        commandInterpreter.setExtraKeywords(extraAliases);
-        aliasMap = mergeAliasMap(extraAliases);
-        TriggerEngine triggerEngine = new TriggerEngine(RuntimeLoader.loadTriggerDefinitions(option.resource()));
+    void printlnLine(String text) {
+        println(text);
+    }
 
-        runtime.configure(
-                registry,
-                currentPlot,
-                playerId,
-                inventory,
-                inventoryPlacements,
-                loopRuntime,
-                triggerEngine,
-                craftingRecipes,
-                extraAliases
-        );
-        runtime.primeScene();
-        List<SmartActorSpec> smartActorSpecs = RuntimeLoader.loadSmartActorSpecs(option.resource());
-        SmartActorTagIndex smartActorTags = RuntimeLoader.loadSmartActorTags(option.resource());
-        if (aiEnabled && !smartActorSpecs.isEmpty()) {
-            SmartActorRegistry smartActorRegistry = SmartActorRegistry.create(registry, smartActorSpecs);
-            SmartActorPlanner planner = new SmartActorPlanner(aiEnabled, apiKey, smartActorDebug);
-            SmartActorRuntime smartActorRuntime = new SmartActorRuntime(
-                    smartActorRegistry,
-                    smartActorTags,
-                    planner,
-                    translatorService,
-                    commandInterpreter,
-                    commandHandlers,
-                    smartActorDebug
-            );
-            smartActorRuntime.setLocalOnly(this.smartActorLocalOnly);
-            runtime.configureSmartActors(smartActorRuntime);
-        }
-        CommandContext context = new CommandContext(this, runtime);
-
-gameLoop:
-        while (true) {
-            System.out.print(mode == GameMode.Z2025 ? "\n> " : "\n_ ");
-            String line = scanner.nextLine();
-            if (line == null) {
-                return;
-            }
-            String input = line.trim();
-            narrator.setLastUtterance(input);
-            if (input.isEmpty()) {
-                continue;
-            }
-            printBlank();
-            GameRuntime.InteractionState interactionState = runtime.interactionState();
-            if (interactionState.type() != GameRuntime.InteractionType.NONE) {
-                if (interactionState.type() == GameRuntime.InteractionType.AWAITING_DICE) {
-                    Command diceCommand = parseCommand(input);
-                    if (diceCommand != null && !diceCommand.hasError() && diceCommand.action() == CommandAction.DICE) {
-                        narrator.setLastCommand("dice");
-                        runtime.rollDice(diceCommand.argument());
-                    } else {
-                        String prompt = interactionState.promptLine();
-                        if (prompt == null || prompt.isBlank()) {
-                            String expected = interactionState.expectedToken();
-                            prompt = expected == null || expected.isBlank() ? "Roll dice." : "Roll " + expected + ".";
-                        }
-                        runtime.narrate(prompt);
-                    }
-                    continue;
-                }
-                runtime.narrate("Finish the current prompt before acting.");
-                continue;
-            }
-            MentionParse mention = resolveMention(input);
-            if (runtime.isConversationActive()) {
-                if (isConversationExit(input)) {
-                    narrator.setLastCommand("");
-                    runtime.endConversation();
-                    continue;
-                }
-                MentionHandling mentionHandling = handleMention(mention);
-                if (mentionHandling == MentionHandling.END_GAME) {
-                    return;
-                }
-                if (mentionHandling != MentionHandling.NOT_HANDLED) {
-                    continue;
-                }
-                String actorLabel = runtime.conversationActorLabel();
-                narrator.setLastCommand(actorLabel.isBlank() ? "talk" : "talk " + actorLabel);
-                runtime.talkToConversation(input);
-                CommandOutcome turnOutcome = runtime.advanceTurn();
-                if (turnOutcome.endGame()) {
-                    return;
-                }
-                if (turnOutcome.skipTurnAdvance()) {
-                    continue;
-                }
-                continue;
-            }
-
-            MentionHandling mentionHandling = handleMention(mention);
-            if (mentionHandling == MentionHandling.END_GAME) {
-                return;
-            }
-            if (mentionHandling != MentionHandling.NOT_HANDLED) {
-                continue;
-            }
-
-            String commandText = input;
-            Command cmd = parseCommand(commandText);
-            boolean localValid = isValidCommand(cmd);
-            boolean translated = false;
-            if (aiEnabled) {
-                if (!localValid) {
-                    List<String> fixtures = runtime.visibleFixtureLabels();
-                    List<String> items = runtime.visibleItemLabels();
-                    List<String> inventoryLabels = runtime.inventoryLabels();
-                    TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
-                            translatorService,
-                            input,
-                            fixtures,
-                            items,
-                            inventoryLabels,
-                            narrator.lastState(),
-                            translatorDebug,
-                            this::parseCommand,
-                            System.out::println
-                    );
-                    if (outcome.type() == TranslationOrchestrator.OutcomeType.FAILED) {
-                        println("~ translator failed; please rephrase (try HELP or a direction).");
-                        continue gameLoop;
-                    }
-                    if (outcome.type() == TranslationOrchestrator.OutcomeType.EMOTE) {
-                        narrator.setLastCommand("");
-                        runtime.emote(outcome.commandText());
-                        continue gameLoop;
-                    }
-                    commandText = outcome.commandText();
-                    translated = true;
-                }
-            } else {
-                // Pattern: Trust UX
-                // - When AI is disabled, allow classic fallback only if the compiler cannot parse the input.
-                if (cmd.action() == CommandAction.UNKNOWN || cmd.hasError()) {
-                    String fallbackCommandText = ClassicCommandFallback.resolve(input);
-                    if (fallbackCommandText != null && !fallbackCommandText.isBlank()) {
-                        commandText = fallbackCommandText;
-                    }
-                }
-            }
-
-            cmd = parseCommand(commandText);
-            narrator.setLastCommand(commandText);
-            if (cmd.hasError()) {
-                if (translated) {
-                    println("~ translator failed; please rephrase (try HELP or a direction).");
-                    continue gameLoop;
-                }
-                runtime.narrate(formatCommandError(cmd.error()));
-                continue;
-            }
-            if (cmd.action() == CommandAction.UNKNOWN) {
-                if (translated) {
-                    println("~ translator failed; please rephrase (try HELP or a direction).");
-                    continue;
-                }
-                runtime.narrate("Unknown command. Type help for commands.");
-                continue;
-            }
-            GameCommandHandler handler = commandHandlers.get(cmd.action());
-            if (handler == null) {
-                runtime.narrate("Unknown command. Type help for commands.");
-                continue;
-            }
-            if (cmd.action() == CommandAction.QUIT) {
-                returnToMenu = true;
-            }
-            CommandOutcome outcome = handler.handle(context, cmd);
-            if (outcome.endGame()) {
-                return;
-            }
-            if (outcome.skipTurnAdvance()) {
-                continue gameLoop;
-            }
-
-            CommandOutcome turnOutcome = runtime.advanceTurn();
-            if (turnOutcome.endGame()) {
-                return;
-            }
-            if (turnOutcome.skipTurnAdvance()) {
-                continue gameLoop;
-            }
-        }
+    void printNarrationLine(String text) {
+        printNarration(text);
     }
 
     private Command parseCommand(String input) {
-        return commandInterpreter.interpret(input);
+        return sessionRunner.parseCommand(input);
     }
 
     private boolean isValidCommand(Command command) {
-        return command != null && command.action() != CommandAction.UNKNOWN && !command.hasError();
+        return sessionRunner.isValidCommand(command);
     }
 
     private String formatCommandError(CommandParseError error) {
-        if (error == null) {
-            return "Invalid command.";
-        }
-        String suffix = error.column() >= 0 ? " (col " + (error.column() + 1) + ")" : "";
-        return "Invalid command: " + error.message() + suffix;
+        return sessionRunner.formatCommandError(error);
     }
 
     private boolean isConversationExit(String input) {
-        List<Token> tokens = CommandScanner.scan(input);
-        List<String> words = new ArrayList<>();
-        for (Token token : tokens) {
-            if (token == null || token.type == TokenType.EOL || token.type == TokenType.HELP) {
-                continue;
-            }
-            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
-            if (lexeme.isEmpty()) {
-                continue;
-            }
-            if (token.type == TokenType.STRING) {
-                for (String part : lexeme.split("\\s+")) {
-                    if (!part.isBlank()) {
-                        words.add(part);
-                    }
-                }
-                continue;
-            }
-            words.add(lexeme);
-        }
-        if (words.size() != 2) {
-            return false;
-        }
-        return "okay".equalsIgnoreCase(words.get(0)) && "bye".equalsIgnoreCase(words.get(1));
+        return sessionRunner.isConversationExit(input);
     }
 
-    private enum MentionParseType {
-        NONE,
-        INVALID,
-        AMBIGUOUS,
-        UNKNOWN,
-        MATCH
-    }
-
-    private record MentionParse(MentionParseType type, String actorLabel, String utterance) {
-        static MentionParse none() {
-            return new MentionParse(MentionParseType.NONE, "", "");
-        }
-    }
-
-    private enum MentionHandling {
-        NOT_HANDLED,
-        CONTINUE,
-        END_GAME
-    }
-
-    private MentionParse resolveMention(String input) {
-        if (runtime == null || input == null || input.isBlank()) {
-            return MentionParse.none();
-        }
-        List<Token> tokens = CommandScanner.scan(input);
-        int mentionIndex = findMentionToken(tokens);
-        if (mentionIndex < 0) {
-            return MentionParse.none();
-        }
-        List<String> beforeWords = collectWords(tokens, 0, mentionIndex);
-        List<String> afterWords = collectWords(tokens, mentionIndex + 1, tokens.size());
-        if (afterWords.isEmpty()) {
-            return new MentionParse(MentionParseType.INVALID, "", "");
-        }
-        GameRuntime.MentionResolution resolution = runtime.resolveMentionActor(afterWords);
-        if (resolution.type() == GameRuntime.MentionResolutionType.NONE) {
-            return new MentionParse(MentionParseType.UNKNOWN, "", "");
-        }
-        if (resolution.type() == GameRuntime.MentionResolutionType.AMBIGUOUS) {
-            return new MentionParse(MentionParseType.AMBIGUOUS, "", "");
-        }
-        String actorLabel = resolution.actorLabel() == null ? "" : resolution.actorLabel().trim();
-        List<String> utteranceTokens = new ArrayList<>(beforeWords);
-        int consumed = Math.max(0, resolution.tokensMatched());
-        if (consumed < afterWords.size()) {
-            utteranceTokens.addAll(afterWords.subList(consumed, afterWords.size()));
-        }
-        String utterance = String.join(" ", utteranceTokens).trim();
-        return new MentionParse(MentionParseType.MATCH, actorLabel, utterance);
-    }
-
-    private MentionHandling handleMention(MentionParse mention) throws GameBuilderException {
-        if (mention == null || mention.type() == MentionParseType.NONE) {
-            return MentionHandling.NOT_HANDLED;
-        }
-        switch (mention.type()) {
-            case INVALID -> {
-                narrate("Talk to whom?");
-                return MentionHandling.CONTINUE;
-            }
-            case AMBIGUOUS -> {
-                narrate("Be specific.");
-                return MentionHandling.CONTINUE;
-            }
-            case UNKNOWN -> {
-                narrate("You don't see anyone by that name.");
-                return MentionHandling.CONTINUE;
-            }
-            case MATCH -> {
-                String label = mention.actorLabel() == null ? "" : mention.actorLabel().trim();
-                if (label.isBlank()) {
-                    narrate("No one answers.");
-                    return MentionHandling.CONTINUE;
-                }
-                narrator.setLastCommand("talk " + label);
-                runtime.talk(label);
-                if (!mention.utterance().isBlank()) {
-                    runtime.talkToConversation(mention.utterance());
-                }
-                CommandOutcome turnOutcome = runtime.advanceTurn();
-                if (turnOutcome.endGame()) {
-                    return MentionHandling.END_GAME;
-                }
-                return MentionHandling.CONTINUE;
-            }
-            default -> {
-                return MentionHandling.NOT_HANDLED;
-            }
-        }
+    private Object resolveMention(String input) {
+        return sessionRunner.resolveMention(input);
     }
 
     private int findMentionToken(List<Token> tokens) {
-        if (tokens == null || tokens.isEmpty()) {
-            return -1;
-        }
-        for (int i = 0; i < tokens.size(); i++) {
-            Token token = tokens.get(i);
-            if (token != null && token.type == TokenType.TALK) {
-                return i;
-            }
-        }
-        return -1;
+        return sessionRunner.findMentionToken(tokens);
     }
 
     private List<String> collectWords(List<Token> tokens, int startIdx, int endIdx) {
-        if (tokens == null || tokens.isEmpty() || startIdx >= endIdx) {
-            return List.of();
-        }
-        int safeEnd = Math.min(tokens.size(), endIdx);
-        List<String> words = new ArrayList<>();
-        for (int i = Math.max(0, startIdx); i < safeEnd; i++) {
-            Token token = tokens.get(i);
-            if (token == null || token.type == TokenType.EOL || token.type == TokenType.HELP || token.type == TokenType.TALK) {
-                continue;
-            }
-            String lexeme = token.lexeme == null ? "" : token.lexeme.trim();
-            if (lexeme.isEmpty()) {
-                continue;
-            }
-            if (token.type == TokenType.STRING) {
-                for (String part : lexeme.split("\\s+")) {
-                    if (!part.isBlank()) {
-                        words.add(part);
-                    }
-                }
-                continue;
-            }
-            words.add(lexeme);
-        }
-        return words;
+        return sessionRunner.collectWords(tokens, startIdx, endIdx);
     }
 
     @Override
@@ -672,7 +350,7 @@ gameLoop:
         return "Aliases: " + String.join(", ", entries);
     }
 
-    private Map<String, String> mergeAliasMap(Map<String, TokenType> extraAliases) {
+    Map<String, String> mergeAliasMap(Map<String, TokenType> extraAliases) {
         Map<String, String> merged = new LinkedHashMap<>(VerbAliases.aliasMap());
         if (extraAliases == null || extraAliases.isEmpty()) {
             return merged;

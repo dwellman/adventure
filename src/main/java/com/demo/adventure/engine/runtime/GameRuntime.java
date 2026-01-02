@@ -1,29 +1,20 @@
 package com.demo.adventure.engine.runtime;
 
 import com.demo.adventure.engine.command.handlers.CommandOutcome;
-import com.demo.adventure.engine.mechanics.cells.CellMutationReceipt;
-import com.demo.adventure.engine.mechanics.cells.CellOps;
 import com.demo.adventure.engine.mechanics.combat.CombatEncounter;
 import com.demo.adventure.engine.command.Command;
-import com.demo.adventure.engine.command.Token;
 import com.demo.adventure.engine.command.TokenType;
-import com.demo.adventure.engine.command.interpreter.CommandScanner;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
-import com.demo.adventure.engine.mechanics.crafting.CraftingTable;
 import com.demo.adventure.support.exceptions.GameBuilderException;
-import com.demo.adventure.engine.mechanics.keyexpr.KeyExpressionEvaluator;
-import com.demo.adventure.engine.mechanics.keyexpr.KeyExpressionEvaluator.SkillResolver;
 import com.demo.adventure.domain.model.Actor;
 import com.demo.adventure.domain.model.Direction;
 import com.demo.adventure.domain.model.Item;
 import com.demo.adventure.domain.model.Plot;
 import com.demo.adventure.domain.model.Rectangle2D;
 import com.demo.adventure.domain.model.Thing;
-import com.demo.adventure.domain.model.ThingKind;
 import com.demo.adventure.domain.model.Gate;
 import com.demo.adventure.engine.flow.loop.LoopResetReason;
-import com.demo.adventure.engine.flow.loop.LoopResetResult;
 import com.demo.adventure.engine.flow.loop.LoopRuntime;
 import com.demo.adventure.engine.flow.trigger.TriggerEngine;
 import com.demo.adventure.engine.flow.trigger.TriggerOutcome;
@@ -31,9 +22,7 @@ import com.demo.adventure.engine.flow.trigger.TriggerType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -50,11 +39,15 @@ public final class GameRuntime {
     private final RuntimeInventory inventoryService;
     private final RuntimeConversation conversation;
     private final RuntimeEmoteDice emoteDice;
+    private final RuntimeCrafting crafting;
     private final RuntimeCombat combat;
     private final RuntimeItemUse itemUse;
     private final RuntimeCommandActions commandActions;
     private final RuntimeNavigation navigation;
     private final RuntimeTriggers triggers;
+    private final RuntimeResets resets;
+    private final RuntimeActorContext actorContext;
+    private final RuntimeKernelOps kernelOps;
 
     private KernelRegistry registry;
     private UUID currentPlot;
@@ -76,11 +69,15 @@ public final class GameRuntime {
         this.inventoryService = new RuntimeInventory(this);
         this.conversation = new RuntimeConversation(this);
         this.emoteDice = new RuntimeEmoteDice(this);
+        this.crafting = new RuntimeCrafting(this);
         this.combat = new RuntimeCombat(this);
         this.itemUse = new RuntimeItemUse(this);
         this.commandActions = new RuntimeCommandActions(this);
         this.navigation = new RuntimeNavigation(this);
         this.triggers = new RuntimeTriggers(this);
+        this.resets = new RuntimeResets(this);
+        this.actorContext = new RuntimeActorContext(this);
+        this.kernelOps = new RuntimeKernelOps(this);
     }
 
     public void configure(KernelRegistry registry,
@@ -137,6 +134,18 @@ public final class GameRuntime {
         return inventoryPlacements;
     }
 
+    void replaceInventoryPlacements(Map<UUID, Map<UUID, Rectangle2D>> placements) {
+        inventoryPlacements = placements == null ? new HashMap<>() : placements;
+    }
+
+    Map<String, CraftingRecipe> craftingRecipes() {
+        return craftingRecipes;
+    }
+
+    Map<String, TokenType> extraKeywords() {
+        return extraKeywords;
+    }
+
     boolean aiEnabled() {
         return aiEnabled;
     }
@@ -171,6 +180,12 @@ public final class GameRuntime {
         }
     }
 
+    void resetNarratorScene() {
+        if (narrator != null) {
+            narrator.resetScene();
+        }
+    }
+
     public Plot currentPlot() {
         if (registry == null || currentPlot == null) {
             return null;
@@ -195,47 +210,7 @@ public final class GameRuntime {
     }
 
     public <T> T runAsActor(UUID actorId, boolean suppressOutput, boolean updateOwner, ActorAction<T> action) throws GameBuilderException {
-        if (registry == null || actorId == null || action == null) {
-            return null;
-        }
-        Actor actor = registry.get(actorId) instanceof Actor found ? found : null;
-        if (actor == null) {
-            return null;
-        }
-        UUID savedPlayerId = playerId;
-        UUID savedPlot = currentPlot;
-        List<Item> savedInventory = inventory;
-        Map<UUID, Map<UUID, Rectangle2D>> savedPlacements = inventoryPlacements;
-        boolean savedSuppress = outputSuppressed;
-        KernelRegistry savedRegistry = registry;
-
-        UUID actorPlot = actor.getOwnerId();
-        List<Item> actorInventory = startingInventory(registry, actorId);
-        Map<UUID, Map<UUID, Rectangle2D>> actorPlacements = new HashMap<>();
-
-        playerId = actorId;
-        currentPlot = actorPlot;
-        inventory = actorInventory;
-        inventoryPlacements = actorPlacements;
-        outputSuppressed = suppressOutput;
-        seedInventoryPlacements(actorInventory, actorPlacements);
-
-        T result = action.run();
-
-        UUID actorPlotAfter = currentPlot;
-        boolean registryChanged = registry != savedRegistry;
-        if (!registryChanged && updateOwner && actorPlotAfter != null) {
-            registry.moveOwnership(actorId, actorPlotAfter);
-        }
-
-        outputSuppressed = savedSuppress;
-        if (!registryChanged) {
-            playerId = savedPlayerId;
-            currentPlot = savedPlot;
-            inventory = savedInventory;
-            inventoryPlacements = savedPlacements;
-        }
-        return result;
+        return actorContext.runAsActor(actorId, suppressOutput, updateOwner, action);
     }
 
     public void setEncounter(CombatEncounter encounter) {
@@ -271,113 +246,11 @@ public final class GameRuntime {
     }
 
     public void craft(String target) {
-        if (target.isBlank()) {
-            CraftingTable table = new CraftingTable(registry, playerId, craftingRecipes);
-            String names = table.getRecipes().values().stream()
-                    .map(CraftingRecipe::emitLabel)
-                    .sorted(String.CASE_INSENSITIVE_ORDER)
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("(none)");
-            narrateMetaLines(List.of(
-                    "Known recipes: " + names + ".",
-                    "Try HOW CRAFT <item> for details."
-            ));
-            return;
-        }
-        CraftingTable table = new CraftingTable(registry, playerId, craftingRecipes);
-        try {
-            boolean crafted = table.craft(target);
-            if (crafted) {
-                refreshInventory();
-                narrateMeta("You craft a " + target + ".");
-            } else {
-                var missing = table.missingRequirements(target);
-                if (table.findRecipe(target) == null) {
-                    String names = table.getRecipes().values().stream()
-                            .map(CraftingRecipe::emitLabel)
-                            .sorted(String.CASE_INSENSITIVE_ORDER)
-                            .reduce((a, b) -> a + ", " + b)
-                            .orElse("(none)");
-                    narrateMeta("No recipe for that. Known craftables: " + names + ".");
-                    return;
-                }
-                if (!missing.isEmpty()) {
-                    String needs = String.join(", ", missing);
-                    narrateMeta("You still need: " + needs + ".");
-                } else {
-                    narrateMeta("You lack the ingredients or know-how to craft that.");
-                }
-            }
-        } catch (Exception ex) {
-            narrateMeta("Crafting failed: " + ex.getMessage());
-        }
+        crafting.craft(target);
     }
 
     public void how(String argument) {
-        if (argument.isBlank()) {
-            CraftingTable table = new CraftingTable(registry, playerId, craftingRecipes);
-            String names = table.getRecipes().values().stream()
-                    .map(CraftingRecipe::emitLabel)
-                    .sorted(String.CASE_INSENSITIVE_ORDER)
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("(none)");
-            narrateMetaLines(List.of(
-                    "Known craft targets: " + names + ".",
-                    "Use HOW CRAFT <item> to see skill and ingredients."
-            ));
-            return;
-        }
-        String trimmed = normalizeHowCraftTarget(argument);
-        if (trimmed.isBlank()) {
-            narrateMeta("Which item? Try HOW CRAFT TORCH.");
-            return;
-        }
-
-        CraftingTable table = new CraftingTable(registry, playerId, craftingRecipes);
-        CraftingRecipe recipe = table.findRecipe(trimmed);
-        if (recipe == null) {
-            String names = table.getRecipes().values().stream()
-                    .map(CraftingRecipe::emitLabel)
-                    .sorted(String.CASE_INSENSITIVE_ORDER)
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("(none)");
-            narrateMeta("No known way to craft '" + trimmed + "'. Known: " + names + ".");
-            return;
-        }
-
-        SkillResolver skillResolver = KeyExpressionEvaluator.registrySkillResolver(registry, playerId);
-        boolean skillRequired = recipe.skillTag() != null && !recipe.skillTag().isBlank();
-        boolean hasSkill = !skillRequired || skillResolver.hasSkill(recipe.skillTag());
-
-        List<String> missing = table.missingRequirements(recipe.name());
-        HashSet<String> missingNormalized = new HashSet<>();
-        for (String m : missing) {
-            missingNormalized.add(m.trim().toLowerCase(Locale.ROOT));
-        }
-
-        List<String> lines = new ArrayList<>();
-        lines.add("How to craft " + recipe.emitLabel() + ":");
-        if (skillRequired) {
-            lines.add("  Skill: " + recipe.skillTag() + (hasSkill ? " (known)" : " (missing)") + ".");
-        }
-        if (!recipe.requirements().isEmpty()) {
-            List<String> parts = new ArrayList<>();
-            for (String req : recipe.requirements()) {
-                if (missingNormalized.contains(req.toLowerCase(Locale.ROOT))) {
-                    parts.add(req + " (missing)");
-                } else {
-                    parts.add(req);
-                }
-            }
-            lines.add("  Ingredients: " + String.join(", ", parts));
-        }
-
-        if (missing.isEmpty()) {
-            lines.add("  Status: ready to craft with CRAFT " + recipe.emitLabel() + ".");
-        } else {
-            lines.add("  Status: missing " + String.join(", ", missing) + ".");
-        }
-        narrateMetaLines(lines);
+        crafting.how(argument);
     }
 
     public void lookDirectionOrThing(String arg) {
@@ -394,22 +267,6 @@ public final class GameRuntime {
 
     public InteractionState interactionState() {
         return emoteDice.interactionState();
-    }
-
-    public enum MentionResolutionType {
-        MATCH,
-        AMBIGUOUS,
-        NONE
-    }
-
-    public record MentionResolution(MentionResolutionType type, UUID actorId, String actorLabel, int tokensMatched) {
-        public static MentionResolution none() {
-            return new MentionResolution(MentionResolutionType.NONE, null, "", 0);
-        }
-
-        public static MentionResolution ambiguous() {
-            return new MentionResolution(MentionResolutionType.AMBIGUOUS, null, "", 0);
-        }
     }
 
     public MentionResolution resolveMentionActor(List<String> tokens) {
@@ -541,14 +398,14 @@ public final class GameRuntime {
         }
     }
 
-    private void narrateMetaLines(List<String> lines) {
+    void narrateMetaLines(List<String> lines) {
         if (lines == null || lines.isEmpty()) {
             return;
         }
         narrateMeta(String.join("\n", lines));
     }
 
-    private void narrateMeta(String text) {
+    void narrateMeta(String text) {
         if (text == null || text.isBlank()) {
             return;
         }
@@ -559,46 +416,9 @@ public final class GameRuntime {
         narrate(text);
     }
 
-    private String normalizeHowCraftTarget(String argument) {
-        if (argument == null || argument.isBlank()) {
-            return "";
-        }
-        List<Token> tokens = trimEolTokens(CommandScanner.scan(argument, extraKeywords));
-        if (tokens.isEmpty()) {
-            return "";
-        }
-        int start = 0;
-        if (tokens.get(0).type == TokenType.MAKE) {
-            start = 1;
-        }
-        return tokens.subList(start, tokens.size()).stream()
-                .map(t -> t.lexeme)
-                .reduce((a, b) -> a + " " + b)
-                .orElse("")
-                .trim();
-    }
-
-    private List<Token> trimEolTokens(List<Token> tokens) {
-        if (tokens == null || tokens.isEmpty()) {
-            return List.of();
-        }
-        List<Token> trimmed = new ArrayList<>(tokens);
-        while (!trimmed.isEmpty() && trimmed.get(trimmed.size() - 1).type == TokenType.EOL) {
-            trimmed.remove(trimmed.size() - 1);
-        }
-        return trimmed;
-    }
 
     void consumeCell(KernelRegistry registry, UUID thingId, String cellName, long delta) {
-        if (registry == null || thingId == null || cellName == null || cellName.isBlank()) {
-            return;
-        }
-        Thing thing = registry.get(thingId);
-        if (thing == null) {
-            return;
-        }
-        CellMutationReceipt receipt = CellOps.consume(thing, cellName, delta);
-        registry.recordCellMutation(receipt);
+        kernelOps.consumeCell(registry, thingId, cellName, delta);
     }
 
     List<Gate> exits() {
@@ -618,83 +438,23 @@ public final class GameRuntime {
     }
 
     TriggerResolution applyTriggerOutcome(TriggerOutcome outcome) throws GameBuilderException {
-        if (outcome == null) {
-            return TriggerResolution.none();
-        }
-        for (String message : outcome.messages()) {
-            if (message != null && !message.isBlank()) {
-                narrate(message);
-            }
-        }
-        if (outcome.endGame()) {
-            return new TriggerResolution(null, true);
-        }
-        if (outcome.hasReset()) {
-            ResetContext reset = applyLoopReset(outcome.resetReason(), outcome.resetMessage());
-            return new TriggerResolution(reset, false);
-        }
-        return TriggerResolution.none();
+        return resets.applyTriggerOutcome(outcome);
     }
 
     ResetContext applyLoopReset(LoopResetReason reason, String overrideMessage) throws GameBuilderException {
-        if (loopRuntime == null || reason == null) {
-            return null;
-        }
-        LoopResetResult reset = loopRuntime.reset(registry, reason);
-        KernelRegistry nextRegistry = reset.world().registry();
-        UUID nextPlot = reset.world().startPlotId();
-        UUID nextPlayer = findPlayerActor(nextRegistry, nextPlot);
-        List<Item> nextInventory = new ArrayList<>(startingInventory(nextRegistry, nextPlayer));
-        inventoryPlacements.clear();
-        seedInventoryPlacements(nextInventory, inventoryPlacements);
-        encounter = null;
-        narrator.resetScene();
-        String message = (overrideMessage != null && !overrideMessage.isBlank()) ? overrideMessage : reset.message();
-        if (message != null && !message.isBlank()) {
-            narrate(message);
-        }
-        this.registry = nextRegistry;
-        this.currentPlot = nextPlot;
-        this.playerId = nextPlayer;
-        this.inventory = nextInventory;
-        describe();
-        return new ResetContext(nextRegistry, nextPlot, nextPlayer, nextInventory);
+        return resets.applyLoopReset(reason, overrideMessage);
     }
 
     UUID findWorldStateId(KernelRegistry registry) {
-        if (registry == null) {
-            return null;
-        }
-        return registry.getEverything().values().stream()
-                .filter(t -> t != null && t.getKind() == ThingKind.WORLD)
-                .map(Thing::getId)
-                .findFirst()
-                .orElse(null);
+        return kernelOps.findWorldStateId(registry);
     }
 
     boolean isGateOpen(Gate gate, KernelRegistry registry, UUID playerId, UUID plotId) {
-        KeyExpressionEvaluator.AttributeResolver attributeResolver =
-                KeyExpressionEvaluator.registryAttributeResolver(registry, plotId, playerId);
-        return gate.isOpen(
-                KeyExpressionEvaluator.registryHasResolver(registry, playerId),
-                KeyExpressionEvaluator.registrySearchResolver(registry, playerId),
-                attributeResolver,
-                KeyExpressionEvaluator.AttributeResolutionPolicy.COMPUTE_FALLBACK_ZERO
-        );
+        return kernelOps.isGateOpen(gate, registry, playerId, plotId);
     }
 
     boolean isThingOpen(Thing thing, KernelRegistry registry, UUID playerId, UUID plotId) {
-        if (thing == null) {
-            return false;
-        }
-        KeyExpressionEvaluator.AttributeResolver attributeResolver =
-                KeyExpressionEvaluator.registryAttributeResolver(registry, plotId, playerId);
-        return thing.isOpen(
-                KeyExpressionEvaluator.registryHasResolver(registry, playerId),
-                KeyExpressionEvaluator.registrySearchResolver(registry, playerId),
-                attributeResolver,
-                KeyExpressionEvaluator.AttributeResolutionPolicy.COMPUTE_FALLBACK_ZERO
-        );
+        return kernelOps.isThingOpen(thing, registry, playerId, plotId);
     }
 
     public void seedInventoryPlacements(List<Item> inventory, Map<UUID, Map<UUID, Rectangle2D>> placements) {
@@ -728,22 +488,4 @@ public final class GameRuntime {
         return inventoryService.startingInventory(registry, playerId);
     }
 
-    public enum InteractionType {
-        NONE,
-        AWAITING_DICE,
-        AWAITING_CHOICE,
-        AWAITING_CONFIRM
-    }
-
-    public record InteractionState(InteractionType type, String expectedToken, String promptLine) {
-        public static InteractionState none() {
-            return new InteractionState(InteractionType.NONE, "", "");
-        }
-
-        public static InteractionState awaitingDice(String diceCall) {
-            String expected = diceCall == null ? "" : diceCall.trim();
-            String prompt = expected.isEmpty() ? "Roll dice." : "Roll " + expected + ".";
-            return new InteractionState(InteractionType.AWAITING_DICE, expected, prompt);
-        }
-    }
 }

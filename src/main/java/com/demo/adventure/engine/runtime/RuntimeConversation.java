@@ -36,19 +36,19 @@ final class RuntimeConversation {
         return conversationActorLabel == null ? "" : conversationActorLabel;
     }
 
-    GameRuntime.MentionResolution resolveMentionActor(List<String> tokens) {
+    MentionResolution resolveMentionActor(List<String> tokens) {
         KernelRegistry registry = runtime.registry();
         UUID plotId = runtime.currentPlotId();
         if (registry == null || plotId == null || tokens == null || tokens.isEmpty()) {
-            return GameRuntime.MentionResolution.none();
+            return MentionResolution.none();
         }
         List<String> mentionTokens = normalizeTokens(tokens);
         if (mentionTokens.isEmpty()) {
-            return GameRuntime.MentionResolution.none();
+            return MentionResolution.none();
         }
         List<Actor> actors = visibleActorsAtPlot(registry, plotId);
         if (actors.isEmpty()) {
-            return GameRuntime.MentionResolution.none();
+            return MentionResolution.none();
         }
         List<MentionCandidate> candidates = new ArrayList<>();
         for (Actor actor : actors) {
@@ -58,19 +58,19 @@ final class RuntimeConversation {
             }
         }
         if (candidates.isEmpty()) {
-            return GameRuntime.MentionResolution.none();
+            return MentionResolution.none();
         }
         int best = candidates.stream().mapToInt(MentionCandidate::tokensMatched).max().orElse(0);
         List<MentionCandidate> top = candidates.stream()
                 .filter(candidate -> candidate.tokensMatched() == best)
                 .toList();
         if (top.size() != 1) {
-            return GameRuntime.MentionResolution.ambiguous();
+            return MentionResolution.ambiguous();
         }
         Actor actor = top.get(0).actor();
         String label = actor.getLabel();
         String safeLabel = label == null ? "" : label.trim();
-        return new GameRuntime.MentionResolution(GameRuntime.MentionResolutionType.MATCH, actor.getId(), safeLabel, best);
+        return new MentionResolution(MentionResolutionType.MATCH, actor.getId(), safeLabel, best);
     }
 
     void endConversation() {
