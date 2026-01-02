@@ -26,13 +26,13 @@ class InteractionStateTest {
 
             runtime.emote("do a dance to distract the killer");
 
-            GameRuntime.InteractionState state = runtime.interactionState();
-            assertThat(state.type()).isEqualTo(GameRuntime.InteractionType.AWAITING_DICE);
+            InteractionState state = runtime.interactionState();
+            assertThat(state.type()).isEqualTo(InteractionType.AWAITING_DICE);
             assertThat(state.expectedToken()).isEqualTo("dice(20, 15)");
 
             runtime.rollDice("dice(20,15)");
 
-            assertThat(runtime.interactionState().type()).isEqualTo(GameRuntime.InteractionType.NONE);
+            assertThat(runtime.interactionState().type()).isEqualTo(InteractionType.NONE);
         } finally {
             BuuiConsole.setOutputSuppressed(muted);
         }

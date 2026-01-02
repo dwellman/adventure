@@ -1,6 +1,5 @@
 package com.demo.adventure.authoring;
 
-import com.demo.adventure.support.exceptions.GameBuilderException;
 import com.demo.adventure.authoring.save.build.WorldBuildReportFormatter;
 import com.demo.adventure.authoring.gardener.FixtureDescriptionExpander;
 import com.demo.adventure.authoring.gardener.GardenResult;
@@ -8,9 +7,8 @@ import com.demo.adventure.authoring.gardener.Gardener;
 import com.demo.adventure.authoring.gardener.NoopFixtureDescriptionExpander;
 import com.demo.adventure.authoring.gardener.ai.OpenAiHttpFixtureDescriptionExpander;
 import com.demo.adventure.authoring.save.io.GameSaveYamlWriter;
+import com.demo.adventure.authoring.save.io.StructuredGameSaveLoader;
 import com.demo.adventure.domain.save.GameSave;
-import com.demo.adventure.authoring.samples.ClueMansion;
-import com.demo.adventure.authoring.samples.IslandAdventure;
 
 import java.nio.file.Path;
 
@@ -60,10 +58,12 @@ public final class GardenerDump {
         System.out.println("Gardener dump written to " + path.toAbsolutePath());
     }
 
-    private static GameSave selectSave(String world) throws GameBuilderException {
+    private static GameSave selectSave(String world) throws Exception {
         return switch (world.toLowerCase()) {
-            case "island", "island-adventure" -> IslandAdventure.gameSave();
-            case "clue", "mansion", "clue-mansion" -> ClueMansion.gameSave();
+            case "island", "island-adventure" ->
+                    StructuredGameSaveLoader.load(Path.of("src/main/resources/games/island/game.yaml"));
+            case "clue", "mansion", "clue-mansion" ->
+                    StructuredGameSaveLoader.load(Path.of("src/main/resources/games/mansion/game.yaml"));
             default -> throw new IllegalArgumentException("Unknown world: " + world);
         };
     }

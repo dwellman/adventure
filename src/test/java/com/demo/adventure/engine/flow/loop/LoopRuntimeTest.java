@@ -6,9 +6,11 @@ import com.demo.adventure.support.exceptions.GameBuilderException;
 import com.demo.adventure.domain.model.Item;
 import com.demo.adventure.domain.model.WorldState;
 import com.demo.adventure.authoring.save.build.WorldBuildResult;
-import com.demo.adventure.authoring.samples.IslandAdventure;
+import com.demo.adventure.authoring.save.io.StructuredGameSaveLoader;
+import com.demo.adventure.domain.save.GameSave;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,9 +18,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LoopRuntimeTest {
 
     @Test
-    void advancesClockAndTriggersTimeout() throws GameBuilderException {
+    void advancesClockAndTriggersTimeout() throws Exception {
         LoopConfig config = new LoopConfig(true, 2, List.of("Notebook"));
-        LoopRuntime runtime = new LoopRuntime(IslandAdventure.gameSave(), config);
+        LoopRuntime runtime = new LoopRuntime(loadIslandSave(), config);
         WorldBuildResult world = runtime.buildWorld();
         KernelRegistry registry = world.registry();
 
@@ -35,9 +37,9 @@ class LoopRuntimeTest {
     }
 
     @Test
-    void persistsNotebookDescriptionAcrossReset() throws GameBuilderException {
+    void persistsNotebookDescriptionAcrossReset() throws Exception {
         LoopConfig config = new LoopConfig(true, 3, List.of("Notebook"));
-        LoopRuntime runtime = new LoopRuntime(IslandAdventure.gameSave(), config);
+        LoopRuntime runtime = new LoopRuntime(loadIslandSave(), config);
         WorldBuildResult world = runtime.buildWorld();
 
         Item notebook = findItemByLabel(world.registry(), "Notebook");
@@ -53,9 +55,9 @@ class LoopRuntimeTest {
     }
 
     @Test
-    void syncsTickRateFromWorldState() throws GameBuilderException {
+    void syncsTickRateFromWorldState() throws Exception {
         LoopConfig config = new LoopConfig(true, 5, List.of());
-        LoopRuntime runtime = new LoopRuntime(IslandAdventure.gameSave(), config);
+        LoopRuntime runtime = new LoopRuntime(loadIslandSave(), config);
         WorldBuildResult world = runtime.buildWorld();
         KernelRegistry registry = world.registry();
 
@@ -84,5 +86,9 @@ class LoopRuntimeTest {
                 .map(WorldState.class::cast)
                 .findFirst()
                 .orElse(null);
+    }
+
+    private static GameSave loadIslandSave() throws Exception {
+        return StructuredGameSaveLoader.load(Path.of("src/main/resources/games/island/game.yaml"));
     }
 }

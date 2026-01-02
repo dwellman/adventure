@@ -9,13 +9,18 @@ import com.demo.adventure.domain.model.ActorBuilder;
 import com.demo.adventure.domain.model.Item;
 import com.demo.adventure.domain.model.ItemBuilder;
 import com.demo.adventure.domain.model.Thing;
+import com.demo.adventure.authoring.save.io.FootprintRule;
+import com.demo.adventure.authoring.save.io.FootprintRuleLoader;
 import com.demo.adventure.authoring.save.io.GameSaveYamlLoader;
+import com.demo.adventure.authoring.save.io.StructuredGameSaveLoader;
 import com.demo.adventure.domain.save.GameSave;
 import com.demo.adventure.domain.save.WorldRecipe;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -34,7 +39,12 @@ public final class GameSaveAssembler {
     // Pattern: Verification
     // - Assembles the world with validation and fails loudly on invariant violations.
     public WorldBuildResult apply(GameSave save) throws GameBuilderException {
+        return apply(save, List.of());
+    }
+
+    public WorldBuildResult apply(GameSave save, List<FootprintRule> rules) throws GameBuilderException {
         Objects.requireNonNull(save, "save");
+        List<FootprintRule> footprintRules = rules == null ? List.of() : rules;
 
         // Verification: assemble GameSave into a registry with validation; fails loud via GameBuilderException.
         WorldRecipe recipe = new WorldRecipe(save.seed(), save.startPlotId(), save.plots(), save.gates(), save.fixtures());
@@ -70,7 +80,7 @@ public final class GameSaveAssembler {
                     .withArmorMitigation(item.armorMitigation())
                     .build();
             built.setKey(item.keyString());
-            applyHeuristicSizing(built);
+            applyFootprintRules(built, footprintRules);
             applyCells(built, item.cells());
             registry.register(built);
         }
@@ -87,29 +97,60 @@ public final class GameSaveAssembler {
      * @throws GameBuilderException   when validation or build fails
      */
     public WorldBuildResult apply(Path yamlPath) throws IOException, GameBuilderException {
-        GameSave save = GameSaveYamlLoader.load(yamlPath);
-        return apply(save);
+        GameSave save = loadGameSave(yamlPath);
+        List<FootprintRule> rules = loadFootprintRules(yamlPath);
+        return apply(save, rules);
     }
 
-    // Assign sensible footprints to obvious bulky items when none were authored explicitly.
-    private static void applyHeuristicSizing(Item item) {
+    private static GameSave loadGameSave(Path yamlPath) throws IOException {
+        if (yamlPath == null) {
+            throw new IOException("Game save path missing.");
+        }
+        if (!Files.exists(yamlPath)) {
+            throw new IOException("File not found: " + yamlPath);
+        }
+        if (yamlPath.getFileName() != null && yamlPath.getFileName().toString().equalsIgnoreCase("game.yaml")) {
+            try {
+                return StructuredGameSaveLoader.load(yamlPath);
+            } catch (Exception ex) {
+                throw new IOException("Failed to load structured game: " + ex.getMessage(), ex);
+            }
+        }
+        return GameSaveYamlLoader.load(yamlPath);
+    }
+
+    private static List<FootprintRule> loadFootprintRules(Path yamlPath) throws IOException {
+        if (yamlPath == null) {
+            return List.of();
+        }
+        Path base = yamlPath.getParent();
+        if (base == null) {
+            return List.of();
+        }
+        Path worldRules = base.resolve("world/footprints.yaml");
+        if (Files.exists(worldRules)) {
+            return FootprintRuleLoader.load(worldRules);
+        }
+        Path localRules = base.resolve("footprints.yaml");
+        return FootprintRuleLoader.load(localRules);
+    }
+
+    private static void applyFootprintRules(Item item, List<FootprintRule> rules) {
+        if (item == null || rules == null || rules.isEmpty()) {
+            return;
+        }
         double w = item.getFootprintWidth();
         double h = item.getFootprintHeight();
         // If an explicit footprint was set (bigger than the 0.1 default), leave it alone.
         if (w > 0.11 || h > 0.11) {
             return;
         }
-        String label = item.getLabel() == null ? "" : item.getLabel().toLowerCase(java.util.Locale.ROOT);
-        if (label.contains("raft")) {
-            item.withSize(0.6, 0.6);
-            return;
-        }
-        if (label.contains("ladder")) {
-            item.withSize(0.4, 0.4);
-            return;
-        }
-        if (label.contains("pole")) {
-            item.withSize(0.3, 0.3);
+        String label = item.getLabel();
+        for (FootprintRule rule : rules) {
+            if (rule != null && rule.matches(label)) {
+                item.withSize(rule.width(), rule.height());
+                return;
+            }
         }
     }
 

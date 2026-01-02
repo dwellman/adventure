@@ -49,18 +49,18 @@ class MentionResolutionTest {
 
     @Test
     void resolvesSingleTokenMention() {
-        GameRuntime.MentionResolution result = runtime.resolveMentionActor(List.of("Elias"));
+        MentionResolution result = runtime.resolveMentionActor(List.of("Elias"));
 
-        assertThat(result.type()).isEqualTo(GameRuntime.MentionResolutionType.MATCH);
+        assertThat(result.type()).isEqualTo(MentionResolutionType.MATCH);
         assertThat(result.actorLabel()).isEqualTo("Elias Crane");
         assertThat(result.tokensMatched()).isEqualTo(1);
     }
 
     @Test
     void resolvesFullLabelPrefixMention() {
-        GameRuntime.MentionResolution result = runtime.resolveMentionActor(List.of("Elias", "Crane", "what"));
+        MentionResolution result = runtime.resolveMentionActor(List.of("Elias", "Crane", "what"));
 
-        assertThat(result.type()).isEqualTo(GameRuntime.MentionResolutionType.MATCH);
+        assertThat(result.type()).isEqualTo(MentionResolutionType.MATCH);
         assertThat(result.actorLabel()).isEqualTo("Elias Crane");
         assertThat(result.tokensMatched()).isEqualTo(2);
     }
@@ -70,16 +70,16 @@ class MentionResolutionTest {
         Actor second = new Actor(actorIdForKey("assistant"), "Elias Reed", "", plotId);
         registry.register(second);
 
-        GameRuntime.MentionResolution result = runtime.resolveMentionActor(List.of("Elias"));
+        MentionResolution result = runtime.resolveMentionActor(List.of("Elias"));
 
-        assertThat(result.type()).isEqualTo(GameRuntime.MentionResolutionType.AMBIGUOUS);
+        assertThat(result.type()).isEqualTo(MentionResolutionType.AMBIGUOUS);
     }
 
     @Test
     void resolvesActorKeyMention() {
-        GameRuntime.MentionResolution result = runtime.resolveMentionActor(List.of("butler"));
+        MentionResolution result = runtime.resolveMentionActor(List.of("butler"));
 
-        assertThat(result.type()).isEqualTo(GameRuntime.MentionResolutionType.MATCH);
+        assertThat(result.type()).isEqualTo(MentionResolutionType.MATCH);
         assertThat(result.actorLabel()).isEqualTo("Elias Crane");
         assertThat(result.tokensMatched()).isEqualTo(1);
     }

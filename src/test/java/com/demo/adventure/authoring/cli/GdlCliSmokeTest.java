@@ -77,7 +77,7 @@ class GdlCliSmokeTest {
     }
 
     private static Path gdlInput() {
-        Path input = Path.of("src/main/resources/games/gdl-demo/game.gdl");
+        Path input = Path.of("src/test/resources/games/gdl-demo/game.gdl");
         assertThat(Files.exists(input)).isTrue();
         return input;
     }

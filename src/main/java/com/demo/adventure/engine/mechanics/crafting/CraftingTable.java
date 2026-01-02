@@ -30,38 +30,6 @@ import java.util.logging.Logger;
 public final class CraftingTable {
     private static final Logger LOG = CraftingLog.get();
 
-    private static final Map<String, CraftingRecipe> HARDCODED_FALLBACK = Map.of(
-            "TORCH", new CraftingRecipeBuilder()
-                    .withName("Torch")
-                    .withExpression("HAS(\"Stick\") && HAS(\"Rags\")")
-                    .withConsume(List.of("Stick", "Rags"))
-                    .withRequirements(List.of("Stick", "Rags"))
-                    .withSkillTag("")
-                    .withEmitLabel("Torch")
-                    .withEmitDescription("A simple torch made of stick and rags.")
-                    .build(),
-            "SOAKED TORCH", new CraftingRecipeBuilder()
-                    .withName("Soaked Torch")
-                    .withExpression("HAS(\"Torch\") && HAS(\"Kerosene\")")
-                    .withConsume(List.of("Torch", "Kerosene"))
-                    .withRequirements(List.of("Torch", "Kerosene"))
-                    .withSkillTag("")
-                    .withEmitLabel("Soaked Torch")
-                    .withEmitDescription("A torch soaked in kerosene, ready to be lit.")
-                    .build(),
-            "LIT TORCH", new CraftingRecipeBuilder()
-                    .withName("Lit Torch")
-                    .withExpression("HAS(\"Soaked Torch\") && HAS(\"Flint\") && HAS(\"River Stone\")")
-                    .withConsume(List.of("Soaked Torch"))
-                    .withRequirements(List.of("Soaked Torch", "Flint", "River Stone"))
-                    .withSkillTag("")
-                    .withEmitLabel("Lit Torch")
-                    .withEmitDescription("A lit torch casting bright light.")
-                    .build()
-    );
-
-    private static final Map<String, CraftingRecipe> DEFAULT_RECIPES = loadDefaultRecipes();
-
     private final KernelRegistry registry;
     private final UUID actorId;
     private final Map<String, CraftingRecipe> recipes;
@@ -73,7 +41,7 @@ public final class CraftingTable {
     public CraftingTable(KernelRegistry registry, UUID actorId, Map<String, CraftingRecipe> recipes) {
         this.registry = Objects.requireNonNull(registry, "registry");
         this.actorId = Objects.requireNonNull(actorId, "actorId");
-        this.recipes = recipes == null ? DEFAULT_RECIPES : normalizeKeys(recipes);
+        this.recipes = recipes == null ? Map.of() : normalizeKeys(recipes);
     }
 
     /**
@@ -223,22 +191,4 @@ public final class CraftingTable {
         return normalized;
     }
 
-    private static Map<String, CraftingRecipe> loadDefaultRecipes() {
-        String[] candidates = {"games/island/world/crafting.yaml", "games/island/crafting.yaml"};
-        for (String candidate : candidates) {
-            try (var in = CraftingTable.class.getClassLoader().getResourceAsStream(candidate)) {
-                if (in == null) {
-                    continue;
-                }
-                Map<String, CraftingRecipe> loaded = CraftingRecipeLoader.load(in);
-                if (loaded != null && !loaded.isEmpty()) {
-                    return Map.copyOf(normalizeKeys(loaded));
-                }
-            } catch (Exception ex) {
-                LOG.warning("Falling back to hardcoded recipes: " + ex.getMessage());
-                break;
-            }
-        }
-        return Map.copyOf(HARDCODED_FALLBACK);
-    }
 }

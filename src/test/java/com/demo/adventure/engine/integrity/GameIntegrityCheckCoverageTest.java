@@ -2,7 +2,6 @@ package com.demo.adventure.engine.integrity;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Set;
 
@@ -27,10 +26,10 @@ class GameIntegrityCheckCoverageTest {
 
     @Test
     void utilityMethodsHandleLabelsAndTargets() throws Exception {
-        String reversed = (String) invokeStatic("reverseGateLabel", new Class<?>[]{String.class}, "A -> B");
-        String revealed = (String) invokeStatic("resolveRevealTarget", new Class<?>[]{String.class, String.class, String.class}, "@OBJECT", "Target", "Object");
-        String normalized = (String) invokeStatic("normalizeLabel", new Class<?>[]{String.class}, "  Key  ");
-        boolean special = (boolean) invokeStatic("isSpecialTarget", new Class<?>[]{String.class}, "@PLAYER");
+        String reversed = IntegrityLabels.reverseGateLabel("A -> B");
+        String revealed = IntegrityLabels.resolveRevealTarget("@OBJECT", "Target", "Object");
+        String normalized = IntegrityLabels.normalizeLabel("  Key  ");
+        boolean special = IntegrityLabels.isSpecialTarget("@PLAYER");
 
         assertThat(reversed).isEqualTo("B -> A");
         assertThat(revealed).isEqualTo("OBJECT");
@@ -40,38 +39,19 @@ class GameIntegrityCheckCoverageTest {
 
     @Test
     void runReachabilityHandlesNullGame() throws Exception {
-        GameIntegrityCheck check = new GameIntegrityCheck();
-        Object result = invoke(check,
-                "runReachability",
-                new Class<?>[]{
-                        Class.forName("com.demo.adventure.engine.integrity.GameIntegrityCheck$GameContext"),
-                        GameIntegrityConfig.class,
-                        Class.forName("com.demo.adventure.engine.integrity.GameIntegrityCheck$DiceMode"),
-                        List.class
-                },
+        GameIntegritySimulation.ReachabilityResult result = GameIntegritySimulation.runReachability(
                 null,
                 GameIntegrityConfig.defaults(),
-                null,
+                GameIntegritySimulation.DiceMode.MIN,
                 List.of(Set.of())
         );
 
-        Object summary = invoke(result, "summary", new Class<?>[]{});
-        boolean winFound = (boolean) invoke(summary, "winFound", new Class<?>[]{});
-        boolean searchExhausted = (boolean) invoke(summary, "searchExhausted", new Class<?>[]{});
+        GameIntegrityReachability summary = result.summary();
+        boolean winFound = summary.winFound();
+        boolean searchExhausted = summary.searchExhausted();
 
         assertThat(winFound).isFalse();
         assertThat(searchExhausted).isTrue();
     }
 
-    private static Object invokeStatic(String name, Class<?>[] types, Object... args) throws Exception {
-        Method method = GameIntegrityCheck.class.getDeclaredMethod(name, types);
-        method.setAccessible(true);
-        return method.invoke(null, args);
-    }
-
-    private static Object invoke(Object target, String name, Class<?>[] types, Object... args) throws Exception {
-        Method method = target.getClass().getDeclaredMethod(name, types);
-        method.setAccessible(true);
-        return method.invoke(target, args);
-    }
 }

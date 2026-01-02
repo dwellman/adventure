@@ -1,6 +1,5 @@
 package com.demo.adventure.authoring;
 
-import com.demo.adventure.support.exceptions.GameBuilderException;
 import com.demo.adventure.domain.model.Actor;
 import com.demo.adventure.domain.model.Gate;
 import com.demo.adventure.domain.model.Item;
@@ -8,9 +7,9 @@ import com.demo.adventure.domain.model.Plot;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.authoring.save.build.GameSaveAssembler;
 import com.demo.adventure.authoring.save.build.WorldBuildResult;
+import com.demo.adventure.authoring.save.io.StructuredGameSaveLoader;
 import com.demo.adventure.domain.save.GameSave;
 import com.demo.adventure.domain.save.WorldRecipe;
-import com.demo.adventure.authoring.samples.ClueMansion;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -23,14 +22,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GameSaveAssemblerTest {
 
     @Test
-    void buildsRegistryFromGameSave() throws GameBuilderException {
-        GameSave save = ClueMansion.gameSave();
+    void buildsRegistryFromGameSave() throws Exception {
+        GameSave save = StructuredGameSaveLoader.load(Path.of("src/main/resources/games/mansion/game.yaml"));
 
         WorldBuildResult result = new GameSaveAssembler().apply(save);
         KernelRegistry registry = result.registry();
 
         assertThat(result.report().getProblems()).isEmpty();
-        assertThat(result.startPlotId()).isEqualTo(ClueMansion.HALL);
+        assertThat(result.startPlotId()).isEqualTo(plotIdByName(save, "Hall"));
 
         assertPlotsMatch(save, registry);
         assertGatesMatch(save, registry);
@@ -42,7 +41,7 @@ class GameSaveAssemblerTest {
     @Test
     void loadsFromCanonicalYaml() throws Exception {
         WorldBuildResult result = new GameSaveAssembler()
-                .apply(Path.of("src/main/resources/cookbook/gardened-clue.yaml"));
+                .apply(Path.of("src/main/resources/cookbook/gardened-mansion.yaml"));
         assertThat(result.report().getProblems()).isEmpty();
         assertThat(result.registry().getEverything()).isNotEmpty();
     }
@@ -63,6 +62,14 @@ class GameSaveAssemblerTest {
             assertThat(plot.getLocationX()).isEqualTo(spec.locationX());
             assertThat(plot.getLocationY()).isEqualTo(spec.locationY());
         }
+    }
+
+    private static UUID plotIdByName(GameSave save, String name) {
+        return save.plots().stream()
+                .filter(plot -> plot.name().equalsIgnoreCase(name))
+                .map(WorldRecipe.PlotSpec::plotId)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Plot not found: " + name));
     }
 
     private static void assertGatesMatch(GameSave save, KernelRegistry registry) {

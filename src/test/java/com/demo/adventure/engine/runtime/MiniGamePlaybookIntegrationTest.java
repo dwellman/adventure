@@ -131,10 +131,17 @@ class MiniGamePlaybookIntegrationTest {
     }
 
     private static Object buildGameOption(String name, String resource) throws Exception {
-        Class<?> optionClass = Class.forName("com.demo.adventure.engine.cli.GameCli$GameOption");
-        Constructor<?> ctor = optionClass.getDeclaredConstructor(int.class, String.class, String.class, String.class, boolean.class);
+        Class<?> optionClass = Class.forName("com.demo.adventure.engine.cli.GameCatalogEntry");
+        Constructor<?> ctor = optionClass.getDeclaredConstructor(
+                String.class,
+                int.class,
+                String.class,
+                String.class,
+                String.class,
+                boolean.class
+        );
         ctor.setAccessible(true);
-        return ctor.newInstance(0, name, resource, "playbook", false);
+        return ctor.newInstance("playbook", 0, name, resource, "playbook", false);
     }
 
     private static Method resolveWalkabout(Class<?> optionClass) throws Exception {

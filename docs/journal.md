@@ -1,5 +1,19 @@
 # Journal
 
+## 2026-01-02 — GDL demo + cookbook alignment
+- Scope: Moved the GDL demo into test resources and updated tests/docs to reference the new path.
+- Tests: `mvn -q -Dtest=RuntimeLoaderTest,GdlCliSmokeTest,GamePlanCliTest test`
+- Scope: Renamed cookbook YAMLs to the `gardened-<game>` pattern and updated docs/tests/examples.
+- Tests: `mvn -q -Dtest=GameSaveYamlWriterTest,GameSaveAssemblerTest test`
+- Scope: Modularized GameRuntime and split GameIntegrityCheck into helper classes with updated coverage tests.
+- Tests: `mvn -q -Dtest=GameIntegrityCheckCoverageTest,GameIntegrityTest,GameRuntimeCoverageTest,InteractionStateTest,MentionResolutionTest test`
+- Scope: Split GameRuntime navigation/trigger handling into helpers and delegated move/turn/reset flow.
+- Tests: `mvn -q -Dtest=GameRuntimeCoverageTest,GameCliCombatErrorTest,RuntimeCombatEdgeCaseTest,SmartActorRuntimeTest,GameIntegrityCheckCoverageTest,IntegrityWinRequirementEvaluatorTest test`
+- Scope: Added YAML game catalog + footprint rules, removed crafting fallbacks, and migrated Java sample games/tests to YAML loads.
+- Tests: `mvn -q -Dtest=GameMenuStructuredLoadTest,GameCliHelperTest,GameCliWalkaboutFlowTest,GameCliQuitFlowTest,CraftingTableFlowTest,LoopRuntimeTest,GameSaveAssemblerTest,IslandAdventureIntegrationTest,ClueMansionIntegrationTest,GardenerClueMansionProofTest test`
+- Tests: `mvn -q test`; `printf "q\n" | ./adventure --mode=1980`
+- Scope: Updated playbook harness + CLI crafting test to use catalog entry + YAML recipes.
+
 ## 2025-12-18 — BUJO setup and validation
 - Scope: Added BUJO folders/log, AI config knobs, shared wrapper helper, structured load test.
 - Tests: `mvn -q test`
@@ -1356,3 +1370,19 @@ _
 ## 2025-12-30 — Quit-to-menu + coverage lift
 - Scope: Quit now returns to the main menu, menu quit exits the program; added CLI flow/helper tests plus RuntimeLoader/AiJson coverage to push engine.cli and ai.client over 80%.
 - Tests: `mvn -q test`
+
+## 2026-01-02 — Key expression tests + runtime/integrity helpers
+- Scope: Split KeyExpressionEvaluatorTest into focused suites with shared helpers; added SmartActorRuntime command/snapshot helpers and integrity simulation action/state helpers.
+- Tests: `mvn -q -Dtest='KeyExpression*Test,SmartActorRuntimeTest,SmartActorCombatPlaybookIntegrationTest,GameIntegrityCheckCoverageTest,GameIntegrityTest' test`
+
+## 2026-01-02 — Integrity key-expression helpers
+- Scope: Extracted key-expression spec/AST/validator helpers for integrity checks and kept validation behavior the same.
+- Tests: `mvn -q -Dtest=GameIntegrityCheckCoverageTest,GameIntegrityTest test`
+
+## 2026-01-02 — Runtime combat/use helpers + win evaluation
+- Scope: Split GameRuntime combat/use logic into helpers, added win-requirement evaluation helper with tests, and extracted smart-actor history recording.
+- Tests: `mvn -q -Dtest=GameRuntimeCoverageTest,SmartActorRuntimeTest,GameIntegrityCheckCoverageTest,GameIntegrityTest,IntegrityWinRequirementEvaluatorTest test`
+
+## 2026-01-02 — Runtime command actions + combat edge cases
+- Scope: Moved explore/open/put into RuntimeCommandActions and added combat edge-case tests.
+- Tests: `mvn -q -Dtest=GameRuntimeCoverageTest,GameCliCombatErrorTest,RuntimeCombatEdgeCaseTest,SmartActorRuntimeTest,GameIntegrityCheckCoverageTest,IntegrityWinRequirementEvaluatorTest test`

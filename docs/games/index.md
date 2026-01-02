@@ -10,6 +10,7 @@ Runtime games (structured YAML under `src/main/resources/games/`):
 
 Test-only games (under `src/test/resources/`):
 - `src/test/resources/games/island-adventure-test/` - reduced-gate Island variant for playbook/integrity tests.
+- `src/test/resources/games/gdl-demo/` - GDL demo fixture for CLI and parser tests.
 - `src/test/resources/minigames/` - integration minigames (combat sim, dungeon adventure, cave walkthrough).
 
 Each runtime game folder contains:

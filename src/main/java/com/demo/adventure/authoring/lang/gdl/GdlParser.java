@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public final class GdlParser {
     private final String source;
@@ -15,6 +16,11 @@ public final class GdlParser {
     public GdlParser(String source) throws GdlCompileException {
         this.source = source == null ? "" : source;
         this.tokens = new GdlScanner(this.source).scanTokens();
+    }
+
+    public GdlParser(List<GdlToken> tokens, String source) {
+        this.source = source == null ? "" : source;
+        this.tokens = Objects.requireNonNull(tokens, "tokens");
     }
 
     public GdlProgram parse() throws GdlCompileException {

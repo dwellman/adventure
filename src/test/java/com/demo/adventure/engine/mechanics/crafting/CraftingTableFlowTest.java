@@ -13,6 +13,8 @@ import com.demo.adventure.domain.model.Thing;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -21,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class CraftingTableFlowTest {
 
     @Test
-    void craftsTorchSoakedTorchAndLitTorchAcrossRooms() throws KeyExpressionCompileException {
+    void craftsTorchSoakedTorchAndLitTorchAcrossRooms() throws Exception {
         KernelRegistry registry = new KernelRegistry();
         UUID player = UUID.randomUUID();
 
@@ -63,7 +65,10 @@ class CraftingTableFlowTest {
         actor.setSkills(java.util.List.of("Firemaking"));
         registry.register(actor);
 
-        CraftingTable table = new CraftingTable(registry, player);
+        Map<String, CraftingRecipe> recipes = CraftingRecipeLoader.load(
+                Path.of("src/test/resources/games/test/world/crafting.yaml")
+        );
+        CraftingTable table = new CraftingTable(registry, player, recipes);
         HasResolver hasPlayer = KeyExpressionEvaluator.registryHasResolver(registry, player);
 
         assertFalse(canEnterCave(hasPlayer), "Should not enter cave without a torch");

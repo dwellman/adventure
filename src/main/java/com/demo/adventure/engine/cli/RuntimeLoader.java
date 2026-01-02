@@ -4,6 +4,8 @@ import com.demo.adventure.engine.command.TokenType;
 import com.demo.adventure.engine.command.VerbAliasLoader;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipeLoader;
+import com.demo.adventure.authoring.save.io.FootprintRule;
+import com.demo.adventure.authoring.save.io.FootprintRuleLoader;
 import com.demo.adventure.support.exceptions.GdlCompileException;
 import com.demo.adventure.authoring.lang.gdl.GdlLoader;
 import com.demo.adventure.authoring.save.io.GameSaveYamlLoader;
@@ -126,6 +128,32 @@ public final class RuntimeLoader {
             throw new IllegalStateException("Failed to load crafting recipes from classpath: " + candidates[0], ex);
         }
         return Map.of();
+    }
+
+    public static List<FootprintRule> loadFootprintRules(String resourcePath) {
+        if (resourcePath == null || resourcePath.isBlank()) {
+            return List.of();
+        }
+        Path dir = Path.of(resourcePath).getParent();
+        if (dir != null) {
+            Path rulesPath = resolveGameFile(dir, "world", "footprints.yaml");
+            if (rulesPath != null) {
+                try {
+                    return FootprintRuleLoader.load(rulesPath);
+                } catch (IOException ex) {
+                    throw new IllegalStateException("Failed to load footprint rules: " + rulesPath, ex);
+                }
+            }
+        }
+        String[] candidates = classpathCandidates(resourcePath, "world", "footprints.yaml");
+        try (InputStream in = openClasspathResource(candidates)) {
+            if (in != null) {
+                return FootprintRuleLoader.load(in);
+            }
+        } catch (IOException ex) {
+            throw new IllegalStateException("Failed to load footprint rules from classpath: " + candidates[0], ex);
+        }
+        return List.of();
     }
 
     public static Map<String, TokenType> loadVerbAliases(String resourcePath) {

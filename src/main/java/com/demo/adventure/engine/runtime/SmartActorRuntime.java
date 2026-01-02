@@ -1,6 +1,5 @@
 package com.demo.adventure.engine.runtime;
 
-import com.demo.adventure.ai.runtime.TranslationOrchestrator;
 import com.demo.adventure.ai.runtime.TranslatorService;
 import com.demo.adventure.ai.runtime.smart.SmartActorContext;
 import com.demo.adventure.ai.runtime.smart.SmartActorContextBuilder;
@@ -8,7 +7,6 @@ import com.demo.adventure.ai.runtime.smart.SmartActorContextInput;
 import com.demo.adventure.ai.runtime.smart.SmartActorContextInputBuilder;
 import com.demo.adventure.ai.runtime.smart.SmartActorDecision;
 import com.demo.adventure.ai.runtime.smart.SmartActorDecisionParser;
-import com.demo.adventure.ai.runtime.smart.SmartActorHistoryScope;
 import com.demo.adventure.ai.runtime.smart.SmartActorHistoryStore;
 import com.demo.adventure.ai.runtime.smart.SmartActorPlanner;
 import com.demo.adventure.ai.runtime.smart.SmartActorPrompt;
@@ -19,28 +17,21 @@ import com.demo.adventure.ai.runtime.smart.SmartActorTagIndex;
 import com.demo.adventure.ai.runtime.smart.SmartActorWorldSnapshot;
 import com.demo.adventure.engine.command.Command;
 import com.demo.adventure.engine.command.CommandAction;
-import com.demo.adventure.engine.command.CommandOutputs;
 import com.demo.adventure.engine.command.handlers.CommandOutcome;
 import com.demo.adventure.engine.command.handlers.GameCommandHandler;
 import com.demo.adventure.engine.command.interpreter.CommandInterpreter;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.domain.model.Actor;
-import com.demo.adventure.domain.model.Direction;
-import com.demo.adventure.domain.model.Gate;
-import com.demo.adventure.domain.model.Plot;
 import com.demo.adventure.support.exceptions.GameBuilderException;
 
-import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
 public final class SmartActorRuntime {
-    private static final int RECEIPT_LIMIT = 6;
     private static final Set<CommandAction> COMBAT_ACTIONS = EnumSet.of(CommandAction.ATTACK, CommandAction.FLEE);
 
     private final SmartActorRegistry registry;
@@ -48,14 +39,15 @@ public final class SmartActorRuntime {
     private final SmartActorContextInputBuilder inputBuilder;
     private final SmartActorContextBuilder contextBuilder;
     private final SmartActorPlanner planner;
-    private final TranslatorService translatorService;
     private final CommandInterpreter interpreter;
     private final Map<CommandAction, GameCommandHandler> handlers;
+    private final SmartActorCommandResolver commandResolver;
+    private final SmartActorSnapshotBuilder snapshotBuilder;
+    private final SmartActorHistoryRecorder historyRecorder;
     private final Map<UUID, Integer> lastActionTurn = new HashMap<>();
     private final boolean debug;
     private boolean localOnly;
     private int turnIndex;
-    private long dialogueSequence;
 
     public SmartActorRuntime(SmartActorRegistry registry,
                              SmartActorTagIndex tagIndex,
@@ -81,7 +73,6 @@ public final class SmartActorRuntime {
         }
         this.registry = registry;
         this.planner = planner;
-        this.translatorService = translatorService;
         this.interpreter = interpreter;
         this.handlers = handlers;
         this.debug = debug;
@@ -90,6 +81,9 @@ public final class SmartActorRuntime {
         registry.entries().values().forEach(historyStore::seedFromSpec);
         this.inputBuilder = new SmartActorContextInputBuilder(safeTags);
         this.contextBuilder = new SmartActorContextBuilder(historyStore);
+        this.commandResolver = new SmartActorCommandResolver(translatorService, interpreter, handlers, debug);
+        this.snapshotBuilder = new SmartActorSnapshotBuilder();
+        this.historyRecorder = new SmartActorHistoryRecorder(historyStore);
     }
 
     public boolean handlesActor(UUID actorId) {
@@ -194,7 +188,7 @@ public final class SmartActorRuntime {
         if (decision == null) {
             return null;
         }
-        recordConversationHistory(spec, context, playerUtterance, decision);
+        historyRecorder.recordConversationHistory(spec, context, playerUtterance, decision, turnIndex);
         markActedNextTurn(actorId);
         return decision;
     }
@@ -248,12 +242,12 @@ public final class SmartActorRuntime {
         if (maxLines == 0) {
             return CommandOutcome.none();
         }
-        String color = trimLines(decision.color(), maxLines);
+        String color = commandResolver.trimLines(decision.color(), maxLines);
         if (color.isBlank()) {
             return CommandOutcome.none();
         }
         runtime.narrateColor(color);
-        recordHistory(spec, context, "COLOR: " + color);
+        historyRecorder.recordHistory(spec, context, "COLOR: " + color, turnIndex);
         markActed(actorId);
         return CommandOutcome.none();
     }
@@ -264,12 +258,18 @@ public final class SmartActorRuntime {
                                            SmartActorContext context,
                                            SmartActorWorldSnapshot snapshot,
                                            SmartActorDecision decision) throws GameBuilderException {
-        String commandText = resolveCommandText(spec, snapshot, decision.utterance(), false);
+        String commandText = commandResolver.resolveCommandText(
+                spec,
+                snapshot,
+                decision.utterance(),
+                false,
+                action -> allowsVerb(spec, action, false)
+        );
         if (commandText == null || commandText.isBlank()) {
             return CommandOutcome.none();
         }
-        CommandOutcome outcome = executeCommand(runtime, actorId, commandText);
-        recordHistory(spec, context, "UTTERANCE: " + commandText);
+        CommandOutcome outcome = commandResolver.executeCommand(runtime, actorId, commandText);
+        historyRecorder.recordHistory(spec, context, "UTTERANCE: " + commandText, turnIndex);
         markActed(actorId);
         return outcome == null ? CommandOutcome.none() : outcome;
     }
@@ -283,12 +283,12 @@ public final class SmartActorRuntime {
         if (maxLines == 0) {
             return combatPass(runtime, actorId, spec, context, "COLOR_SKIPPED");
         }
-        String color = trimLines(decision.color(), maxLines);
+        String color = commandResolver.trimLines(decision.color(), maxLines);
         if (color.isBlank()) {
             return combatPass(runtime, actorId, spec, context, "COLOR_SKIPPED");
         }
         runtime.narrateColor(color);
-        recordHistory(spec, context, "COLOR: " + color);
+        historyRecorder.recordHistory(spec, context, "COLOR: " + color, turnIndex);
         markActed(actorId);
         CommandOutcome outcome = runtime.resolveSmartActorCombatAction(actorId, null);
         return outcome == null ? CommandOutcome.none() : outcome;
@@ -300,16 +300,22 @@ public final class SmartActorRuntime {
                                                  SmartActorContext context,
                                                  SmartActorWorldSnapshot snapshot,
                                                  SmartActorDecision decision) throws GameBuilderException {
-        String commandText = resolveCommandText(spec, snapshot, decision.utterance(), true);
+        String commandText = commandResolver.resolveCommandText(
+                spec,
+                snapshot,
+                decision.utterance(),
+                true,
+                action -> allowsVerb(spec, action, true)
+        );
         if (commandText == null || commandText.isBlank()) {
             return combatPass(runtime, actorId, spec, context, "UTTERANCE_EMPTY");
         }
         Command command = interpreter.interpret(commandText);
-        if (!isValid(command) || !allowsVerb(spec, command.action(), true)) {
+        if (!commandResolver.isValid(command) || !allowsVerb(spec, command.action(), true)) {
             return combatPass(runtime, actorId, spec, context, "UTTERANCE_INVALID");
         }
         CommandOutcome outcome = runtime.resolveSmartActorCombatAction(actorId, command);
-        recordHistory(spec, context, "UTTERANCE: " + commandText);
+        historyRecorder.recordHistory(spec, context, "UTTERANCE: " + commandText, turnIndex);
         markActed(actorId);
         return outcome == null ? CommandOutcome.none() : outcome;
     }
@@ -320,7 +326,7 @@ public final class SmartActorRuntime {
                                       SmartActorContext context,
                                       String reason) {
         CommandOutcome outcome = runtime.resolveSmartActorCombatAction(actorId, null);
-        recordHistory(spec, context, "PASS: " + reason);
+        historyRecorder.recordHistory(spec, context, "PASS: " + reason, turnIndex);
         markActed(actorId);
         return outcome == null ? CommandOutcome.none() : outcome;
     }
@@ -337,83 +343,11 @@ public final class SmartActorRuntime {
         if (!allowsVerb(spec, CommandAction.LOOK, false)) {
             return CommandOutcome.none();
         }
-        CommandOutcome outcome = executeCommand(runtime, actorId, "look");
-        recordHistory(spec, context, "UTTERANCE: look");
+        CommandOutcome outcome = commandResolver.executeCommand(runtime, actorId, "look");
+        historyRecorder.recordHistory(spec, context, "UTTERANCE: look", turnIndex);
         markActed(actorId);
         return outcome == null ? CommandOutcome.none() : outcome;
     }
-
-    private CommandOutcome executeCommand(GameRuntime runtime,
-                                          UUID actorId,
-                                          String commandText) throws GameBuilderException {
-        Command command = interpreter.interpret(commandText);
-        if (!isValid(command)) {
-            return CommandOutcome.none();
-        }
-        GameCommandHandler handler = handlers.get(command.action());
-        if (handler == null) {
-            return CommandOutcome.none();
-        }
-        return runtime.runAsActor(actorId, true, true, () -> {
-            CommandContext context = new CommandContext(CommandOutputs.noop(), runtime);
-            return handler.handle(context, command);
-        });
-    }
-
-    private String resolveCommandText(SmartActorSpec spec,
-                                      SmartActorWorldSnapshot snapshot,
-                                      String utterance,
-                                      boolean combatOnly) {
-        String cleaned = utterance == null ? "" : utterance.trim();
-        if (cleaned.isBlank()) {
-            return fallbackText(spec, combatOnly);
-        }
-        int maxLength = spec.policy().maxUtteranceLength();
-        if (maxLength > 0 && cleaned.length() > maxLength) {
-            return fallbackText(spec, combatOnly);
-        }
-        Command parsed = interpreter.interpret(cleaned);
-        if (isValid(parsed)) {
-            if (allowsVerb(spec, parsed.action(), combatOnly)) {
-                return cleaned;
-            }
-            return fallbackText(spec, combatOnly);
-        }
-        TranslationOrchestrator.Outcome outcome = TranslationOrchestrator.resolve(
-                translatorService,
-                cleaned,
-                snapshot.visibleFixtures(),
-                snapshot.visibleItems(),
-                snapshot.inventory(),
-                snapshot.lastScene(),
-                debug,
-                interpreter::interpret,
-                msg -> {
-                    if (debug) {
-                        System.out.println(msg);
-                    }
-                }
-        );
-        if (outcome.type() != TranslationOrchestrator.OutcomeType.COMMAND) {
-            return fallbackText(spec, combatOnly);
-        }
-        Command translated = interpreter.interpret(outcome.commandText());
-        if (!isValid(translated)) {
-            return fallbackText(spec, combatOnly);
-        }
-        if (!allowsVerb(spec, translated.action(), combatOnly)) {
-            return fallbackText(spec, combatOnly);
-        }
-        return outcome.commandText();
-    }
-
-    private String fallbackText(SmartActorSpec spec, boolean combatOnly) {
-        if (combatOnly) {
-            return "";
-        }
-        return allowsVerb(spec, CommandAction.LOOK, false) ? "look" : "";
-    }
-
     private boolean eligible(UUID actorId, SmartActorSpec spec) {
         int cooldown = Math.max(0, spec.policy().cooldownTurns());
         Integer last = lastActionTurn.get(actorId);
@@ -437,8 +371,29 @@ public final class SmartActorRuntime {
         return allowed.contains(action.name());
     }
 
-    private boolean isValid(Command command) {
-        return command != null && command.action() != CommandAction.UNKNOWN && !command.hasError();
+    private String resolveCommandText(SmartActorSpec spec,
+                                      SmartActorWorldSnapshot snapshot,
+                                      String utterance,
+                                      boolean combatOnly) {
+        return commandResolver.resolveCommandText(
+                spec,
+                snapshot,
+                utterance,
+                combatOnly,
+                action -> allowsVerb(spec, action, combatOnly)
+        );
+    }
+
+    private String trimLines(String text, int maxLines) {
+        return commandResolver.trimLines(text, maxLines);
+    }
+
+    private List<String> exitsFor(KernelRegistry registry, UUID plotId) {
+        return snapshotBuilder.exitsFor(registry, plotId);
+    }
+
+    private List<String> recentReceipts(KernelRegistry registry) {
+        return snapshotBuilder.recentReceipts(registry);
     }
 
     private void markActed(UUID actorId) {
@@ -453,74 +408,6 @@ public final class SmartActorRuntime {
         }
     }
 
-    private void recordHistory(SmartActorSpec spec, SmartActorContext context, String text) {
-        if (spec == null || context == null) {
-            return;
-        }
-        if (spec.history() == null || spec.history().storeKey().isBlank()) {
-            return;
-        }
-        String id = spec.actorKey() + ":" + turnIndex;
-        historyStore.append(
-                spec.history().storeKey(),
-                id,
-                text,
-                context.contextTags(),
-                SmartActorHistoryScope.ACTOR,
-                turnIndex,
-                "smart-actor"
-        );
-    }
-
-    private void recordConversationHistory(SmartActorSpec spec,
-                                           SmartActorContext context,
-                                           String playerUtterance,
-                                           SmartActorDecision decision) {
-        if (spec == null || context == null || decision == null) {
-            return;
-        }
-        if (spec.history() == null || spec.history().storeKey().isBlank()) {
-            return;
-        }
-        long timestamp = nextDialogueTimestamp();
-        String storeKey = spec.history().storeKey();
-        String actorKey = spec.actorKey() == null ? "actor" : spec.actorKey();
-        String utterance = playerUtterance == null ? "" : playerUtterance.trim();
-        if (!utterance.isBlank()) {
-            historyStore.append(
-                    storeKey,
-                    actorKey + ":player:" + timestamp,
-                    "PLAYER: " + utterance,
-                    context.contextTags(),
-                    SmartActorHistoryScope.ACTOR,
-                    timestamp,
-                    "player"
-            );
-        }
-        String reply = switch (decision.type()) {
-            case COLOR -> decision.color();
-            case UTTERANCE -> decision.utterance();
-            case NONE -> "";
-        };
-        String cleaned = reply == null ? "" : reply.trim();
-        if (!cleaned.isBlank()) {
-            historyStore.append(
-                    storeKey,
-                    actorKey + ":reply:" + timestamp,
-                    "REPLY: " + cleaned,
-                    context.contextTags(),
-                    SmartActorHistoryScope.ACTOR,
-                    timestamp,
-                    "smart-actor"
-            );
-        }
-    }
-
-    private long nextDialogueTimestamp() {
-        dialogueSequence++;
-        return (turnIndex * 1000L) + dialogueSequence;
-    }
-
     private boolean samePlot(UUID actorPlot, UUID playerPlot) {
         if (actorPlot == null || playerPlot == null) {
             return false;
@@ -529,98 +416,10 @@ public final class SmartActorRuntime {
     }
 
     private SmartActorWorldSnapshot buildSnapshot(GameRuntime runtime, UUID actorId) throws GameBuilderException {
-        return buildSnapshot(runtime, actorId, "");
+        return snapshotBuilder.build(runtime, actorId);
     }
 
     private SmartActorWorldSnapshot buildSnapshot(GameRuntime runtime, UUID actorId, String playerUtterance) throws GameBuilderException {
-        return runtime.runAsActor(actorId, true, false, () -> {
-            Actor actor = runtime.registry().get(actorId) instanceof Actor found ? found : null;
-            Plot plot = runtime.currentPlot();
-            String actorLabel = actor == null ? "" : Objects.toString(actor.getLabel(), "");
-            String actorDescription = actor == null ? "" : Objects.toString(actor.getDescription(), "");
-            String plotLabel = plot == null ? "" : Objects.toString(plot.getLabel(), "");
-            String plotDescription = plot == null ? "" : Objects.toString(plot.getDescription(), "");
-            List<String> fixtures = runtime.visibleFixtureLabels();
-            List<String> items = runtime.visibleItemLabels();
-            List<String> actors = runtime.visibleActorLabels(actorId);
-            List<String> inventory = runtime.inventoryLabels();
-            List<String> exits = exitsFor(runtime.registry(), runtime.currentPlotId());
-            String lastScene = runtime.lastSceneState();
-            List<String> receipts = recentReceipts(runtime.registry());
-            return new SmartActorWorldSnapshot(
-                    actorLabel,
-                    actorDescription,
-                    plotLabel,
-                    plotDescription,
-                    fixtures,
-                    items,
-                    actors,
-                    inventory,
-                    exits,
-                    lastScene,
-                    playerUtterance,
-                    receipts
-            );
-        });
-    }
-
-    private List<String> exitsFor(KernelRegistry registry, UUID plotId) {
-        if (registry == null || plotId == null) {
-            return List.of();
-        }
-        List<String> exits = new ArrayList<>();
-        for (Object value : registry.getEverything().values()) {
-            if (!(value instanceof Gate gate)) {
-                continue;
-            }
-            if (!gate.isVisible() || !gate.connects(plotId)) {
-                continue;
-            }
-            Direction direction = gate.directionFrom(plotId);
-            if (direction != null) {
-                exits.add(direction.toLongName());
-            }
-        }
-        return exits.stream()
-                .filter(s -> s != null && !s.isBlank())
-                .distinct()
-                .sorted()
-                .toList();
-    }
-
-    private List<String> recentReceipts(KernelRegistry registry) {
-        if (registry == null) {
-            return List.of();
-        }
-        List<Object> receipts = registry.getReceipts();
-        if (receipts.isEmpty()) {
-            return List.of();
-        }
-        int start = Math.max(0, receipts.size() - RECEIPT_LIMIT);
-        return receipts.subList(start, receipts.size()).stream()
-                .filter(Objects::nonNull)
-                .map(Object::toString)
-                .toList();
-    }
-
-    private String trimLines(String text, int maxLines) {
-        if (text == null || text.isBlank()) {
-            return "";
-        }
-        if (maxLines <= 0) {
-            return "";
-        }
-        String[] lines = text.trim().split("\\R", -1);
-        List<String> kept = new ArrayList<>(Math.min(lines.length, maxLines));
-        for (String line : lines) {
-            if (kept.size() >= maxLines) {
-                break;
-            }
-            String trimmed = line.trim();
-            if (!trimmed.isEmpty()) {
-                kept.add(trimmed);
-            }
-        }
-        return String.join("\n", kept).trim();
+        return snapshotBuilder.build(runtime, actorId, playerUtterance);
     }
 }
