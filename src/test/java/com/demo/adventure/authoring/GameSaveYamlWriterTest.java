@@ -20,7 +20,7 @@ class GameSaveYamlWriterTest {
 
     @Test
     void writesClueMansionYamlDeterministically() throws Exception {
-        Path canonical = Path.of("src/main/resources/cookbook/gardened-clue.yaml");
+        Path canonical = Path.of("src/main/resources/cookbook/gardened-mansion.yaml");
         assertThat(canonical).exists();
         GameSave canonicalSave = GameSaveYamlLoader.load(canonical);
 
@@ -33,7 +33,7 @@ class GameSaveYamlWriterTest {
 
     @Test
     void loadsCanonicalYamlAndMatchesRecipes() throws Exception {
-        Path canonical = Path.of("src/main/resources/cookbook/gardened-clue.yaml");
+        Path canonical = Path.of("src/main/resources/cookbook/gardened-mansion.yaml");
         GameSave loaded = GameSaveYamlLoader.load(canonical);
 
         Path file = tempDir.resolve("clue-roundtrip.yaml");

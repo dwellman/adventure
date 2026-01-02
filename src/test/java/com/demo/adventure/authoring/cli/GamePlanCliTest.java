@@ -84,7 +84,7 @@ class GamePlanCliTest {
     void compileAndValidateSucceedsForValidGdl() throws Exception {
         GamePlanCli cli = new GamePlanCli();
         Path outDir = Files.createTempDirectory("gameplan");
-        String gdl = Files.readString(Path.of("src/main/resources/games/gdl-demo/game.gdl"));
+        String gdl = Files.readString(Path.of("src/test/resources/games/gdl-demo/game.gdl"));
 
         Object outcome = invoke(cli,
                 "compileAndValidate",

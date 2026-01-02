@@ -23,7 +23,7 @@ Authoritative references:
 - `docs/adr/index.md` – architecture decision records index.
 
 Game saves:
-- Canonical gardened YAMLs live in `src/main/resources/cookbook/` for Island, Mansion, Western, and Spy.
+- Canonical gardened YAMLs live in `src/main/resources/cookbook/`: `gardened-island.yaml`, `gardened-mansion.yaml`, `gardened-western.yaml`, `gardened-spy.yaml`.
 - Structured per-plot definitions live under `src/main/resources/games/<id>/` (e.g., `games/island`, `games/mansion`, `games/western`, `games/spy`), organized into `world/`, `narrative/`, `motif/`, and `assets/`.
 - Storybook authoring assets live under `src/main/resources/storybook/`; full bundles include `game.yaml`, `backstory.md`, `quests.md`, `recipes.yaml`, and `story.md`.
 - `docs/games/index.md` – game ids and resource locations.

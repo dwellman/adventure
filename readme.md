@@ -40,7 +40,7 @@ Notes:
 - `src/main/java/com/demo/adventure/domain/` model/kernel/save schema shared by engine + authoring
 - `src/main/java/com/demo/adventure/authoring/` CLIs and world builders (cli/save/lang/gardener/zone/samples)
 - `src/main/java/com/demo/adventure/support/` shared exceptions
-- `src/main/resources/games/<id>/` structured game YAML (game.yaml + map/fixtures/items/actors/descriptions)
+- `src/main/resources/games/<id>/` structured game YAML (`game.yaml` + `world/` + `narrative/` + `motif/` + `assets/`)
 - `src/main/resources/agents/` runtime translator/narrator templates + AI role prompts/contracts
 - `src/main/resources/storybook/` narrative authoring bundles (backstory, quests, recipes, story)
 - `src/test/resources/zone-demo/` sample input bundle for ZoneBuilder
@@ -59,15 +59,15 @@ seed: 20240615
 startPlotKey: wreck-beach
 preamble: Salt stings your lips...
 includes:
-  map: map.yaml
-  fixtures: fixtures.yaml
-  items: items.yaml
-  actors: actors.yaml
-  descriptions: descriptions.yaml
+  map: world/map.yaml
+  fixtures: world/fixtures.yaml
+  items: world/items.yaml
+  actors: world/actors.yaml
+  descriptions: narrative/descriptions.yaml
 ```
 
 ### Gates, movement, and key expressions
-Movement is driven by gate Things in `map.yaml`.
+Movement is driven by gate Things in `world/map.yaml`.
 - `direction` controls movement.
 - `visible` controls whether the exit is shown at all.
 - `keyString` is a quoted GEL expression evaluated at runtime.
@@ -90,7 +90,7 @@ Key rules:
 - Use `keyString` for conditional visibility (see `docs/design/key-expression.md`).
 
 ### Fixtures, items, actors
-Use `fixtures.yaml`, `items.yaml`, and `actors.yaml` for placement and behavior.
+Use `world/fixtures.yaml`, `world/items.yaml`, and `world/actors.yaml` for placement and behavior.
 - Set `visible: true` with a `keyString` to gate visibility.
 - Items and fixtures can have descriptions, labels, and ownership (via fixtures).
 
@@ -101,7 +101,7 @@ Inventory is a container with capacity. Items can also be containers.
 - The engine uses `ContainerPacker` to enforce capacity.
 
 ### Crafting
-Recipes live in `src/main/resources/games/<id>/crafting.yaml`.
+Recipes live in `src/main/resources/games/<id>/world/crafting.yaml`.
 ```yaml
 recipes:
   - emitLabel: Lit Torch
@@ -129,7 +129,7 @@ Crafting rules:
 - Game play: `com.demo.adventure.engine.cli.GameCli`
 - Validate and round-trip a save: `com.demo.adventure.authoring.cli.GameBuilderCli`
   - `mvn -q -Dexec.mainClass=com.demo.adventure.authoring.cli.GameBuilderCli \
-    -Dexec.args="src/main/resources/cookbook/gardened-clue.yaml --out logs/clue-roundtrip.yaml --bom --report" exec:java`
+    -Dexec.args="src/main/resources/cookbook/gardened-mansion.yaml --out logs/mansion-roundtrip.yaml --bom --report" exec:java`
 - Export structured YAML: `com.demo.adventure.authoring.cli.GameStructExporter`
 - Architect walkabout graphs: `com.demo.adventure.authoring.cli.ArchitectCli`
 - Zone builder: `com.demo.adventure.authoring.cli.ZoneBuilderCli`
@@ -165,5 +165,5 @@ Crafting rules:
 ## Spy Adventure Travel Poster
 ![spy_adventure.png](docs/img/spy_adventure.png)
 
-## Wester Adventure Travel Poster
+## Western Adventure Travel Poster
 ![western_adventure.png](docs/img/western_adventure.png)

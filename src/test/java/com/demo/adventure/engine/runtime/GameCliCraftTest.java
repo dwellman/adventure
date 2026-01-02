@@ -7,8 +7,11 @@ import com.demo.adventure.domain.model.ActorBuilder;
 import com.demo.adventure.domain.model.Item;
 import com.demo.adventure.domain.model.ItemBuilder;
 import com.demo.adventure.domain.model.Rectangle2D;
+import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
+import com.demo.adventure.engine.mechanics.crafting.CraftingRecipeLoader;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +56,10 @@ class GameCliCraftTest {
         Map<UUID, Map<UUID, Rectangle2D>> placements = new HashMap<>();
         SceneNarrator narrator = new SceneNarrator(new NarrationService(false, null, false));
         GameRuntime runtime = new GameRuntime(narrator, text -> {}, false);
-        runtime.configure(registry, UUID.randomUUID(), playerId, inventory, placements, null, null, null, Map.of());
+        Map<String, CraftingRecipe> recipes = CraftingRecipeLoader.load(
+                Path.of("src/test/resources/games/test/world/crafting.yaml")
+        );
+        runtime.configure(registry, UUID.randomUUID(), playerId, inventory, placements, null, null, recipes, Map.of());
         runtime.craft("Torch");
 
         assertThat(inventory)

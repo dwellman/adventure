@@ -54,7 +54,7 @@ class RuntimeLoaderTest {
 
     @Test
     void loadSaveFromGdlFile() throws Exception {
-        GameSave save = RuntimeLoader.loadSave("src/main/resources/games/gdl-demo/game.gdl");
+        GameSave save = RuntimeLoader.loadSave("src/test/resources/games/gdl-demo/game.gdl");
 
         assertThat(save.plots()).isNotEmpty();
     }

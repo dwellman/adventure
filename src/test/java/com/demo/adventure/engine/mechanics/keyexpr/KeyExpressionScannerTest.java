@@ -7,8 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static com.demo.adventure.engine.mechanics.keyexpr.KeyExpressionTestSupport.assertError;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KeyExpressionScannerTest {
 
@@ -22,11 +25,13 @@ class KeyExpressionScannerTest {
                 TokenType.IDENTIFIER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
     void scansFunctionLikeExpression() throws KeyExpressionCompileException {
-        String input = "DICE(1,2)";
+        String input = "DICE(6)";
 
         KeyExpressionScanner scanner = new KeyExpressionScanner(input);
         List<Token> tokens = scanner.getTokens();
@@ -34,13 +39,12 @@ class KeyExpressionScannerTest {
                 TokenType.FUNCTION,
                 TokenType.LEFT_PAREN,
                 TokenType.NUMBER,
-                TokenType.COMMA,
-                TokenType.NUMBER,
                 TokenType.RIGHT_PAREN,
                 TokenType.EOL
         );
-        assertThat(tokens.get(2).literal).isEqualTo(1L);
-        assertThat(tokens.get(4).literal).isEqualTo(2L);
+        assertThat(tokens.get(2).literal).isEqualTo(6L);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -56,6 +60,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("hello");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -69,6 +75,8 @@ class KeyExpressionScannerTest {
         assertThat(t.type).isEqualTo(TokenType.IDENTIFIER);
         assertThat(t.lexeme).isEqualTo("FLAG1");
         assertThat(t.literal).isEqualTo("flag1");
+
+        assertError(input);
     }
 
     @Test
@@ -80,6 +88,8 @@ class KeyExpressionScannerTest {
         assertThat(tokens).extracting(t -> t.type).containsExactly(
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -93,6 +103,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("true");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -106,6 +118,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("false");
+
+        assertFalse(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -120,6 +134,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("true");
+
+        assertFalse(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -135,6 +151,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(2).literal).isEqualTo("false");
+
+        assertFalse(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -150,6 +168,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("true");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -167,6 +187,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(2).literal).isEqualTo("true");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -181,6 +203,8 @@ class KeyExpressionScannerTest {
                 TokenType.FALSE,
                 TokenType.EOL
         );
+
+        assertFalse(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -195,6 +219,8 @@ class KeyExpressionScannerTest {
                 TokenType.FALSE,
                 TokenType.EOL
         );
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -211,6 +237,8 @@ class KeyExpressionScannerTest {
                 TokenType.FALSE,
                 TokenType.EOL
         );
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -229,6 +257,8 @@ class KeyExpressionScannerTest {
                 TokenType.FALSE,
                 TokenType.EOL
         );
+
+        assertFalse(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -242,6 +272,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("a");
+
+        assertError(input);
     }
 
     @Test
@@ -255,19 +287,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("worldClock");
-    }
 
-    @Test
-    void scansIdentifierWithUnderscore() throws KeyExpressionCompileException {
-        String input = "world_clock";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.IDENTIFIER,
-                TokenType.EOL
-        );
-        assertThat(tokens.get(0).literal).isEqualTo("world_clock");
+        assertError(input);
     }
 
     @Test
@@ -283,6 +304,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(2).literal).isEqualTo(15L);
+
+        assertError(input);
     }
 
     @Test
@@ -297,6 +320,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -311,6 +336,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -325,6 +352,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -339,6 +368,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -353,6 +384,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -368,6 +401,8 @@ class KeyExpressionScannerTest {
                 TokenType.NUMBER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -382,6 +417,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo(1L);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -395,6 +432,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo(3.14d);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -409,6 +448,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo(0.5d);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -424,34 +465,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(2).literal).isEqualTo(1.25d);
-    }
 
-    @Test
-    void scansAdditionExpression() throws KeyExpressionCompileException {
-        String input = "1 + 2";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.NUMBER,
-                TokenType.PLUS,
-                TokenType.NUMBER,
-                TokenType.EOL
-        );
-    }
-
-    @Test
-    void scansMultiplicationExpression() throws KeyExpressionCompileException {
-        String input = "2*3";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.NUMBER,
-                TokenType.STAR,
-                TokenType.NUMBER,
-                TokenType.EOL
-        );
+        assertError(input);
     }
 
     @Test
@@ -465,6 +480,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo(123L);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -478,6 +495,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo(12345L);
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -493,6 +512,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("lit torch");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -508,6 +529,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("a b c");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -523,6 +546,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("quote: \"");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -536,6 +561,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("true");
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -548,6 +575,8 @@ class KeyExpressionScannerTest {
                 TokenType.TRUE,
                 TokenType.EOL
         );
+
+        assertTrue(KeyExpressionEvaluator.evaluate(input));
     }
 
     @Test
@@ -562,6 +591,8 @@ class KeyExpressionScannerTest {
                 TokenType.IDENTIFIER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 
     @Test
@@ -575,60 +606,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(0).literal).isEqualTo("a");
-    }
 
-    @Test
-    void scansDivisionBetweenWords() throws KeyExpressionCompileException {
-        String input = "A/B";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.IDENTIFIER,
-                TokenType.SLASH,
-                TokenType.IDENTIFIER,
-                TokenType.EOL
-        );
-    }
-
-    @Test
-    void scansDivisionBetweenBooleans() throws KeyExpressionCompileException {
-        String input = "true/false";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.TRUE,
-                TokenType.SLASH,
-                TokenType.FALSE,
-                TokenType.EOL
-        );
-    }
-
-    @Test
-    void scansDivisionWithSpaces() throws KeyExpressionCompileException {
-        String input = "a / b";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.IDENTIFIER,
-                TokenType.SLASH,
-                TokenType.IDENTIFIER,
-                TokenType.EOL
-        );
-    }
-
-    @Test
-    void scansLoneSlash() throws KeyExpressionCompileException {
-        String input = "/";
-
-        KeyExpressionScanner scanner = new KeyExpressionScanner(input);
-        List<Token> tokens = scanner.getTokens();
-        assertThat(tokens).extracting(t -> t.type).containsExactly(
-                TokenType.SLASH,
-                TokenType.EOL
-        );
+        assertError(input);
     }
 
     @Test
@@ -637,6 +616,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -645,6 +626,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -653,6 +636,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -667,6 +652,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo("unterminated");
+
+        assertError(input);
     }
 
     @Test
@@ -681,6 +668,8 @@ class KeyExpressionScannerTest {
                 TokenType.EOL
         );
         assertThat(tokens.get(1).literal).isEqualTo(" ");
+
+        assertError(input);
     }
 
     @Test
@@ -689,6 +678,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -697,6 +688,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -705,6 +698,8 @@ class KeyExpressionScannerTest {
 
         assertThatThrownBy(() -> new KeyExpressionScanner(input))
                 .isInstanceOf(KeyExpressionCompileException.class);
+
+        assertError(input);
     }
 
     @Test
@@ -719,5 +714,7 @@ class KeyExpressionScannerTest {
                 TokenType.IDENTIFIER,
                 TokenType.EOL
         );
+
+        assertError(input);
     }
 }

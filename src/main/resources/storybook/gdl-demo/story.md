@@ -1,6 +1,6 @@
 # Story
 
-This storybook entry is the YAML representation of `src/main/resources/games/gdl-demo/game.gdl`.
+This storybook entry is the YAML representation of `src/test/resources/games/gdl-demo/game.gdl`.
 
 Scope:
 - Two plots: foyer and hall, linked by north/south gates

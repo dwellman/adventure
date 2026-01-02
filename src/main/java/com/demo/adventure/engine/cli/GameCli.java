@@ -23,6 +23,7 @@ import com.demo.adventure.engine.command.TokenType;
 import com.demo.adventure.engine.command.VerbAliases;
 import com.demo.adventure.engine.command.interpreter.CommandScanner;
 import com.demo.adventure.engine.command.interpreter.CommandInterpreter;
+import com.demo.adventure.authoring.save.io.FootprintRule;
 import com.demo.adventure.domain.kernel.KernelRegistry;
 import com.demo.adventure.engine.mechanics.crafting.CraftingRecipe;
 import com.demo.adventure.support.exceptions.GameBuilderException;
@@ -47,7 +48,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
-import java.util.Objects;
 
 /**
  * Minimal CLI launcher to pick a game and print its preamble.
@@ -82,15 +82,7 @@ Commands:
 - **quit (q)** - Return to the main menu
 """;
 
-    private record GameOption(int index, String name, String resource, String tagline, boolean hidden) { }
-
-    private static final List<GameOption> OPTIONS = List.of(
-            new GameOption(1, "Island Adventure", "src/main/resources/games/island/game.yaml", "CASTAWAY THRILLS. Jungle traps, cliffside caves, and a desperate raft-for-freedom dash before the adventure claims you for good.", false),
-            new GameOption(2, "Mansion Adventure", "src/main/resources/games/mansion/game.yaml", "THE MYSTERY HOUSE. Secret doors. Creaking halls. One wrong turn and the mansion keeps you forever.", false),
-            new GameOption(3, "Western Adventure", "src/main/resources/games/western/game.yaml", "TERROR AT DEAD-MAN’S GULCH. TNT on the rails. The Iron Rattler thundering in. One last chance at Rattlesnake Bridge.", false),
-            new GameOption(4, "Spy Adventure", "src/main/resources/games/spy/game.yaml", "TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the Jade Capsule before it lights the world up.", false),
-            new GameOption(6, "Zone Builder Demo", "logs/zone-game.yaml", "Generated from src/test/resources/zone-demo/zone-input.sample.yaml (run ZoneBuilderCli to refresh).", true)
-    );
+    private static final String GAME_CATALOG_PATH = "src/main/resources/games/index.yaml";
 
     public static void main(String[] args) {
         // Pattern: Trust UX
@@ -118,6 +110,7 @@ Commands:
     }
 
     private final GameMode mode;
+    private final List<GameCatalogEntry> gameOptions;
 
     public GameCli() {
         this(GameMode.Z1980);
@@ -141,6 +134,7 @@ Commands:
         // Keep player output clean even when GameCli is constructed directly (tests bypass main()).
         KeyExpressionEvaluator.setDebugOutput(false);
         this.mode = mode == null ? GameMode.Z1980 : mode;
+        this.gameOptions = loadGameOptions();
         this.apiKey = resolveApiKey();
         AiConfig config = AiConfig.load();
         this.aiEnabled = this.mode == GameMode.Z2025 && this.apiKey != null && !this.apiKey.isBlank();
@@ -160,11 +154,23 @@ Commands:
         }
     }
 
+    private List<GameCatalogEntry> loadGameOptions() {
+        try {
+            List<GameCatalogEntry> options = GameCatalogLoader.load(GAME_CATALOG_PATH);
+            if (options == null || options.isEmpty()) {
+                throw new IllegalStateException("No games listed in " + GAME_CATALOG_PATH);
+            }
+            return options;
+        } catch (Exception ex) {
+            throw new IllegalStateException("Failed to load game catalog: " + ex.getMessage(), ex);
+        }
+    }
+
     private void run() {
         printMenu();
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-                long visibleCount = OPTIONS.stream().filter(o -> !o.hidden()).count();
+                long visibleCount = gameOptions.stream().filter(o -> !o.hidden()).count();
                 System.out.print(BuuiMenu.prompt("game", (int) visibleCount, "q"));
                 String input = scanner.nextLine().trim();
                 if (input.isBlank()) {
@@ -178,7 +184,7 @@ Commands:
                     println("Goodbye.");
                     return;
                 }
-                GameOption selected = parseSelection(input);
+                GameCatalogEntry selected = parseSelection(input);
                 if (selected == null) {
                     println("Unknown selection: " + input);
                     continue;
@@ -203,7 +209,7 @@ Commands:
                 .title(title)
                 .itemHeader("Game")
                 .descriptionHeader("Description");
-        for (GameOption option : OPTIONS) {
+        for (GameCatalogEntry option : gameOptions) {
             if (option.hidden()) {
                 continue;
             }
@@ -213,13 +219,13 @@ Commands:
         printText(builder.build().render());
     }
 
-    private GameOption parseSelection(String input) {
+    private GameCatalogEntry parseSelection(String input) {
         if (input.equalsIgnoreCase("z")) {
-            return OPTIONS.stream().filter(GameOption::hidden).findFirst().orElse(null);
+            return gameOptions.stream().filter(GameCatalogEntry::hidden).findFirst().orElse(null);
         }
         try {
             int index = Integer.parseInt(input);
-            return OPTIONS.stream()
+            return gameOptions.stream()
                     .filter(opt -> !opt.hidden())
                     .filter(opt -> opt.index() == index)
                     .findFirst()
@@ -231,10 +237,11 @@ Commands:
 
     // Pattern: Orchestration
     // - Runs the core translator -> command -> engine -> narrator loop with a single translation pass.
-    private void walkabout(GameOption option, GameSave save, Scanner scanner) throws GameBuilderException {
+    private void walkabout(GameCatalogEntry option, GameSave save, Scanner scanner) throws GameBuilderException {
         returnToMenu = false;
-        LoopConfig loopConfig = RuntimeLoader.loadLoopConfig(option.resource);
-        LoopRuntime loopRuntime = new LoopRuntime(save, loopConfig);
+        LoopConfig loopConfig = RuntimeLoader.loadLoopConfig(option.resource());
+        List<FootprintRule> footprintRules = RuntimeLoader.loadFootprintRules(option.resource());
+        LoopRuntime loopRuntime = new LoopRuntime(save, loopConfig, footprintRules);
         WorldBuildResult world = loopRuntime.buildWorld();
         KernelRegistry registry = world.registry();
         UUID currentPlot = world.startPlotId();
@@ -253,17 +260,17 @@ Commands:
         if (save.preamble() != null && !save.preamble().isBlank()) {
             printNarration(save.preamble());
         }
-        String backstory = RuntimeLoader.loadBackstory(option.resource);
+        String backstory = RuntimeLoader.loadBackstory(option.resource());
         if (backstory != null && !backstory.isBlank()) {
             printNarration(backstory);
         }
         narrator.setBackstory(backstory);
 
-        Map<String, CraftingRecipe> craftingRecipes = RuntimeLoader.loadCraftingRecipes(option.resource);
-        Map<String, TokenType> extraAliases = RuntimeLoader.loadVerbAliases(option.resource);
+        Map<String, CraftingRecipe> craftingRecipes = RuntimeLoader.loadCraftingRecipes(option.resource());
+        Map<String, TokenType> extraAliases = RuntimeLoader.loadVerbAliases(option.resource());
         commandInterpreter.setExtraKeywords(extraAliases);
         aliasMap = mergeAliasMap(extraAliases);
-        TriggerEngine triggerEngine = new TriggerEngine(RuntimeLoader.loadTriggerDefinitions(option.resource));
+        TriggerEngine triggerEngine = new TriggerEngine(RuntimeLoader.loadTriggerDefinitions(option.resource()));
 
         runtime.configure(
                 registry,
@@ -277,8 +284,8 @@ Commands:
                 extraAliases
         );
         runtime.primeScene();
-        List<SmartActorSpec> smartActorSpecs = RuntimeLoader.loadSmartActorSpecs(option.resource);
-        SmartActorTagIndex smartActorTags = RuntimeLoader.loadSmartActorTags(option.resource);
+        List<SmartActorSpec> smartActorSpecs = RuntimeLoader.loadSmartActorSpecs(option.resource());
+        SmartActorTagIndex smartActorTags = RuntimeLoader.loadSmartActorTags(option.resource());
         if (aiEnabled && !smartActorSpecs.isEmpty()) {
             SmartActorRegistry smartActorRegistry = SmartActorRegistry.create(registry, smartActorSpecs);
             SmartActorPlanner planner = new SmartActorPlanner(aiEnabled, apiKey, smartActorDebug);

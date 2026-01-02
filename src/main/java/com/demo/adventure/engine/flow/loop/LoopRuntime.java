@@ -8,10 +8,12 @@ import com.demo.adventure.support.exceptions.GameBuilderException;
 import com.demo.adventure.domain.model.Item;
 import com.demo.adventure.domain.model.WorldState;
 import com.demo.adventure.authoring.save.build.GameSaveAssembler;
+import com.demo.adventure.authoring.save.io.FootprintRule;
 import com.demo.adventure.authoring.save.build.WorldBuildResult;
 import com.demo.adventure.domain.save.GameSave;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -23,16 +25,22 @@ public final class LoopRuntime {
     private final LoopConfig config;
     private final LoopState state;
     private final GameSaveAssembler assembler = new GameSaveAssembler();
+    private final List<FootprintRule> footprintRules;
     private final Map<String, PersistentItemSnapshot> persistentItems = new HashMap<>();
     private WorldState worldState;
 
     public LoopRuntime(GameSave save, LoopConfig config) {
+        this(save, config, List.of());
+    }
+
+    public LoopRuntime(GameSave save, LoopConfig config, List<FootprintRule> footprintRules) {
         if (save == null) {
             throw new IllegalArgumentException("save is required");
         }
         this.save = save;
         this.config = config == null ? LoopConfig.disabled() : config;
         this.state = new LoopState(this.config.maxTicks());
+        this.footprintRules = footprintRules == null ? List.of() : footprintRules;
     }
 
     public LoopConfig config() {
@@ -48,7 +56,7 @@ public final class LoopRuntime {
     }
 
     public WorldBuildResult buildWorld() throws GameBuilderException {
-        WorldBuildResult world = assembler.apply(save);
+        WorldBuildResult world = assembler.apply(save, footprintRules);
         if (enabled()) {
             installWorldState(world.registry());
         }

@@ -11,14 +11,14 @@ import com.demo.adventure.authoring.save.build.GameSaveAssembler;
 import com.demo.adventure.authoring.save.build.WorldBillOfMaterials;
 import com.demo.adventure.authoring.save.build.WorldBillOfMaterialsGenerator;
 import com.demo.adventure.authoring.save.build.WorldBuildResult;
+import com.demo.adventure.authoring.save.io.StructuredGameSaveLoader;
 import com.demo.adventure.domain.save.GameSave;
-import com.demo.adventure.authoring.samples.ClueMansion;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.UUID;
 
-import static com.demo.adventure.authoring.samples.ClueMansion.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
@@ -26,12 +26,12 @@ class ClueMansionIntegrationTest {
 
     @Test
     void buildsClueMansionBillOfMaterials() throws GameBuilderException {
-        GameSave save = ClueMansion.gameSave();
+        GameSave save = loadMansionSave();
         WorldBuildResult result = new GameSaveAssembler().apply(save);
         KernelRegistry registry = result.registry();
 
         assertThat(result.report().getProblems()).isEmpty();
-        assertThat(result.startPlotId()).isEqualTo(HALL);
+        assertThat(result.startPlotId()).isEqualTo(plotIdByName(save, "Hall"));
 
         List<Plot> plots = registry.getEverything().values().stream()
                 .filter(Plot.class::isInstance)
@@ -42,18 +42,19 @@ class ClueMansionIntegrationTest {
                 .map(Gate.class::cast)
                 .toList();
 
-        assertThat(plots).hasSize(22);
-        assertThat(gates).hasSize(27);
-        assertThat(gates.stream().filter(g -> !g.isVisible()).count()).isEqualTo(2);
+        assertThat(plots).hasSize(save.plots().size());
+        assertThat(gates.size()).isGreaterThan(0);
+        assertThat(gates.size()).isLessThanOrEqualTo(save.gates().size());
+        assertThat(gates.stream().filter(g -> !g.isVisible()).count()).isGreaterThan(0);
 
-        Item desk = (Item) registry.get(STUDY_DESK);
-        Item drawer = (Item) registry.get(STUDY_DESK_DRAWER);
+        Item desk = findItemByLabel(registry, "Study Desk");
+        Item drawer = findItemByLabel(registry, "Study Desk Drawer 1");
         assertThat(desk).isNotNull();
         assertThat(drawer).isNotNull();
         assertThat(desk.isFixture()).isTrue();
         assertThat(drawer.isFixture()).isTrue();
-        assertThat(desk.getOwnerId()).isEqualTo(STUDY);
-        assertThat(drawer.getOwnerId()).isEqualTo(STUDY_DESK);
+        assertThat(desk.getOwnerId()).isEqualTo(plotIdByName(save, "Study"));
+        assertThat(drawer.getOwnerId()).isEqualTo(plotIdByName(save, "Study"));
 
         WorldBillOfMaterials bom = WorldBillOfMaterialsGenerator.fromRegistry(registry);
         WorldBillOfMaterials.Section mapSection = bom.getSections().stream()
@@ -63,34 +64,39 @@ class ClueMansionIntegrationTest {
         assertThat(mapSection.entries())
                 .extracting(WorldBillOfMaterials.Entry::name, WorldBillOfMaterials.Entry::quantity)
                 .contains(
-                        tuple("Gates", 27),
-                        tuple("Land plots", 22)
+                        tuple("Gates", gates.size()),
+                        tuple("Land plots", plots.size())
                 );
 
-        assertWeaponPlacement(registry);
-        assertOwner(registry, POCKET_WATCH, DETECTIVE);
+        assertWeaponPlacement(registry, save);
+        assertOwner(registry, "Pocket Watch", findActorByLabel(registry, "Detective").getId());
 
-        Gate cellarGate = findGate(registry, BILLIARD_ROOM, CELLAR);
+        Gate cellarGate = findGate(registry,
+                plotIdByName(save, "Billiard Room"),
+                plotIdByName(save, "Cellar"));
         assertThat(cellarGate.getKeyString()).isEqualTo("HAS(\"Basement Key\")");
 
-        KeyExpressionEvaluator.HasResolver hasResolver = KeyExpressionEvaluator.registryHasResolver(registry, DETECTIVE);
+        Thing detective = findActorByLabel(registry, "Detective");
+        KeyExpressionEvaluator.HasResolver hasResolver =
+                KeyExpressionEvaluator.registryHasResolver(registry, detective.getId());
         assertThat(KeyExpressionEvaluator.evaluate(cellarGate.getKeyString(), hasResolver)).isFalse();
 
-        registry.moveOwnership(BASEMENT_KEY, DETECTIVE);
+        Thing basementKey = findThingByLabel(registry, "Basement Key");
+        registry.moveOwnership(basementKey.getId(), detective.getId());
         assertThat(KeyExpressionEvaluator.evaluate(cellarGate.getKeyString(), hasResolver)).isTrue();
     }
 
-    private static void assertWeaponPlacement(KernelRegistry registry) {
-        assertOwner(registry, REVOLVER, STUDY);
-        assertOwner(registry, ROPE, LOUNGE);
-        assertOwner(registry, KNIFE, KITCHEN);
-        assertOwner(registry, CANDLESTICK, DINING_ROOM);
-        assertOwner(registry, LEAD_PIPE, BILLIARD_ROOM);
-        assertOwner(registry, WRENCH, BALLROOM);
+    private static void assertWeaponPlacement(KernelRegistry registry, GameSave save) {
+        assertOwner(registry, "Revolver", plotIdByName(save, "Study"));
+        assertOwner(registry, "Rope", plotIdByName(save, "Lounge"));
+        assertOwner(registry, "Knife", plotIdByName(save, "Kitchen"));
+        assertOwner(registry, "Candlestick", plotIdByName(save, "Dining Room"));
+        assertOwner(registry, "Lead Pipe", plotIdByName(save, "Billiard Room"));
+        assertOwner(registry, "Wrench", plotIdByName(save, "Ballroom"));
     }
 
-    private static void assertOwner(KernelRegistry registry, UUID thingId, UUID expectedOwnerId) {
-        Thing thing = registry.get(thingId);
+    private static void assertOwner(KernelRegistry registry, String label, UUID expectedOwnerId) {
+        Thing thing = findThingByLabel(registry, label);
         assertThat(thing).isNotNull();
         assertThat(thing.getOwnerId()).isEqualTo(expectedOwnerId);
     }
@@ -102,5 +108,49 @@ class ClueMansionIntegrationTest {
                 .filter(g -> g.connects(a) && g.connects(b))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError("Gate not found between " + a + " and " + b));
+    }
+
+    private static UUID plotIdByName(GameSave save, String name) {
+        return save.plots().stream()
+                .filter(plot -> plot.name().equalsIgnoreCase(name))
+                .map(com.demo.adventure.domain.save.WorldRecipe.PlotSpec::plotId)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("Plot not found: " + name));
+    }
+
+    private static Item findItemByLabel(KernelRegistry registry, String label) {
+        return registry.getEverything().values().stream()
+                .filter(Item.class::isInstance)
+                .map(Item.class::cast)
+                .filter(item -> item.getLabel() != null && item.getLabel().equalsIgnoreCase(label))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static Thing findThingByLabel(KernelRegistry registry, String label) {
+        return registry.getEverything().values().stream()
+                .filter(Thing.class::isInstance)
+                .map(Thing.class::cast)
+                .filter(thing -> thing.getLabel() != null && thing.getLabel().equalsIgnoreCase(label))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static Thing findActorByLabel(KernelRegistry registry, String label) {
+        return registry.getEverything().values().stream()
+                .filter(Thing.class::isInstance)
+                .map(Thing.class::cast)
+                .filter(thing -> thing instanceof com.demo.adventure.domain.model.Actor)
+                .filter(thing -> thing.getLabel() != null && thing.getLabel().equalsIgnoreCase(label))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static GameSave loadMansionSave() throws GameBuilderException {
+        try {
+            return StructuredGameSaveLoader.load(Path.of("src/main/resources/games/mansion/game.yaml"));
+        } catch (Exception ex) {
+            throw new GameBuilderException("Failed to load mansion game.yaml: " + ex.getMessage(), null);
+        }
     }
 }

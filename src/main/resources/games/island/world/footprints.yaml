@@ -1,0 +1,16 @@
+rules:
+  - match:
+      contains: raft
+    size:
+      w: 0.6
+      h: 0.6
+  - match:
+      contains: ladder
+    size:
+      w: 0.4
+      h: 0.4
+  - match:
+      contains: pole
+    size:
+      w: 0.3
+      h: 0.3

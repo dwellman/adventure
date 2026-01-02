@@ -7,7 +7,7 @@ game_plan:
       inputs:
         - design_brief: "Western Adventure (time-based)"
         - canon_sources:
-            - src/main/resources/cookbook/western-adventure.yaml
+            - src/main/resources/cookbook/gardened-western.yaml
             - src/main/resources/games/western/assets/western_adventure.png
       process: interview one question at a time to fill constraints before story/backstory; distill scope, invariants, success criteria, and non-negotiables
       outputs:

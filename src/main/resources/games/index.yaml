@@ -1,0 +1,31 @@
+games:
+  - id: island
+    index: 1
+    name: Island Adventure
+    path: src/main/resources/games/island/game.yaml
+    tagline: CASTAWAY THRILLS. Jungle traps, cliffside caves, and a desperate raft-for-freedom dash before the adventure claims you for good.
+    hidden: false
+  - id: mansion
+    index: 2
+    name: Mansion Adventure
+    path: src/main/resources/games/mansion/game.yaml
+    tagline: THE MYSTERY HOUSE. Secret doors. Creaking halls. One wrong turn and the mansion keeps you forever.
+    hidden: false
+  - id: western
+    index: 3
+    name: Western Adventure
+    path: src/main/resources/games/western/game.yaml
+    tagline: TERROR AT DEAD-MAN'S GULCH. TNT on the rails. The Iron Rattler thundering in. One last chance at Rattlesnake Bridge.
+    hidden: false
+  - id: spy
+    index: 4
+    name: Spy Adventure
+    path: src/main/resources/games/spy/game.yaml
+    tagline: TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the Jade Capsule before it lights the world up.
+    hidden: false
+  - id: zone-builder-demo
+    index: 6
+    name: Zone Builder Demo
+    path: logs/zone-game.yaml
+    tagline: Generated from src/test/resources/zone-demo/zone-input.sample.yaml (run ZoneBuilderCli to refresh).
+    hidden: true
