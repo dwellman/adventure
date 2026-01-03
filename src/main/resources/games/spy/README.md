@@ -1,6 +1,6 @@
 # Spy Adventure (Design Notes)
 
-Purpose: Spy chase across a neon city to intercept the Jade Capsule.
+Purpose: Spy chase across a neon city to intercept the WOPR.
 
 Motif and voice:
 - Neon, rain, coded signage, and surveillance paranoia.

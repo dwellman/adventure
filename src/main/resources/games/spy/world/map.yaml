@@ -401,7 +401,7 @@ plots:
   region: CITY
   locationX: 0
   locationY: 11
-  description: The final latch releases with a soft mechanical sigh. A hidden niche reveals the Jade Capsule, cold in your
+  description: The final latch releases with a soft mechanical sigh. A hidden niche reveals the WOPR, cold in your
     hand.
 - key: pier-shadow-timing-line
   name: Pier Shadow Timing Line

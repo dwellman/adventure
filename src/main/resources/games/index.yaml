@@ -21,7 +21,7 @@ games:
     index: 4
     name: Spy Adventure
     path: src/main/resources/games/spy/game.yaml
-    tagline: TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the Jade Capsule before it lights the world up.
+    tagline: TRAUMA-BOND, INTERNATIONAL MAN OF MAYHEM. Glamour, gadgets, and a race to disarm the WOPR before it lights the world up.
     hidden: false
   - id: zone-builder-demo
     index: 6

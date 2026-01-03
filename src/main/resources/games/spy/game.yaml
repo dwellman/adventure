@@ -2,7 +2,7 @@ id: spy-adventure
 title: Spy Adventure
 seed: 1970
 startPlotKey: nathan-road-neon-canyon
-preamble: Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the harbor handoff.
+preamble: Neon drips off wet Kowloon streets; retrieve the WOPR before the harbor handoff.
 includes:
   map: world/map.yaml
   fixtures: world/fixtures.yaml

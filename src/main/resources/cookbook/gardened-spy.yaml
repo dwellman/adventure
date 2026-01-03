@@ -1,7 +1,7 @@
 seed: 1970
 startPlot: Nathan Road Neon Canyon
 startPlotKey: nathan-road-neon-canyon
-preamble: Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the harbor handoff.
+preamble: Neon drips off wet Kowloon streets; retrieve the WOPR before the harbor handoff.
 plots:
 - plot: Alley Mirror Board
   plotKey: alley-mirror-board
@@ -2374,7 +2374,8 @@ plots:
   name: Pedestal Release Niche
   region: CITY
   description:
-  - text: The final latch releases with a soft mechanical sigh. A hidden niche reveals the Jade Capsule, cold in your hand.
+  - text: The final latch releases with a soft mechanical sigh. A hidden niche reveals the WOPR
+  - , cold in your hand.
     worldClock: -1
   gates:
   - fromPlot: pedestal-release-niche

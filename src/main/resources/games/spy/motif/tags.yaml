@@ -53,7 +53,7 @@ items:
     tags: [CLUE, ACCESS]
   - key: stencil-rubbing
     tags: [CLUE, STAMP]
-  - key: jade-capsule
+  - key: wopr
     tags: [QUEST_MAIN, CAPSULE]
 
 fixtures:
@@ -115,5 +115,5 @@ actors:
     tags: [SMART, TECH]
 
 quests:
-  - key: jade-capsule
+  - key: wopr
     tags: [QUEST_MAIN, CAPSULE]

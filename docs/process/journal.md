@@ -835,11 +835,11 @@ _
 Select a game (1-4, or q to quit): 
   === Spy Adventure ===
 
-  Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the
+  Neon drips off wet Kowloon streets; retrieve the WOPR before the
   harbor handoff.
   1970 Hong Kong: humidity, neon, triads, and three-letter agencies tripping
   over each other in back alleys. You are off-book, tasked to intercept the
-  Jade Capsule before it moves across the harbor.
+  WOPR before it moves across the harbor.
   The Capsule is said to carry the WOPR drive schematics—proof that someone
   intends to light a global fuse. Rival spooks, smugglers, and local crews are
   all hunting it; your only edge is getting there first.
@@ -883,11 +883,11 @@ _
 Select a game (1-4, or q to quit): 
   === Spy Adventure ===
 
-  Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the
+  Neon drips off wet Kowloon streets; retrieve the WOPR before the
   harbor handoff.
   1970 Hong Kong: humidity, neon, triads, and three-letter agencies tripping
   over each other in back alleys. You are off-book, tasked to intercept the
-  Jade Capsule before it moves across the harbor.
+  WOPR before it moves across the harbor.
   The Capsule is said to carry the WOPR drive schematics—proof that someone
   intends to light a global fuse. Rival spooks, smugglers, and local crews are
   all hunting it; your only edge is getting there first.
@@ -961,7 +961,7 @@ _
 - Tests: `mvn -q -Dtest=GameMenuStructuredLoadTest,IslandAdventurePlaybookIntegrationTest test`
 
 ## 2025-12-25 — Spy Adventure mechanics fixes
-- Scope: Added missing Spy Adventure fixtures/items (postbox, latch, relief, shards, Jade Capsule) and ON_USE triggers for phrase/pass/stencil interactions.
+- Scope: Added missing Spy Adventure fixtures/items (postbox, latch, relief, shards, WOPR) and ON_USE triggers for phrase/pass/stencil interactions.
 - Tests: `mvn -q -Dtest=GameMenuStructuredLoadTest,SpyAdventurePlaybookIntegrationTest test`
 
 ## 2025-12-25 — Island/Mansion/Western 1980 runs (scoreboard)

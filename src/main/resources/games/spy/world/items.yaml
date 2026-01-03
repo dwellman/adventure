@@ -141,9 +141,9 @@ items:
   visible: false
   fixture: false
   keyString: 'true'
-- key: jade-capsule
-  name: Jade Capsule
-  description: A palm-sized capsule of cold green ceramic, heavier than it looks.
+- key: wopr
+  name: WOPR
+  description: A palm-sized black box with a blinking red light, lighter than it looks because it is wireless.
   ownerKey: pedestal-release-niche
   visible: false
   fixture: false

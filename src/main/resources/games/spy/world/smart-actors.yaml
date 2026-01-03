@@ -11,7 +11,7 @@ smartActors:
       traits: [careful, patient, exact]
       goals:
         - Keep the operation quiet
-        - Verify the Jade Capsule route
+        - Verify the WOPR route
       taboos:
         - Naming sources aloud
     properties:

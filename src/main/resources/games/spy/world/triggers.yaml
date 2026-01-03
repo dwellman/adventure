@@ -5,12 +5,12 @@ triggers:
     key: 'HAS("Alley Drop Card") && HAS("Map Overlay") && HAS("Harbor Schedule") && HAS("Ferry Token") && HAS("Cargo Manifest Strip")'
     actions:
       - type: REVEAL
-        target: Jade Capsule
+        target: WOPR
       - type: MOVE_OWNER
-        target: Jade Capsule
+        target: WOPR
         owner: "@PLAYER"
       - type: END_GAME
-        text: "The latch releases and the Jade Capsule rests cold in your palm. You ghost away before the harbor handoff. Mission complete."
+        text: "The latch releases and the WOPR rests cold in your palm. You ghost away before the harbor handoff. Mission complete."
   - id: spy-stencil-rubbing
     type: ON_USE
     target: Dockside Stencil Card

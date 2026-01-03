@@ -28,11 +28,11 @@
 Select a game (1-4, or q to quit): 
   === Spy Adventure ===
 
-  Neon drips off wet Kowloon streets; retrieve the Jade Capsule before the
+  Neon drips off wet Kowloon streets; retrieve the WOPR before the
   harbor handoff.
   1970 Hong Kong: humidity, neon, triads, and three-letter agencies tripping
   over each other in back alleys. You are off-book, tasked to intercept the
-  Jade Capsule before it moves across the harbor.
+  WOPR before it moves across the harbor.
   The Capsule is said to carry the WOPR drive schematics—proof that someone
   intends to light a global fuse. Rival spooks, smugglers, and local crews are
   all hunting it; your only edge is getting there first.
@@ -200,5 +200,5 @@ _
   Exits: EAST, NORTH, SOUTH, WEST
 
 _ 
-  The latch releases and the Jade Capsule rests cold in your palm. You ghost
+  The latch releases and the WOPR rests cold in your palm. You ghost
   away before the harbor handoff. Mission complete.

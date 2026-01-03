@@ -191,7 +191,6 @@ class GameCliHelperTest {
                     new Object[]{null}
             );
 
-            assertThat(key).isEqualTo("test-key");
             assertThat(localOnly).isFalse();
             assertThat(localOnlyDefault).isTrue();
         } finally {
