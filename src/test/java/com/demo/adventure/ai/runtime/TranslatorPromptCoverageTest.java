@@ -35,7 +35,11 @@ class TranslatorPromptCoverageTest {
         assertThat(prompt).contains("put <item> <preposition> <object>");
         assertThat(prompt).contains("dice(<sides>,<target>)");
         assertThat(prompt).contains("where am i");
-        assertThat(prompt).contains("shares a word");
+        assertThat(prompt).contains("what am i carrying");
+        assertThat(prompt).contains("how do i craft/make");
+        assertThat(prompt).contains("pick up");
+        assertThat(prompt).contains("drop extra words");
+        assertThat(prompt).contains("word match or exact label");
     }
 
     @Test

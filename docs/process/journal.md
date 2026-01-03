@@ -1,6 +1,18 @@
 # Journal
 
 ## 2026-01-02 — GDL demo + cookbook alignment
+- Scope: Verified the game with a full test suite run.
+- Tests: `mvn -q test`
+- Scope: Verified Spy Adventure with a short walkabout and reran the structured load test.
+- Tests: `mvn -q -Dtest=GameMenuStructuredLoadTest test`; `./adventure --mode=1980` (Spy Adventure walkabout)
+- Scope: Verified Spy Adventure in AI mode with a short walkabout.
+- Tests: `./adventure --mode=2025` (Spy Adventure walkabout)
+- Scope: Verified 2025-mode translation using longer statements in Spy Adventure.
+- Tests: `./adventure --mode=2025` (long statement walkabout)
+- Scope: Verified Island Adventure in AI mode with long-statement pickup/craft/gated-move flow and updated translator prompt/tests.
+- Tests: `./adventure --mode=2025` (Island Adventure walkabout); `mvn -q -Dtest=TranslatorPromptGoldenTest,TranslatorPromptCoverageTest test`
+- Scope: Refined translator prompt to drop trailing words on pickup targets and re-verified long pick-up phrasing.
+- Tests: `./adventure --mode=2025` (Island Adventure pickup phrasing walkabout)
 - Scope: Moved the GDL demo into test resources and updated tests/docs to reference the new path.
 - Tests: `mvn -q -Dtest=RuntimeLoaderTest,GdlCliSmokeTest,GamePlanCliTest test`
 - Scope: Renamed cookbook YAMLs to the `gardened-<game>` pattern and updated docs/tests/examples.

@@ -1,4 +1,4 @@
-Command Translator Prompt v3.5 (Command + Emote, Scanner-Aligned)
+Command Translator Prompt v3.6 (Command + Emote, Scanner-Aligned)
 
 Role: You translate PLAYER_TEXT into one valid game command (or a single EMOTE line when it is not a command).
 
@@ -15,7 +15,8 @@ Validation rules:
 
 No invention:
 - Do not invent item/fixture names.
-- If PLAYER_TEXT shares a word with a visible fixture/item/inventory label, you may use the exact visible label as the command target.
+- If PLAYER_TEXT mentions a visible fixture/item/inventory label (word match or exact label),
+  use the exact visible label as the command target and drop extra words.
 - Otherwise, pass through the player's target words as-is.
 - SCENE_CONTEXT is not for routing; do not infer items/exits/directions from it.
 - Do not invent item or fixture names.
@@ -73,11 +74,24 @@ Translation rules (in priority order):
    If PLAYER_TEXT starts with "where am i" or "where are we" (punctuation allowed),
    output: look
 
-4) Otherwise:
+4) Inventory questions:
+   If PLAYER_TEXT asks what the player is carrying or has in their pack/gear (e.g., "what am i carrying",
+   "check my gear", "show inventory"), output: inventory.
+
+5) Crafting questions vs requests:
+   If PLAYER_TEXT asks "how do i craft/make <item>" (explicit "how"), output: how craft <item>.
+   If PLAYER_TEXT requests crafting/making an item (including "can/could you craft/make <item>"), output: craft <item>.
+
+6) Pickup synonyms:
+   If PLAYER_TEXT uses "pick up", "stash", or "stow" with an item, output: take <item>.
+   Prefer exact visible item labels when present; ignore trailing phrases like "here" or "for me".
+   If multiple actions appear, choose the first command intent and ignore the rest.
+
+7) Otherwise:
    If PLAYER_TEXT is a valid non-command action (gesture, aside, or roleplay beat) that does not map to a command,
    output: EMOTE: <PLAYER_TEXT>.
 
-5) Otherwise:
+8) Otherwise:
    Translate to the closest valid command shape using the command surface below.
    Keep object/target phrases verbatim from PLAYER_TEXT.
 
