@@ -44,8 +44,8 @@ Notes:
 - `src/main/resources/agents/` runtime translator/narrator templates + AI role prompts/contracts
 - `src/main/resources/storybook/` narrative authoring bundles (backstory, quests, recipes, story)
 - `src/test/resources/zone-demo/` sample input bundle for ZoneBuilder
-- `docs/index.md` docs index, `docs/design/readme.md` design overview
-- `docs/bujo/` daily logs and `docs/journal.md` scope/test notes
+- `docs/index.md` docs index, `docs/reference/design/readme.md` design overview
+- `docs/process/bujo/` daily logs and `docs/process/journal.md` scope/test notes
 
 ## Authoring and changing game dynamics
 
@@ -87,7 +87,7 @@ gates:
 Key rules:
 - Expressions must be quoted strings in YAML. They are not compiled at load time.
 - `visible: false` hides a thing regardless of `keyString`.
-- Use `keyString` for conditional visibility (see `docs/design/key-expression.md`).
+- Use `keyString` for conditional visibility (see `docs/reference/design/key-expression.md`).
 
 ### Fixtures, items, actors
 Use `world/fixtures.yaml`, `world/items.yaml`, and `world/actors.yaml` for placement and behavior.
@@ -153,17 +153,17 @@ Crafting rules:
 
 ## Docs
 - Docs index: `docs/index.md`
-- Design overview: `docs/design/readme.md`
-- Key expression syntax: `docs/design/key-expression.md`
+- Design overview: `docs/reference/design/readme.md`
+- Key expression syntax: `docs/reference/design/key-expression.md`
 
 ## Island Adventure Travel Poster
-![island_adventure.png](docs/img/island_adventure.png)
+![island_adventure.png](docs/assets/img/island_adventure.png)
 
 ## Mansion Adventure Travel Poster
-![mansion_adventure.png](docs/img/mansion_adventure.png)
+![mansion_adventure.png](docs/assets/img/mansion_adventure.png)
 
 ## Spy Adventure Travel Poster
-![spy_adventure.png](docs/img/spy_adventure.png)
+![spy_adventure.png](docs/assets/img/spy_adventure.png)
 
 ## Western Adventure Travel Poster
-![western_adventure.png](docs/img/western_adventure.png)
+![western_adventure.png](docs/assets/img/western_adventure.png)

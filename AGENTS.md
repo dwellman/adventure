@@ -32,8 +32,8 @@
 - The map assembler will synthesize open/visible gates between adjacent plots that lack a declared gate. This is intentionally “optimistic” movement and should only fill gaps; declare explicit gates in YAML when you need custom behavior or blocking key expressions.
 
 ## BUJO + housekeeping
-- Log each working day under `docs/bujo/daily/<YYYY-MM-DD>.md` (What I touched / Notes-Risks / Tests / Next) and add a scope/tests note in `docs/journal.md`. Roll up to `docs/bujo/weekly/` or `monthly/` when applicable.
-- Migrate unfinished bullets forward and prune stale ones. If you add docs, update the docs index (if present). Record sweeps/refactors in a housekeeping log (`docs/housekeeping/cleaning.log` if it exists).
+- Log each working day under `docs/process/bujo/daily/<YYYY-MM-DD>.md` (What I touched / Notes-Risks / Tests / Next) and add a scope/tests note in `docs/process/journal.md`. Roll up to `docs/process/bujo/weekly/` or `monthly/` when applicable.
+- Migrate unfinished bullets forward and prune stale ones. If you add docs, update the docs index (if present). Record sweeps/refactors in a housekeeping log (`docs/process/housekeeping/cleaning.log` if it exists).
 - Keep AI debug off for players by default; note any metadata changes (IDE regeneration, wrapper tweaks) and keep Maven coords in `readme.md` in sync.
 
 ## AI interaction model (TODAY → TOMORROW → SOMEDAY)

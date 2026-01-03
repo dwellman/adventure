@@ -1,49 +1,57 @@
 # Docs Index
 
-Last verified: 2025-12-30 (v1.0 deep clean)
+Last verified: 2026-01-02 (v1.0 deep clean)
 
-Authoritative references:
-- `docs/architecture/overview.md` – package map + runtime flow diagram.
-- `src/main/resources/games/island/narrative/backstory.md` – runtime backstory printed by GameCli for Island Adventure.
-- `docs/design/dsl.md` – GDL/GEL/PIL grammar, acceptance criteria, and gap analysis.
-- `docs/design/kernel.md` – kernel design snapshot.
-- `docs/design/key-expression.md` – key expression syntax used by gates/locks.
-- `docs/design/pipeline.md` – latest pipeline design.
-- `docs/design/pattern-tests.md` – design patterns with usage guidelines and test coverage.
-- `docs/design/pattern-index.md` – pattern index for key orchestration and verification touchpoints.
-- `docs/runbooks/ai-cli.md` – authoritative AI/CLI runbook (translator → engine → narrator).
-- `docs/runbooks/index.md` – runbook index and conventions.
-- `docs/runbooks/testing-strategy.md` – testing strategy and agent validation workflow for games.
-- `docs/design/gameplan-western.yaml` – Adventure GamePlan template filled for Western Adventure.
-- `docs/design/smart-actors.md` – architecture for AI-backed in-world actors (planned).
-- `docs/design/todo-conversation.md` – completed @mention smart-actor conversation checklist (archived).
-- `docs/runbooks/new-game-walkthrough.md` – “build a new game and walkabout acceptance” guide (includes Gardener/exit/crafting expectations).
-- `docs/guides/quickstart.md` – developer quickstart checklist.
-- `docs/glossary.md` – shared terminology and definitions.
-- `docs/adr/index.md` – architecture decision records index.
+## Start here
+- `docs/howto/guides/quickstart.md` - developer quickstart checklist.
+- `docs/howto/runbooks/ai-cli.md` - authoritative AI/CLI runtime flow (translator -> engine -> narrator).
+- `docs/howto/runbooks/testing-strategy.md` - testing strategy and agent validation workflow.
+- `docs/howto/runbooks/new-game-walkthrough.md` - build a new game and walkabout acceptance guide.
+- `docs/reference/architecture/overview.md` - package map and runtime flow diagram.
+- `docs/reference/design/readme.md` - design overview and doc map.
+- `docs/reference/glossary.md` - shared terminology and definitions.
+- `docs/reference/skill.md` - AI runbook review skill.
 
-Game saves:
-- Canonical gardened YAMLs live in `src/main/resources/cookbook/`: `gardened-island.yaml`, `gardened-mansion.yaml`, `gardened-western.yaml`, `gardened-spy.yaml`.
-- Structured per-plot definitions live under `src/main/resources/games/<id>/` (e.g., `games/island`, `games/mansion`, `games/western`, `games/spy`), organized into `world/`, `narrative/`, `motif/`, and `assets/`.
-- Storybook authoring assets live under `src/main/resources/storybook/`; full bundles include `game.yaml`, `backstory.md`, `quests.md`, `recipes.yaml`, and `story.md`.
-- `docs/games/index.md` – game ids and resource locations.
+## Design and architecture
+- `docs/reference/design/engine.md` - engine/runtime design snapshot.
+- `docs/reference/design/kernel.md` - kernel design.
+- `docs/reference/design/pipeline.md` - pipeline design.
+- `docs/reference/design/content.md` - content model and authoring constraints.
+- `docs/reference/design/cli.md` - CLI architecture and runtime flow.
+- `docs/reference/design/ai-roles.md` - AI roles and contracts.
+- `docs/reference/design/dsl.md` - GDL/GEL/PIL grammar and acceptance rules.
+- `docs/reference/design/key-expression.md` - key expression syntax.
+- `docs/reference/design/parser.bnf` - parser grammar reference.
+- `docs/reference/design/pattern-index.md` - pattern index for grounding/orchestration/verification/trust/learning.
+- `docs/reference/design/pattern-tests.md` - tests that enforce the patterns.
+- `docs/reference/design/smart-actors.md` - smart-actor architecture (planned).
+- `docs/reference/design/ai-cli-mode.md` - superseded by the runbook.
+- `docs/reference/design/todo-conversation.md` - archived @mention checklist.
 
-Validation Tools:
-- `docs/cli/storybook-validate-cli.md` – validate a storybook YAML via GameSaveYamlLoader + GameSaveAssembler.
-- `docs/cli/gameplan-cli.md` – run the AI-assisted GamePlan interview + planning pipeline.
+## Authoring and CLI tools
+- `docs/howto/cli/gameplan-cli.md` - GamePlan CLI usage.
+- `docs/howto/cli/storybook-validate-cli.md` - storybook validation CLI.
+- `docs/reference/design/gameplan-western.yaml` - GamePlan example.
+- `docs/reference/games/index.md` - game ids and resource locations.
 
-Housekeeping:
-- `docs/housekeeping/housekeeping.md` – shared playbook pointer and local notes.
-- `docs/housekeeping/deep-clean.md` – deep clean protocol and backlog.
-- `docs/housekeeping/deep-clean-checklist.md` – per-sweep checklist.
-- `docs/housekeeping/clean-log.md` – deep clean log instructions.
-- `docs/housekeeping/cleaning.log` – cleanup log entries.
-- `docs/skill.md` – skill definition for AI runbook/doc alignment checks.
-- `docs/bujo/today-tomorrow-someday.md` – rolling task list (today/tomorrow/someday).
+## Game content locations
+- `src/main/resources/games/<id>/` - structured game bundles (world/narrative/motif/assets).
+- `src/main/resources/cookbook/` - canonical gardened YAML snapshots.
+- `src/main/resources/storybook/` - authoring bundles (game.yaml/backstory/quests/recipes/story when present).
+- `src/test/resources/games/` - test-only game bundles (including gdl-demo, island-adventure-test, and test fixtures).
+- `src/test/resources/minigames/` - test-only minigame fixtures.
 
-Logs:
-- `docs/logs/index.md` – log hub (BUJO, journal, scoreboard, playtests, housekeeping).
+## Logs and process
+- `docs/process/logs/index.md` - log hub (BUJO, journal, scoreboard, playtests, housekeeping).
+- `docs/process/journal.md` - scope and tests log.
+- `docs/process/bujo/readme.md` - BUJO process.
+- `docs/process/bujo/today-tomorrow-someday.md` - rolling task list.
+- `docs/process/scoreboard.md` - playthrough scoreboard.
+- `docs/process/playtests/` - playtest transcripts.
 
-Playtests:
-- `docs/playtests/1980-motif-spotcheck-2025-12-25.md` – 1980 motif-verb spot check transcript (all four adventures).
-- `docs/scoreboard.md` – playthrough scoreboard log (manual + scripted runs).
+## Housekeeping
+- `docs/process/housekeeping/housekeeping.md` - housekeeping notes.
+- `docs/process/housekeeping/deep-clean.md` - deep clean protocol.
+- `docs/process/housekeeping/deep-clean-checklist.md` - per-sweep checklist.
+- `docs/process/housekeeping/clean-log.md` - deep clean log.
+- `docs/process/housekeeping/cleaning.log` - cleanup log.
