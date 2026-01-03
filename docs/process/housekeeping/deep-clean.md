@@ -28,6 +28,7 @@ Purpose: repo-wide housekeeping pass to keep code, docs, and content aligned. Re
 5. Testing
    - Run `mvn -q test` (or targeted suites when appropriate).
    - Record commands/outcomes in logs.
+   - Verify JaCoCo coverage is 85%+ (see `target/site/jacoco/index.html`); note shortfalls in BUJO.
 6. Log & handoff
    - Update `docs/process/housekeeping/cleaning.log` and `docs/process/housekeeping/clean-log.md`.
    - Capture risks/follow-ups in BUJO and `docs/process/journal.md`.
@@ -60,3 +61,4 @@ Update Status to `Pending` / `In Progress (date, call sign)` / `Clean (date, cal
 - Updated docs and housekeeping logs.
 - Unused code removed or documented.
 - Full test run recorded with outcomes.
+- Coverage target (85%+) checked and recorded.
