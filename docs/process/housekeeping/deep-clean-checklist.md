@@ -17,7 +17,7 @@ Use this to track a single deep-clean sweep for this repo.
 - Comments refreshed where needed; dead code and TODOs resolved or logged.
 - Docs updated with `Last verified` stamps when touched.
 - Tests executed; commands and outcomes recorded.
-- JaCoCo coverage checked and meets 85%+ (or shortfall noted).
+- JaCoCo line coverage checked and meets 85%+ (or shortfall noted).
 - `docs/process/housekeeping/cleaning.log` updated with scope, commands, outcomes, owner.
 - `docs/process/housekeeping/clean-log.md` updated for deep-clean traceability.
 - BUJO and `docs/process/journal.md` updated with risks and follow-ups.

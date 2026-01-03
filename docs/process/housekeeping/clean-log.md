@@ -54,3 +54,11 @@ Use this file to log deep-clean passes. Keep entries chronological and concise.
 - Docs: `readme.md`, `docs/reference/architecture/overview.md`, `docs/reference/design/ai-roles.md`, `docs/reference/design/cli.md`, `docs/reference/design/pipeline.md`, `docs/reference/design/smart-actors.md`, `docs/reference/design/todo-conversation.md`, `docs/index.md`, `docs/howto/runbooks/ai-cli.md`, BUJO, journal updated.
 - Status: Clean (2025-12-30, Codex)
 - Risks/Follow-ups: InteractionState currently gates dice only; choice/confirm prompts remain a scaffold.
+
+## 2026-01-02 — Coverage gate enforcement — Codex
+- Scope: Added a JaCoCo line coverage gate (85%) to the build and refreshed housekeeping docs/logs.
+- Commands: `mvn -q test`; `mvn -q verify` (fails: coverage below 85%)
+- Coverage: Instruction 80.35%, line 78.30%, branch 59.83%, method 88.30% (JaCoCo report).
+- Docs: `pom.xml`, `docs/process/housekeeping/housekeeping.md`, `docs/process/housekeeping/deep-clean.md`, `docs/process/housekeeping/deep-clean-checklist.md`, `docs/process/housekeeping/cleaning.log`, `docs/process/bujo/daily/2026-01-02.md`, `docs/process/journal.md`.
+- Status: In Progress (2026-01-02, Codex)
+- Risks/Follow-ups: Raise line coverage to 85%+ or adjust the coverage target once agreed.

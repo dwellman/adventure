@@ -15,6 +15,8 @@
 - Tests: `./adventure --mode=2025` (Island Adventure pickup phrasing walkabout)
 - Scope: Added 85%+ coverage expectation to housekeeping docs and recorded current JaCoCo coverage.
 - Tests: `python3` (summed `target/site/jacoco/jacoco.csv` for coverage totals)
+- Scope: Enforced JaCoCo line coverage at 85% in the Maven build and ran the deep-clean verification.
+- Tests: `mvn -q test`; `mvn -q verify` (fails: coverage below 85%)
 - Scope: Moved the GDL demo into test resources and updated tests/docs to reference the new path.
 - Tests: `mvn -q -Dtest=RuntimeLoaderTest,GdlCliSmokeTest,GamePlanCliTest test`
 - Scope: Renamed cookbook YAMLs to the `gardened-<game>` pattern and updated docs/tests/examples.

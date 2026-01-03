@@ -303,3 +303,4 @@ Select a game (1-4, or q to quit): [ERROR] Failed to execute goal org.codehaus.m
 | 2026-01-02 | Docs navigation cleanup | none | Clean | Codex | Redesigned docs index navigation, removed ADR references, and corrected prompt/test path mentions. |
 | 2026-01-02 | Translator prompt long-statement tune | `./adventure --mode=2025`; `mvn -q -Dtest=TranslatorPromptGoldenTest,TranslatorPromptCoverageTest test` | Clean | Codex | Adjusted translator prompt rules for inventory/pickup/crafting phrasing and verified with AI walkabouts. |
 | 2026-01-02 | Housekeeping coverage requirement | `python3` (summed `target/site/jacoco/jacoco.csv`) | Clean | Codex | Added 85%+ coverage expectation to housekeeping docs and recorded current coverage. |
+| 2026-01-02 | JaCoCo 85% line coverage gate | `mvn -q test`; `mvn -q verify` | Blocked | Codex | Added a JaCoCo check rule in `pom.xml`; verify fails with line coverage at 78.30%. |
